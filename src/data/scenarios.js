@@ -1,7 +1,8 @@
-export const scenarios = [
+const baseScenarios = [
   // ── Bad News ──
   {
     id: "bn-1",
+    roles: ["reception"],
     category: "bad-news",
     title: "Terminal cancer diagnosis",
     difficulty: "advanced",
@@ -25,6 +26,7 @@ export const scenarios = [
   },
   {
     id: "bn-2",
+    roles: ["reception"],
     category: "bad-news",
     title: "Pet didn't survive surgery",
     difficulty: "advanced",
@@ -48,6 +50,7 @@ export const scenarios = [
   },
   {
     id: "bn-3",
+    roles: ["reception"],
     category: "bad-news",
     title: "Euthanasia appointment booking",
     difficulty: "intermediate",
@@ -73,6 +76,7 @@ export const scenarios = [
   // ── Difficult Clients ──
   {
     id: "dc-1",
+    roles: ["reception"],
     category: "difficult-clients",
     title: "Angry client in the waiting room",
     difficulty: "intermediate",
@@ -96,6 +100,7 @@ export const scenarios = [
   },
   {
     id: "dc-2",
+    roles: ["reception"],
     category: "difficult-clients",
     title: "Dispute over advice given",
     difficulty: "intermediate",
@@ -119,6 +124,7 @@ export const scenarios = [
   },
   {
     id: "dc-3",
+    roles: ["reception"],
     category: "difficult-clients",
     title: "Rude or abusive language",
     difficulty: "advanced",
@@ -144,11 +150,12 @@ export const scenarios = [
   // ── Costs & Payment ──
   {
     id: "cp-1",
+    roles: ["reception"],
     category: "costs",
     title: "Shocked by the bill",
     difficulty: "beginner",
     tags: ["billing", "transparency", "empathy"],
-    clientMessage: "This can't be right. £480?! I thought it would be around £100. Nobody told me it was going to be this much.",
+    clientMessage: "This can't be right. $650?! I thought it would be around $150. Nobody told me it was going to be this much.",
     context: "A client has collected their dog after a day procedure and is at the front desk looking at the invoice for the first time. They are visibly upset.",
     keyPrinciples: [
       "Stay calm and non-defensive",
@@ -167,12 +174,13 @@ export const scenarios = [
   },
   {
     id: "cp-2",
+    roles: ["reception"],
     category: "costs",
     title: "Client can't afford recommended treatment",
     difficulty: "advanced",
     tags: ["finance", "ethics", "compassion"],
     clientMessage: "The vet says Oscar needs surgery but I genuinely can't afford it. I feel terrible. I don't know what to do.",
-    context: "A client is in tears at the desk. Their elderly cat has been diagnosed with a urinary blockage requiring surgery. The cost is £1,200. The client says they have no savings or credit.",
+    context: "A client is in tears at the desk. Their elderly cat has been diagnosed with a urinary blockage requiring surgery. The cost is $1,600. The client says they have no savings or credit.",
     keyPrinciples: [
       "This is a welfare AND emotional situation — acknowledge both",
       "Know your clinic's financial support options",
@@ -190,6 +198,7 @@ export const scenarios = [
   },
   {
     id: "cp-3",
+    roles: ["reception"],
     category: "costs",
     title: "Explaining a quote before treatment",
     difficulty: "beginner",
@@ -202,12 +211,12 @@ export const scenarios = [
       "Always get verbal or written consent before proceeding",
       "Reassure them they will be contacted if costs change"
     ],
-    modelAnswer: "Absolutely — and it's really good that you're asking. Based on what the vet has outlined, you're looking at roughly £180 to £350 depending on what the blood tests show and whether fluids are needed. Those are estimates, and we'd always call you before proceeding with anything that takes us above that range. Would you like me to put that in writing for you?",
+    modelAnswer: "Absolutely — and it's really good that you're asking. Based on what the vet has outlined, you're looking at roughly $250 to $475 depending on what the blood tests show and whether fluids are needed. Those are estimates, and we'd always call you before proceeding with anything that takes us above that range. Would you like me to put that in writing for you?",
     tip: "Always quote a range, not a number. And always confirm: 'We'll call you before doing anything beyond this estimate.'",
     quizOptions: [
-      { text: "\"Great question. Based on what the vet has mentioned, the estimate is roughly £180–£350 depending on test results. We'd call you before going beyond that. Would you like it in writing?\"", correct: true, explanation: "Range-based, honest about variables, clear on consent process." },
+      { text: "\"Great question. Based on what the vet has mentioned, the estimate is roughly $250–$475 depending on test results. We'd call you before going beyond that. Would you like it in writing?\"", correct: true, explanation: "Range-based, honest about variables, clear on consent process." },
       { text: "\"I can't really say — it depends on what they find.\"", correct: false, explanation: "Unhelpful. Even when uncertain, you can give a realistic range." },
-      { text: "\"It'll probably be around £200.\"", correct: false, explanation: "A single estimate without caveats sets unrealistic expectations and can lead to billing disputes." },
+      { text: "\"It'll probably be around $275.\"", correct: false, explanation: "A single estimate without caveats sets unrealistic expectations and can lead to billing disputes." },
       { text: "\"The vet handles all of that — I just do the bookings.\"", correct: false, explanation: "Receptionists are often the first point of contact for cost queries and should be able to explain estimates confidently." }
     ]
   },
@@ -215,6 +224,7 @@ export const scenarios = [
   // ── Follow-up Calls ──
   {
     id: "fu-1",
+    roles: ["reception"],
     category: "follow-up",
     title: "Post-surgery welfare check",
     difficulty: "beginner",
@@ -238,6 +248,7 @@ export const scenarios = [
   },
   {
     id: "fu-2",
+    roles: ["reception"],
     category: "follow-up",
     title: "Overdue vaccination reminder",
     difficulty: "beginner",
@@ -263,6 +274,7 @@ export const scenarios = [
   // ── Scheduling ──
   {
     id: "sch-1",
+    roles: ["reception"],
     category: "scheduling",
     title: "Urgent vs. routine triage",
     difficulty: "intermediate",
@@ -286,6 +298,7 @@ export const scenarios = [
   },
   {
     id: "sch-2",
+    roles: ["reception"],
     category: "scheduling",
     title: "Managing a very anxious client",
     difficulty: "beginner",
@@ -311,6 +324,7 @@ export const scenarios = [
   // ── Welfare & Safeguarding ──
   {
     id: "ws-1",
+    roles: ["reception"],
     category: "difficult-clients",
     title: "Intoxicated client collecting post-surgical pet",
     difficulty: "advanced",
@@ -335,6 +349,7 @@ export const scenarios = [
   },
   {
     id: "ws-2",
+    roles: ["vet"],
     category: "difficult-clients",
     title: "Vet: intoxicated client collecting post-surgical pet",
     difficulty: "advanced",
@@ -363,6 +378,7 @@ export const scenarios = [
 export const categories = [
   {
     id: "bad-news",
+    roles: ["reception", "tech", "vet"],
     label: "Delivering bad news",
     icon: "💙",
     iconBg: "#e8f4fb",
@@ -371,6 +387,7 @@ export const categories = [
   },
   {
     id: "difficult-clients",
+    roles: ["reception", "tech", "vet"],
     label: "Difficult clients",
     icon: "🛡️",
     iconBg: "#fdf0eb",
@@ -379,6 +396,7 @@ export const categories = [
   },
   {
     id: "costs",
+    roles: ["reception", "tech", "vet"],
     label: "Costs & payment",
     icon: "💳",
     iconBg: "#fdf8ee",
@@ -387,6 +405,7 @@ export const categories = [
   },
   {
     id: "follow-up",
+    roles: ["reception", "tech", "vet"],
     label: "Follow-up calls",
     icon: "📞",
     iconBg: "#edf7f2",
@@ -395,13 +414,352 @@ export const categories = [
   },
   {
     id: "scheduling",
+    roles: ["reception", "tech", "vet"],
     label: "Scheduling & triage",
     icon: "📅",
     iconBg: "#f3f0fb",
     description: "Booking appointments, triaging urgency, and supporting anxious first-time clients.",
     tagColor: "tag-teal"
+  },
+  {
+    id: "vet-client",
+    roles: ["reception", "tech", "vet"],
+    label: "Vet to client",
+    icon: "🩺",
+    iconBg: "#f0f4ff",
+    description: "Delivering diagnoses, end-of-life conversations, disclosing complications, and handling disagreement.",
+    tagColor: "tag-teal"
+  },
+  {
+    id: "tech-client",
+    roles: ["reception", "tech", "vet"],
+    label: "Tech to client",
+    icon: "🔬",
+    iconBg: "#f0fff4",
+    description: "Relaying information, handling dismissive clients, discharge instructions, and restraint conversations.",
+    tagColor: "tag-green"
+  },
+  {
+    id: "team",
+    roles: ["reception", "tech", "vet"],
+    label: "Team conversations",
+    icon: "🤝",
+    iconBg: "#fff7ed",
+    description: "Speaking up about concerns, giving feedback, resolving conflict, and communicating across roles.",
+    tagColor: "tag-gold"
   }
 ];
 
-// Note: the intoxicated client scenario is categorised under "difficult-clients"
-// but tagged with "animal welfare" so it surfaces naturally in that section.
+// ── VET TO CLIENT ──
+const vetScenarios = [
+  {
+    id: "vc-1",
+    roles: ["vet"],
+    category: "vet-client",
+    title: "Delivering a serious diagnosis",
+    difficulty: "advanced",
+    tags: ["diagnosis", "empathy", "cancer"],
+    clientMessage: "So what did the biopsy show? Is it bad?",
+    context: "You are the attending veterinarian. Mrs Chen has brought in her 9-year-old Labrador Max for biopsy results. The results confirm an aggressive mast cell tumour — grade III, with a guarded prognosis. Mrs Chen is alone, and clearly anxious. You are in a consult room together.",
+    keyPrinciples: [
+      "Pause before delivering the news — don't rush straight into clinical detail",
+      "Use plain language — avoid jargon like 'grade III' without explanation",
+      "Acknowledge the emotional weight before moving to next steps",
+      "Don't fill silence — let the client process",
+      "End with a clear, manageable next step rather than overwhelming them with all options at once"
+    ],
+    modelAnswer: "I want to take a moment before I share the results, because this isn't easy news. The biopsy has confirmed that the lump is a type of cancer — a mast cell tumour. It's a more aggressive type, which means we need to take it seriously. I know that's a lot to take in. Before we talk about what the options look like, I just want to check in — how are you doing with what I've just told you?",
+    tip: "The instinct to immediately move into treatment options is understandable, but most clients need a moment to absorb the diagnosis first. Asking 'how are you doing with what I've just told you?' is one of the most powerful things a vet can say — it hands control back to the client.",
+    quizOptions: [
+      { text: "\"The results show a grade III mast cell tumour. This is an aggressive cancer and the prognosis is guarded. We should discuss surgery, chemotherapy, and palliative options.\"", correct: false, explanation: "Too much clinical information delivered too quickly. The client hasn't had a moment to absorb the diagnosis before being presented with a list of complex options." },
+      { text: "\"I'm afraid the news isn't what we were hoping for. Max has a type of cancer called a mast cell tumour — it's one that we need to take seriously. I know that's hard to hear. How are you doing?\"", correct: true, explanation: "Clear, honest, human. Delivers the diagnosis in plain language, acknowledges the emotional weight, and creates space before moving to next steps." },
+      { text: "\"Try not to worry too much — there are lots of treatment options and many dogs do very well. Let me tell you what we can do.\"", correct: false, explanation: "False reassurance minimises the diagnosis and doesn't give the client permission to feel what they're feeling. Jumping to optimism before acknowledging the difficulty is a common but unhelpful pattern." },
+      { text: "\"The biopsy was positive for malignancy. We'll need to refer you to an oncologist.\"", correct: false, explanation: "Clinically accurate but delivered without any emotional acknowledgement. 'Positive for malignancy' is also jargon that many clients won't immediately understand." }
+    ]
+  },
+  {
+    id: "vc-2",
+    roles: ["vet"],
+    category: "vet-client",
+    title: "Quality of life and end-of-life discussion",
+    difficulty: "advanced",
+    tags: ["end of life", "euthanasia", "quality of life"],
+    clientMessage: "He's still eating a little bit and he still wags his tail when he sees me. Doesn't that mean he still has quality of life?",
+    context: "You are the veterinarian. Rufus is a 14-year-old dog with advanced heart failure and suspected metastatic cancer. He is on maximum medication. His owner Mr Okafor is struggling to accept that the time may be coming. At the last visit two weeks ago you raised end-of-life care gently. Today Rufus is clearly more uncomfortable — his breathing is laboured and he can barely walk. Mr Okafor is asking whether tail wags and eating mean his dog is okay.",
+    keyPrinciples: [
+      "Validate what the client is seeing — tail wags are real and meaningful",
+      "Gently distinguish between moments of connection and overall quality of life",
+      "Never tell a client when to make the decision — but help them understand what they're looking at",
+      "Use the 'more good days than bad days' framework if helpful",
+      "Make clear that choosing euthanasia is an act of love, not giving up"
+    ],
+    modelAnswer: "Those moments are real — when Rufus wags his tail at you, that's genuine. That connection between you hasn't gone away, and it matters. But I want to help you see the full picture alongside those moments, because I think that's what Rufus needs from us right now. Today, his breathing is working very hard just to keep him comfortable. He's struggling with things that used to be easy. The question I'd gently invite you to sit with isn't whether there are still good moments — there clearly are — but whether, overall, he's having more comfortable days than difficult ones. There's no right answer today, and this decision is yours. But I want to make sure you have the full picture so you can make it with confidence.",
+    tip: "The 'tail wag' argument is one of the most common and most human responses to approaching end-of-life. The most effective response acknowledges it as real before gently expanding the client's view — never dismissing it or contradicting it directly.",
+    quizOptions: [
+      { text: "\"A tail wag doesn't mean he has quality of life — you need to look at the whole picture. Rufus is suffering.\"", correct: false, explanation: "Too blunt and dismissive of something the client genuinely finds meaningful. Telling a client their pet is 'suffering' without building to it can cause them to shut down or become defensive." },
+      { text: "\"Those moments are real and they matter. But I'd like us to look at the full picture together — overall, is he having more comfortable days than hard ones?\"", correct: true, explanation: "Validates the client's observation, then gently widens the lens without telling them what to conclude. Empowering rather than prescriptive." },
+      { text: "\"If he's still eating and wagging his tail, then you're right — there's still quality of life there. Let's continue with the current medication.\"", correct: false, explanation: "Colluding with the client's wishful thinking when the clinical picture clearly doesn't support it is a disservice to the animal. The vet has a responsibility to give an honest assessment." },
+      { text: "\"I think it's time to consider euthanasia. The kindest thing you can do for Rufus now is to let him go.\"", correct: false, explanation: "Even when this may be true, telling a client it's time — rather than helping them arrive at that understanding themselves — removes their agency and can cause lasting guilt." }
+    ]
+  },
+  {
+    id: "vc-3",
+    roles: ["vet"],
+    category: "vet-client",
+    title: "Disclosing a complication honestly",
+    difficulty: "advanced",
+    tags: ["error disclosure", "honesty", "post-surgical"],
+    clientMessage: "How did the surgery go? Is Luna okay?",
+    context: "You are the surgeon. Luna, a 4-year-old cat, came in for a routine spay. During the procedure there was an inadvertent nick to the ureter which was identified and repaired intraoperatively. Luna is stable and recovering well, but will need monitoring and may need further intervention. The owner has arrived to check on her. This complication must be disclosed honestly.",
+    keyPrinciples: [
+      "Disclose complications promptly and honestly — do not minimise or obscure",
+      "Start with the patient's current status to reduce immediate panic",
+      "Take responsibility without excessive self-flagellation",
+      "Explain clearly what happened, what was done about it, and what happens next",
+      "Give the client space to react — they may be angry, and that is reasonable"
+    ],
+    modelAnswer: "Luna is stable and recovering — I want to start with that because I know it's what matters most to you. But I do need to be completely honest with you about how the surgery went, and I want to do that now. During the procedure, there was an injury to one of the tubes that connects the kidney to the bladder — called the ureter. It happened during surgery and we identified it and repaired it straight away. Luna is on pain relief and we're monitoring her closely. This is something that can occur in abdominal surgery and I want you to understand exactly what happened, what we did about it, and what we'll be watching for. I'm sorry this happened — I want to make sure you have all the information and that we look after Luna as well as we possibly can from here.",
+    tip: "The instinct to soften or delay difficult disclosure is understandable but wrong. Clients who feel they weren't told the full truth — even if the outcome is fine — lose trust permanently. Start with current status, then move to what happened, then what was done, then what's next. This sequence reduces panic and gives the disclosure a clear shape.",
+    quizOptions: [
+      { text: "\"Luna is stable and recovering. I do need to be honest with you — there was a complication during surgery. I identified it and repaired it at the time, and I want to walk you through exactly what happened.\"", correct: true, explanation: "Leads with reassurance, commits to transparency immediately, and sets up a structured disclosure. This is the right sequence." },
+      { text: "\"The surgery went well overall — there was a small issue but we dealt with it and she's fine now.\"", correct: false, explanation: "'Small issue' and 'she's fine' minimise what happened and don't give the client the full picture. If the client later finds out the true extent, the trust damage is severe." },
+      { text: "\"I'm so sorry — I made a mistake during surgery and injured Luna's ureter. I feel terrible about this.\"", correct: false, explanation: "Honesty is right, but centring your own feelings ('I feel terrible') puts the emotional burden on the client. The focus should be on Luna and what was done to help her." },
+      { text: "\"There were some expected intraoperative findings that required management — everything is under control.\"", correct: false, explanation: "Euphemistic language designed to obscure rather than inform. 'Expected intraoperative findings' is not how a complication should be described to a client." }
+    ]
+  },
+  {
+    id: "vc-4",
+    roles: ["vet"],
+    category: "vet-client",
+    title: "Client refuses recommended treatment",
+    difficulty: "intermediate",
+    tags: ["clinical disagreement", "autonomy", "consent"],
+    clientMessage: "I've done my research online and I really don't want to give him steroids. I've read they have terrible side effects and I'd rather try a natural approach first.",
+    context: "You are the veterinarian. Bruno is a 5-year-old German Shepherd with severe immune-mediated haemolytic anaemia (IMHA) — a serious, potentially life-threatening condition. Corticosteroids are the first-line treatment and delay significantly worsens prognosis. The owner has become convinced by online sources that steroids are harmful and wants to try herbal supplements instead. You need to address this without alienating the client.",
+    keyPrinciples: [
+      "Acknowledge the client's concern — steroid side effects are real and worth discussing",
+      "Don't dismiss online research — engage with it respectfully",
+      "Be clear about the clinical stakes without using fear as manipulation",
+      "Ultimately respect autonomy — but ensure fully informed consent",
+      "Document the conversation and the client's decision carefully"
+    ],
+    modelAnswer: "I really appreciate that you've been researching this — it tells me how much you care about Bruno. And you're right that steroids do have side effects, and in some situations I'd be cautious about them too. But I want to be honest with you about why I'm recommending them strongly here, because this is a different situation. Bruno's immune system is attacking his own red blood cells right now, and without treatment to stop that process quickly, we could be in a very serious position within days. The steroids aren't a first choice because they're convenient — they're the only treatment we know works fast enough in this condition. I'd feel I wasn't doing right by Bruno or by you if I didn't tell you that clearly. Can we talk through the side effects specifically? Some of them can be managed, and knowing what to watch for might make this feel less daunting.",
+    tip: "The refusal of recommended treatment is one of the hardest conversations in veterinary medicine. The key is to engage with the client's concern genuinely before restating your recommendation — not to dismiss it. A client who feels heard is far more likely to reconsider than one who feels overridden.",
+    quizOptions: [
+      { text: "\"I understand your concern about steroids — they do have side effects. But I need you to understand that in Bruno's case, the risk of not treating is much greater than the risk of treatment. Can we talk through what the side effects actually look like?\"", correct: true, explanation: "Acknowledges the concern, is honest about stakes without catastrophising, and moves toward a constructive conversation about the specific worry." },
+      { text: "\"I'm afraid the internet isn't a reliable source for medical advice. Steroids are the only option here.\"", correct: false, explanation: "Dismissing the client's research as unreliable immediately puts them on the defensive. Even if the information they found was flawed, this approach closes the conversation down." },
+      { text: "\"If you'd prefer to try natural remedies first, we can monitor Bruno and see how he responds.\"", correct: false, explanation: "In a life-threatening condition like IMHA, agreeing to delay evidence-based treatment to try unproven alternatives is not appropriate. This is a failure of the vet's duty of care." },
+      { text: "\"That's completely your choice — I'll make a note that you've declined the recommended treatment.\"", correct: false, explanation: "While documentation is correct, simply acquiescing without ensuring the client is fully informed of the consequences is a failure of informed consent. The vet has an obligation to communicate the clinical stakes clearly." }
+    ]
+  }
+];
+
+// ── TECH TO CLIENT ──
+const techScenarios = [
+  {
+    id: "tc-1",
+    roles: ["tech"],
+    category: "tech-client",
+    title: "Relaying a diagnosis from the vet",
+    difficulty: "intermediate",
+    tags: ["communication relay", "diagnosis", "scope of practice"],
+    clientMessage: "So what does the vet think is wrong with him? Can you tell me?",
+    context: "You are a veterinary technician. The vet has examined Pip, a rabbit with GI stasis, and has asked you to prepare the treatment plan and discharge the patient while they move to the next consult. The vet has briefed you on the diagnosis and treatment. The owner is asking you to explain what the vet found. You need to relay this clearly without going beyond your scope of practice.",
+    keyPrinciples: [
+      "You can relay the diagnosis the vet has given — this is within your scope",
+      "Use plain English and avoid clinical jargon without explanation",
+      "Be clear that you are passing on what the vet has told you — not offering your own diagnosis",
+      "If the client has questions beyond the diagnosis, offer to get the vet",
+      "Don't guess or speculate about anything you're uncertain about"
+    ],
+    modelAnswer: "Absolutely — Dr [name] has asked me to go through everything with you. Pip has what we call GI stasis — that's when the digestive system slows down or stops moving. In rabbits this is actually quite serious, but the good news is we caught it and we have a treatment plan ready to go. I'll walk you through exactly what we're doing and what you'll need to do at home. If anything comes up that you'd like to ask the vet directly, I'll make sure that happens before you leave.",
+    tip: "Always attribute the diagnosis to the vet by name — 'Dr [name] has found...' rather than 'we think...' or 'it looks like...'. This keeps your role clear and maintains the client's confidence in the clinical team. Never be afraid to say 'that's a great question for the vet — let me get them for you'.",
+    quizOptions: [
+      { text: "\"Dr [name] has diagnosed Pip with GI stasis — that's when the gut slows down or stops. It can be serious in rabbits, but we have a treatment plan ready. Let me walk you through it, and if you have questions for the vet I'll make sure you get to speak with them.\"", correct: true, explanation: "Attributes the diagnosis correctly, explains it in plain language, sets up next steps, and offers access to the vet for further questions." },
+      { text: "\"I think it's probably GI stasis based on what I saw — the vet will confirm. Here's what we're going to do.\"", correct: false, explanation: "'I think' and 'based on what I saw' suggests the tech is forming their own diagnosis, which is outside their scope and could undermine confidence in the clinical team." },
+      { text: "\"I'm not really able to discuss the diagnosis — you'll need to speak with the vet about that.\"", correct: false, explanation: "Unnecessarily restrictive. Relaying a confirmed diagnosis the vet has asked you to communicate is entirely within a tech's role." },
+      { text: "\"Pip has GI stasis. It's basically when the gut stops working. Rabbits can die from this quite quickly so it's important we act fast.\"", correct: false, explanation: "The information isn't wrong but the delivery — particularly 'can die from this quite quickly' without context or reassurance — is likely to cause unnecessary panic without being constructive." }
+    ]
+  },
+  {
+    id: "tc-2",
+    roles: ["tech"],
+    category: "tech-client",
+    title: "Client is rude and dismissive to tech staff",
+    difficulty: "advanced",
+    tags: ["respect", "boundaries", "professionalism"],
+    clientMessage: "I don't want to deal with a nurse — I want to speak to the actual vet. You probably don't even know what you're talking about.",
+    context: "You are a registered veterinary technician with five years of experience. You have been asked by the vet to take a blood sample from a client's cat and explain the pre-anaesthetic bloodwork process. The client is dismissive and has just told you they don't want to deal with you and questioned your competence. The vet is currently in surgery and not available.",
+    keyPrinciples: [
+      "Stay calm — do not react defensively or match the client's energy",
+      "Correct the misunderstanding about your role clearly but without arrogance",
+      "Acknowledge the client's preference while being honest about what's possible right now",
+      "Maintain your professional boundaries — you don't have to absorb rudeness",
+      "Offer a path forward that works for everyone"
+    ],
+    modelAnswer: "I completely understand wanting to speak with the vet directly, and I'll make sure that happens. I should let you know that I'm a registered veterinary technician — I work closely with Dr [name] and this is something they've specifically asked me to take care of. Dr [name] is in surgery right now, but if you have questions after we're done that you'd prefer to put to them directly, I'll arrange that. In the meantime, can I take a few minutes to explain what I'll be doing and why?",
+    tip: "Correcting a client's misconception about your role is professional and appropriate — but do it once, briefly, and then move forward. Spending too long defending your credentials shifts focus away from the patient. The goal is to keep the appointment moving while leaving the client feeling heard.",
+    quizOptions: [
+      { text: "\"I understand — I'll let Dr [name] know you'd like to speak with them directly. They're in surgery right now, but I'm a registered vet tech and this is something they've asked me to handle. I'll make sure you have a chance to speak with them afterwards.\"", correct: true, explanation: "Calm, clear, professional. States credentials without being defensive, acknowledges the preference, offers a path forward." },
+      { text: "\"I'm actually just as qualified to do this as the vet. You'll have to deal with me.\"", correct: false, explanation: "Defensive and combative. Even if frustration is understandable, this approach escalates the situation and doesn't serve the client or the patient." },
+      { text: "\"Of course — I'll go and get the vet for you right away.\"", correct: false, explanation: "Pulls the vet out of surgery unnecessarily and doesn't correct the client's misunderstanding about the tech's role. It also sets a precedent that dismissiveness is rewarded." },
+      { text: "\"I'm sorry you feel that way. I'll do my best.\"", correct: false, explanation: "Apologising for the client's rudeness without addressing it signals that the behaviour is acceptable. 'I'll do my best' also unnecessarily undermines confidence in your own competence." }
+    ]
+  },
+  {
+    id: "tc-3",
+    roles: ["tech"],
+    category: "tech-client",
+    title: "Post-operative discharge instructions — overwhelmed client",
+    difficulty: "intermediate",
+    tags: ["discharge", "instructions", "clarity"],
+    clientMessage: "I'm trying to listen but there's just so much information — I'm not sure I'm going to remember all of this.",
+    context: "You are the veterinary technician giving discharge instructions to a client whose dog Biscuit has just had an orthopaedic surgery — a tibial plateau levelling osteotomy (TPLO). The recovery protocol is detailed: strict rest for 8 weeks, wound checks, physiotherapy, multiple medications at different intervals, and follow-up appointments. The client is visibly anxious and has just told you they're struggling to take it all in.",
+    keyPrinciples: [
+      "Stop and acknowledge — don't keep delivering information when the client signals they're overwhelmed",
+      "Chunk the information into the most critical points first",
+      "Always provide written instructions — never rely on verbal alone",
+      "Invite questions rather than asking 'does that make sense?'",
+      "Offer a follow-up call for when questions arise at home"
+    ],
+    modelAnswer: "Let's slow right down — thank you for telling me that, because the last thing I want is for you to go home feeling unsure. Here's what I want you to know: all of this is written down in the discharge notes I'm going to give you, so you don't need to memorise anything right now. Let me just walk you through the three things that matter most for tonight, and we can cover the rest more slowly. And please know — you can call us any time over the next few days if something comes up that you're not sure about. We'd rather you ring than worry.",
+    tip: "The phrase 'does that make sense?' almost always gets a yes, even when it doesn't. Instead, try 'what questions do you have?' or 'what feels most unclear?' — these open-ended questions surface real confusion rather than false reassurance.",
+    quizOptions: [
+      { text: "\"Let's slow down — you don't need to remember everything right now because it's all written in the discharge notes. Let me just cover the most important things for tonight, and then you can take the rest home to read.\"", correct: true, explanation: "Responsive to the client's signal, reduces anxiety by reminding them they have written support, and prioritises the most critical information." },
+      { text: "\"I know it's a lot — but it's really important you understand all of this, so let me keep going.\"", correct: false, explanation: "Continues to deliver information despite the client clearly signalling they're overwhelmed. Information delivered to an overwhelmed person is rarely retained." },
+      { text: "\"Don't worry — most of this is just standard stuff. The main thing is the medication.\"", correct: false, explanation: "Minimising the complexity of a detailed recovery protocol isn't appropriate and could lead to important steps being missed." },
+      { text: "\"Would you like me to call you tomorrow to go through it again?\"", correct: false, explanation: "While a follow-up call is a good idea, it doesn't address the immediate problem — the client is still overwhelmed right now and needs the immediate information chunked and clarified before they leave." }
+    ]
+  },
+  {
+    id: "tc-4",
+    roles: ["tech"],
+    category: "tech-client",
+    title: "Discussing restraint and consent with an anxious owner",
+    difficulty: "intermediate",
+    tags: ["restraint", "consent", "anxiety"],
+    clientMessage: "I don't want you to hurt her — she gets really scared at the vet. Can I stay with her while you do it?",
+    context: "You are the veterinary technician about to collect a blood sample from a cat named Cleo, who is known to be fractious and fearful. The owner is anxious and wants to remain in the room. Your clinic's policy allows owners to stay if safe, but Cleo's file notes that she has previously scratched staff and becomes more difficult when the owner is present. You need to discuss this sensitively.",
+    keyPrinciples: [
+      "Validate the owner's concern — fear-free handling is a genuine priority",
+      "Be honest about what you've observed with Cleo previously",
+      "Explain the reasoning behind your approach — don't just assert policy",
+      "Give the owner agency where possible",
+      "Never make an owner feel excluded without explanation"
+    ],
+    modelAnswer: "I completely understand — your instinct to be there for her is a loving one. I want to be honest with you about what we've found with Cleo previously, because I think it'll help explain our approach. When we've had owners in the room, Cleo actually tends to become more anxious — she seems to pick up on your worry, and then she feels she needs to protect you, which makes the whole experience harder for her. Our goal is to make this as quick and calm as possible for her. What I'd suggest is that we take her through, do this as gently and efficiently as we can, and bring her straight back to you. If at any point you'd like to step in or have questions, I'll come and get you. Does that feel okay?",
+    tip: "Owners who want to stay are motivated by love, not obstruction. Explaining why their presence might inadvertently make things harder for their pet — rather than citing 'policy' — is far more persuasive and far kinder.",
+    quizOptions: [
+      { text: "\"I hear you — and I want to explain why we usually recommend owners wait outside for this one. Cleo has shown us that she becomes more unsettled when her owner is present, possibly because she picks up on anxiety. We'll be as quick and gentle as possible and bring her straight back.\"", correct: true, explanation: "Validates the concern, gives a genuine clinical reason rather than citing policy, and maintains trust by being transparent." },
+      { text: "\"I'm sorry, clinic policy doesn't allow owners in the treatment area.\"", correct: false, explanation: "Citing policy without explanation feels dismissive and doesn't give the owner any understanding of why. It's also not the full truth — it's about Cleo's welfare, not just policy." },
+      { text: "\"Of course you can stay — come on through.\"", correct: false, explanation: "If the clinical notes indicate Cleo is more difficult with the owner present, agreeing without discussion could make the procedure harder and more stressful for the cat." },
+      { text: "\"She'll be fine — we do this all the time.\"", correct: false, explanation: "Dismisses the owner's genuine concern and doesn't address the question. Reassurance without explanation isn't comforting — it's patronising." }
+    ]
+  }
+];
+
+// ── TEAM MEMBER TO TEAM MEMBER ──
+const teamScenarios = [
+  {
+    id: "tm-1",
+    roles: ["reception", "tech", "vet"],
+    category: "team",
+    title: "Raising a concern about a colleague's decision",
+    difficulty: "advanced",
+    tags: ["speaking up", "patient safety", "professional courage"],
+    clientMessage: "Can you just prep the cat for surgery — Dr [name] said to go ahead.",
+    context: "You are a veterinary technician. A colleague (junior vet) has asked you to prepare a cat for a routine procedure. While reviewing the file, you notice the pre-anaesthetic bloodwork shows a significantly elevated creatinine level that you don't think has been addressed. The vet has already moved on and the owner has consented. You are not sure if the vet noticed the result. You need to raise this concern before proceeding.",
+    keyPrinciples: [
+      "Speak up — patient safety is everyone's responsibility regardless of hierarchy",
+      "Raise the concern directly and specifically — not vaguely",
+      "Use a non-accusatory approach — assume oversight, not negligence",
+      "Be clear about what you need: confirmation, not permission to delay indefinitely",
+      "Document that you raised the concern"
+    ],
+    modelAnswer: "Before I start the prep, I want to flag something — I was just reviewing the bloodwork and noticed the creatinine is elevated at [value]. I wasn't sure if that had been factored into the anaesthetic plan. I just want to make sure we've considered it before we go ahead — can I grab you for thirty seconds to look at it together?",
+    tip: "The SBAR framework is useful here: Situation (what's happening), Background (what the file shows), Assessment (your concern), Recommendation (what you're asking for). You don't need to suggest the vet missed something — you just need to make sure the information is in front of them before you proceed.",
+    quizOptions: [
+      { text: "\"Before I start, can I just check something with you? The bloodwork shows an elevated creatinine and I want to make sure that's been factored in to the plan — could we look at it together quickly?\"", correct: true, explanation: "Specific, non-accusatory, framed as a collaborative check rather than a challenge. Gets the right information in front of the right person without creating conflict." },
+      { text: "\"I don't think we should do this surgery — the creatinine is too high.\"", correct: false, explanation: "Making a unilateral clinical determination is outside the tech's scope. The concern is valid but the approach oversteps — the goal is to get the vet to review the result, not to make the call yourself." },
+      { text: "\"I'll just prep the cat — the vet said to go ahead so I'm sure it's fine.\"", correct: false, explanation: "Deferring to hierarchy when there is a genuine patient safety concern is not appropriate. Every team member has a responsibility to speak up." },
+      { text: "\"Did you actually look at the bloodwork? The creatinine is really high.\"", correct: false, explanation: "The implied accusation ('did you actually look') is likely to put the vet on the defensive. The concern is right but the framing is counterproductive." }
+    ]
+  },
+  {
+    id: "tm-2",
+    roles: ["reception", "tech", "vet"],
+    category: "team",
+    title: "Giving feedback to a junior team member after a mistake",
+    difficulty: "advanced",
+    tags: ["feedback", "leadership", "learning"],
+    clientMessage: "I know, I know — I already feel terrible about it.",
+    context: "You are a senior veterinary technician. A new graduate tech (Alex, 3 months in) has just made an error — they gave a patient the correct medication but at double the prescribed dose. The patient is being monitored and is currently stable. Alex discovered the error themselves, reported it immediately, and is now visibly distressed. You need to have a debrief conversation with them.",
+    keyPrinciples: [
+      "Acknowledge that reporting the error immediately was the right thing to do",
+      "Separate the person from the mistake — Alex is not a bad tech for making an error",
+      "Don't minimise the mistake, but don't catastrophise it either",
+      "Focus the conversation on learning and systems, not blame",
+      "Check in on Alex's wellbeing — errors are emotionally hard for the person who made them"
+    ],
+    modelAnswer: "I know you do, and I want you to know that the fact that you caught it and told us immediately — that matters enormously. That's exactly what we need people to do. Errors happen in clinical medicine — they happen to experienced staff too, and the difference between a bad outcome and a managed one is almost always whether it gets caught and reported quickly. You did that. Now — once we know the patient is fully stable, I'd like us to sit down and look at what happened, not to assign blame, but so we can understand if there's something in our process that made this easier to happen. How are you doing right now?",
+    tip: "Second victim syndrome is real — staff who make clinical errors often suffer significant psychological distress. A senior team member's first response sets the tone for how the person relates to mistakes for the rest of their career. The goal is to build someone who reports errors and learns from them, not someone who hides them out of fear.",
+    quizOptions: [
+      { text: "\"Reporting it straight away was the right call — that takes courage. Once the patient is stable, let's sit down and look at what happened together, not to assign blame but to make sure it can't happen the same way again. How are you doing?\"", correct: true, explanation: "Acknowledges the correct behaviour, normalises errors in clinical settings, focuses on systems and learning, and checks in on the person's wellbeing." },
+      { text: "\"This is a serious mistake and you need to understand that. We'll need to document this and I'll have to tell the vet.\"", correct: false, explanation: "Documentation is necessary, but leading with this when the person is already distressed is punitive rather than constructive. It also doesn't acknowledge that they did the right thing by reporting immediately." },
+      { text: "\"Don't be so hard on yourself — these things happen. The patient is fine, so let's just move on.\"", correct: false, explanation: "Minimising a medication error isn't appropriate even when the outcome is good. There's a missed opportunity to learn and to reinforce reporting culture." },
+      { text: "\"I'm going to need you to write up exactly what happened and why.\"", correct: false, explanation: "While incident reporting is important, asking a distressed junior to immediately write a report without any supportive conversation first is likely to increase their anxiety and produce a less accurate account." }
+    ]
+  },
+  {
+    id: "tm-3",
+    roles: ["reception", "tech", "vet"],
+    category: "team",
+    title: "Conflict between front desk and clinical staff",
+    difficulty: "intermediate",
+    tags: ["conflict", "teamwork", "communication"],
+    clientMessage: "The receptionists keep booking appointments without checking with us first and it's making the clinical day impossible.",
+    context: "You are the clinic manager. A senior vet tech has come to you frustrated — they feel the reception team is routinely overbooking the surgical list and booking complex consults back-to-back without checking clinical capacity. This is a recurring tension. The reception team lead has previously said the clinical staff don't communicate appointment requirements clearly. You need to navigate this without taking sides.",
+    keyPrinciples: [
+      "Listen fully before responding — don't rush to solutions",
+      "Acknowledge the frustration without validating blame toward the other team",
+      "Reframe from 'them vs us' to a shared problem to solve together",
+      "Be honest if there are communication gaps on both sides",
+      "Commit to a concrete next step — not just sympathy"
+    ],
+    modelAnswer: "Thank you for coming to me — I can hear how much this is affecting the clinical day and I take that seriously. I want to understand it fully before I do anything, so can you give me a couple of specific examples from this week? What I'm also hearing — and I want to be transparent with you — is that the reception team has raised something similar from their side: that they don't always have clear guidance on what appointments need what time or what requirements. I don't think either team is trying to make the other's day harder. What I'd like to do is get both teams in a room together, not to assign blame, but to build a system that actually works for everyone. Would you be willing to be part of that conversation?",
+    tip: "Inter-team conflict almost always has legitimate frustrations on both sides. A manager who listens only to the person in front of them and acts on that is likely to make the situation worse. The goal is to move from blame to system-level problem-solving — which requires both teams at the table.",
+    quizOptions: [
+      { text: "\"I hear you — and I want to understand it properly. Can you give me some specific examples? I also want to be transparent: the reception team has raised a concern from their side too. I'd like to get both teams together to build something that works — would you be part of that?\"", correct: true, explanation: "Listens, takes it seriously, is transparent about the other perspective, and proposes a systemic solution rather than a quick fix." },
+      { text: "\"You're right — I'll speak to the reception manager and make sure they understand they need to check with clinical before booking.\"", correct: false, explanation: "Acting on one side of the story without understanding the full picture is likely to create more resentment. It also frames reception as the problem without examining whether communication from the clinical side could also improve." },
+      { text: "\"I understand your frustration but the reception team is doing their best — try to be patient with them.\"", correct: false, explanation: "Dismisses a legitimate operational concern and asks the person to simply tolerate a problem rather than solving it." },
+      { text: "\"Can you send me an email with the details and I'll look into it?\"", correct: false, explanation: "Deflecting to email when someone has come to you with an urgent interpersonal concern signals that you're not treating it as a priority." }
+    ]
+  },
+  {
+    id: "tm-4",
+    roles: ["reception", "tech", "vet"],
+    category: "team",
+    title: "Speaking up in a team meeting",
+    difficulty: "intermediate",
+    tags: ["assertiveness", "team dynamics", "speaking up"],
+    clientMessage: "Does anyone have any concerns about the new appointment system before we roll it out next week?",
+    context: "You are a receptionist attending a team meeting. The practice manager has just asked if anyone has concerns about a new appointment booking system being rolled it out next week. You have significant reservations — you've used a similar system before and found it created confusion for clients and slowed down check-in. Several senior staff have already said it looks good. You feel nervous about speaking up against the consensus, but your experience is directly relevant.",
+    keyPrinciples: [
+      "Your experience and perspective have value — speaking up is part of being a good team member",
+      "Frame concerns constructively — not as opposition but as something worth considering",
+      "Be specific — a concrete example is more persuasive than a general worry",
+      "You don't need to resolve the issue in the meeting — raising it is enough",
+      "Acknowledge what's positive before raising what concerns you"
+    ],
+    modelAnswer: "I do have one concern I'd like to raise, if that's okay. I've worked with a similar system before, and one thing that came up was that clients found the automated confirmation messages confusing — they weren't always clear about what they needed to bring or whether the appointment was confirmed. It led to a few no-shows and some frustration at check-in. I might be wrong that this system has the same issue, but I wanted to flag it in case it's worth testing with a small group first before the full rollout. I'm happy to help with that if it would be useful.",
+    tip: "Speaking up in a team meeting when the group appears to have already reached a consensus takes courage. The key is to be specific rather than vague, to frame the concern as 'something worth considering' rather than 'I think this is wrong', and to offer to be part of the solution rather than just raising a problem.",
+    quizOptions: [
+      { text: "\"I do have a concern — I've seen a similar system cause confusion for clients around confirmation messages, which led to no-shows. It might be worth piloting it with a small group first. I'm happy to help with that.\"", correct: true, explanation: "Specific, experience-based, constructive, and solution-oriented. Raises the concern without blocking progress." },
+      { text: "\"I don't think this system is going to work — I've seen it fail before.\"", correct: false, explanation: "Too absolute and not constructive. 'I've seen it fail' without specifics is hard for the team to engage with, and the framing is oppositional rather than collaborative." },
+      { text: "\"No concerns from me — it looks good.\"", correct: false, explanation: "Withholding relevant experience to avoid conflict is a disservice to the team. If your experience suggests a risk, raising it is part of your responsibility as a team member." },
+      { text: "\"I'm not sure this is the right time to bring this up, but I'm a bit worried about the client communications side of things.\"", correct: false, explanation: "Undermining your own contribution before you've even made it ('I'm not sure this is the right time') reduces the impact of a valid concern. The meeting was specifically opened for this feedback." }
+    ]
+  }
+];
+
+export const scenarios = [...baseScenarios, ...vetScenarios, ...techScenarios, ...teamScenarios];

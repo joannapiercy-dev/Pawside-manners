@@ -6,11 +6,11 @@ export function renderHome(container, navigate) {
         <img src="public/oaklands-logo.jpg" alt="Oaklands Veterinary Hospital logo" />
         <div class="hero-clinic-names">
           <span class="clinic-pill">Oaklands Veterinary Hospital</span>
-          <span class="clinic-pill">Royal Bay Veterinary Hospital</span>
+          <span class="clinic-pill">Royal Bay Veterinary Clinic</span>
         </div>
       </div>
-      <h1>Say the right thing<br><em>every time</em></h1>
-      <p class="hero-sub">Scenario-based communication training for receptionists and new clinic staff — covering the conversations that matter most.</p>
+      <h1>Speak with confidence.<br><em>Connect with clients.</em></h1>
+      <p class="hero-sub">Practical training for every member of your clinic team — build the skills, knowledge, and confidence to handle any situation.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
         <button class="btn-primary" id="start-btn">Start training</button>
         <button class="btn-secondary" id="progress-btn">View my progress</button>
@@ -29,6 +29,25 @@ export function renderHome(container, navigate) {
       </div>
 
       <hr class="section-divider">
+      <p class="section-label">Medical knowledge</p>
+      <div class="card-grid">
+        ${featureCard('🩺', 'Medical jargon', 'Learn what clinical terms mean and how to explain them to clients in plain English.')}
+        ${featureCard('💊', 'Common medications', 'Brand names, generics, and what each medication is used for — so you can answer client questions confidently.')}
+      </div>
+
+      <hr class="section-divider">
+      <p class="section-label">Triage</p>
+      <div class="card-grid">
+        ${featureCard('🚨', 'Triage decision trees', 'Interactive symptom-by-symptom decision trees to help you ask the right questions and reach the right outcome — emergency, same-day, routine, or monitor at home.')}
+      </div>
+
+      <hr class="section-divider">
+      <p class="section-label">Tests & procedures</p>
+      <div class="card-grid">
+        ${featureCard('🔬', 'Tests & procedures', 'What each test is for, fasting requirements, sedation, drop-off expectations, and what to tell clients when booking — imaging, blood, cardiac, and urine tests.')}
+      </div>
+
+      <hr class="section-divider">
       <p class="section-label">Three ways to learn</p>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1.5rem; text-align:center;">
         ${howItem('📖', 'Read & study', 'Work through the scenario and model answer at your own pace.')}
@@ -37,7 +56,7 @@ export function renderHome(container, navigate) {
       </div>
 
       <hr class="section-divider">
-      <p style="text-align:center; font-size:13px; color:var(--ink-light);">Oaklands Veterinary Hospital · Royal Bay Veterinary Hospital · Staff Training Portal</p>
+      <p style="text-align:center; font-size:13px; color:var(--ink-light);">Oaklands Veterinary Hospital · Royal Bay Veterinary Clinic · Team Training</p>
     </div>
   `;
 
@@ -68,18 +87,16 @@ export function nav(current, navigate) {
       <img src="public/oaklands-logo.jpg" alt="Oaklands logo" />
       <div class="nav-logo-text">
         <span class="nav-logo-name">Oaklands &amp; Royal Bay</span>
-        <span class="nav-logo-sub">Staff Training</span>
+        <span class="nav-logo-sub">Team Training</span>
       </div>
     </a>
     <div class="nav-links">
-      <button class="nav-btn ${current === '/' ? 'active' : ''}" id="nav-home">Home</button>
-      <button class="nav-btn ${current === '/train' ? 'active' : ''}" id="nav-train">Training</button>
-      <button class="nav-btn ${current === '/progress' ? 'active' : ''}" id="nav-progress">Progress</button>
+      <a class="nav-btn ${current === '/' ? 'active' : ''}" href="#/">Home</a>
+      <a class="nav-btn ${current === '/train' ? 'active' : ''}" href="#/train">Communication</a>
+      <a class="nav-btn ${current === '/terminology' ? 'active' : ''}" href="#/terminology">Terminology</a>
+      <a class="nav-btn ${current === '/triage' ? 'active' : ''}" href="#/triage">Triage</a>
+      <a class="nav-btn ${current === '/tests' ? 'active' : ''}" href="#/tests">Tests</a>
+      <a class="nav-btn ${current === '/progress' ? 'active' : ''}" href="#/progress">Progress</a>
     </div>
-  </nav>
-  <script>
-    document.getElementById('nav-home')?.addEventListener('click', () => location.hash = '/');
-    document.getElementById('nav-train')?.addEventListener('click', () => location.hash = '/train');
-    document.getElementById('nav-progress')?.addEventListener('click', () => location.hash = '/progress');
-  <\/script>`;
+  </nav>`;
 }

@@ -13,6 +13,7 @@ export function renderScenario(container, navigate, id) {
   let trainerHistory = [];
 
   function render(mode) {
+    window.scrollTo(0, 0);
     currentMode = mode;
     container.innerHTML = `
       ${nav('/train', navigate)}
@@ -35,7 +36,7 @@ export function renderScenario(container, navigate, id) {
         ${mode === 'quiz' ? renderQuiz(scenario) : ''}
         ${mode === 'roleplay' ? renderRoleplay(scenario) : ''}
 
-        ${mode !== 'quiz' ? renderTrainerPanel(scenario) : ''}
+        ${mode === 'roleplay' ? renderTrainerPanel(scenario) : ''}
 
         <div style="margin-top:2rem;display:flex;gap:8px;">
           <button class="btn-ghost" id="back-btn">← Back to scenarios</button>
@@ -55,7 +56,7 @@ export function renderScenario(container, navigate, id) {
     if (mode === 'read') setupRead(scenario);
     if (mode === 'quiz') setupQuiz(scenario);
     if (mode === 'roleplay') setupRoleplay(scenario);
-    if (mode !== 'quiz') setupTrainerPanel(scenario);
+    if (mode === 'roleplay') setupTrainerPanel(scenario);
   }
 
   render(currentMode);
@@ -70,10 +71,10 @@ function getNextScenario(currentId) {
 // ── READ MODE ──
 function renderRead(scenario) {
   return `
-    <div class="scenario-card">
-      <h3>The situation</h3>
-      <p style="color:var(--ink-mid);font-size:14.5px;margin-bottom:1rem;">${scenario.context}</p>
-      <h3 style="margin-bottom:0.5rem;">The client says</h3>
+    <div style="background:var(--context-bg);border:1.5px solid var(--context-border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1rem;">
+      <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--context-text);opacity:0.7;margin-bottom:0.5rem;">The situation</div>
+      <p style="color:var(--context-text);font-size:14.5px;margin-bottom:1.25rem;line-height:1.65;">${scenario.context}</p>
+      <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--client-text);opacity:0.7;margin-bottom:0.5rem;">The client says</div>
       <div class="client-message">"${scenario.clientMessage}"</div>
     </div>
 
@@ -110,9 +111,9 @@ function setupRead(scenario) {
 function renderQuiz(scenario) {
   const done = isComplete(scenario.id, 'quiz');
   return `
-    <div class="scenario-card">
-      <h3>The situation</h3>
-      <div class="client-message" style="margin-top:0.5rem;">"${scenario.clientMessage}"</div>
+    <div style="background:var(--client-bg);border:1.5px solid var(--client-border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1rem;">
+      <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--client-text);opacity:0.7;margin-bottom:0.75rem;">The client says</div>
+      <p style="font-size:15px;color:var(--client-text);line-height:1.65;font-style:italic;">"${scenario.clientMessage}"</p>
     </div>
     <div class="scenario-card">
       <h3 style="margin-bottom:1rem;font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;">Which response is most appropriate?</h3>
@@ -168,13 +169,13 @@ let chatHistory = [];
 function renderRoleplay(scenario) {
   chatHistory = [];
   return `
-    <div class="scenario-card" style="margin-bottom:1rem;">
-      <h3>Your role</h3>
-      <p style="font-size:14.5px;color:var(--ink-mid);margin-top:4px;">${scenario.context}</p>
+    <div style="background:var(--context-bg);border:1.5px solid var(--context-border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1rem;">
+      <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--context-text);opacity:0.7;margin-bottom:0.5rem;">Your role</div>
+      <p style="font-size:14.5px;color:var(--context-text);line-height:1.65;">${scenario.context}</p>
     </div>
 
     <div class="chat-window">
-      <div class="chat-header">
+      <div class="chat-header" style="background:var(--staff-bg);">
         <span>🎭</span>
         <span>Live role-play — respond as you would in the clinic</span>
       </div>
@@ -326,7 +327,7 @@ function renderTrainerPanel(scenario) {
   return `
     <div style="margin-top:2rem;">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
-        <div style="width:36px;height:36px;background:var(--ink);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🎓</div>
+        <div style="width:36px;height:36px;background:var(--feedback-bg);border:1.5px solid var(--feedback-border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🎓</div>
         <div>
           <div style="font-weight:600;font-size:0.95rem;">Ask the trainer</div>
           <div style="font-size:12.5px;color:var(--ink-light);">Ask any "what if" or follow-up question about this scenario</div>
@@ -340,10 +341,12 @@ function renderTrainerPanel(scenario) {
           </div>
         </div>
         <div style="display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--warm-mid);">
-          <textarea id="trainer-input" placeholder="Ask a question about this scenario…" rows="2"
+          <button id="trainer-mic-btn" title="Speak your question" style="height:44px;width:44px;flex-shrink:0;background:var(--warm);border:1.5px solid var(--warm-dark);border-radius:8px;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;">🎤</button>
+          <textarea id="trainer-input" placeholder="Type or speak your question…" rows="2"
             style="flex:1;resize:none;height:44px;padding:10px 12px;font-size:14px;line-height:1.4;border-radius:8px;"></textarea>
           <button class="send-btn" id="trainer-send-btn" style="height:44px;">Ask</button>
         </div>
+        <div id="trainer-mic-status" style="display:none;font-size:12px;color:var(--ink-light);padding:4px 16px 8px;background:white;">🔴 Listening… speak your question, then click the mic again to stop</div>
       </div>
 
       <div id="trainer-suggestions" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
@@ -391,7 +394,7 @@ function setupTrainerPanel(scenario) {
 
     // User question bubble
     const qBubble = document.createElement('div');
-    qBubble.style.cssText = 'background:var(--ink);color:white;padding:10px 14px;border-radius:14px;border-bottom-right-radius:4px;align-self:flex-end;max-width:85%;font-size:14px;line-height:1.5;';
+    qBubble.style.cssText = 'background:var(--staff-bg);color:white;padding:10px 14px;border-radius:14px;border-bottom-right-radius:4px;align-self:flex-end;max-width:85%;font-size:14px;line-height:1.5;';
     qBubble.textContent = question;
     messagesEl.appendChild(qBubble);
 
@@ -407,8 +410,8 @@ function setupTrainerPanel(scenario) {
       loadingEl.remove();
 
       const aBubble = document.createElement('div');
-      aBubble.style.cssText = 'background:var(--warm);padding:12px 16px;border-radius:14px;border-bottom-left-radius:4px;max-width:90%;font-size:14px;line-height:1.65;color:var(--ink);';
-      aBubble.innerHTML = `<div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px;">Trainer</div>${answer.replace(/\n/g, '<br>')}`;
+      aBubble.style.cssText = 'background:var(--feedback-bg);border:1.5px solid var(--feedback-border);padding:12px 16px;border-radius:14px;border-bottom-left-radius:4px;max-width:90%;font-size:14px;line-height:1.65;color:var(--feedback-text);';
+      aBubble.innerHTML = `<div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--tip-text);margin-bottom:6px;">🎓 Trainer</div>${answer.replace(/\n/g, '<br>')}`;
       messagesEl.appendChild(aBubble);
 
       trainerHistory.push({ role: 'user', content: question });
@@ -429,4 +432,65 @@ function setupTrainerPanel(scenario) {
   document.querySelectorAll('.trainer-suggestion').forEach(btn => {
     btn.addEventListener('click', () => askTrainer(btn.textContent));
   });
+
+  // Trainer mic button
+  const trainerMicBtn = document.getElementById('trainer-mic-btn');
+  const trainerMicStatus = document.getElementById('trainer-mic-status');
+  const SpeechRecognitionT = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognitionT) {
+    trainerMicBtn.title = 'Voice input not supported here. Try Chrome or Edge.';
+    trainerMicBtn.style.opacity = '0.35';
+    trainerMicBtn.style.cursor = 'not-allowed';
+  } else {
+    const trainerRecognition = new SpeechRecognitionT();
+    trainerRecognition.lang = 'en-CA';
+    trainerRecognition.continuous = true;
+    trainerRecognition.interimResults = true;
+    let trainerListening = false;
+
+    trainerRecognition.onresult = (event) => {
+      let final = '', interim = '';
+      for (let i = 0; i < event.results.length; i++) {
+        if (event.results[i].isFinal) final += event.results[i][0].transcript;
+        else interim += event.results[i][0].transcript;
+      }
+      input.value = final + interim;
+    };
+
+    trainerRecognition.onerror = (event) => {
+      if (event.error === 'not-allowed') {
+        trainerMicStatus.textContent = 'Microphone access denied. Please allow mic access in browser settings.';
+        trainerMicStatus.style.display = 'block';
+      }
+      stopTrainerListening();
+    };
+
+    trainerRecognition.onend = () => { if (trainerListening) trainerRecognition.start(); };
+
+    function startTrainerListening() {
+      trainerListening = true;
+      input.value = '';
+      trainerMicBtn.style.background = '#fee2e2';
+      trainerMicBtn.style.borderColor = '#ef4444';
+      trainerMicBtn.textContent = String.fromCodePoint(0x23F9, 0xFE0F);
+      trainerMicStatus.style.display = 'block';
+      trainerRecognition.start();
+    }
+
+    function stopTrainerListening() {
+      trainerListening = false;
+      trainerRecognition.stop();
+      trainerMicBtn.style.background = 'var(--warm)';
+      trainerMicBtn.style.borderColor = 'var(--warm-dark)';
+      trainerMicBtn.textContent = String.fromCodePoint(0x1F3A4);
+      trainerMicStatus.style.display = 'none';
+      if (input.value.trim()) askTrainer(input.value);
+    }
+
+    trainerMicBtn.addEventListener('click', () => {
+      if (trainerListening) stopTrainerListening();
+      else startTrainerListening();
+    });
+  }
 }

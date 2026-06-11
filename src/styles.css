@@ -20,6 +20,25 @@
   --radius-lg: 16px;
   --shadow: 0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.06);
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
+
+  /* Conversation colours */
+  --client-bg: #fef6ee;
+  --client-border: #f5c99a;
+  --client-text: #7c3a10;
+  --staff-bg: #1e3a5f;
+  --staff-text: #ffffff;
+  --feedback-bg: #fefce8;
+  --feedback-border: #fde047;
+  --feedback-text: #713f12;
+  --context-bg: #f0f7ff;
+  --context-border: #bcd4f5;
+  --context-text: #1e3a5f;
+  --model-bg: #f0fdf4;
+  --model-border: #86efac;
+  --model-text: #14532d;
+  --tip-bg: #fefce8;
+  --tip-border: #fde047;
+  --tip-text: #713f12;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -116,6 +135,8 @@ input:focus, textarea:focus, select:focus {
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
 }
 .nav-btn:hover { background: var(--warm); color: var(--ink); }
 .nav-btn.active { background: var(--ink); color: white; }
@@ -307,12 +328,12 @@ input:focus, textarea:focus, select:focus {
 }
 
 .client-message {
-  background: var(--warm);
-  border-left: 3px solid var(--ink);
-  border-radius: 0 8px 8px 0;
+  background: var(--client-bg);
+  border-left: 4px solid var(--client-border);
+  border-radius: 0 10px 10px 0;
   padding: 1rem 1.25rem;
   font-size: 15px;
-  color: var(--ink);
+  color: var(--client-text);
   line-height: 1.65;
   font-style: italic;
 }
@@ -377,7 +398,7 @@ input:focus, textarea:focus, select:focus {
   margin-bottom: 1rem;
 }
 .chat-header {
-  background: var(--ink);
+  background: var(--staff-bg);
   color: white;
   padding: 12px 18px;
   font-size: 13.5px;
@@ -403,24 +424,25 @@ input:focus, textarea:focus, select:focus {
   line-height: 1.55;
 }
 .bubble-client {
-  background: var(--warm);
+  background: var(--client-bg);
+  border: 1px solid var(--client-border);
   border-bottom-left-radius: 4px;
   align-self: flex-start;
-  color: var(--ink);
+  color: var(--client-text);
 }
 .bubble-staff {
-  background: var(--ink);
-  color: white;
+  background: var(--staff-bg);
+  color: var(--staff-text);
   border-bottom-right-radius: 4px;
   align-self: flex-end;
 }
 .bubble-feedback {
-  background: var(--gold-light);
-  border: 1px solid #e8d88a;
+  background: var(--feedback-bg);
+  border: 1.5px solid var(--feedback-border);
   border-radius: 10px;
-  padding: 10px 14px;
+  padding: 12px 16px;
   font-size: 13.5px;
-  color: var(--ink-mid);
+  color: var(--feedback-text);
   align-self: stretch;
   max-width: 100%;
 }
@@ -441,7 +463,7 @@ input:focus, textarea:focus, select:focus {
   border-radius: 8px;
 }
 .send-btn {
-  background: var(--ink);
+  background: var(--staff-bg);
   color: white;
   padding: 0 18px;
   border-radius: 8px;
@@ -450,15 +472,15 @@ input:focus, textarea:focus, select:focus {
   flex-shrink: 0;
   height: 44px;
 }
-.send-btn:hover { background: var(--accent-hover); }
+.send-btn:hover { background: #152d4a; }
 .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* ── Model answer ── */
 .model-answer {
-  background: var(--warm);
+  background: var(--model-bg);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
-  border-left: 4px solid var(--ink);
+  border-left: 4px solid var(--model-border);
 }
 .model-answer h4 {
   font-family: 'DM Sans', sans-serif;
@@ -466,21 +488,21 @@ input:focus, textarea:focus, select:focus {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.09em;
-  color: var(--ink-light);
+  color: var(--model-text);
   margin-bottom: 0.75rem;
 }
-.model-answer p { color: var(--ink); font-size: 15px; line-height: 1.7; }
+.model-answer p { color: var(--model-text); font-size: 15px; line-height: 1.7; }
 
 .tip-box {
-  background: var(--gold-light);
-  border: 1px solid #e8d88a;
+  background: var(--tip-bg);
+  border: 1.5px solid var(--tip-border);
   border-radius: var(--radius);
   padding: 1rem 1.25rem;
   margin-top: 1rem;
   font-size: 14px;
-  color: var(--ink-mid);
+  color: var(--tip-text);
 }
-.tip-box strong { color: #8a6e00; }
+.tip-box strong { color: var(--tip-text); }
 
 /* ── Progress ── */
 .progress-bar-wrap {
