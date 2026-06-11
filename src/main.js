@@ -41,9 +41,12 @@ function render() {
 
 function navigate(path) {
   window.location.hash = path;
-  window.scrollTo(0, 0);
+  // hashchange listener handles render() and scrollTo
 }
 
-window.addEventListener('hashchange', () => window.scrollTo(0, 0));
+window.addEventListener('hashchange', () => {
+  window.scrollTo(0, 0);
+  render();
+});
 
 render();
