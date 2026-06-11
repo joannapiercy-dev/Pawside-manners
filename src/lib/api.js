@@ -21,7 +21,7 @@ Format your response exactly like:
     { role: 'user', content: staffResponse }
   ];
 
-  const response = await fetch('/.netlify/functions/chat', {
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -32,8 +32,12 @@ Format your response exactly like:
     })
   });
 
-  if (!response.ok) throw new Error('API error');
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`HTTP ${response.status}: ${errText}`);
+  }
   const data = await response.json();
+  if (data.error) throw new Error(JSON.stringify(data.error));
   const fullText = data.content[0].text;
   const parts = fullText.split('---FEEDBACK---');
   return {

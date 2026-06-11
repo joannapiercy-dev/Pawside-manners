@@ -247,7 +247,7 @@ function setupRoleplay(scenario) {
 
       markComplete(scenario.id, 'roleplay');
     } catch (err) {
-      loadingEl.textContent = 'Sorry, there was an error connecting to the AI. Please try again.';
+      loadingEl.textContent = 'Error: ' + err.message;
     }
 
     sendBtn.disabled = false;
