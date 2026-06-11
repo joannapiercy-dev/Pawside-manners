@@ -1,6 +1,6 @@
 import { scenarios, categories } from '../data/scenarios.js';
 import { markComplete, isComplete } from '../lib/progress.js';
-import { getRoleplayFeedback } from '../lib/api.js';
+import { getRoleplayFeedback, getTrainerAnswer } from '../lib/api.js';
 import { nav } from './home.js';
 
 export function renderScenario(container, navigate, id) {
@@ -10,6 +10,7 @@ export function renderScenario(container, navigate, id) {
   const diffClass = { beginner: 'diff-beginner', intermediate: 'diff-intermediate', advanced: 'diff-advanced' }[scenario.difficulty];
 
   let currentMode = 'read';
+  let trainerHistory = [];
 
   function render(mode) {
     currentMode = mode;
@@ -34,6 +35,8 @@ export function renderScenario(container, navigate, id) {
         ${mode === 'quiz' ? renderQuiz(scenario) : ''}
         ${mode === 'roleplay' ? renderRoleplay(scenario) : ''}
 
+        ${mode !== 'quiz' ? renderTrainerPanel(scenario) : ''}
+
         <div style="margin-top:2rem;display:flex;gap:8px;">
           <button class="btn-ghost" id="back-btn">← Back to scenarios</button>
           ${getNextScenario(id) ? `<button class="btn-secondary" id="next-btn">Next scenario →</button>` : ''}
@@ -41,7 +44,6 @@ export function renderScenario(container, navigate, id) {
       </div>
     `;
 
-    // Tab switching
     container.querySelectorAll('.mode-tab').forEach(tab => {
       tab.addEventListener('click', () => render(tab.dataset.mode));
     });
@@ -53,6 +55,7 @@ export function renderScenario(container, navigate, id) {
     if (mode === 'read') setupRead(scenario);
     if (mode === 'quiz') setupQuiz(scenario);
     if (mode === 'roleplay') setupRoleplay(scenario);
+    if (mode !== 'quiz') setupTrainerPanel(scenario);
   }
 
   render(currentMode);
@@ -128,10 +131,6 @@ function renderQuiz(scenario) {
 }
 
 function setupQuiz(scenario) {
-  container_quiz_setup(scenario);
-}
-
-function container_quiz_setup(scenario) {
   const optionBtns = document.querySelectorAll('.quiz-option');
   const feedbackEl = document.getElementById('quiz-feedback');
   const nextEl = document.getElementById('quiz-next');
@@ -150,7 +149,6 @@ function container_quiz_setup(scenario) {
         this.classList.add('incorrect');
         feedbackEl.className = 'feedback-box feedback-incorrect';
         feedbackEl.innerHTML = `<strong>Not quite.</strong> ${opt.explanation}`;
-        // Highlight the correct answer
         optionBtns.forEach((b, i) => { if (scenario.quizOptions[i].correct) b.classList.add('correct'); });
       }
       feedbackEl.classList.remove('hidden');
@@ -210,13 +208,11 @@ function setupRoleplay(scenario) {
     input.value = '';
     sendBtn.disabled = true;
 
-    // Add staff bubble
     const staffBubble = document.createElement('div');
     staffBubble.className = 'chat-bubble bubble-staff';
     staffBubble.textContent = text;
     messagesEl.appendChild(staffBubble);
 
-    // Loading dots
     const loadingEl = document.createElement('div');
     loadingEl.className = 'chat-bubble bubble-client';
     loadingEl.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
@@ -225,16 +221,13 @@ function setupRoleplay(scenario) {
 
     try {
       const { clientReply, feedback } = await getRoleplayFeedback(scenario, chatHistory, text);
-
       loadingEl.remove();
 
-      // Client reply
       const clientBubble = document.createElement('div');
       clientBubble.className = 'chat-bubble bubble-client';
       clientBubble.textContent = clientReply;
       messagesEl.appendChild(clientBubble);
 
-      // Feedback
       if (feedback) {
         const feedbackBubble = document.createElement('div');
         feedbackBubble.className = 'bubble-feedback';
@@ -244,7 +237,6 @@ function setupRoleplay(scenario) {
 
       chatHistory.push({ role: 'user', content: text });
       chatHistory.push({ role: 'assistant', content: clientReply });
-
       markComplete(scenario.id, 'roleplay');
     } catch (err) {
       loadingEl.textContent = 'Error: ' + err.message;
@@ -266,5 +258,115 @@ function setupRoleplay(scenario) {
 
   document.getElementById('hint-btn').addEventListener('click', () => {
     document.getElementById('hint-box').classList.toggle('hidden');
+  });
+}
+
+// ── ASK THE TRAINER PANEL ──
+function renderTrainerPanel(scenario) {
+  return `
+    <div style="margin-top:2rem;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
+        <div style="width:36px;height:36px;background:var(--ink);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🎓</div>
+        <div>
+          <div style="font-weight:600;font-size:0.95rem;">Ask the trainer</div>
+          <div style="font-size:12.5px;color:var(--ink-light);">Ask any "what if" or follow-up question about this scenario</div>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);overflow:hidden;">
+        <div id="trainer-messages" style="padding:1.25rem;display:flex;flex-direction:column;gap:12px;min-height:80px;max-height:420px;overflow-y:auto;">
+          <div style="font-size:13.5px;color:var(--ink-light);font-style:italic;text-align:center;padding:0.5rem 0;">
+            Ask anything about this scenario — "what if the client refuses?", "what if we can't accommodate overnight?", "how do I handle it if they get angry?"
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--warm-mid);">
+          <textarea id="trainer-input" placeholder="Ask a question about this scenario…" rows="2"
+            style="flex:1;resize:none;height:44px;padding:10px 12px;font-size:14px;line-height:1.4;border-radius:8px;"></textarea>
+          <button class="send-btn" id="trainer-send-btn" style="height:44px;">Ask</button>
+        </div>
+      </div>
+
+      <div id="trainer-suggestions" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+        ${getSuggestions(scenario).map(s =>
+          `<button class="btn-ghost trainer-suggestion" style="font-size:12.5px;padding:5px 12px;">${s}</button>`
+        ).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function getSuggestions(scenario) {
+  const base = [
+    "What if the client gets angry or raises their voice?",
+    "What if I don't know the answer to their question?",
+    "When should I involve a manager?"
+  ];
+  const categoryExtras = {
+    'bad-news': ["How do I end the conversation when they're still upset?", "What if they blame the clinic?"],
+    'difficult-clients': ["What if they threaten to leave a bad review?", "When is it okay to end a call?"],
+    'costs': ["What payment plans do most clinics offer?", "What if they simply can't pay at all?"],
+    'follow-up': ["What if there's no answer when I call?", "How many times should we follow up?"],
+    'scheduling': ["What counts as a true emergency vs urgent?", "What if we're fully booked all week?"]
+  };
+  const extras = categoryExtras[scenario.category] || [];
+  return [...extras.slice(0,2), base[0]];
+}
+
+let trainerHistory = [];
+
+function setupTrainerPanel(scenario) {
+  trainerHistory = [];
+  const input = document.getElementById('trainer-input');
+  const sendBtn = document.getElementById('trainer-send-btn');
+  const messagesEl = document.getElementById('trainer-messages');
+
+  async function askTrainer(question) {
+    if (!question.trim()) return;
+    input.value = '';
+    sendBtn.disabled = true;
+
+    // Hide placeholder
+    const placeholder = messagesEl.querySelector('div[style*="italic"]');
+    if (placeholder) placeholder.remove();
+
+    // User question bubble
+    const qBubble = document.createElement('div');
+    qBubble.style.cssText = 'background:var(--ink);color:white;padding:10px 14px;border-radius:14px;border-bottom-right-radius:4px;align-self:flex-end;max-width:85%;font-size:14px;line-height:1.5;';
+    qBubble.textContent = question;
+    messagesEl.appendChild(qBubble);
+
+    // Loading
+    const loadingEl = document.createElement('div');
+    loadingEl.style.cssText = 'background:var(--warm);padding:10px 14px;border-radius:14px;border-bottom-left-radius:4px;max-width:85%;font-size:14px;';
+    loadingEl.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
+    messagesEl.appendChild(loadingEl);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+
+    try {
+      const answer = await getTrainerAnswer(scenario, question, trainerHistory);
+      loadingEl.remove();
+
+      const aBubble = document.createElement('div');
+      aBubble.style.cssText = 'background:var(--warm);padding:12px 16px;border-radius:14px;border-bottom-left-radius:4px;max-width:90%;font-size:14px;line-height:1.65;color:var(--ink);';
+      aBubble.innerHTML = `<div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px;">Trainer</div>${answer.replace(/\n/g, '<br>')}`;
+      messagesEl.appendChild(aBubble);
+
+      trainerHistory.push({ role: 'user', content: question });
+      trainerHistory.push({ role: 'assistant', content: answer });
+    } catch (err) {
+      loadingEl.textContent = 'Error: ' + err.message;
+    }
+
+    sendBtn.disabled = false;
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  sendBtn.addEventListener('click', () => askTrainer(input.value));
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); askTrainer(input.value); }
+  });
+
+  document.querySelectorAll('.trainer-suggestion').forEach(btn => {
+    btn.addEventListener('click', () => askTrainer(btn.textContent));
   });
 }

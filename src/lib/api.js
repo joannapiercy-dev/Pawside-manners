@@ -45,3 +45,48 @@ Format your response exactly like:
     feedback: parts[1] ? parts[1].trim() : null
   };
 }
+
+export async function getTrainerAnswer(scenario, question, trainerHistory) {
+  const systemPrompt = `You are an experienced veterinary clinic communication trainer at ${scenario.category === 'bad-news' ? 'a general practice vet clinic' : 'Oaklands Veterinary Hospital and Royal Bay Veterinary Hospital in Victoria, BC, Canada'}.
+
+You are helping a staff member think through a specific communication scenario. Your job is to answer their "what if" and follow-up questions with practical, specific, realistic advice — the kind a seasoned clinic manager or senior vet would give.
+
+The scenario being discussed:
+Title: ${scenario.title}
+Context: ${scenario.context}
+The client's opening message: "${scenario.clientMessage}"
+Key principles: ${scenario.keyPrinciples.join('; ')}
+Model answer: ${scenario.modelAnswer}
+
+GUIDELINES:
+- Be practical and specific — give actual example phrases where helpful
+- Keep answers concise (3-6 sentences usually) unless a longer answer is genuinely needed
+- Acknowledge when something is genuinely hard or has no perfect answer
+- Consider animal welfare, client dignity, staff safety, and clinic policy in your answers
+- Use "vet tech" or "technician" not "nurse"
+- Speak directly to the staff member as "you"`;
+
+  const messages = [
+    ...trainerHistory,
+    { role: 'user', content: question }
+  ];
+
+  const response = await fetch('/.netlify/functions/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-5',
+      max_tokens: 1000,
+      system: systemPrompt,
+      messages
+    })
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`HTTP ${response.status}: ${errText}`);
+  }
+  const data = await response.json();
+  if (data.error) throw new Error(JSON.stringify(data.error));
+  return data.content[0].text.trim();
+}
