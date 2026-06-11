@@ -72,10 +72,19 @@ export const triageTrees = {
     start: "v1",
     nodes: {
       v1: {
-        question: "Is the animal vomiting blood, or is there blood in the vomit?",
-        hint: "Ask: 'Is there any red or dark brown material in the vomit — sometimes described as looking like coffee grounds?'",
-        yes: { outcome: "EMERGENCY", note: "Blood in vomit (haematemesis) can indicate serious GI bleeding, ulceration, or poisoning." },
+        question: "Is there any blood or dark brown material in the vomit?",
+        hint: "Ask: 'Have you noticed any blood in the vomit — or any dark brown material that might look like coffee grounds?'",
+        yes: "v1b",
         no: "v2"
+      },
+      v1b: {
+        question: "How much blood, and what does it look like?",
+        hint: "Ask: 'Is it a small amount — just a few flecks or streaks — or is there a significant amount? And is it bright red, or dark brown like coffee grounds?'",
+        options: [
+          { label: "Dark brown / coffee-ground material", next: { outcome: "EMERGENCY", note: "Coffee-ground material indicates digested blood from higher in the GI tract — a sign of significant bleeding. Needs immediate assessment." } },
+          { label: "Large amount of bright red blood", next: { outcome: "EMERGENCY", note: "Significant fresh blood in vomit suggests active GI bleeding. Needs immediate assessment." } },
+          { label: "Small amount — a few flecks or streaks of red", next: "v2" }
+        ]
       },
       v2: {
         question: "Is the animal trying to vomit repeatedly but bringing nothing up — unproductive retching?",

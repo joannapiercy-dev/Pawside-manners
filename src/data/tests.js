@@ -1,8 +1,9 @@
 export const testCategories = [
-  { id: "imaging", label: "Imaging", icon: "🔬" },
+  { id: "imaging", label: "Imaging", icon: "🩻" },
   { id: "blood", label: "Blood tests", icon: "🩸" },
   { id: "cardiac", label: "Cardiac tests", icon: "🫀" },
-  { id: "urine", label: "Urine tests", icon: "🧪" }
+  { id: "urine", label: "Urine tests", icon: "🧪" },
+  { id: "tissue", label: "Tissue testing", icon: "🔬" }
 ];
 
 export const tests = {
@@ -34,7 +35,7 @@ export const tests = {
       shaveNote: "The abdomen (or relevant area) will be shaved for probe contact. Please let owners know so they are not surprised.",
       dropoff: true,
       dropoffNote: "Drop off for the duration — can take several hours, particularly once sedation recovery time is factored in. Advise owners to expect a half to full day.",
-      clientScript: "For an abdominal ultrasound, we'll need your pet to fast from midnight the night before — a full stomach makes it hard to see the organs clearly. We'll also need to shave a patch of fur on their belly, and because they'll have a sedative, they'll need to stay with us for the day while it wears off. Plan on dropping them off in the morning and picking them up mid-to-late afternoon.",
+      clientScript: "For an abdominal ultrasound, we'll need your pet to fast from midnight the night before — a full stomach makes it hard to see the organs clearly. We'll also need to shave a patch of fur on their belly, and because they'll have a sedative, they'll need to stay with us for several hours while it wears off.",
       flags: ["fast-12h", "sedation", "shave", "dropoff"]
     },
     {
@@ -339,16 +340,15 @@ export const tests = {
       name: "Urinalysis (UA)",
       purpose: "Tests urine for: bacteria, crystals, glucose (possible diabetes), ketones (emergency sign), protein, and concentrating ability (kidney function). One of the most informative and commonly run tests.",
       fast: false,
-      fastNote: "No fasting required. A first-morning sample is preferred for concentration assessment — if possible, ask owners to collect the first urine of the day.",
+      fastNote: "No fasting required. For dogs, a first-morning sample is preferred for concentration assessment. For cats, timing is less important — see collection notes below.",
       sedation: "no",
       sedationNote: null,
       shave: false,
       dropoff: false,
-      dropoffNote: "No drop-off needed — sample can be collected in-clinic or owner can bring a fresh sample from home.",
-      clientScript: "A urinalysis checks many things in the urine — bacteria, crystals, kidney function, and more. If you're able to collect the first sample of the morning and bring it in within a couple of hours in a clean container, that's ideal. We can also collect a sample here.",
-      clientScript: "A urinalysis checks many things in the urine — bacteria, crystals, kidney function, and more. We can collect the sample here, or if you can bring in a fresh first-morning sample in a clean container, that works well too.",
+      dropoffNote: "No drop-off needed — sample can be collected in-clinic or owner can bring a fresh sample from home. All home-collected samples should be refrigerated and delivered within 12 hours.",
+      clientScript: "Dogs: if you can collect the first urine of the morning in a clean container and bring it in within a couple of hours, that's ideal — we can also collect a sample here. Cats: we sell a product called Nosorb — plastic beads you put in a cleaned, dried litterbox instead of regular litter. Your cat uses the box as normal, then you collect the urine from the box using the syringe we give you. All home samples should be kept in the fridge and brought in within 12 hours.",
       flags: [],
-      specialNote: "Ketones in urine is an emergency sign — if flagged on a urinalysis, escalate to the clinical team immediately."
+      specialNote: "⚠️ Ketones in urine is an emergency sign — if flagged on a urinalysis, escalate to the clinical team immediately. Home samples: must be refrigerated and delivered within 12 hours. For Nosorb collection: the litterbox must be emptied, cleaned thoroughly, and dried completely before adding the beads — any residue from regular litter will contaminate the sample."
     },
     {
       id: "upc",
@@ -380,6 +380,39 @@ export const tests = {
       specialNote: "Cystocentesis sample = gold standard. Free-catch sample = acceptable but results should be interpreted cautiously. Always note on the request form which collection method was used."
     }
   ]
+  tissue: [
+    {
+      id: "cytology",
+      name: "Cytology",
+      purpose: "Examines individual cells collected by needle poke (fine needle aspirate), impression smear, or swab. Tests for infection, inflammation, or abnormal/cancerous cells. Faster and less invasive than histology. Some samples can be evaluated in-house (ear cytology, skin cytology, some lumps) — more complex samples are sent to a lab in Vancouver.",
+      fast: false,
+      fastNote: "No fasting required.",
+      sedation: "sometimes",
+      sedationNote: "Most cytology samples are collected without sedation — a quick needle poke. Sedation may be needed for deeper masses, anxious patients, or difficult locations. If injectable sedation is used, fast for at least 6 hours.",
+      shave: false,
+      dropoff: false,
+      dropoffNote: "Usually collected during a standard appointment. In-house results are available quickly. Send-out samples go to a lab in Vancouver — turnaround varies, typically a few days.",
+      clientScript: "Cytology involves collecting a small sample of cells — usually with a quick needle poke into the lump or affected area — to look at under the microscope. It's fast and most pets tolerate it well without sedation. Some samples we can look at here in the clinic straight away; others we send to a lab in Vancouver for a specialist to review.",
+      flags: [],
+      specialNote: "In-house cytology: ear, skin, and some superficial lumps. Send-out to Vancouver: complex or deep masses, lymph nodes, internal organs. Always note in the record which was done and when the result is expected."
+    },
+    {
+      id: "histology",
+      name: "Histology (biopsy)",
+      purpose: "Examines a chunk of tissue removed by surgical biopsy — looks at blocks of cells in their structural context rather than individual cells. More definitive than cytology for diagnosing cancer type, grading tumours, and assessing surgical margins. Samples are sent to a lab in Vancouver.",
+      fast: true,
+      fastNote: "Fasting required for the surgical biopsy procedure — minimum 6 hours for injectable sedation/anaesthesia. Usually 8–12 hours (overnight fast).",
+      sedation: "yes",
+      sedationNote: "Surgical biopsy requires anaesthesia. Patient must be fasted — minimum 6 hours for injectable sedation, typically overnight.",
+      shave: true,
+      shaveNote: "Surgical site will be shaved. Advise client in advance.",
+      dropoff: true,
+      dropoffNote: "Drop-off required for the surgical procedure and anaesthetic recovery. Usually a half to full day.",
+      clientScript: "A biopsy involves surgically removing a small piece of tissue so we can send it to a specialist lab in Vancouver. Your pet will need a general anaesthetic, so they'll need to fast from the night before and be dropped off with us for the day. Results typically take over two weeks to come back — we'll contact you as soon as we hear.",
+      flags: ["fast-12h", "sedation", "shave", "dropoff"],
+      specialNote: "Results from histology typically take 2 weeks or more. Make sure clients are aware of this timeline at the time of booking and again at drop-off — two weeks is longer than most clients expect and worth flagging proactively."
+    }
+  ],
 };
 
 export const testQuiz = [
@@ -387,7 +420,7 @@ export const testQuiz = [
     question: "A client calls to book an abdominal ultrasound. What do you tell them about preparation?",
     options: [
       "No preparation needed — just come in",
-      "Fast for 12 hours, expect a shave, plan for a drop-off day",
+      "Fast for 12 hours, expect a shave, plan for drop-off for several hours",
       "Fast for 6 hours, no shave needed",
       "Bring a urine sample and fast for 4 hours"
     ],
@@ -421,11 +454,11 @@ export const testQuiz = [
     options: [
       "Yes — fast for 12 hours",
       "Yes — fast for 6 hours",
-      "No — no fasting needed, but they'll receive oral sedation so plan for a drop-off day",
+      "No — no fasting needed, but they'll receive an oral sedative to give at home beforehand, and should plan for drop-off for several hours on the day",
       "No fasting and no sedation — it's a quick scan"
     ],
     correct: 2,
-    explanation: "Echocardiograms use oral sedation only (the 'chill protocol') — not injectable sedation. Because it's oral rather than injectable, fasting is not required. However, the patient does need to be dropped off so the sedative can be given 2–3 hours before the scan."
+    explanation: "Echocardiograms use oral sedation only (the 'chill protocol') — not injectable sedation, so fasting is not required. The owner gives the oral sedative at home 2–3 hours before the appointment. Drop-off is needed because the echo itself can take some time, not because we're administering the sedation."
   },
   {
     question: "Which urine collection method gives the most reliable culture results and why?",
@@ -450,25 +483,25 @@ export const testQuiz = [
     explanation: "TLI (trypsin-like immunoreactivity), which tests for exocrine pancreatic insufficiency, requires an 8–12 hour fast before collection."
   },
   {
-    question: "A client's dog needs an X-ray for hip scoring. Do they need to fast?",
+    question: "A client's dog needs an X-ray specifically for hip scoring. Do they need to fast?",
     options: [
       "No — X-rays never require fasting",
-      "Yes — always fast for 6 hours before X-rays",
-      "Only if injectable sedation is required — if so, at least 6 hours",
-      "Only if the dog is large"
-    ],
-    correct: 2,
-    explanation: "X-rays themselves don't require fasting. However, hip scoring (extended hip views) often requires sedation because of the specific positioning needed. If injectable sedation is used for any test or procedure, at least 6 hours fasting is required regardless."
-  },
-  {
-    question: "What is the key safety note to flag when a client picks up Holter monitor instructions?",
-    options: [
-      "Keep the pet away from other animals",
-      "Do not let the pet get wet or chew at the jacket holding the monitor",
-      "Fast the pet overnight",
-      "Return the monitor within 12 hours"
+      "Yes — fast for at least 6 hours",
+      "Only if the dog is large or anxious",
+      "Only if the vet decides on the day"
     ],
     correct: 1,
-    explanation: "The Holter monitor must stay dry and intact for the full 24 hours. If the pet chews the jacket or gets wet, the recording may be compromised. Advise owners to monitor carefully and use a cone if needed."
+    explanation: "Hip scoring requires extended hip views which need precise positioning — this always requires injectable sedation. Since injectable sedation is involved, a minimum 6-hour fast is required. Always ask clients to fast before hip scoring X-rays. Note: for routine X-rays where sedation may or may not be needed, you can advise 'fast if possible' and check with the clinical team."
+  },
+  {
+    question: "A client calls to book an ionized calcium (iCa) test. What do you tell them about preparation?",
+    options: [
+      "No preparation needed — just come in",
+      "Fast for 4–6 hours",
+      "Fast for 12 hours before the blood draw",
+      "Fast for 8 hours and bring a urine sample"
+    ],
+    correct: 2,
+    explanation: "Ionized calcium requires a 12-hour fast before collection. A recent meal can affect the result. It's a quick blood draw with no drop-off needed — just make sure the owner knows to withhold food from the night before."
   }
 ];

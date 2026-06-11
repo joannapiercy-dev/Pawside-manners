@@ -1,5 +1,6 @@
 import { testCategories, tests, testQuiz } from '../data/tests.js';
 import { nav } from './home.js';
+import { markComplete } from '../lib/progress.js';
 
 const FLAG_LABELS = {
   'fast-12h':     { icon: '🍽️', label: 'Fast 12 hrs', color: '#fef3c7', border: '#fde68a', text: '#92400e' },
@@ -78,6 +79,7 @@ export function renderTestCategory(container, navigate, catId) {
   document.getElementById('quiz-btn').addEventListener('click', () => navigate('/tests/quiz'));
 
   // Expand/collapse handlers
+  markComplete('tests-' + catId, 'viewed');
   container.querySelectorAll('[data-expand]').forEach(btn => {
     btn.addEventListener('click', () => {
       const target = document.getElementById(btn.dataset.expand);
@@ -115,8 +117,8 @@ function renderTestCard(t) {
 
         <div style="display:flex;flex-direction:column;gap:4px;">
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);">🍽️ Fasting</div>
-          <div style="font-size:13.5px;color:${t.fast ? '#92400e' : 'var(--ink-mid)'}; font-weight:${t.fast ? '600' : '400'};">
-            ${t.fast ? '⚠️ Required' : t.fastNote ? '⚠️ See note' : '✅ Not required'}
+          <div style="font-size:13.5px;color:${t.fast ? '#92400e' : t.fastNote && t.fastNote.toLowerCase().includes('preferred') ? '#92400e' : 'var(--ink-mid)'}; font-weight:${t.fast ? '600' : '400'};">
+            ${t.fast ? '⚠️ Required' : t.fastNote && t.fastNote.toLowerCase().includes('preferred') ? '💡 Preferred' : '✅ Not required'}
           </div>
           ${t.fastNote ? `<div style="font-size:12.5px;color:var(--ink-light);line-height:1.5;">${t.fastNote}</div>` : ''}
         </div>
@@ -234,6 +236,7 @@ function renderTestQuiz(container, navigate) {
 
   function showScore() {
     window.scrollTo(0, 0);
+    markComplete('tests-quiz', 'quiz');
     const pct = Math.round(score / testQuiz.length * 100);
     container.innerHTML = `
       ${nav('/tests', navigate)}

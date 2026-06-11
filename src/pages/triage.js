@@ -1,5 +1,7 @@
 import { triageCategories, triageTrees, OUTCOMES } from '../data/triage.js';
+import { triageReference } from '../data/triageReference.js';
 import { nav } from './home.js';
+import { markComplete } from '../lib/progress.js';
 
 export function renderTriageHome(container, navigate) {
   container.innerHTML = `
@@ -29,13 +31,17 @@ export function renderTriageHome(container, navigate) {
 }
 
 export function renderTriageTree(container, navigate, categoryId) {
+  // Check for tab in URL e.g. /triage/vomiting?tab=reference
+  const params = new URLSearchParams(window.location.search);
+  const initialTab = params.get('tab') === 'reference' ? 'reference' : 'tree';
   const tree = triageTrees[categoryId];
   const catMeta = triageCategories.find(c => c.id === categoryId);
   if (!tree || !catMeta) { navigate('/triage'); return; }
 
-  let history = []; // stack of node ids visited
+  let history = [];
   let currentNode = tree.start;
   let outcome = null;
+  let currentTab = initialTab;
 
   function render() {
     window.scrollTo(0, 0);
@@ -53,17 +59,27 @@ export function renderTriageTree(container, navigate, categoryId) {
           <h2 style="font-size:1.4rem;">${catMeta.label}</h2>
         </div>
 
-        <p style="font-size:13px;color:var(--ink-light);margin-bottom:1.5rem;background:var(--warm);padding:8px 12px;border-radius:8px;">${tree.disclaimer}</p>
+        <p style="font-size:13px;color:var(--ink-light);margin-bottom:1.25rem;background:var(--warm);padding:8px 12px;border-radius:8px;">${tree.disclaimer}</p>
 
-        ${history.length > 0 ? renderHistory() : ''}
-
-        ${outcome ? renderOutcome(outcome) : renderNode(node)}
-
-        <div style="display:flex;gap:8px;margin-top:2rem;flex-wrap:wrap;">
-          ${history.length > 0 && !outcome ? `<button class="btn-ghost" id="back-node-btn">← Previous question</button>` : ''}
-          ${outcome ? `<button class="btn-secondary" id="restart-btn">🔄 Start again</button>` : ''}
-          <button class="btn-ghost" id="back-triage-btn">← All categories</button>
+        <div style="display:flex;gap:4px;background:var(--warm);border:1px solid var(--warm-dark);border-radius:var(--radius);padding:4px;margin-bottom:1.5rem;">
+          <button id="tab-tree" style="flex:1;padding:7px 12px;border-radius:8px;font-size:13.5px;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;background:${currentTab==='tree'?'white':'none'};color:${currentTab==='tree'?'var(--ink)':'var(--ink-mid)'};box-shadow:${currentTab==='tree'?'var(--shadow-sm)':'none'};">🌳 Decision tree</button>
+          <button id="tab-ref" style="flex:1;padding:7px 12px;border-radius:8px;font-size:13.5px;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;background:${currentTab==='reference'?'white':'none'};color:${currentTab==='reference'?'var(--ink)':'var(--ink-mid)'};box-shadow:${currentTab==='reference'?'var(--shadow-sm)':'none'};">📋 Quick reference</button>
         </div>
+
+        ${currentTab === 'tree' ? `
+          ${history.length > 0 ? renderHistory() : ''}
+          ${outcome ? renderOutcome(outcome) : renderNode(node)}
+          <div style="display:flex;gap:8px;margin-top:2rem;flex-wrap:wrap;">
+            ${history.length > 0 && !outcome ? `<button class="btn-ghost" id="back-node-btn">← Previous question</button>` : ''}
+            ${outcome ? `<button class="btn-secondary" id="restart-btn">🔄 Start again</button>` : ''}
+            <button class="btn-ghost" id="back-triage-btn">← All categories</button>
+          </div>
+        ` : `
+          ${renderReferenceTable(categoryId)}
+          <div style="margin-top:2rem;">
+            <button class="btn-ghost" id="back-triage-btn">← All categories</button>
+          </div>
+        `}
       </div>
     `;
 
@@ -78,6 +94,8 @@ export function renderTriageTree(container, navigate, categoryId) {
     });
 
     document.getElementById('back-triage-btn')?.addEventListener('click', () => navigate('/triage'));
+    document.getElementById('tab-tree')?.addEventListener('click', () => { currentTab = 'tree'; render(); });
+    document.getElementById('tab-ref')?.addEventListener('click', () => { currentTab = 'reference'; render(); });
     document.getElementById('back-node-btn')?.addEventListener('click', () => {
       if (history.length > 0) {
         currentNode = history.pop();
@@ -111,6 +129,7 @@ export function renderTriageTree(container, navigate, categoryId) {
       outcome = null;
     } else if (next && next.outcome) {
       outcome = { ...OUTCOMES[next.outcome], note: next.note, homecare: next.homecare };
+      markComplete('triage-' + categoryId, 'completed');
     }
     render();
   }
@@ -210,4 +229,54 @@ export function renderTriageTree(container, navigate, categoryId) {
   }
 
   render();
+}
+
+function renderReferenceTable(categoryId) {
+  const ref = triageReference[categoryId];
+  if (!ref) return '<p style="color:var(--ink-light);padding:1rem 0;">No reference table available for this category.</p>';
+
+  const PILL = {
+    EMERGENCY: { label: 'Emergency',        bg: '#fef2f2', color: '#991b1b' },
+    URGENT:    { label: 'Same day',          bg: '#fffbeb', color: '#92400e' },
+    SOON:      { label: 'Within 48 hrs',     bg: '#eff6ff', color: '#1e40af' },
+    ROUTINE:   { label: 'Routine',           bg: '#f0fdf4', color: '#166534' },
+    MONITOR:   { label: 'Monitor at home',   bg: '#f9fafb', color: '#374151' },
+  };
+
+  const legend = Object.values(PILL).map(p =>
+    `<span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:${p.color};">
+      <span style="width:9px;height:9px;border-radius:50%;background:${p.color};opacity:0.7;flex-shrink:0;"></span>${p.label}
+    </span>`
+  ).join('');
+
+  const rows = ref.rows.map(r => {
+    const p = PILL[r.outcome] || PILL.MONITOR;
+    return `<tr style="border-bottom:1px solid var(--warm-mid);">
+      <td style="padding:10px 12px;font-size:14px;color:var(--ink);font-weight:500;vertical-align:top;width:35%;">${r.sign}</td>
+      <td style="padding:10px 12px;vertical-align:top;width:18%;">
+        <span style="display:inline-block;font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:20px;background:${p.bg};color:${p.color};white-space:nowrap;">${p.label}</span>
+      </td>
+      <td style="padding:10px 12px;font-size:13px;color:var(--ink-mid);vertical-align:top;line-height:1.55;">${r.note}</td>
+    </tr>`;
+  }).join('');
+
+  return `
+    <div style="background:var(--warm);border-radius:var(--radius);padding:10px 14px;font-size:13px;color:var(--ink-mid);margin-bottom:1.25rem;line-height:1.6;">
+      <strong style="color:var(--ink);">Key questions to ask:</strong> ${ref.askFirst}
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1rem;">${legend}</div>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--warm-dark);">
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);padding:6px 12px;width:35%;">Sign or history</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);padding:6px 12px;width:18%;">Outcome</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);padding:6px 12px;">Notes</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
 }
