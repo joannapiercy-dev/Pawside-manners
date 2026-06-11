@@ -332,6 +332,31 @@ export const scenarios = [
       { text: "\"Here's Barley — just make sure you read the care sheet when you get home.\"", correct: false, explanation: "Releasing a post-surgical animal to someone who may not be able to provide adequate care overnight is a serious animal welfare concern. The care sheet cannot substitute for proper supervision and medication." },
       { text: "\"Are you okay? You seem a little unwell — have you been drinking?\"", correct: false, explanation: "Asking directly in the waiting area is confrontational, embarrassing for the client, and puts the receptionist in a difficult position without any support. It also doesn't solve the immediate problem of what to do next." }
     ]
+  },
+  {
+    id: "ws-2",
+    category: "difficult-clients",
+    title: "Vet: intoxicated client collecting post-surgical pet",
+    difficulty: "advanced",
+    tags: ["animal welfare", "safeguarding", "clinical authority", "vet role"],
+    clientMessage: "Hi, yes — I'm fine, I just want to take Barley home. He'll be much more comfortable at home with me. I know how to look after him.",
+    context: "Your receptionist has quietly flagged to you that the client arriving to collect Barley — who had abdominal surgery this morning and needs medications every 8 hours and close monitoring overnight — appears to be intoxicated. They are unsteady, their speech is slightly slurred, and there is a noticeable smell of alcohol. You are the attending veterinarian. You now need to speak with the client directly in a private room. Your goals are: to assess the situation calmly, to protect Barley's welfare, and to find a solution that doesn't humiliate the client or escalate unnecessarily.",
+    keyPrinciples: [
+      "Speak privately — never have this conversation at the front desk or in the waiting room",
+      "Lead with Barley's clinical needs, not with the client's state — this keeps the focus on welfare, not accusation",
+      "You have the legal and professional authority to withhold discharge if you have genuine welfare concerns",
+      "Offer a face-saving solution: overnight boarding, an emergency contact, a taxi with a trusted person",
+      "Document everything — your observations, the conversation, and the outcome",
+      "Stay calm and non-judgmental throughout — your tone will determine how this goes"
+    ],
+    modelAnswer: "Thanks for coming in — Barley really did do well today. Before we get him ready, I just want to have a quick chat with you in here. I want to be straightforward with you, because I think you'd want me to be: I do have some concerns about tonight. Barley's recovery is at a critical point — he needs his medication exactly on schedule and someone needs to be watching him closely for any signs of complications. I want to make sure we set him up for the best possible outcome. Is there someone we could call who could come and be with you both tonight — a family member or a friend? Alternatively, we're very happy to keep him here overnight at no extra charge, and you can pick him up fresh in the morning. I just want to get this right for him.",
+    tip: "Notice the model answer never directly says 'you appear intoxicated' or 'I can't release him to you'. It centres entirely on Barley's clinical needs, which are genuine and unchallengeable. This gives the client a way to accept help without losing face. The offer of free overnight boarding is important — it removes the financial barrier to doing the right thing. Always document your clinical observations and the conversation in the patient record.",
+    quizOptions: [
+      { text: "\"I want to be upfront with you — I have some concerns about Barley's overnight care given how complex his recovery is. Could we either call someone to be with you tonight, or keep him here until morning? I'm happy to do that at no charge.\"", correct: true, explanation: "Honest, clinically framed, non-accusatory, and offers two practical face-saving options. The vet is using their authority to protect the animal while preserving the client relationship." },
+      { text: "\"I'm sorry, but I can smell alcohol on you and I'm not legally able to release Barley to someone who is intoxicated.\"", correct: false, explanation: "While the welfare concern is correct, leading with a direct accusation — especially framed as a legal prohibition — is likely to cause the client to become defensive or aggressive. It also overstates the legal position. A clinical welfare framing is more effective and more accurate." },
+      { text: "\"Barley is ready to go — here's his care sheet. Call us if you're worried about anything tonight.\"", correct: false, explanation: "Discharging a post-surgical patient to someone who you have genuine reason to believe cannot provide adequate overnight care is a serious animal welfare failure and a professional liability. Concern noted by a staff member must be acted on." },
+      { text: "\"My receptionist mentioned you seemed a little unwell — are you sure you're okay to take him home?\"", correct: false, explanation: "Referencing what the receptionist said puts a colleague in an awkward position and frames this as a personal health check rather than a welfare-focused clinical conversation. It also gives the client an easy out — 'I'm fine' — without addressing the actual concern." }
+    ]
   }
 ];
 
