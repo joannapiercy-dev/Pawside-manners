@@ -275,13 +275,13 @@ export const scenarios = [
       "Know the signs that require immediate attention",
       "Always involve the clinical team for anything borderline"
     ],
-    modelAnswer: "I want to make sure we give you the right advice here. Can I ask a few quick questions? Has she eaten anything unusual, or could she have got into anything? Any blood in the vomit? Is her tummy looking swollen at all? … Thank you. Let me just speak to the nursing team quickly — with those symptoms I want to make sure she's seen today rather than waiting. Can I put you on a brief hold?",
+    modelAnswer: "I want to make sure we give you the right advice here. Can I ask a few quick questions? Has she eaten anything unusual, or could she have got into anything? Any blood in the vomit? Is her tummy looking swollen at all? … Thank you. Let me just speak to the tech team quickly — with those symptoms I want to make sure she's seen today rather than waiting. Can I put you on a brief hold?",
     tip: "You are not diagnosing — you are gathering information so a clinically trained team member can triage. Your job is to ask the questions, not answer them.",
     quizOptions: [
       { text: "\"Let me ask a few quick questions so I can make sure she gets the right level of care. Has there been any blood in the vomit? Is her tummy swollen? … Thank you — I'm going to check with the clinical team right now.\"", correct: true, explanation: "Gathers information, doesn't dismiss and escalates appropriately." },
       { text: "\"We're fully booked today — you could try tomorrow, or go to an emergency vet if you're worried.\"", correct: false, explanation: "Sends the client away without proper triage. Vomiting and lethargy together can indicate something serious." },
       { text: "\"Two episodes of vomiting is pretty normal — just withhold food for 12 hours and see how she goes.\"", correct: false, explanation: "Giving clinical advice is outside a receptionist's remit and can be dangerous." },
-      { text: "\"I'll book you in for tomorrow morning — that should be fine.\"", correct: false, explanation: "Making a clinical judgement that it can wait overnight without involving nursing or vet staff is inappropriate." }
+      { text: "\"I'll book you in for tomorrow morning — that should be fine.\"", correct: false, explanation: "Making a clinical judgement that it can wait overnight without involving the tech or vet is inappropriate." }
     ]
   },
   {
@@ -316,7 +316,7 @@ export const scenarios = [
     difficulty: "advanced",
     tags: ["animal welfare", "safeguarding", "difficult conversation"],
     clientMessage: "Hi, I'm here to pick up Barley. He had his operation this morning.",
-    context: "A client has arrived to collect their dog Barley, who had abdominal surgery earlier today and requires strict rest, monitoring for complications, and medication given every 8 hours overnight. As the client approaches the desk, you notice they are unsteady on their feet, smell of alcohol, and are having trouble finding their wallet. You are the receptionist. The vet and a nurse are both available in the building.",
+    context: "A client has arrived to collect their dog Barley, who had abdominal surgery earlier today and requires strict rest, monitoring for complications, and medication given every 8 hours overnight. As the client approaches the desk, you notice they are unsteady on their feet, smell of alcohol, and are having trouble finding their wallet. You are the receptionist. The vet and a technician are both available in the building.",
     keyPrinciples: [
       "Your primary duty is to the animal's welfare — do not release the pet if you have genuine concerns",
       "Do not accuse or shame the client — approach with care and without assumptions",
