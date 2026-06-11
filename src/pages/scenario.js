@@ -182,9 +182,11 @@ function renderRoleplay(scenario) {
         <div class="chat-bubble bubble-client">"${scenario.clientMessage}"</div>
       </div>
       <div class="chat-input-row">
-        <textarea id="staff-input" placeholder="Type your response as the staff member…" rows="2"></textarea>
+        <button id="mic-btn" title="Speak your response" style="height:44px;width:44px;flex-shrink:0;background:var(--warm);border:1.5px solid var(--warm-dark);border-radius:8px;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;">🎤</button>
+        <textarea id="staff-input" placeholder="Type or speak your response…" rows="2"></textarea>
         <button class="send-btn" id="send-btn">Send</button>
       </div>
+      <div id="mic-status" style="display:none;font-size:12px;color:var(--ink-light);padding:4px 16px 8px;background:white;">🔴 Listening… speak now, then click mic again to stop</div>
     </div>
 
     <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -259,6 +261,64 @@ function setupRoleplay(scenario) {
   document.getElementById('hint-btn').addEventListener('click', () => {
     document.getElementById('hint-box').classList.toggle('hidden');
   });
+
+  // Speech recognition mic button
+  const micBtn = document.getElementById('mic-btn');
+  const micStatus = document.getElementById('mic-status');
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    micBtn.title = 'Voice input not supported here. Try Chrome or Edge.';
+    micBtn.style.opacity = '0.35';
+    micBtn.style.cursor = 'not-allowed';
+  } else {
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-CA';
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    let listening = false;
+
+    recognition.onresult = (event) => {
+      let final = '', interim = '';
+      for (let i = 0; i < event.results.length; i++) {
+        if (event.results[i].isFinal) final += event.results[i][0].transcript;
+        else interim += event.results[i][0].transcript;
+      }
+      input.value = final + interim;
+    };
+
+    recognition.onerror = (event) => {
+      if (event.error === 'not-allowed') {
+        micStatus.textContent = 'Microphone access denied. Please allow mic access in browser settings.';
+        micStatus.style.display = 'block';
+      }
+      stopListening();
+    };
+
+    recognition.onend = () => { if (listening) recognition.start(); };
+
+    function startListening() {
+      listening = true;
+      input.value = '';
+      micBtn.style.background = '#fee2e2';
+      micBtn.style.borderColor = '#ef4444';
+      micBtn.textContent = String.fromCodePoint(0x23F9, 0xFE0F);
+      micStatus.style.display = 'block';
+      recognition.start();
+    }
+
+    function stopListening() {
+      listening = false;
+      recognition.stop();
+      micBtn.style.background = 'var(--warm)';
+      micBtn.style.borderColor = 'var(--warm-dark)';
+      micBtn.textContent = String.fromCodePoint(0x1F3A4);
+      micStatus.style.display = 'none';
+      if (input.value.trim()) sendMessage();
+    }
+
+    micBtn.addEventListener('click', () => { if (listening) stopListening(); else startListening(); });
+  }
 }
 
 // ── ASK THE TRAINER PANEL ──
