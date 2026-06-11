@@ -219,325 +219,331 @@ export const termDecks = [
     terms: [
       {
         id: "m-01",
-        term: "Amoxicillin / Clavulanate",
+        term: "Amoxicillin / Clavulanate (Clavaseptin, Clavamox)",
         pronunciation: "ah-mox-ih-SIL-in / klav-yoo-LAN-ate",
-        meaning: "A broad-spectrum antibiotic combination. Brand names include Clavamox (veterinary) and Augmentin (human equivalent). Used for skin, respiratory, urinary, and soft tissue infections.",
-        clientExplanation: "This is an antibiotic — it treats bacterial infections. It's important to finish the full course even if your pet seems better.",
+        meaning: "A broad-spectrum antibiotic combination. Brand names include Clavaseptin and Clavamox. Used for skin, respiratory, urinary, and soft tissue infections.",
+        clientExplanation: "This is an antibiotic — it treats bacterial infections. Always finish the full course even if your pet seems better.",
         category: "Antibiotics"
       },
       {
         id: "m-02",
-        term: "Apoquel (oclacitinib)",
-        pronunciation: "AP-oh-kwel / ok-lah-SIH-tih-nib",
-        meaning: "A JAK inhibitor used to control itch and inflammation associated with allergic skin disease in dogs. Fast-acting — often within 4 hours.",
-        clientExplanation: "Apoquel targets the itch signal directly, so it works quickly — usually within hours. It's used for allergies and doesn't have the same side effects as steroids.",
-        category: "Dermatology"
+        term: "Atopica (cyclosporine)",
+        pronunciation: "at-OH-pih-kah / sy-kloh-SPOR-een",
+        meaning: "An immunosuppressant used to control allergic skin disease in dogs and cats. Reduces the immune response driving itch. Takes 4-6 weeks to reach full effect.",
+        clientExplanation: "Atopica damps down the part of the immune system causing the allergic reaction. It takes a few weeks to see the full benefit and is often reduced to every other day once controlled.",
+        category: "Dermatology / Immunosuppressants"
       },
       {
         id: "m-03",
-        term: "Atipamezole (Antisedan)",
-        pronunciation: "ah-tip-AM-eh-zole / AN-tih-SEE-dan",
-        meaning: "A reversal agent for medetomidine and dexmedetomidine sedation. Used to wake animals up after procedures.",
-        clientExplanation: "This is the medication we use to reverse the sedative after the procedure — it helps your pet wake up more quickly and smoothly.",
-        category: "Anaesthesia"
+        term: "Baytril (enrofloxacin)",
+        pronunciation: "BAY-tril / en-roh-FLOX-ah-sin",
+        meaning: "A fluoroquinolone antibiotic used for skin, urinary, respiratory, and ear infections. Use with caution in young growing animals as it can affect cartilage development.",
+        clientExplanation: "Baytril is a strong antibiotic often used for ear or urinary infections, or when other antibiotics have not worked.",
+        category: "Antibiotics"
       },
       {
         id: "m-04",
-        term: "Buprenorphine (Buprenex, Simbadol)",
-        pronunciation: "byoo-PREN-or-feen",
-        meaning: "An opioid pain reliever used for moderate to severe pain. Simbadol is a high-concentration formulation for cats, given once daily.",
-        clientExplanation: "This is a strong pain medication — it's an opioid. Your pet may seem sleepy or very calm while they're on it, which is expected.",
-        category: "Pain Management"
+        term: "Benazepril (Fortekor)",
+        pronunciation: "ben-AY-zeh-pril / FOR-teh-kor",
+        meaning: "An ACE inhibitor used to manage heart disease, high blood pressure, and chronic kidney disease in dogs and cats. Reduces the workload on the heart and kidneys.",
+        clientExplanation: "Fortekor helps reduce the strain on your pet's heart and kidneys. It is an important part of managing these conditions long-term and is usually given once daily.",
+        category: "Cardiology / Nephrology"
       },
       {
         id: "m-05",
-        term: "Carprofen (Rimadyl, Novox)",
-        pronunciation: "kar-PROH-fen / RIM-ah-dil",
-        meaning: "A non-steroidal anti-inflammatory drug (NSAID) used for pain and inflammation, commonly after surgery or for arthritis in dogs.",
-        clientExplanation: "Rimadyl is an anti-inflammatory and pain reliever — similar in how it works to ibuprofen in people, though it's specifically made for dogs. Give it with food.",
-        category: "Pain Management / NSAIDs"
+        term: "Buprenorphine",
+        pronunciation: "byoo-PREN-or-feen",
+        meaning: "An opioid pain reliever used for moderate to severe pain. Commonly used post-operatively. In cats, often given as an oral transmucosal liquid absorbed through the gums.",
+        clientExplanation: "This is a strong pain medication — your pet may seem sleepy or calm while on it, which is expected. In cats it is often given as a liquid absorbed through the gums.",
+        category: "Pain Management"
       },
       {
         id: "m-06",
-        term: "Cerenia (maropitant)",
-        pronunciation: "seh-REE-nee-uh / mair-OH-pih-tant",
-        meaning: "An antiemetic (anti-vomiting) medication. Also used for motion sickness and nausea from other causes.",
-        clientExplanation: "Cerenia stops vomiting and nausea — it works really well and usually kicks in within a couple of hours. It can also be used before car travel.",
+        term: "Cerenia / Emavert (maropitant)",
+        pronunciation: "seh-REE-nee-uh / em-ah-VERT / mair-OH-pih-tant",
+        meaning: "An antiemetic (anti-vomiting) medication. Brand names Cerenia and Emavert. Also used for motion sickness. Works within 1-2 hours.",
+        clientExplanation: "Cerenia or Emavert stops vomiting and nausea quickly. It can also be used before car travel to prevent motion sickness.",
         category: "Gastrointestinal"
       },
       {
         id: "m-07",
-        term: "Clindamycin (Antirobe)",
-        pronunciation: "klin-dah-MY-sin / AN-tih-robe",
-        meaning: "An antibiotic effective against dental, skin, bone, and soft tissue infections. Commonly used after dental procedures.",
-        clientExplanation: "This antibiotic is particularly good for mouth and dental infections, which is why it's often prescribed after a dental procedure.",
+        term: "Cephalexin (Cefaseptin)",
+        pronunciation: "sef-ah-LEX-in / sef-ah-SEP-tin",
+        meaning: "A first-generation cephalosporin antibiotic. Brand name Cefaseptin. Used for skin, soft tissue, and urinary tract infections. One of the most commonly used antibiotics in veterinary practice.",
+        clientExplanation: "Cefaseptin is a commonly used antibiotic for skin and urinary infections. Give with food to reduce the chance of stomach upset.",
         category: "Antibiotics"
       },
       {
         id: "m-08",
-        term: "Convenia (cefovecin)",
-        pronunciation: "kon-VEE-nee-uh / sef-oh-VEH-sin",
-        meaning: "A long-acting injectable antibiotic that lasts 7–14 days. Useful when owners have difficulty giving oral medications.",
-        clientExplanation: "Convenia is an antibiotic given as a single injection — it stays active in your pet's system for up to two weeks, so there are no tablets to give at home.",
+        term: "Clindamycin (Antirobe)",
+        pronunciation: "klin-dah-MY-sin / AN-tih-robe",
+        meaning: "An antibiotic effective against dental, skin, bone, and soft tissue infections. Commonly used after dental procedures.",
+        clientExplanation: "This antibiotic is particularly good for mouth and dental infections, which is why it is often prescribed after a dental procedure.",
         category: "Antibiotics"
       },
       {
         id: "m-09",
-        term: "Dexamethasone / Prednisolone",
-        pronunciation: "dex-ah-METH-ah-zone / pred-NIS-oh-lone",
-        meaning: "Corticosteroids used to reduce inflammation and suppress the immune system. Used for allergies, inflammatory conditions, immune-mediated disease, and some cancers.",
-        clientExplanation: "This is a steroid medication — it reduces inflammation and calms the immune system. It works well but can have side effects with long-term use, so we'll monitor carefully.",
-        category: "Steroids"
+        term: "Clomicalm (clomipramine)",
+        pronunciation: "KLOH-mih-kalm / kloh-MIP-rah-meen",
+        meaning: "A tricyclic antidepressant used to treat separation anxiety and compulsive behaviours in dogs. Works best alongside behavioural modification. Takes several weeks to reach full effect.",
+        clientExplanation: "Clomicalm helps with anxiety — particularly separation anxiety. It works best alongside training and behavioural support and takes several weeks to reach full effect.",
+        category: "Behavioural / Anxiolytics"
       },
       {
         id: "m-10",
-        term: "Enalapril / Benazepril",
-        pronunciation: "eh-NAL-ah-pril / ben-AY-zeh-pril",
-        meaning: "ACE inhibitors used to manage heart disease and high blood pressure in dogs and cats. Help reduce the workload on the heart.",
-        clientExplanation: "This medication helps reduce the strain on your pet's heart and lowers blood pressure. It's an important part of managing their heart condition long-term.",
-        category: "Cardiology"
+        term: "Convenia (cefovecin)",
+        pronunciation: "kon-VEE-nee-uh / sef-oh-VEH-sin",
+        meaning: "A long-acting injectable antibiotic that remains active for 7-14 days. Useful when owners have difficulty giving oral medications.",
+        clientExplanation: "Convenia is an antibiotic given as a single injection — it stays active for up to two weeks, so there are no tablets to give at home.",
+        category: "Antibiotics"
       },
       {
         id: "m-11",
-        term: "Fenbendazole (Panacur)",
-        pronunciation: "fen-BEN-dah-zole / PAN-ah-kur",
-        meaning: "A broad-spectrum dewormer effective against roundworms, hookworms, whipworms, and some tapeworms. Often given as a 3–5 day course.",
-        clientExplanation: "Panacur is a deworming treatment — it's given over several days and is very safe. It covers most of the common intestinal worms.",
-        category: "Parasiticides"
+        term: "Deramaxx (deracoxib)",
+        pronunciation: "deh-rah-MAX / deh-rah-KOX-ib",
+        meaning: "A COX-2 selective NSAID used for pain and inflammation in dogs — post-surgical pain and osteoarthritis. Do not use in cats.",
+        clientExplanation: "Deramaxx is an anti-inflammatory pain reliever for dogs. Give with food. Never give to cats.",
+        category: "Pain Management / NSAIDs"
       },
       {
         id: "m-12",
-        term: "Furosemide (Lasix, Salix)",
-        pronunciation: "fyoo-ROH-seh-mide / LAY-siks",
-        meaning: "A diuretic ('water pill') that helps remove excess fluid from the body. Used in heart failure and conditions causing fluid accumulation.",
-        clientExplanation: "Furosemide is a water tablet — it helps the kidneys remove excess fluid that's built up, particularly around the lungs or abdomen. You may notice your pet urinating more.",
-        category: "Cardiology"
+        term: "Dexamethasone / Prednisolone",
+        pronunciation: "dex-ah-METH-ah-zone / pred-NIS-oh-lone",
+        meaning: "Corticosteroids used to reduce inflammation and suppress the immune system. Used for allergies, inflammatory conditions, immune-mediated disease, and some cancers.",
+        clientExplanation: "This is a steroid medication — it reduces inflammation and calms the immune system. Side effects are possible with long-term use, so we will monitor carefully.",
+        category: "Steroids"
       },
       {
         id: "m-13",
-        term: "Gabapentin (Neurontin)",
-        pronunciation: "gab-ah-PEN-tin / noo-RON-tin",
-        meaning: "Used for neuropathic pain, seizures, and as a sedative/anxiolytic before procedures. Also used for anxiety in cats.",
+        term: "Doxycycline",
+        pronunciation: "dok-see-SY-kleen",
+        meaning: "A broad-spectrum tetracycline antibiotic effective against tick-borne diseases (Lyme, Anaplasma), respiratory infections, and atypical bacteria. Must be given with food and water — can cause oesophageal stricture if dry-swallowed, especially in cats.",
+        clientExplanation: "Doxycycline is often used for tick-borne infections and respiratory conditions. Always give with food and make sure your pet swallows it with water — never give it dry, especially to cats.",
+        category: "Antibiotics"
+      },
+      {
+        id: "m-14",
+        term: "Famotidine",
+        pronunciation: "fah-MOH-tih-deen",
+        meaning: "An H2 blocker (antacid) used to reduce stomach acid. Helps with gastric ulcers and acid reflux. Often used alongside NSAIDs or steroids to protect the stomach lining.",
+        clientExplanation: "Famotidine reduces stomach acid — it is often given alongside other medications to protect the stomach. Similar to how Pepcid works in people.",
+        category: "Gastrointestinal"
+      },
+      {
+        id: "m-15",
+        term: "Felimazole (methimazole)",
+        pronunciation: "feh-LIM-ah-zole / meth-IM-ah-zole",
+        meaning: "An antithyroid medication used to treat hyperthyroidism in cats. Reduces thyroid hormone production. Requires regular blood monitoring for thyroid levels and kidney function.",
+        clientExplanation: "Felimazole controls an overactive thyroid in cats. Regular blood tests are important — usually every few weeks at first, then every 6 months once stable.",
+        category: "Endocrinology"
+      },
+      {
+        id: "m-16",
+        term: "Fluoxetine (Prozac, Reconcile)",
+        pronunciation: "floo-OX-eh-teen",
+        meaning: "An SSRI antidepressant used for anxiety, compulsive behaviours, and aggression in dogs and cats. Brand names Prozac and Reconcile. Takes 4-6 weeks for full effect. Best used alongside behavioural modification.",
+        clientExplanation: "Fluoxetine helps with anxiety and compulsive behaviours — it is the same medication as Prozac in people. It takes several weeks to work fully, and behaviour training alongside it is important.",
+        category: "Behavioural / Anxiolytics"
+      },
+      {
+        id: "m-17",
+        term: "Furosemide (Lasix)",
+        pronunciation: "fyoo-ROH-seh-mide / LAY-siks",
+        meaning: "A diuretic (water pill) that helps remove excess fluid from the body. Brand name Lasix. Used in heart failure and conditions causing fluid accumulation.",
+        clientExplanation: "Lasix is a water tablet — it helps the kidneys remove excess fluid that has built up, particularly around the lungs or abdomen. You may notice your pet urinating more.",
+        category: "Cardiology"
+      },
+      {
+        id: "m-18",
+        term: "Gabapentin",
+        pronunciation: "gab-ah-PEN-tin",
+        meaning: "Used for neuropathic pain, seizures, and as a sedative or anxiolytic before procedures. Widely used for anxiety in cats before veterinary visits.",
         clientExplanation: "Gabapentin can be used for nerve pain, seizure control, or to help with anxiety. It often makes pets a bit drowsy, which is expected.",
         category: "Pain Management / Neurology"
       },
       {
-        id: "m-14",
-        term: "Meloxicam (Metacam)",
-        pronunciation: "meh-LOX-ih-kam / MET-ah-kam",
-        meaning: "An NSAID used for pain and inflammation. Common for post-surgical pain and arthritis in dogs. Use in cats requires care — only licensed for single-dose use in cats in some regions.",
-        clientExplanation: "Metacam is an anti-inflammatory pain reliever — similar to how ibuprofen works. Give it with food to protect the stomach.",
+        id: "m-19",
+        term: "Galliprant (grapiprant)",
+        pronunciation: "GAL-ih-prant / grah-PIP-rant",
+        meaning: "A newer piprant-class NSAID used for osteoarthritis pain in dogs. Works differently from traditional NSAIDs and is often better tolerated in dogs with GI sensitivity.",
+        clientExplanation: "Galliprant is a newer type of anti-inflammatory for arthritis in dogs. It works a bit differently from traditional options and is sometimes better on the stomach.",
         category: "Pain Management / NSAIDs"
       },
       {
-        id: "m-15",
+        id: "m-20",
+        term: "GS-441524",
+        pronunciation: "jee-ess four-four-one five-two-four",
+        meaning: "An antiviral used off-label to treat feline infectious peritonitis (FIP) — a previously fatal coronavirus disease in cats. Treatment is typically 84 days. Not yet formally licensed in Canada but used under veterinary supervision with strong success rates.",
+        clientExplanation: "GS-441524 is an antiviral treatment for FIP — a disease that used to be fatal in cats. Treatment takes about 12 weeks and requires close monitoring.",
+        category: "Antivirals"
+      },
+      {
+        id: "m-21",
+        term: "Ketoconazole",
+        pronunciation: "kee-toh-KON-ah-zole",
+        meaning: "An antifungal used for systemic or skin fungal infections. Also used in Cushing's disease management when Vetoryl is not tolerated. Interacts with many other medications — always check for drug interactions.",
+        clientExplanation: "Ketoconazole treats fungal infections. Let us know what other medications your pet is on as interactions are possible.",
+        category: "Antifungals / Endocrinology"
+      },
+      {
+        id: "m-22",
+        term: "Meloxicam (Metacam, Meloxidin)",
+        pronunciation: "meh-LOX-ih-kam / MET-ah-kam / mel-OX-ih-din",
+        meaning: "An NSAID used for pain and inflammation. Brand names Metacam and Meloxidin. Used for post-surgical pain and osteoarthritis. Use in cats requires careful dosing and monitoring.",
+        clientExplanation: "Metacam or Meloxidin is an anti-inflammatory pain reliever. Give with food to protect the stomach.",
+        category: "Pain Management / NSAIDs"
+      },
+      {
+        id: "m-23",
         term: "Metronidazole (Flagyl)",
         pronunciation: "meh-troh-NYE-dah-zole / FLAY-jil",
-        meaning: "An antibiotic and antiprotozoal agent used for gastrointestinal infections, giardia, and anaerobic bacterial infections.",
-        clientExplanation: "This medication treats gut infections and certain parasites like giardia. It can sometimes cause nausea, so giving it with a small amount of food can help.",
+        meaning: "An antibiotic and antiprotozoal used for gastrointestinal infections and giardia. Can cause neurological side effects at high doses.",
+        clientExplanation: "This medication treats gut infections and certain parasites like giardia. Giving it with a small amount of food can help reduce nausea.",
         category: "Antibiotics / Gastrointestinal"
       },
       {
-        id: "m-16",
-        term: "Ondansetron (Zofran)",
-        pronunciation: "on-DAN-seh-tron / ZOH-fran",
-        meaning: "An antiemetic used to control nausea and vomiting, particularly in cats and in cases where Cerenia is not appropriate.",
-        clientExplanation: "This is an anti-nausea medication — the same drug used for humans undergoing chemotherapy. It's very effective at settling an upset stomach.",
+        id: "m-24",
+        term: "Mirtazapine (Mirataz)",
+        pronunciation: "mir-TAZ-ah-peen / MIR-ah-taz",
+        meaning: "An appetite stimulant and antiemetic used commonly in cats. Mirataz is a transdermal gel applied to the inner ear flap. Also used in dogs for appetite stimulation.",
+        clientExplanation: "Mirataz is a gel applied to the inside of the ear flap to stimulate appetite. Apply a small amount as directed, rotate ears with each dose, and wash hands after applying.",
+        category: "Gastrointestinal / Appetite"
+      },
+      {
+        id: "m-25",
+        term: "Numelvi",
+        pronunciation: "noo-MEL-vee",
+        meaning: "A veterinary medication used in the management of feline hyperthyroidism. Applied topically. Check current prescribing information for dosing and monitoring requirements.",
+        clientExplanation: "Numelvi is a topical treatment for an overactive thyroid in cats. We will show you exactly how and where to apply it.",
+        category: "Endocrinology"
+      },
+      {
+        id: "m-26",
+        term: "Omeprazole",
+        pronunciation: "oh-MEP-rah-zole",
+        meaning: "A proton pump inhibitor that reduces stomach acid more powerfully than famotidine. Used for gastric ulcers, acid reflux, and GI protection.",
+        clientExplanation: "Omeprazole is a stronger acid reducer than famotidine — used when the stomach needs more protection. Similar to Losec or Prilosec in people.",
         category: "Gastrointestinal"
       },
       {
-        id: "m-17",
+        id: "m-27",
+        term: "Onsior (robenacoxib)",
+        pronunciation: "ON-see-or / roh-ben-ah-KOX-ib",
+        meaning: "A COX-2 selective NSAID used for short-term pain and inflammation in cats and dogs. Particularly useful in cats where long-term meloxicam use requires extra caution.",
+        clientExplanation: "Onsior is an anti-inflammatory pain reliever often used for short-term pain after procedures. Give with food.",
+        category: "Pain Management / NSAIDs"
+      },
+      {
+        id: "m-28",
+        term: "PEG 3350 powder (MiraLax)",
+        pronunciation: "pee-ee-jee three-three-five-oh",
+        meaning: "An osmotic laxative used to treat constipation — particularly in cats with megacolon or chronic constipation. Mixed into food or water. Same product as MiraLax for people.",
+        clientExplanation: "PEG 3350 is a tasteless powder mixed into food or water to help with constipation. It softens stool by drawing water into the intestine.",
+        category: "Gastrointestinal"
+      },
+      {
+        id: "m-29",
         term: "Phenobarbital",
         pronunciation: "fee-noh-BAR-bih-tal",
-        meaning: "An anticonvulsant used to manage epilepsy and seizure disorders in dogs and cats. Requires regular blood monitoring.",
-        clientExplanation: "Phenobarbital controls seizures — it's one of the most effective medications we have for epilepsy. Blood tests every 6 months are important to make sure the levels and liver are okay.",
+        meaning: "An anticonvulsant used to manage epilepsy and seizure disorders in dogs and cats. Requires blood monitoring for drug levels and liver function every 6 months.",
+        clientExplanation: "Phenobarbital controls seizures. Blood tests every 6 months are important to make sure the levels and liver are okay.",
         category: "Neurology"
       },
       {
-        id: "m-18",
+        id: "m-30",
         term: "Pimobendan (Vetmedin)",
         pronunciation: "pih-MOH-ben-dan / vet-MEH-din",
-        meaning: "A cardiac medication that improves heart muscle function and dilates blood vessels. Used in dogs with dilated cardiomyopathy and mitral valve disease.",
-        clientExplanation: "Vetmedin helps the heart pump more effectively and reduces its workload. It's given twice daily and ideally about an hour before food.",
+        meaning: "A cardiac medication that improves heart muscle function and dilates blood vessels. Used in dogs with dilated cardiomyopathy and mitral valve disease. Ideally given one hour before feeding.",
+        clientExplanation: "Vetmedin helps the heart pump more effectively. Give twice daily, ideally about an hour before food.",
         category: "Cardiology"
       },
       {
-        id: "m-19",
+        id: "m-31",
         term: "Prednisolone vs Prednisone",
         pronunciation: "pred-NIS-oh-lone / PRED-nih-zone",
-        meaning: "Both are corticosteroids. Prednisolone is the active form — prednisone must be converted by the liver. Cats absorb prednisolone better, so it's preferred in feline patients.",
-        clientExplanation: "Both are steroids that work in similar ways — the vet chose this specific one because it's better absorbed by your pet's body.",
+        meaning: "Both are corticosteroids. Prednisolone is the active form — prednisone must be converted by the liver. Cats absorb prednisolone better and it is the preferred form for feline patients.",
+        clientExplanation: "Both are steroids that work similarly — the vet chose this specific one because it is better absorbed by your pet.",
         category: "Steroids"
       },
       {
-        id: "m-20",
+        id: "m-32",
+        term: "Proin / Propalin (phenylpropanolamine)",
+        pronunciation: "PROH-in / PRO-pah-lin / fen-il-proh-PAH-nohl-ah-meen",
+        meaning: "Used to treat urinary incontinence in spayed female dogs by tightening the urethral sphincter. Blood pressure monitoring recommended during treatment.",
+        clientExplanation: "Proin or Propalin helps with urinary leakage — it strengthens the muscle that controls urination. Blood pressure monitoring is recommended.",
+        category: "Urology"
+      },
+      {
+        id: "m-33",
+        term: "Semintra (telmisartan)",
+        pronunciation: "seh-MIN-trah / tel-mih-SAR-tan",
+        meaning: "An angiotensin receptor blocker used in cats to manage systemic hypertension and reduce protein loss in urine in chronic kidney disease. Given as an oral solution.",
+        clientExplanation: "Semintra is an oral liquid that helps control blood pressure and protects the kidneys. Shake well before use and give the exact dose prescribed.",
+        category: "Cardiology / Nephrology"
+      },
+      {
+        id: "m-34",
+        term: "Senvelgo (velagliflozin)",
+        pronunciation: "sen-VEL-goh / vel-ah-GLIF-loh-zin",
+        meaning: "An oral solution used to manage diabetes mellitus in cats. Causes the kidneys to excrete excess glucose in the urine. An alternative to insulin in some feline diabetics.",
+        clientExplanation: "Senvelgo is a liquid medication for diabetes in cats — it helps the kidneys remove excess sugar. It can be an alternative to insulin injections for some cats.",
+        category: "Endocrinology"
+      },
+      {
+        id: "m-35",
+        term: "Simplicef (cefpodoxime)",
+        pronunciation: "SIM-plih-sef / sef-poh-DOX-eem",
+        meaning: "A third-generation cephalosporin antibiotic used for skin infections, urinary tract infections, and wound infections in dogs. Once-daily dosing.",
+        clientExplanation: "Simplicef is an antibiotic given once a day — convenient for owners. Often used for skin or urinary tract infections. Give with food.",
+        category: "Antibiotics"
+      },
+      {
+        id: "m-36",
+        term: "Sulcrate / Sucralfate liquid",
+        pronunciation: "SUL-krayt / soo-KRAL-fate",
+        meaning: "A gastrointestinal protectant that coats and protects ulcers and irritated areas of the stomach. Works locally and is not absorbed. Best given on an empty stomach, spaced at least 2 hours from other medications.",
+        clientExplanation: "Sulcrate coats and protects the stomach lining. Give on an empty stomach and space it at least 2 hours from other medications.",
+        category: "Gastrointestinal"
+      },
+      {
+        id: "m-37",
+        term: "Thyro-Tabs (thyroxine / levothyroxine)",
+        pronunciation: "THY-roh-tabs / thy-ROX-een",
+        meaning: "Thyroid hormone replacement used to treat hypothyroidism (underactive thyroid) in dogs. Given once or twice daily. Requires regular thyroid level monitoring to adjust dose.",
+        clientExplanation: "Thyro-Tabs replaces the thyroid hormone your dog is not producing enough of. Regular blood tests are needed to make sure the dose is right.",
+        category: "Endocrinology"
+      },
+      {
+        id: "m-38",
         term: "Tramadol",
         pronunciation: "TRAM-ah-dol",
-        meaning: "An opioid-based analgesic used for moderate pain. Note: tramadol has limited efficacy in cats as they lack the enzyme to convert it to its active form.",
-        clientExplanation: "Tramadol is a pain reliever. Give it as directed — if your pet seems uncomfortable despite it, let us know as we may need to adjust the pain management plan.",
+        meaning: "An opioid-based analgesic for moderate pain. Limited efficacy in cats as they lack the enzyme to convert it to its active form.",
+        clientExplanation: "Tramadol is a pain reliever. If your pet seems uncomfortable despite it, let us know — we may need to adjust the pain management plan.",
         category: "Pain Management"
-      }
-    ]
-  }  ,
-  {
-    id: "parasiticides",
-    title: "Parasiticides",
-    icon: "🦟",
-    description: "Flea, tick, and worm prevention and treatment — what your clinic carries, what each product covers, and key client information.",
-    color: "#f0fdf4",
-    colorDark: "#166534",
-    terms: [
-      {
-        id: "p-01",
-        term: "Bravecto — Dogs",
-        pronunciation: "BRAV-ek-toh",
-        meaning: "Covers fleas and ticks. Available in three forms: injectable (lasts 1 year), oral chewable tablet (lasts 3 months), or topical spot-on (lasts 3 months). Requires a prescription. Active ingredient: fluralaner. Safety note: gloves should be worn when applying the topical form — wash hands thoroughly afterwards even if gloves are used.",
-        clientExplanation: "Bravecto is one of our longer-lasting options — depending on the form, it protects against fleas and ticks for 3 months or even a full year with the injection. It's prescription-only so we'll need your dog to be a patient here. If you're using the spot-on form, please wear gloves when applying it and wash your hands well afterwards.",
-        category: "Dogs — Fleas & Ticks"
       },
       {
-        id: "p-02",
-        term: "Nexgard — Dogs",
-        pronunciation: "NEKS-gard",
-        meaning: "Oral chewable tablet for dogs. Covers fleas and ticks. Given monthly. Requires a prescription. Active ingredient: afoxolaner.",
-        clientExplanation: "Nexgard is a once-a-month chewable tablet — most dogs take it like a treat. It covers both fleas and ticks and needs a prescription.",
-        category: "Dogs — Fleas & Ticks"
+        id: "m-39",
+        term: "Vetoryl (trilostane)",
+        pronunciation: "VET-oh-ril / try-LOH-stayn",
+        meaning: "Used to treat Cushing's disease in dogs — reduces cortisol production by the adrenal glands. Requires regular ACTH stimulation testing to monitor adrenal function. Timing of monitoring relative to dosing is critical.",
+        clientExplanation: "Vetoryl controls Cushing's disease by reducing steroid hormone production. Regular blood tests are essential — timing matters so we will schedule these carefully.",
+        category: "Endocrinology"
       },
       {
-        id: "p-03",
-        term: "Simparica Trio — Dogs",
-        pronunciation: "sim-PAR-ih-kah",
-        meaning: "Oral chewable tablet for dogs. Covers fleas, ticks, and intestinal worms (roundworms, hookworms, whipworms) — but NOT tapeworms. Given monthly. Requires a prescription. Active ingredients: sarolaner, moxidectin, pyrantel.",
-        clientExplanation: "Simparica Trio is an all-in-one monthly chew that covers fleas, ticks, and most intestinal worms — it's a popular choice for dogs who need broad parasite coverage. It doesn't cover tapeworms, so we'd add something else if that's a concern.",
-        category: "Dogs — Fleas, Ticks & Worms"
+        id: "m-40",
+        term: "Zenrelia",
+        pronunciation: "zen-REE-lee-ah",
+        meaning: "A JAK inhibitor used to control itch and skin inflammation in cats with allergic skin disease. Fast-acting. Requires a prescription.",
+        clientExplanation: "Zenrelia targets the itch signal directly in cats with skin allergies — it works quickly and does not have the same side effects as steroids.",
+        category: "Dermatology"
       },
       {
-        id: "p-04",
-        term: "Revolution — Dogs",
-        pronunciation: "rev-oh-LOO-shun",
-        meaning: "Topical spot-on for dogs. Covers fleas and intestinal worms (roundworms, hookworms) — but NOT ticks or tapeworms. Applied monthly. Requires a prescription. Active ingredient: selamectin.",
-        clientExplanation: "Revolution is a monthly spot-on applied to the back of the neck. It covers fleas and some intestinal worms, but not ticks — so it's often used alongside a tick product if ticks are a concern in your area.",
-        category: "Dogs — Fleas & Worms"
-      },
-      {
-        id: "p-05",
-        term: "Advantage II — Dogs",
-        pronunciation: "",
-        meaning: "Topical spot-on for dogs. Covers fleas ONLY. Applied monthly. Does NOT require a prescription — it is classified as a pesticide rather than a drug. Active ingredients: imidacloprid, pyriproxyfen.",
-        clientExplanation: "Advantage II is a flea-only spot-on that you can actually buy without a prescription — it's classified as a pesticide. It's a good option if fleas are the main concern and your dog isn't due for a vet visit.",
-        category: "Dogs — Fleas Only"
-      },
-      {
-        id: "p-06",
-        term: "Interceptor Plus — Dogs",
-        pronunciation: "",
-        meaning: "Oral chewable tablet for dogs. Covers intestinal worms including tapeworms (roundworms, hookworms, whipworms, tapeworms). No persistent effect — it kills worms present at the time of dosing only. Requires a prescription. Active ingredients: milbemycin oxime, praziquantel.",
-        clientExplanation: "Interceptor Plus treats intestinal worms including tapeworms. It works at the time of dosing — it clears out whatever worms are present — rather than providing ongoing prevention, so timing matters.",
-        category: "Dogs — Worms"
-      },
-      {
-        id: "p-07",
-        term: "Safe-Guard (fenbendazole) — Dogs & Cats",
-        pronunciation: "FEN-ben-dah-zole",
-        meaning: "Liquid dewormer for dogs and cats. Covers intestinal worms including tapeworms (roundworms, hookworms, whipworms, tapeworms). Given daily for a short course (typically 3 days). No persistent effect.",
-        clientExplanation: "Safe-Guard is a liquid dewormer given daily for a few days. It's very well tolerated in both dogs and cats, and covers a broad range of worms including tapeworms. We'll tell you exactly how many days to give it.",
-        category: "Dogs & Cats — Worms"
-      },
-      {
-        id: "p-08",
-        term: "Strongid T (pyrantel pamoate) — Dogs/Puppies",
-        pronunciation: "PY-ran-tel PAM-oh-ate",
-        meaning: "Liquid dewormer for puppies. Covers roundworms and hookworms — NOT tapeworms or whipworms. Given weekly to very young puppies. No persistent effect.",
-        clientExplanation: "Strongid T is a gentle liquid dewormer we use for tiny puppies — it's given weekly while they're very young. It covers roundworms and hookworms, which are the most common worms in puppies.",
-        category: "Dogs — Worms (Puppies)"
-      },
-      {
-        id: "p-09",
-        term: "Advantix — Dogs (SPECIAL ORDER — TOXIC TO CATS)",
-        pronunciation: "ad-VAN-tiks",
-        meaning: "Topical spot-on for dogs ONLY. Covers fleas, ticks, and mosquitoes. Applied monthly. Requires a prescription. CRITICAL: Advantix is DEADLY to cats — it must never be used on cats or applied to dogs in households with cats. Active ingredients: imidacloprid, permethrin.",
-        clientExplanation: "Advantix is a special order product that covers fleas, ticks, and mosquitoes — but I need to ask one important question first: do you have any cats in your home? Advantix contains permethrin, which is extremely toxic to cats — even contact from a recently treated dog can be fatal to a cat. If there are cats in the household, we'll recommend a different product.",
-        category: "Dogs — Special Order ⚠️"
-      },
-      {
-        id: "p-10",
-        term: "Nexgard Combo — Cats",
-        pronunciation: "NEKS-gard KOM-boh",
-        meaning: "Topical spot-on for cats. Covers fleas, ticks, and intestinal worms including tapeworms. Applied monthly. Requires a prescription. Active ingredients: afoxolaner, eprinomectin, praziquantel.",
-        clientExplanation: "Nexgard Combo is our most comprehensive cat parasiticide — one monthly spot-on that covers fleas, ticks, and all the main intestinal worms including tapeworms. It's prescription-only.",
-        category: "Cats — Fleas, Ticks & Worms"
-      },
-      {
-        id: "p-11",
-        term: "Revolution — Cats",
-        pronunciation: "rev-oh-LOO-shun",
-        meaning: "Topical spot-on for cats. Covers fleas and intestinal worms (roundworms, hookworms) — NOT ticks or tapeworms. Applied monthly. Requires a prescription. Active ingredient: selamectin.",
-        clientExplanation: "Revolution for cats is a monthly spot-on that covers fleas and the most common intestinal worms. It doesn't cover ticks — if tick protection is needed, Revolution Plus would be the better choice.",
-        category: "Cats — Fleas & Worms"
-      },
-      {
-        id: "p-12",
-        term: "Revolution Plus — Cats",
-        pronunciation: "rev-oh-LOO-shun PLUS",
-        meaning: "Topical spot-on for cats. Covers fleas, ticks, and intestinal worms (roundworms, hookworms) — NOT tapeworms. Applied monthly. Requires a prescription. Active ingredients: selamectin, sarolaner.",
-        clientExplanation: "Revolution Plus adds tick coverage to regular Revolution — so it covers fleas, ticks, and intestinal worms. A good all-rounder for outdoor cats. It still doesn't cover tapeworms.",
-        category: "Cats — Fleas, Ticks & Worms"
-      },
-      {
-        id: "p-13",
-        term: "Bravecto — Cats",
-        pronunciation: "BRAV-ek-toh",
-        meaning: "Topical spot-on for cats. Covers fleas and ticks. Applied every 3 months (longer duration than most cat products). Requires a prescription. Active ingredient: fluralaner. Safety note: gloves should be worn when applying — wash hands thoroughly afterwards.",
-        clientExplanation: "Bravecto for cats is a spot-on that lasts 3 months instead of the usual one month — great for owners who find monthly applications tricky. It covers fleas and ticks. Please wear gloves when applying it and wash your hands well afterwards.",
-        category: "Cats — Fleas & Ticks"
-      },
-      {
-        id: "p-14",
-        term: "Milbemax — Cats",
-        pronunciation: "MIL-beh-maks",
-        meaning: "Oral chewable tablet for cats. Covers intestinal worms including tapeworms (roundworms, hookworms, tapeworms). No persistent effect — treats worms present at the time of dosing only. Requires a prescription. Active ingredients: milbemycin oxime, praziquantel.",
-        clientExplanation: "Milbemax is a chewable tablet that treats intestinal worms in cats, including tapeworms. It works at the time of dosing rather than providing ongoing prevention — so it's often given at the same time as a flea product.",
-        category: "Cats — Worms"
-      },
-      {
-        id: "p-15",
-        term: "Profender — Cats",
-        pronunciation: "PRO-fen-der",
-        meaning: "Topical spot-on for cats. Covers intestinal worms including tapeworms (roundworms, hookworms, tapeworms). No persistent effect — treats worms present at the time of dosing only. Useful for cats who resist oral medication. Requires a prescription. Active ingredients: emodepside, praziquantel.",
-        clientExplanation: "Profender is a spot-on dewormer — useful if your cat won't take tablets. It treats intestinal worms including tapeworms at the time of application. It doesn't provide ongoing prevention, so we often use it alongside a monthly flea/tick product.",
-        category: "Cats — Worms"
-      },
-      {
-        id: "p-16",
-        term: "Strongid T (pyrantel pamoate) — Cats/Kittens",
-        pronunciation: "PY-ran-tel PAM-oh-ate",
-        meaning: "Liquid dewormer for kittens. Covers roundworms and hookworms — NOT tapeworms, whipworms. Given weekly to very young kittens. No persistent effect.",
-        clientExplanation: "Strongid T is a gentle liquid dewormer we use for tiny kittens — given weekly while they're very young. It covers the most common worms in kittens: roundworms and hookworms.",
-        category: "Cats — Worms (Kittens)"
-      },
-      {
-        id: "p-17",
-        term: "Prescription vs non-prescription parasiticides",
-        pronunciation: "",
-        meaning: "Most parasiticides at this clinic require a valid veterinarian-client-patient relationship (VCPR) and a prescription. The exception is Advantage II for dogs, which is classified as a pesticide and available over the counter. Clients sometimes ask why they need a prescription — the answer is that prescription products are generally more effective and some (like Bravecto injectable) require professional administration.",
-        clientExplanation: "Most of our parasite prevention products are prescription-only — that means your pet needs to be a current patient here. The main exception is Advantage II, which you can pick up without a prescription. If your pet isn't due for a visit, call us and we can advise on what's available.",
-        category: "General"
-      },
-      {
-        id: "p-19",
-        term: "Applying topical parasiticides — safety",
-        pronunciation: "",
-        meaning: "When applying any topical spot-on product — to a patient or when dispensing advice to clients — gloves should always be worn. This applies to all spot-on products but is especially important for fluralaner-based products (Bravecto) and permethrin-containing products (Advantix). Hands should be washed thoroughly afterwards even when gloves are used. Topicals should be applied to an area the animal cannot lick (typically the back of the neck between the shoulder blades) and the application site should be allowed to dry before children or other pets contact the area.",
-        clientExplanation: "A few things to keep in mind when applying spot-on treatments at home: always wear gloves, apply to the back of the neck where your pet can't reach to lick, and let it dry before letting kids or other pets near the area. If you accidentally get any on your skin, wash it off promptly with soap and water.",
-        category: "Safety ⚠️"
-      },
-      {
-        id: "p-18",
-        term: "Permethrin toxicity in cats",
-        pronunciation: "per-METH-rin",
-        meaning: "Permethrin is an insecticide found in some dog-only products (notably Advantix). It is highly toxic to cats — exposure can cause tremors, seizures, and death. Cats can be exposed by direct contact with a recently treated dog, or by owners accidentally applying a dog product to a cat. This is a veterinary emergency.",
-        clientExplanation: "This is one of the most important safety points we share with multi-pet households: never use dog flea products on cats, and if a dog has been treated with Advantix, keep them separated from cats until the product has dried and the dog has been bathed. If a cat is ever exposed, call us immediately — it's an emergency.",
-        category: "Safety ⚠️"
+        id: "m-41",
+        term: "Zentonil (SAMe + milk thistle)",
+        pronunciation: "zen-TOH-nil",
+        meaning: "A hepatoprotectant supplement containing S-adenosylmethionine (SAMe) and milk thistle. Supports liver function and reduces oxidative stress. Used alongside treatment for liver disease or when hepatotoxic drugs are prescribed.",
+        clientExplanation: "Zentonil supports liver health — it contains two natural compounds that help protect the liver. Often given alongside other treatments when the liver needs extra support.",
+        category: "Hepatology / Supplements"
       }
     ]
   }
@@ -788,18 +794,18 @@ export const termQuizzes = [
           "Safe-Guard"
         ],
         correct: 2,
-        explanation: "Strongid T (pyrantel pamoate) is the appropriate choice for very young puppies — it's a gentle liquid given weekly and is safe for tiny animals. Interceptor Plus and Simparica Trio have minimum age/weight requirements."
+        explanation: "Strongid T (pyrantel pamoate) is the appropriate choice for very young puppies — it's a gentle liquid given weekly and is safe for tiny animals. Importantly, it is the only product on the formulary labelled for puppies under 6 weeks of age. Interceptor Plus and Simparica Trio have minimum age and weight requirements that exclude newborns and very young animals."
       },
       {
-        question: "A dog owner wants comprehensive coverage — fleas, ticks, AND worms including tapeworms — in a single monthly product. What do you recommend?",
+        question: "A dog owner wants comprehensive coverage — fleas, ticks, AND worms including tapeworms. Which combination is the best choice?",
         options: [
-          "Simparica Trio",
-          "Revolution",
+          "Simparica Trio alone",
+          "Revolution alone",
           "Interceptor Plus plus Nexgard",
           "Simparica Trio plus Interceptor Plus"
         ],
-        correct: 3,
-        explanation: "Simparica Trio covers fleas, ticks, and most worms — but not tapeworms. To add tapeworm coverage you'd combine it with Interceptor Plus. There is no single monthly dog product on your formulary that covers everything including tapeworms."
+        correct: 2,
+        explanation: "Interceptor Plus plus Nexgard is the ideal combination — Nexgard covers fleas and ticks, and Interceptor Plus covers all the major worms including tapeworms, with no overlap or redundancy. Simparica Trio plus Interceptor Plus would also achieve full coverage technically, but there is significant overlap: both products cover roundworms, hookworms, and whipworms. This means the owner is double-treating for several worms, which is not unsafe but is a waste of money. Neither Simparica Trio alone nor Revolution alone covers tapeworms."
       },
       {
         question: "What is the key difference between Interceptor Plus and Simparica Trio in terms of worm coverage?",
@@ -821,7 +827,7 @@ export const termQuizzes = [
           "Profender"
         ],
         correct: 1,
-        explanation: "Bravecto for cats is a topical spot-on covering fleas and ticks, lasting 3 months — no tablets needed. Revolution covers fleas but not ticks. Milbemax and Profender are dewormers only."
+        explanation: "Bravecto for cats is a topical spot-on covering both fleas and ticks, lasting 3 months — no tablets needed, making it ideal here. Revolution is a common wrong answer — it covers fleas but does not cover ticks reliably; you would need Revolution Plus for tick coverage. Milbemax and Profender are dewormers only and do not cover fleas or ticks at all."
       }
     ]
   }
