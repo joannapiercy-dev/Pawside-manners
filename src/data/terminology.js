@@ -866,7 +866,6 @@ export const termDecks = [
     ]
   },
   {
-    id: "medications",{
     id: "medications",
     title: "Common medications",
     icon: "💊",
