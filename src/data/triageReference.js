@@ -70,7 +70,7 @@ export const triageReference = {
     rows: [
       { sign: "Cat with sudden loss of use of both back legs, cold or painful limbs", outcome: "EMERGENCY", note: "Possible aortic thromboembolism (saddle thrombus) — cardiac emergency. Time-critical." },
       { sign: "Trauma — road accident, fall from height, fight", outcome: "EMERGENCY", note: "Even if the animal seems okay, internal injuries are possible. Needs immediate assessment." },
-      { sign: "Obvious deformity, abnormal limb angle, or crepitus", outcome: "EMERGENCY", note: "Possible fracture or dislocation." },
+      { sign: "Obvious deformity, abnormal limb angle, or crepitus (a grinding or crackling sensation/sound felt at the joint or along the bone)", outcome: "EMERGENCY", note: "Possible fracture or dislocation." },
       { sign: "Complete non-weight bearing with signs of shock or severe pain", outcome: "EMERGENCY", note: "Fracture, severe injury, or systemic involvement." },
       { sign: "Complete non-weight bearing, no known trauma", outcome: "URGENT", note: "Possible fracture, severe soft tissue injury, or joint problem. Same-day." },
       { sign: "Toe-touching lameness with swelling or heat at joint", outcome: "URGENT", note: "Possible joint infection, fracture, or significant soft tissue injury. Same-day." },

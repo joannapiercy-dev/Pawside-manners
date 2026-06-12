@@ -71,8 +71,8 @@ export function renderTriageTree(container, navigate, categoryId) {
           ${history.length > 0 ? renderHistory() : ''}
           ${outcome ? renderOutcome(outcome) : renderNode(node)}
           <div style="display:flex;gap:8px;margin-top:2rem;flex-wrap:wrap;">
-            ${history.length > 0 && !outcome ? `<button class="btn-ghost" id="back-node-btn">← Previous question</button>` : ''}
-            ${outcome ? `<button class="btn-secondary" id="restart-btn">🔄 Start again</button>` : ''}
+            ${history.length > 0 ? `<button class="btn-secondary" id="back-node-btn">← Back</button>` : ''}
+            ${outcome ? `<button class="btn-ghost" id="restart-btn">🔄 Start again</button>` : ''}
             <button class="btn-ghost" id="back-triage-btn">← All categories</button>
           </div>
         ` : `

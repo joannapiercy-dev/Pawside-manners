@@ -3,7 +3,8 @@ export const testCategories = [
   { id: "blood", label: "Blood tests", icon: "🩸" },
   { id: "cardiac", label: "Cardiac tests", icon: "🫀" },
   { id: "urine", label: "Urine tests", icon: "🧪" },
-  { id: "tissue", label: "Tissue testing", icon: "🔬" }
+  { id: "tissue", label: "Tissue testing", icon: "🔬" },
+  { id: "fecal", label: "Fecal tests", icon: "🦠" }
 ];
 
 export const tests = {
@@ -413,6 +414,57 @@ export const tests = {
       specialNote: "Results from histology typically take 2 weeks or more. Make sure clients are aware of this timeline at the time of booking and again at drop-off — two weeks is longer than most clients expect and worth flagging proactively."
     }
   ],
+  ,
+  fecal: [
+    {
+      id: "op",
+      name: "Ova & Parasites (O&P)",
+      purpose: "Tests for eggs (ova) of intestinal worms — roundworms, hookworms, whipworms, tapeworms. May also detect protozoal infections such as Giardia or Coccidia, though dedicated tests are more sensitive for these. One of the most common fecal tests run.",
+      fast: false,
+      fastNote: "No fasting required. A fresh fecal sample is needed — ideally collected within a few hours of the appointment and kept refrigerated if there is a delay. Advise clients to collect a small amount (about a teaspoon) in a clean container or zip-lock bag.",
+      sedation: "no",
+      sedationNote: null,
+      shave: false,
+      dropoff: false,
+      dropoffNote: "No drop-off needed. Sample can be brought in by the owner or collected at the clinic.",
+      clientScript: "We'll need a small fresh stool sample — about a teaspoon is plenty. Collect it in a clean container or a zip-lock bag, keep it in the fridge if you can't bring it in right away, and try to get it to us within a few hours. We can also collect a sample here if needed.",
+      flags: [],
+      labNote: "Available in-house, or send-out to Idexx (Vancouver) or True North Lab (Vancouver). In-house results are available same day. Send-out results typically take 2–3 days.",
+      specialNote: "O&P is good for detecting worm eggs but less sensitive for Giardia and Coccidia — if these are specifically suspected, a dedicated Giardia test or PCR panel is more reliable."
+    },
+    {
+      id: "giardia",
+      name: "Giardia test",
+      purpose: "Tests specifically for Giardia — a protozoal parasite commonly picked up by dogs drinking from puddles, streams, or other contaminated water sources. Causes intermittent diarrhea, soft stools, and sometimes mucus in the stool. Two main test types: direct microscopy (visual examination of the sample) or SNAP antigen test (more sensitive, tests for Giardia protein). Often bundled alongside other tests.",
+      fast: false,
+      fastNote: "No fasting required. Fresh fecal sample preferred.",
+      sedation: "no",
+      sedationNote: null,
+      shave: false,
+      dropoff: false,
+      dropoffNote: "No drop-off needed.",
+      clientScript: "We're going to test specifically for Giardia — a common intestinal parasite dogs often pick up from puddles or outdoor water sources. We just need a small fresh stool sample. If your dog drinks from puddles or streams regularly, it's worth mentioning that to the vet.",
+      flags: [],
+      labNote: "Available in-house (SNAP antigen test or direct microscopy) or send-out to Idexx. Often bundled with O&P or diarrhea panels.",
+      specialNote: "The SNAP antigen test is generally more sensitive than direct microscopy for Giardia. If in-house microscopy is negative but Giardia is still suspected clinically, a SNAP test or send-out is worth considering."
+    },
+    {
+      id: "diarrhea-pcr",
+      name: "Diarrhea PCR panel",
+      purpose: "A comprehensive molecular test that screens for a wide variety of bacterial, viral, and protozoal causes of diarrhea in a single sample — including Salmonella, Campylobacter, Clostridium, Cryptosporidium, Giardia, parvovirus, coronavirus, and more. Does NOT test for intestinal worms (eggs) unless a worm component is specifically bundled in. More sensitive than culture or microscopy for many pathogens.",
+      fast: false,
+      fastNote: "No fasting required. Fresh fecal sample preferred.",
+      sedation: "no",
+      sedationNote: null,
+      shave: false,
+      dropoff: false,
+      dropoffNote: "Send-out test — no drop-off needed, but allow several days for results.",
+      clientScript: "This is a comprehensive stool test that checks for a wide range of infections that can cause diarrhea — bacteria, viruses, and parasites. We send the sample to a lab and results usually come back within a few days. It does not check for worms specifically, so we may pair it with an O&P test if worms are also a concern.",
+      flags: [],
+      labNote: "Send-out to Idexx lab in Vancouver. Results typically take 3–5 days. Does not include worm eggs unless a combined panel is ordered — confirm with the clinical team which panel is being sent.",
+      specialNote: "⚠️ The diarrhea PCR panel does NOT detect intestinal worm eggs. If worms are suspected alongside an infectious cause, an O&P test should be added separately."
+    }
+  ]
 };
 
 export const testQuiz = [
