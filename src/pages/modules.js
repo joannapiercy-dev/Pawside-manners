@@ -1,6 +1,6 @@
 import { scenarios, categories } from '../data/scenarios.js';
 import { getProgress } from '../lib/progress.js';
-import { nav } from './home.js';
+import { nav, setupHamburger } from './home.js';
 
 const ROLES = [
   { id: 'all', label: 'All roles' },
@@ -65,6 +65,7 @@ export function renderModules(container, navigate, activeRole = 'all') {
     </div>
   `;
 
+  setupHamburger();
   container.querySelectorAll('[data-scenario]').forEach(card => {
     card.addEventListener('click', () => navigate('/scenario/' + card.dataset.scenario));
   });

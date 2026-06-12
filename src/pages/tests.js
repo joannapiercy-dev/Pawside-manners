@@ -1,5 +1,5 @@
 import { testCategories, tests, testQuiz } from '../data/tests.js';
-import { nav } from './home.js';
+import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
 
 const FLAG_LABELS = {
@@ -43,6 +43,7 @@ export function renderTestsHome(container, navigate) {
     </div>
   `;
 
+  setupHamburger();
   container.querySelectorAll('[data-cat]').forEach(card => {
     card.addEventListener('click', () => navigate('/tests/' + card.dataset.cat));
   });
@@ -75,6 +76,7 @@ export function renderTestCategory(container, navigate, catId) {
     </div>
   `;
 
+  setupHamburger();
   document.getElementById('back-btn').addEventListener('click', () => navigate('/tests'));
   document.getElementById('quiz-btn').addEventListener('click', () => navigate('/tests/quiz'));
 

@@ -3,7 +3,7 @@ import { termDecks } from '../data/terminology.js';
 import { triageCategories } from '../data/triage.js';
 import { testCategories } from '../data/tests.js';
 import { getProgress } from '../lib/progress.js';
-import { nav } from './home.js';
+import { nav, setupHamburger } from './home.js';
 
 export function renderDashboard(container, navigate) {
   const p = getProgress();
@@ -55,6 +55,7 @@ export function renderDashboard(container, navigate) {
     </div>
   `;
 
+  setupHamburger();
   container.querySelectorAll('[data-go-scenario]').forEach(el => {
     el.addEventListener('click', () => navigate('/scenario/' + el.dataset.goScenario));
   });

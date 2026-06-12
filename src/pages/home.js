@@ -49,6 +49,7 @@ export function renderHome(container, navigate) {
     </div>
   `;
 
+  setupHamburger();
   document.getElementById('btn-communication').addEventListener('click', () => navigate('/train'));
   document.getElementById('btn-terminology').addEventListener('click', () => navigate('/terminology'));
   document.getElementById('btn-triage').addEventListener('click', () => navigate('/triage'));
@@ -57,7 +58,6 @@ export function renderHome(container, navigate) {
 }
 
 export function nav(current, navigate) {
-  const id = 'nav-' + Math.random().toString(36).slice(2, 7);
   return `<nav class="nav">
     <a class="nav-logo" href="#/">
       <img src="public/oaklands-logo.jpg" alt="Oaklands logo" />
@@ -66,8 +66,6 @@ export function nav(current, navigate) {
         <span class="nav-logo-sub">Team Training</span>
       </div>
     </a>
-
-    <!-- Desktop nav -->
     <div class="nav-links nav-desktop">
       <a class="nav-btn ${current === '/' ? 'active' : ''}" href="#/">Home</a>
       <a class="nav-btn ${current === '/train' ? 'active' : ''}" href="#/train">Communication</a>
@@ -76,12 +74,8 @@ export function nav(current, navigate) {
       <a class="nav-btn ${current === '/tests' ? 'active' : ''}" href="#/tests">Diagnostics</a>
       <a class="nav-btn ${current === '/progress' ? 'active' : ''}" href="#/progress">Progress</a>
     </div>
-
-    <!-- Mobile hamburger -->
-    <button class="nav-hamburger" id="${id}-btn" aria-label="Open menu">☰</button>
-
-    <!-- Mobile dropdown -->
-    <div class="nav-mobile-menu" id="${id}-menu" style="display:none;">
+    <button class="nav-hamburger" id="nav-hamburger-btn" aria-label="Open menu">☰</button>
+    <div class="nav-mobile-menu" id="nav-mobile-menu" style="display:none;">
       <a class="nav-mobile-item ${current === '/' ? 'active' : ''}" href="#/">🏠 Home</a>
       <a class="nav-mobile-item ${current === '/train' ? 'active' : ''}" href="#/train">💬 Communication</a>
       <a class="nav-mobile-item ${current === '/terminology' ? 'active' : ''}" href="#/terminology">🩺 Terminology</a>
@@ -89,27 +83,26 @@ export function nav(current, navigate) {
       <a class="nav-mobile-item ${current === '/tests' ? 'active' : ''}" href="#/tests">🔬 Diagnostics</a>
       <a class="nav-mobile-item ${current === '/progress' ? 'active' : ''}" href="#/progress">📊 Progress</a>
     </div>
-  </nav>
-  <script>
-    (function() {
-      var btn = document.getElementById('${id}-btn');
-      var menu = document.getElementById('${id}-menu');
-      if (btn && menu) {
-        btn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          var open = menu.style.display === 'block';
-          menu.style.display = open ? 'none' : 'block';
-          btn.textContent = open ? '☰' : '✕';
-        });
-        document.addEventListener('click', function() {
-          menu.style.display = 'none';
-          btn.textContent = '☰';
-        });
-        menu.addEventListener('click', function() {
-          menu.style.display = 'none';
-          btn.textContent = '☰';
-        });
-      }
-    })();
-  <\/script>`;
+  </nav>`;
+}
+
+export function setupHamburger() {
+  const btn = document.getElementById('nav-hamburger-btn');
+  const menu = document.getElementById('nav-mobile-menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const isOpen = menu.style.display === 'block';
+    menu.style.display = isOpen ? 'none' : 'block';
+    btn.textContent = isOpen ? '☰' : '✕';
+  });
+  document.addEventListener('click', function() {
+    menu.style.display = 'none';
+    btn.textContent = '☰';
+  });
+  menu.addEventListener('click', function(e) {
+    e.stopPropagation();
+    menu.style.display = 'none';
+    btn.textContent = '☰';
+  });
 }

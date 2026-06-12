@@ -1,6 +1,6 @@
 import { triageCategories, triageTrees, OUTCOMES } from '../data/triage.js';
 import { triageReference } from '../data/triageReference.js';
-import { nav } from './home.js';
+import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
 
 export function renderTriageHome(container, navigate) {
@@ -25,6 +25,7 @@ export function renderTriageHome(container, navigate) {
     </div>
   `;
 
+  setupHamburger();
   container.querySelectorAll('[data-triage]').forEach(card => {
     card.addEventListener('click', () => navigate('/triage/' + card.dataset.triage));
   });
@@ -93,6 +94,7 @@ export function renderTriageTree(container, navigate, categoryId) {
       btn.addEventListener('click', () => handleOption(parseInt(btn.dataset.option), node));
     });
 
+    setupHamburger();
     document.getElementById('back-triage-btn')?.addEventListener('click', () => navigate('/triage'));
     document.getElementById('tab-tree')?.addEventListener('click', () => { currentTab = 'tree'; render(); });
     document.getElementById('tab-ref')?.addEventListener('click', () => { currentTab = 'reference'; render(); });

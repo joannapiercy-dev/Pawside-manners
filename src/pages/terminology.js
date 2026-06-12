@@ -1,5 +1,5 @@
 import { termDecks, termQuizzes } from '../data/terminology.js';
-import { nav } from './home.js';
+import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
 
 export function renderTerminology(container, navigate) {
@@ -26,6 +26,7 @@ export function renderTerminology(container, navigate) {
     </div>
   `;
 
+  setupHamburger();
   container.querySelectorAll('[data-deck]').forEach(card => {
     card.addEventListener('click', () => navigate('/terminology/' + card.dataset.deck));
   });
@@ -71,6 +72,7 @@ export function renderDeck(container, navigate, deckId) {
       </div>
     `;
 
+    setupHamburger();
     container.querySelectorAll('.mode-tab').forEach(tab => {
       tab.addEventListener('click', () => render(tab.dataset.mode));
     });

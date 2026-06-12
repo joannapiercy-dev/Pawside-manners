@@ -1,7 +1,7 @@
 import { scenarios, categories } from '../data/scenarios.js';
 import { markComplete, isComplete } from '../lib/progress.js';
 import { getRoleplayFeedback, getTrainerAnswer } from '../lib/api.js';
-import { nav } from './home.js';
+import { nav, setupHamburger } from './home.js';
 
 export function renderScenario(container, navigate, id) {
   const scenario = scenarios.find(s => s.id === id);
@@ -45,6 +45,7 @@ export function renderScenario(container, navigate, id) {
       </div>
     `;
 
+    setupHamburger();
     container.querySelectorAll('.mode-tab').forEach(tab => {
       tab.addEventListener('click', () => render(tab.dataset.mode));
     });
