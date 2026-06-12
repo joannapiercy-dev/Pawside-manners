@@ -62,12 +62,14 @@ export function renderDeck(container, navigate, deckId) {
         <div class="mode-tabs">
           <button class="mode-tab ${mode==='flashcards'?'active':''}" data-mode="flashcards">🃏 Flashcards</button>
           <button class="mode-tab ${mode==='quiz'?'active':''}" data-mode="quiz">✅ Quiz</button>
-          ${deck.id === 'medical-jargon' ? `<button class="mode-tab ${mode==='reference'?'active':''}" data-mode="reference">📋 Quick reference</button>` : ''}
+          ${['medical-jargon','medications','parasiticides'].includes(deck.id) ? `<button class="mode-tab ${mode==='reference'?'active':''}" data-mode="reference">📋 Quick reference</button>` : ''}
         </div>
 
         ${mode === 'flashcards' ? renderFlashcards(deck, cardIndex, flipped, showAll) : ''}
         ${mode === 'quiz' ? renderTermQuiz(quizzes) : ''}
-        ${mode === 'reference' ? renderJargonReference(deck) : ''}
+        ${mode === 'reference' && deck.id === 'medical-jargon' ? renderJargonReference(deck) : ''}
+        ${mode === 'reference' && deck.id === 'medications' ? renderMedsReference(deck) : ''}
+        ${mode === 'reference' && deck.id === 'parasiticides' ? renderParasiticidesReference(deck) : ''}
 
         <div style="margin-top:2rem;">
           <button class="btn-ghost" id="back-btn">← Back to terminology</button>
@@ -431,5 +433,207 @@ function renderJargonReference(deck) {
           </div>
         </div>
       `).join('')}
+    </div>`;
+}
+
+// ── MEDICATIONS QUICK REFERENCE ──
+function renderMedsReference(deck) {
+  const sections = [
+    {
+      label: 'Antibiotics',
+      icon: '🦠',
+      ids: ['m-01','m-03','m-07','m-08','m-10','m-13','m-23','m-35'],
+      note: 'Always complete the full course. Give most with food.'
+    },
+    {
+      label: 'Pain relief — NSAIDs',
+      icon: '💊',
+      ids: ['m-11','m-19','m-22','m-27'],
+      note: 'Always give with food. Never give to cats without specific veterinary direction. Never combine two NSAIDs.'
+    },
+    {
+      label: 'Pain relief — opioids & other',
+      icon: '💊',
+      ids: ['m-05','m-18','m-38','m-28b'],
+      note: 'sr buprenorphine = cats only, lasts 72 hours.'
+    },
+    {
+      label: 'Heart & blood pressure',
+      icon: '🫀',
+      ids: ['m-04','m-17','m-30','m-33'],
+      note: 'Vetmedin ideally given 1 hour before food. Never stop cardiac medications abruptly.'
+    },
+    {
+      label: 'Steroids & immunosuppressants',
+      icon: '🛡️',
+      ids: ['m-02','m-12','m-31'],
+      note: 'Never stop steroids abruptly after prolonged use. Monitor for side effects with long-term use.'
+    },
+    {
+      label: 'Dermatology & itch',
+      icon: '🐾',
+      ids: ['m-40'],
+      note: ''
+    },
+    {
+      label: 'Gastrointestinal',
+      icon: '🫁',
+      ids: ['m-06','m-14','m-24','m-26','m-28','m-36'],
+      note: 'Sulcrate: give on empty stomach, space 2 hours from other medications.'
+    },
+    {
+      label: 'Endocrinology',
+      icon: '⚗️',
+      ids: ['m-15','m-25','m-34','m-37','m-39'],
+      note: 'All endocrine medications require regular blood monitoring. Timing of monitoring relative to dosing is often critical (especially Vetoryl).'
+    },
+    {
+      label: 'Neurology & behaviour',
+      icon: '🧠',
+      ids: ['m-16','m-09','m-29'],
+      note: 'Phenobarbital: blood monitoring every 6 months. Behaviour medications work best alongside training.'
+    },
+    {
+      label: 'Antivirals',
+      icon: '🔬',
+      ids: ['m-20'],
+      note: 'GS-441524: 84-day treatment course. Not yet formally licensed in Canada.'
+    },
+    {
+      label: 'Antifungals',
+      icon: '🍄',
+      ids: ['m-21'],
+      note: 'Check for drug interactions before dispensing.'
+    },
+    {
+      label: 'Urology',
+      icon: '💧',
+      ids: ['m-32'],
+      note: 'Blood pressure monitoring recommended during treatment.'
+    },
+    {
+      label: 'Liver support',
+      icon: '🌿',
+      ids: ['m-41'],
+      note: 'Supplement — not a substitute for treating the underlying cause.'
+    },
+  ];
+
+  const termMap = {};
+  deck.terms.forEach(t => termMap[t.id] = t);
+
+  return `
+    <div style="display:flex;flex-direction:column;gap:1.75rem;">
+      ${sections.map(s => {
+        const terms = s.ids.map(id => termMap[id]).filter(Boolean);
+        if (terms.length === 0) return '';
+        return `
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.75rem;padding-bottom:6px;border-bottom:2px solid var(--warm-dark);">
+              <span style="font-size:1.1rem;">${s.icon}</span>
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);">${s.label}</span>
+            </div>
+            ${s.note ? `<div style="font-size:12.5px;color:var(--ink-light);margin-bottom:0.6rem;font-style:italic;">⚠️ ${s.note}</div>` : ''}
+            <div style="overflow-x:auto;">
+              <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
+                <thead>
+                  <tr style="border-bottom:1px solid var(--warm-dark);">
+                    <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:30%;">Name(s)</th>
+                    <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:35%;">What it's for</th>
+                    <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;">Tell the client</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${terms.map((t, i) => `
+                    <tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+                      <td style="padding:9px 10px;vertical-align:top;font-weight:600;font-size:13px;color:var(--ink);">${t.term}</td>
+                      <td style="padding:9px 10px;vertical-align:top;font-size:13px;color:var(--ink-mid);line-height:1.5;">${t.meaning.split('.')[0]}.</td>
+                      <td style="padding:9px 10px;vertical-align:top;font-size:13px;color:var(--ink-mid);line-height:1.5;font-style:italic;">"${t.clientExplanation.split('.')[0]}."</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>`;
+      }).join('')}
+    </div>`;
+}
+
+// ── PARASITICIDES QUICK REFERENCE ──
+function renderParasiticidesReference(deck) {
+  const dogSections = [
+    { label: 'Fleas & ticks', ids: ['p-01','p-02','p-09'] },
+    { label: 'Fleas, ticks & worms', ids: ['p-03'] },
+    { label: 'Fleas only', ids: ['p-05'] },
+    { label: 'Fleas & worms', ids: ['p-04'] },
+    { label: 'Worms (including tapeworms)', ids: ['p-06','p-07'] },
+    { label: 'Worms (not tapeworms) — young puppies', ids: ['p-08'] },
+  ];
+  const catSections = [
+    { label: 'Fleas, ticks & worms (incl. tapeworms)', ids: ['p-10'] },
+    { label: 'Fleas & ticks', ids: ['p-13'] },
+    { label: 'Fleas, ticks & worms (not tapeworms)', ids: ['p-12'] },
+    { label: 'Fleas & worms (not tapeworms)', ids: ['p-11'] },
+    { label: 'Fleas only', ids: ['p-05','p-16b'] },
+    { label: 'Worms (including tapeworms)', ids: ['p-14','p-15','p-07'] },
+    { label: 'Worms (not tapeworms) — kittens', ids: ['p-16'] },
+  ];
+
+  const termMap = {};
+  deck.terms.forEach(t => termMap[t.id] = t);
+
+  function renderSection(sections, species) {
+    return sections.map(s => {
+      const terms = s.ids.map(id => termMap[id]).filter(Boolean);
+      if (terms.length === 0) return '';
+      return `
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px;">${s.label}</div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
+              <tbody>
+                ${terms.map((t, i) => {
+                  const dur = t.meaning.match(/lasts? [\w–]+ (year|month|week|day)s?/i)?.[0] || '';
+                  const rx = t.meaning.includes('prescription') ? '📋 Rx' : '🛒 OTC';
+                  const form = t.meaning.match(/topical|oral|injectable|liquid|chewable|chew|tablet|spot-on/i)?.[0] || '';
+                  return `<tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+                    <td style="padding:8px 10px;font-weight:600;font-size:13px;color:var(--ink);vertical-align:top;width:35%;">${t.term.replace(/ — (Dogs|Cats|Dogs & Cats|Dogs ONLY.*)/,'')}</td>
+                    <td style="padding:8px 10px;font-size:12.5px;color:var(--ink-mid);vertical-align:top;">${form ? form.charAt(0).toUpperCase()+form.slice(1) : ''}${dur ? ' · '+dur : ''}</td>
+                    <td style="padding:8px 10px;font-size:12.5px;vertical-align:top;text-align:center;">${rx}</td>
+                  </tr>`;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  return `
+    <div style="display:flex;flex-direction:column;gap:2rem;">
+
+      <div style="background:#fef9e7;border:1.5px solid #fde047;border-radius:var(--radius);padding:10px 14px;font-size:13px;color:#713f12;">
+        ⚠️ <strong>Advantix (dogs only — special order):</strong> contains permethrin — <strong>DEADLY to cats</strong>. Always ask about cats in the household before dispensing. <strong>📋 Rx required.</strong>
+      </div>
+
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;padding-bottom:6px;border-bottom:2px solid var(--ink);">
+          <span style="font-size:1.2rem;">🐕</span>
+          <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);">Dogs</span>
+        </div>
+        ${renderSection(dogSections, 'dog')}
+      </div>
+
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;padding-bottom:6px;border-bottom:2px solid var(--ink);">
+          <span style="font-size:1.2rem;">🐈</span>
+          <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);">Cats</span>
+        </div>
+        ${renderSection(catSections, 'cat')}
+      </div>
+
+      <div style="background:var(--warm);border-radius:var(--radius);padding:10px 14px;font-size:12.5px;color:var(--ink-mid);">
+        📋 <strong>Rx</strong> = prescription required &nbsp;|&nbsp; 🛒 <strong>OTC</strong> = over the counter (Advantage II only)
+      </div>
     </div>`;
 }
