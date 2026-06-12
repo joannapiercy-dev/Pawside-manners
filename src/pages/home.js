@@ -10,7 +10,7 @@ export function renderHome(container, navigate) {
         </div>
       </div>
       <h1>Speak with confidence.<br><em>Connect with clients.</em></h1>
-      <p class="hero-sub">Practical training for every member of your clinic team — build the skills, knowledge, and confidence to handle any situation.</p>
+      <p class="hero-sub">Practical training for every member of the Oaklands and Royal Bay team — build the skills, knowledge, and confidence to handle any situation.</p>
 
       <p style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1rem;">Start training</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;max-width:720px;margin:0 auto 1rem;">
@@ -57,6 +57,7 @@ export function renderHome(container, navigate) {
 }
 
 export function nav(current, navigate) {
+  const id = 'nav-' + Math.random().toString(36).slice(2, 7);
   return `<nav class="nav">
     <a class="nav-logo" href="#/">
       <img src="public/oaklands-logo.jpg" alt="Oaklands logo" />
@@ -65,7 +66,9 @@ export function nav(current, navigate) {
         <span class="nav-logo-sub">Team Training</span>
       </div>
     </a>
-    <div class="nav-links">
+
+    <!-- Desktop nav -->
+    <div class="nav-links nav-desktop">
       <a class="nav-btn ${current === '/' ? 'active' : ''}" href="#/">Home</a>
       <a class="nav-btn ${current === '/train' ? 'active' : ''}" href="#/train">Communication</a>
       <a class="nav-btn ${current === '/terminology' ? 'active' : ''}" href="#/terminology">Terminology</a>
@@ -73,5 +76,40 @@ export function nav(current, navigate) {
       <a class="nav-btn ${current === '/tests' ? 'active' : ''}" href="#/tests">Diagnostics</a>
       <a class="nav-btn ${current === '/progress' ? 'active' : ''}" href="#/progress">Progress</a>
     </div>
-  </nav>`;
+
+    <!-- Mobile hamburger -->
+    <button class="nav-hamburger" id="${id}-btn" aria-label="Open menu">☰</button>
+
+    <!-- Mobile dropdown -->
+    <div class="nav-mobile-menu" id="${id}-menu" style="display:none;">
+      <a class="nav-mobile-item ${current === '/' ? 'active' : ''}" href="#/">🏠 Home</a>
+      <a class="nav-mobile-item ${current === '/train' ? 'active' : ''}" href="#/train">💬 Communication</a>
+      <a class="nav-mobile-item ${current === '/terminology' ? 'active' : ''}" href="#/terminology">🩺 Terminology</a>
+      <a class="nav-mobile-item ${current === '/triage' ? 'active' : ''}" href="#/triage">🚨 Triage</a>
+      <a class="nav-mobile-item ${current === '/tests' ? 'active' : ''}" href="#/tests">🔬 Diagnostics</a>
+      <a class="nav-mobile-item ${current === '/progress' ? 'active' : ''}" href="#/progress">📊 Progress</a>
+    </div>
+  </nav>
+  <script>
+    (function() {
+      var btn = document.getElementById('${id}-btn');
+      var menu = document.getElementById('${id}-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var open = menu.style.display === 'block';
+          menu.style.display = open ? 'none' : 'block';
+          btn.textContent = open ? '☰' : '✕';
+        });
+        document.addEventListener('click', function() {
+          menu.style.display = 'none';
+          btn.textContent = '☰';
+        });
+        menu.addEventListener('click', function() {
+          menu.style.display = 'none';
+          btn.textContent = '☰';
+        });
+      }
+    })();
+  <\/script>`;
 }
