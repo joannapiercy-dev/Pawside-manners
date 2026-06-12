@@ -40,8 +40,9 @@ export function renderDeck(container, navigate, deckId) {
   let mode = 'flashcards';
   let cardIndex = 0;
   let flipped = false;
+  let showAll = false;
 
-  function render(m, idx = 0, isFlipped = false) {
+  function render(m, idx = 0, isFlipped = false, showAll = false) {
     window.scrollTo(0, 0);
     mode = m;
     cardIndex = idx;
@@ -64,7 +65,7 @@ export function renderDeck(container, navigate, deckId) {
           ${deck.id === 'medical-jargon' ? `<button class="mode-tab ${mode==='reference'?'active':''}" data-mode="reference">📋 Quick reference</button>` : ''}
         </div>
 
-        ${mode === 'flashcards' ? renderFlashcards(deck, cardIndex, flipped) : ''}
+        ${mode === 'flashcards' ? renderFlashcards(deck, cardIndex, flipped, showAll) : ''}
         ${mode === 'quiz' ? renderTermQuiz(quizzes) : ''}
         ${mode === 'reference' ? renderJargonReference(deck) : ''}
 
@@ -80,46 +81,67 @@ export function renderDeck(container, navigate, deckId) {
     });
     document.getElementById('back-btn').addEventListener('click', () => navigate('/terminology'));
 
-    if (mode === 'flashcards') setupFlashcards(deck, cardIndex, render);
+    if (mode === 'flashcards') setupFlashcards(deck, cardIndex, render, showAll);
     if (mode === 'quiz') setupTermQuiz(quizzes);
   }
 
   render(mode);
 }
 
+// ── FLASHCARD KNOWN STATE (persisted per deck) ──
+function getKnownIds(deckId) {
+  try { return JSON.parse(localStorage.getItem('known-' + deckId) || '[]'); } catch { return []; }
+}
+function setKnownIds(deckId, ids) {
+  try { localStorage.setItem('known-' + deckId, JSON.stringify(ids)); } catch {}
+}
+function isKnown(deckId, termId) { return getKnownIds(deckId).includes(termId); }
+function toggleKnown(deckId, termId) {
+  const ids = getKnownIds(deckId);
+  const idx = ids.indexOf(termId);
+  if (idx === -1) ids.push(termId); else ids.splice(idx, 1);
+  setKnownIds(deckId, ids);
+}
+
 // ── FLASHCARDS ──
-function renderFlashcards(deck, idx, flipped) {
-  const term = deck.terms[idx];
-  const progress = `${idx + 1} / ${deck.terms.length}`;
+function renderFlashcards(deck, idx, flipped, showAll) {
+  const knownIds = getKnownIds(deck.id);
+  const activeTerms = showAll ? deck.terms : deck.terms.filter(t => !knownIds.includes(t.id));
+  const displayTerms = activeTerms.length > 0 ? activeTerms : deck.terms;
+  const allHidden = activeTerms.length === 0;
+  const safeIdx = Math.min(idx, displayTerms.length - 1);
+  const term = displayTerms[safeIdx];
+  const known = knownIds.includes(term.id);
+  const remaining = deck.terms.length - knownIds.length;
 
   return `
     <div style="margin-bottom:1rem;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <span style="font-size:13px;color:var(--ink-light);">${progress}</span>
-        <span class="tag tag-mid">${term.category}</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:6px;">
+        <span style="font-size:13px;color:var(--ink-light);">${safeIdx + 1} / ${displayTerms.length}${!showAll && knownIds.length > 0 ? ` <span style="color:var(--green-soft);">· ${knownIds.length} known</span>` : ''}</span>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <span class="tag tag-mid">${term.category}</span>
+          ${known ? '<span style="font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px;background:var(--green-light);color:var(--green-soft);">✓ Got it</span>' : ''}
+        </div>
       </div>
       <div class="progress-bar-wrap">
-        <div class="progress-bar-fill" style="width:${Math.round((idx+1)/deck.terms.length*100)}%"></div>
+        <div class="progress-bar-fill" style="width:${Math.round((safeIdx+1)/displayTerms.length*100)}%"></div>
       </div>
     </div>
 
+    ${allHidden ? `
+      <div style="background:var(--green-light);border:1.5px solid var(--model-border);border-radius:var(--radius-lg);padding:2.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">🎉</div>
+        <div style="font-weight:600;color:var(--green-soft);margin-bottom:0.5rem;">You've marked all cards as known!</div>
+        <p style="font-size:14px;color:var(--ink-mid);margin-bottom:1.25rem;">Click "Show all" to review them, or shuffle to start fresh.</p>
+      </div>
+    ` : `
     <div id="flashcard" style="
-      background:white;
-      border:1px solid var(--warm-mid);
-      border-radius:var(--radius-lg);
-      padding:2.5rem 2rem;
-      min-height:260px;
-      cursor:pointer;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      box-shadow:var(--shadow-sm);
-      transition:box-shadow 0.15s;
-      position:relative;
-      user-select:none;
-    ">
+      background:${known ? 'var(--green-light)' : 'white'};
+      border:${known ? '1.5px solid var(--model-border)' : '1px solid var(--warm-mid)'};
+      border-radius:var(--radius-lg);padding:2.5rem 2rem;min-height:260px;cursor:pointer;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;box-shadow:var(--shadow-sm);transition:box-shadow 0.15s;
+      position:relative;user-select:none;">
       ${!flipped ? `
         <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1rem;">Term</div>
         <div style="font-size:1.8rem;font-family:'DM Serif Display',serif;color:var(--ink);margin-bottom:0.75rem;">${term.term}</div>
@@ -135,68 +157,93 @@ function renderFlashcards(deck, idx, flipped) {
         </div>
       `}
     </div>
+    `}
 
-    <div style="display:flex;gap:10px;margin-top:1.25rem;justify-content:center;">
-      <button class="btn-ghost" id="prev-btn" ${idx === 0 ? 'disabled style="opacity:0.3;"' : ''}>← Previous</button>
-      <button class="btn-secondary" id="flip-btn">${flipped ? 'Show term' : 'Reveal definition'}</button>
-      <button class="btn-ghost" id="next-btn" ${idx === deck.terms.length-1 ? 'disabled style="opacity:0.3;"' : ''}>Next →</button>
+    <div style="display:flex;gap:8px;margin-top:1.25rem;justify-content:center;flex-wrap:wrap;">
+      <button class="btn-ghost" id="prev-btn" ${safeIdx === 0 || allHidden ? 'disabled style="opacity:0.3;"' : ''}>← Prev</button>
+      ${!allHidden ? `<button class="btn-secondary" id="flip-btn">${flipped ? 'Show term' : 'Reveal'}</button>` : ''}
+      <button class="btn-ghost" id="next-btn" ${safeIdx === displayTerms.length-1 || allHidden ? 'disabled style="opacity:0.3;"' : ''}>Next →</button>
     </div>
 
-    <div style="margin-top:1rem;text-align:center;">
-      <button class="btn-ghost" id="shuffle-btn" style="font-size:13px;">🔀 Shuffle deck</button>
+    <div style="display:flex;gap:8px;margin-top:0.75rem;justify-content:center;flex-wrap:wrap;">
+      ${!allHidden ? `<button id="got-it-btn" style="
+        padding:8px 18px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;
+        font-family:'DM Sans',sans-serif;border:1.5px solid;transition:all 0.15s;
+        background:${known ? 'white' : 'var(--green-soft)'};
+        color:${known ? 'var(--ink-mid)' : 'white'};
+        border-color:${known ? 'var(--warm-dark)' : 'var(--green-soft)'};
+      ">${known ? '↩ Undo' : '✓ Got it!'}</button>` : ''}
+      <button class="btn-ghost" id="shuffle-btn" style="font-size:13px;">🔀 Shuffle</button>
+      <button class="btn-ghost" id="show-all-btn" style="font-size:13px;">${showAll || knownIds.length === 0 ? '' : `👁 Show all (${deck.terms.length})`}</button>
     </div>
   `;
 }
 
-function setupFlashcards(deck, idx, render) {
-  let currentIdx = idx;
-  let deckOrder = [...Array(deck.terms.length).keys()];
+function setupFlashcards(deck, idx, render, showAll = false) {
+  const knownIds = getKnownIds(deck.id);
+  const activeTerms = showAll ? deck.terms : deck.terms.filter(t => !knownIds.includes(t.id));
+  const displayTerms = activeTerms.length > 0 ? activeTerms : deck.terms;
+  let currentIdx = Math.min(idx, displayTerms.length - 1);
   let currentFlipped = false;
+  let currentShowAll = showAll;
 
-  function updateCard(newIdx, flip = false) {
-    currentIdx = newIdx;
-    currentFlipped = flip;
-    const term = deck.terms[deckOrder[currentIdx]];
-    const progress = `${currentIdx + 1} / ${deck.terms.length}`;
-
-    // Re-render just the card content
-    render('flashcards', currentIdx);
-  }
-
-  document.getElementById('flashcard').addEventListener('click', () => {
+  document.getElementById('flashcard')?.addEventListener('click', () => {
     currentFlipped = !currentFlipped;
     if (currentFlipped) markComplete('term-' + deck.id, 'flashcard');
-    render('flashcards', currentIdx, currentFlipped);
+    render('flashcards', currentIdx, currentFlipped, currentShowAll);
   });
 
   document.getElementById('flip-btn')?.addEventListener('click', (e) => {
     e.stopPropagation();
     currentFlipped = !currentFlipped;
-    render('flashcards', currentIdx, currentFlipped);
+    render('flashcards', currentIdx, currentFlipped, currentShowAll);
+  });
+
+  document.getElementById('got-it-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const term = displayTerms[currentIdx];
+    toggleKnown(deck.id, term.id);
+    currentFlipped = false;
+    // If marking as known and not showing all, advance to next card
+    const newKnown = getKnownIds(deck.id);
+    const newActive = currentShowAll ? deck.terms : deck.terms.filter(t => !newKnown.includes(t.id));
+    const newDisplay = newActive.length > 0 ? newActive : deck.terms;
+    const newIdx = Math.min(currentIdx, newDisplay.length - 1);
+    render('flashcards', newIdx, false, currentShowAll);
+    setupFlashcards(deck, newIdx, render, currentShowAll);
   });
 
   document.getElementById('prev-btn')?.addEventListener('click', () => {
-    if (currentIdx > 0) { currentFlipped = false; render('flashcards', currentIdx - 1, false); }
+    if (currentIdx > 0) { currentFlipped = false; render('flashcards', currentIdx - 1, false, currentShowAll); }
   });
 
   document.getElementById('next-btn')?.addEventListener('click', () => {
-    if (currentIdx < deck.terms.length - 1) { currentFlipped = false; render('flashcards', currentIdx + 1, false); }
+    if (currentIdx < displayTerms.length - 1) { currentFlipped = false; render('flashcards', currentIdx + 1, false, currentShowAll); }
+  });
+
+  document.getElementById('show-all-btn')?.addEventListener('click', () => {
+    currentShowAll = !currentShowAll;
+    currentFlipped = false;
+    render('flashcards', 0, false, currentShowAll);
+    setupFlashcards(deck, 0, render, currentShowAll);
   });
 
   document.getElementById('shuffle-btn')?.addEventListener('click', () => {
-    for (let i = deck.terms.length - 1; i > 0; i--) {
+    const terms = currentShowAll ? deck.terms : deck.terms.filter(t => !getKnownIds(deck.id).includes(t.id));
+    const active = terms.length > 0 ? terms : deck.terms;
+    for (let i = active.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [deck.terms[i], deck.terms[j]] = [deck.terms[j], deck.terms[i]];
+      [active[i], active[j]] = [active[j], active[i]];
     }
     currentFlipped = false;
-    render('flashcards', 0, false);
+    render('flashcards', 0, false, currentShowAll);
+    setupFlashcards(deck, 0, render, currentShowAll);
   });
 
-  // Keyboard navigation
   document.onkeydown = (e) => {
-    if (e.key === 'ArrowRight' && currentIdx < deck.terms.length - 1) { currentFlipped = false; render('flashcards', currentIdx + 1, false); }
-    if (e.key === 'ArrowLeft' && currentIdx > 0) { currentFlipped = false; render('flashcards', currentIdx - 1, false); }
-    if (e.key === ' ') { e.preventDefault(); currentFlipped = !currentFlipped; render('flashcards', currentIdx, currentFlipped); }
+    if (e.key === 'ArrowRight' && currentIdx < displayTerms.length - 1) { currentFlipped = false; render('flashcards', currentIdx + 1, false, currentShowAll); }
+    if (e.key === 'ArrowLeft' && currentIdx > 0) { currentFlipped = false; render('flashcards', currentIdx - 1, false, currentShowAll); }
+    if (e.key === ' ') { e.preventDefault(); currentFlipped = !currentFlipped; render('flashcards', currentIdx, currentFlipped, currentShowAll); }
   };
 }
 
