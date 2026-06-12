@@ -560,107 +560,78 @@ function renderMedsReference(deck) {
 }
 
 // ── PARASITICIDES QUICK REFERENCE ──
-function getCoverage(t) {
-  const m = t.meaning.toLowerCase();
-  const parts = [];
-  if (m.includes('flea')) parts.push('Fleas');
-  if (m.includes('tick')) parts.push('Ticks');
-  const wormsWithTape = (m.includes('tapeworm') || m.includes('including tapeworm'));
-  const wormsNoTape = m.includes('worm') && !wormsWithTape && !m.includes('not tapeworm');
-  const wormsNotTape = m.includes('not tapeworm') || (m.includes('worm') && m.includes('not') && m.includes('tapeworm'));
-  if (wormsWithTape) parts.push('Worms incl. tapeworms');
-  else if (wormsNotTape) parts.push('Worms (not tapeworms)');
-  else if (wormsNoTape) parts.push('Worms');
-  return parts.join(', ') || '—';
-}
-
 function renderParasiticidesReference(deck) {
-  const dogSections = [
-    { label: 'Fleas & ticks', ids: ['p-01','p-02','p-09'] },
-    { label: 'Fleas, ticks & worms', ids: ['p-03'] },
-    { label: 'Fleas only', ids: ['p-05'] },
-    { label: 'Fleas & worms', ids: ['p-04'] },
-    { label: 'Worms (including tapeworms)', ids: ['p-06','p-07'] },
-    { label: 'Worms (not tapeworms) — young puppies', ids: ['p-08'] },
+  const dogs = [
+    { name: 'Bravecto — injectable', covers: 'Fleas, Ticks', duration: '1 year', form: 'Injectable' },
+    { name: 'Bravecto — oral chew', covers: 'Fleas, Ticks', duration: '3 months', form: 'Oral chew' },
+    { name: 'Bravecto — topical', covers: 'Fleas, Ticks', duration: '3 months', form: 'Topical' },
+    { name: 'Nexgard', covers: 'Fleas, Ticks', duration: '1 month', form: 'Oral chew' },
+    { name: 'Simparica Trio', covers: 'Fleas, Ticks, Worms (not tapeworms)', duration: '1 month', form: 'Oral chew' },
+    { name: 'Revolution', covers: 'Fleas, Worms (not tapeworms or ticks)', duration: '1 month', form: 'Topical' },
+    { name: 'Advantage II', covers: 'Fleas only', duration: '1 month', form: 'Topical' },
+    { name: 'Interceptor Plus', covers: 'Worms incl. tapeworms', duration: 'Single dose', form: 'Oral chew' },
+    { name: 'Safe-Guard (fenbendazole)', covers: 'Worms incl. tapeworms', duration: '3-day course', form: 'Liquid' },
+    { name: 'Strongid T', covers: 'Worms (not tapeworms) — puppies only', duration: 'Weekly (young puppies)', form: 'Liquid' },
+    { name: 'Advantix ⚠️ SPECIAL ORDER', covers: 'Fleas, Ticks — DEADLY TO CATS', duration: '1 month', form: 'Topical' },
   ];
-  const catSections = [
-    { label: 'Fleas, ticks & worms (incl. tapeworms)', ids: ['p-10'] },
-    { label: 'Fleas & ticks', ids: ['p-13'] },
-    { label: 'Fleas, ticks & worms (not tapeworms)', ids: ['p-12'] },
-    { label: 'Fleas & worms (not tapeworms)', ids: ['p-11'] },
-    { label: 'Fleas only', ids: ['p-05','p-16b'] },
-    { label: 'Worms (including tapeworms)', ids: ['p-14','p-15','p-07'] },
-    { label: 'Worms (not tapeworms) — kittens', ids: ['p-16'] },
+  const cats = [
+    { name: 'Nexgard Combo', covers: 'Fleas, Ticks, Worms incl. tapeworms', duration: '1 month', form: 'Topical' },
+    { name: 'Revolution Plus', covers: 'Fleas, Ticks, Worms (not tapeworms)', duration: '1 month', form: 'Topical' },
+    { name: 'Revolution', covers: 'Fleas, Worms (not tapeworms or ticks)', duration: '1 month', form: 'Topical' },
+    { name: 'Bravecto', covers: 'Fleas, Ticks', duration: '3 months', form: 'Topical' },
+    { name: 'Advantage II', covers: 'Fleas only', duration: '1 month', form: 'Topical' },
+    { name: 'Milbemax', covers: 'Worms incl. tapeworms', duration: 'Single dose', form: 'Oral chew' },
+    { name: 'Profender', covers: 'Worms incl. tapeworms', duration: 'Single dose', form: 'Topical' },
+    { name: 'Safe-Guard (fenbendazole)', covers: 'Worms incl. tapeworms', duration: '3-day course', form: 'Liquid' },
+    { name: 'Strongid T', covers: 'Worms (not tapeworms) — kittens only', duration: 'Weekly (young kittens)', form: 'Liquid' },
   ];
 
-  const termMap = {};
-  deck.terms.forEach(t => termMap[t.id] = t);
-
-  function renderSection(sections, species) {
-    return sections.map(s => {
-      const terms = s.ids.map(id => termMap[id]).filter(Boolean);
-      if (terms.length === 0) return '';
-      return `
-        <div style="margin-bottom:1rem;">
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px;">${s.label}</div>
-          <div style="overflow-x:auto;">
-            <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
-              <thead><tr style="border-bottom:1px solid var(--warm-dark);">
-                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:28%;">Product</th>
-                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:30%;">Covers</th>
-                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:22%;">Duration</th>
-                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;">Form</th>
-                </tr></thead>
-              <thead><tr style="border-bottom:1px solid var(--warm-dark);">
-                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:28%;">Product</th>
-                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:30%;">Covers</th>
-                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:22%;">Duration</th>
-                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;">Form</th>
-                </tr></thead>
-              <tbody>
-                ${terms.map((t, i) => {
-                  const dur = t.meaning.match(/lasts? [\w–]+ (year|month|week|day)s?/i)?.[0] || '';
-                  const rx = t.meaning.includes('prescription') ? '📋 Rx' : '🛒 OTC';
-                  const form = t.meaning.match(/topical|oral|injectable|liquid|chewable|chew|tablet|spot-on/i)?.[0] || '';
-                  return `<tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
-                    <td style="padding:8px 10px;font-weight:600;font-size:13px;color:var(--ink);vertical-align:top;width:28%;">${t.term.replace(/ — (Dogs|Cats|Dogs & Cats|Dogs ONLY.*)/,'').replace(' (SPECIAL ORDER — TOXIC TO CATS)','')}</td>
-                    <td style="padding:8px 10px;font-size:12.5px;color:var(--ink-mid);vertical-align:top;width:30%;">${getCoverage(t)}</td>
-                    <td style="padding:8px 10px;font-size:12.5px;color:var(--ink-mid);vertical-align:top;width:22%;">${dur || '—'}</td>
-                    <td style="padding:8px 10px;font-size:12.5px;color:var(--ink-mid);vertical-align:top;">${form ? form.charAt(0).toUpperCase()+form.slice(1) : '—'}</td>
-                  </tr>`;
-                }).join('')}
-              </tbody>
-            </table>
-          </div>
-        </div>`;
-    }).join('');
+  function table(rows) {
+    return `<div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--warm-dark);">
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:28%;">Product</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:32%;">Covers</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:20%;">Duration</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;">Form</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((r, i) => `
+            <tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+              <td style="padding:9px 10px;font-weight:600;font-size:13px;color:${r.name.includes('⚠️')?'#991b1b':'var(--ink)'};vertical-align:top;">${r.name}</td>
+              <td style="padding:9px 10px;font-size:13px;color:var(--ink-mid);vertical-align:top;">${r.covers}</td>
+              <td style="padding:9px 10px;font-size:13px;color:var(--ink-mid);vertical-align:top;">${r.duration}</td>
+              <td style="padding:9px 10px;font-size:13px;color:var(--ink-mid);vertical-align:top;">${r.form}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
   }
 
   return `
     <div style="display:flex;flex-direction:column;gap:2rem;">
-
       <div style="background:#fef9e7;border:1.5px solid #fde047;border-radius:var(--radius);padding:10px 14px;font-size:13px;color:#713f12;">
-        ⚠️ <strong>Advantix (dogs only — special order):</strong> contains permethrin — <strong>DEADLY to cats</strong>. Always ask about cats in the household before dispensing. <strong>📋 Rx required.</strong>
+        ⚠️ <strong>Advantix (dogs only — special order):</strong> contains permethrin — <strong>DEADLY to cats</strong>. Always ask about cats in the household before dispensing.
       </div>
-
       <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;padding-bottom:6px;border-bottom:2px solid var(--ink);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.75rem;padding-bottom:6px;border-bottom:2px solid var(--ink);">
           <span style="font-size:1.2rem;">🐕</span>
           <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);">Dogs</span>
         </div>
-        ${renderSection(dogSections, 'dog')}
+        ${table(dogs)}
       </div>
-
       <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;padding-bottom:6px;border-bottom:2px solid var(--ink);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.75rem;padding-bottom:6px;border-bottom:2px solid var(--ink);">
           <span style="font-size:1.2rem;">🐈</span>
           <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);">Cats</span>
         </div>
-        ${renderSection(catSections, 'cat')}
+        ${table(cats)}
       </div>
-
       <div style="background:var(--warm);border-radius:var(--radius);padding:10px 14px;font-size:12.5px;color:var(--ink-mid);">
         All products require a prescription except <strong>Advantage II</strong> (OTC).
       </div>
     </div>`;
 }
+
