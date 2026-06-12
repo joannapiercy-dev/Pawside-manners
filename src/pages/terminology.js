@@ -470,10 +470,10 @@ function renderMedsReference(deck) {
       note: 'Never stop steroids abruptly after prolonged use. Monitor for side effects with long-term use.'
     },
     {
-      label: 'Dermatology & itch',
+      label: 'Dermatology & itch — dogs only',
       icon: '🐾',
-      ids: ['m-40'],
-      note: ''
+      ids: ['m-01b','m-25','m-25b','m-40'],
+      note: 'Apoquel, Numelvi, Cytopoint and Zenrelia are all for dogs only.'
     },
     {
       label: 'Gastrointestinal',
@@ -560,6 +560,20 @@ function renderMedsReference(deck) {
 }
 
 // ── PARASITICIDES QUICK REFERENCE ──
+function getCoverage(t) {
+  const m = t.meaning.toLowerCase();
+  const parts = [];
+  if (m.includes('flea')) parts.push('Fleas');
+  if (m.includes('tick')) parts.push('Ticks');
+  const wormsWithTape = (m.includes('tapeworm') || m.includes('including tapeworm'));
+  const wormsNoTape = m.includes('worm') && !wormsWithTape && !m.includes('not tapeworm');
+  const wormsNotTape = m.includes('not tapeworm') || (m.includes('worm') && m.includes('not') && m.includes('tapeworm'));
+  if (wormsWithTape) parts.push('Worms incl. tapeworms');
+  else if (wormsNotTape) parts.push('Worms (not tapeworms)');
+  else if (wormsNoTape) parts.push('Worms');
+  return parts.join(', ') || '—';
+}
+
 function renderParasiticidesReference(deck) {
   const dogSections = [
     { label: 'Fleas & ticks', ids: ['p-01','p-02','p-09'] },
@@ -591,15 +605,28 @@ function renderParasiticidesReference(deck) {
           <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px;">${s.label}</div>
           <div style="overflow-x:auto;">
             <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
+              <thead><tr style="border-bottom:1px solid var(--warm-dark);">
+                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:28%;">Product</th>
+                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:30%;">Covers</th>
+                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:22%;">Duration</th>
+                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;">Form</th>
+                </tr></thead>
+              <thead><tr style="border-bottom:1px solid var(--warm-dark);">
+                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:28%;">Product</th>
+                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:30%;">Covers</th>
+                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:22%;">Duration</th>
+                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;">Form</th>
+                </tr></thead>
               <tbody>
                 ${terms.map((t, i) => {
                   const dur = t.meaning.match(/lasts? [\w–]+ (year|month|week|day)s?/i)?.[0] || '';
                   const rx = t.meaning.includes('prescription') ? '📋 Rx' : '🛒 OTC';
                   const form = t.meaning.match(/topical|oral|injectable|liquid|chewable|chew|tablet|spot-on/i)?.[0] || '';
                   return `<tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
-                    <td style="padding:8px 10px;font-weight:600;font-size:13px;color:var(--ink);vertical-align:top;width:35%;">${t.term.replace(/ — (Dogs|Cats|Dogs & Cats|Dogs ONLY.*)/,'')}</td>
-                    <td style="padding:8px 10px;font-size:12.5px;color:var(--ink-mid);vertical-align:top;">${form ? form.charAt(0).toUpperCase()+form.slice(1) : ''}${dur ? ' · '+dur : ''}</td>
-                    <td style="padding:8px 10px;font-size:12.5px;vertical-align:top;text-align:center;">${rx}</td>
+                    <td style="padding:8px 10px;font-weight:600;font-size:13px;color:var(--ink);vertical-align:top;width:28%;">${t.term.replace(/ — (Dogs|Cats|Dogs & Cats|Dogs ONLY.*)/,'').replace(' (SPECIAL ORDER — TOXIC TO CATS)','')}</td>
+                    <td style="padding:8px 10px;font-size:12.5px;color:var(--ink-mid);vertical-align:top;width:30%;">${getCoverage(t)}</td>
+                    <td style="padding:8px 10px;font-size:12.5px;color:var(--ink-mid);vertical-align:top;width:22%;">${dur || '—'}</td>
+                    <td style="padding:8px 10px;font-size:12.5px;color:var(--ink-mid);vertical-align:top;">${form ? form.charAt(0).toUpperCase()+form.slice(1) : '—'}</td>
                   </tr>`;
                 }).join('')}
               </tbody>
@@ -633,7 +660,7 @@ function renderParasiticidesReference(deck) {
       </div>
 
       <div style="background:var(--warm);border-radius:var(--radius);padding:10px 14px;font-size:12.5px;color:var(--ink-mid);">
-        📋 <strong>Rx</strong> = prescription required &nbsp;|&nbsp; 🛒 <strong>OTC</strong> = over the counter (Advantage II only)
+        All products require a prescription except <strong>Advantage II</strong> (OTC).
       </div>
     </div>`;
 }

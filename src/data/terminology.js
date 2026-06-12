@@ -177,9 +177,9 @@ export const termDecks = [
       },
       {
         id: "j-21",
-        term: "Subcutaneous (SQ/SC)",
+        term: "SQ/SC",
         pronunciation: "sub-kyoo-TAY-nee-us",
-        meaning: "Under the skin. Often refers to injections given into the layer of tissue just beneath the skin.",
+        meaning: "Subcutaneous — under the skin. Often refers to injections given into the layer of tissue just beneath the skin.",
         clientExplanation: "A subcutaneous injection just means the medication is given under the skin rather than into a vein or muscle — it's usually quick and well-tolerated.",
         category: "Procedures"
       },
@@ -345,9 +345,9 @@ export const termDecks = [
       },
       {
         id: "j-p15",
-        term: "Oesophagostomy tube (E-tube)",
+        term: "Esophagostomy tube (E-tube)",
         pronunciation: "eh-sof-ah-GOS-toh-mee",
-        meaning: "A feeding tube placed through the skin of the neck directly into the oesophagus. Used when a patient cannot or will not eat — e.g. stomatitis recovery, hepatic lipidosis. Allows the owner to feed liquid food at home.",
+        meaning: "A feeding tube placed through the skin of the neck directly into the esophagus. Used when a patient cannot or will not eat — e.g. stomatitis recovery, hepatic lipidosis. Allows the owner to feed liquid food at home.",
         clientExplanation: "An E-tube is a small feeding tube in the neck that goes directly into the food pipe. It lets us feed your pet liquid food through the tube at home when they won't eat on their own.",
         category: "Procedures"
       },
@@ -882,6 +882,14 @@ export const termDecks = [
         category: "Antibiotics"
       },
       {
+        id: "m-01b",
+        term: "Apoquel (oclacitinib)",
+        pronunciation: "AP-oh-kwel / ok-lah-SIH-tih-nib",
+        meaning: "A JAK inhibitor used to control itch and inflammation associated with allergic skin disease in dogs. For dogs only. Fast-acting — often within 4 hours. Given twice daily initially, then once daily for maintenance.",
+        clientExplanation: "Apoquel targets the itch signal directly in dogs with skin allergies — it works quickly, often within a few hours. Given twice daily at first, then once daily long-term.",
+        category: "Dermatology"
+      },
+      {
         id: "m-02",
         term: "Atopica (cyclosporine)",
         pronunciation: "at-OH-pih-kah / sy-kloh-SPOR-een",
@@ -1067,11 +1075,19 @@ export const termDecks = [
       },
       {
         id: "m-25",
-        term: "Numelvi",
+        term: "Numelvi (lokivetmab)",
         pronunciation: "noo-MEL-vee",
-        meaning: "A veterinary medication used in the management of feline hyperthyroidism. Applied topically. Check current prescribing information for dosing and monitoring requirements.",
-        clientExplanation: "Numelvi is a topical treatment for an overactive thyroid in cats. We will show you exactly how and where to apply it.",
-        category: "Endocrinology"
+        meaning: "A JAK inhibitor used to control itch and inflammation associated with allergic skin disease in dogs. For dogs only. Oral tablet given daily.",
+        clientExplanation: "Numelvi is an oral allergy treatment for dogs that targets the itch signal directly. It works quickly and is given daily.",
+        category: "Dermatology"
+      },
+      {
+        id: "m-25b",
+        term: "Cytopoint (lokivetmab)",
+        pronunciation: "SY-toh-point",
+        meaning: "A monoclonal antibody injection used to control itch and skin inflammation associated with allergic skin disease in dogs. Targets canine IL-31, a key itch signalling protein. For dogs only. Given as an injection at the clinic every 4–8 weeks. Fast-acting — often within 24 hours.",
+        clientExplanation: "Cytopoint is an injection we give here at the clinic that directly targets the itch signal — it typically starts working within 24 hours and lasts 4–8 weeks. It's very safe and well tolerated.",
+        category: "Dermatology"
       },
       {
         id: "m-26",
