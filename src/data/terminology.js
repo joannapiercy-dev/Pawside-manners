@@ -547,6 +547,177 @@ export const termDecks = [
       }
     ]
   }
+  ,
+  {
+    id: "parasiticides",
+    title: "Parasiticides",
+    icon: "🦟",
+    description: "Flea, tick, and worm prevention and treatment — what your clinic carries, what each product covers, and key client information.",
+    color: "#f0fdf4",
+    colorDark: "#166534",
+    terms: [
+      {
+        id: "p-01",
+        term: "Bravecto — Dogs",
+        pronunciation: "BRAV-ek-toh",
+        meaning: "Covers fleas and ticks. Available in three forms: injectable (lasts 1 year), oral chewable tablet (lasts 3 months), or topical spot-on (lasts 3 months). Requires a prescription. Active ingredient: fluralaner. Safety note: gloves should be worn when applying the topical form — wash hands thoroughly afterwards even if gloves are used.",
+        clientExplanation: "Bravecto is one of our longer-lasting options — depending on the form, it protects against fleas and ticks for 3 months or even a full year with the injection. It's prescription-only. If using the spot-on, please wear gloves when applying and wash hands well afterwards.",
+        category: "Dogs — Fleas & Ticks"
+      },
+      {
+        id: "p-02",
+        term: "Nexgard — Dogs",
+        pronunciation: "NEKS-gard",
+        meaning: "Oral chewable tablet for dogs. Covers fleas and ticks. Given monthly. Requires a prescription. Active ingredient: afoxolaner.",
+        clientExplanation: "Nexgard is a once-a-month chewable tablet — most dogs take it like a treat. It covers both fleas and ticks and needs a prescription.",
+        category: "Dogs — Fleas & Ticks"
+      },
+      {
+        id: "p-03",
+        term: "Simparica Trio — Dogs",
+        pronunciation: "sim-PAR-ih-kah",
+        meaning: "Oral chewable tablet for dogs. Covers fleas, ticks, and intestinal worms (roundworms, hookworms, whipworms) — but NOT tapeworms. Given monthly. Requires a prescription.",
+        clientExplanation: "Simparica Trio is an all-in-one monthly chew that covers fleas, ticks, and most intestinal worms. It does not cover tapeworms, so we would add something else if that is a concern.",
+        category: "Dogs — Fleas, Ticks & Worms"
+      },
+      {
+        id: "p-04",
+        term: "Revolution — Dogs",
+        pronunciation: "rev-oh-LOO-shun",
+        meaning: "Topical spot-on for dogs. Covers fleas and intestinal worms (roundworms, hookworms) — but NOT ticks or tapeworms. Applied monthly. Requires a prescription. Active ingredient: selamectin.",
+        clientExplanation: "Revolution is a monthly spot-on that covers fleas and some intestinal worms, but not ticks. It is often used alongside a tick product if ticks are a concern.",
+        category: "Dogs — Fleas & Worms"
+      },
+      {
+        id: "p-05",
+        term: "Advantage II — Dogs & Cats",
+        pronunciation: "",
+        meaning: "Topical spot-on for dogs and cats. Covers fleas ONLY. Applied monthly. Does NOT require a prescription — classified as a pesticide rather than a drug. Active ingredients: imidacloprid, pyriproxyfen. Safe for cats (unlike Advantix).",
+        clientExplanation: "Advantage II is a flea-only spot-on that does not need a prescription. It is a good accessible option if fleas are the main concern.",
+        category: "Dogs & Cats — Fleas Only"
+      },
+      {
+        id: "p-06",
+        term: "Interceptor Plus — Dogs",
+        pronunciation: "",
+        meaning: "Oral chewable tablet for dogs. Covers intestinal worms including tapeworms. No persistent effect — kills worms present at the time of dosing only. Requires a prescription. Active ingredients: milbemycin oxime, praziquantel.",
+        clientExplanation: "Interceptor Plus treats intestinal worms including tapeworms. It clears out whatever worms are present at the time of dosing rather than providing ongoing prevention.",
+        category: "Dogs — Worms"
+      },
+      {
+        id: "p-07",
+        term: "Safe-Guard (fenbendazole) — Dogs & Cats",
+        pronunciation: "FEN-ben-dah-zole",
+        meaning: "Liquid dewormer for dogs and cats. Covers intestinal worms including tapeworms. Given daily for a short course (typically 3 days). No persistent effect.",
+        clientExplanation: "Safe-Guard is a liquid dewormer given daily for a few days. It is well tolerated in both dogs and cats and covers a broad range of worms including tapeworms.",
+        category: "Dogs & Cats — Worms"
+      },
+      {
+        id: "p-08",
+        term: "Strongid T (pyrantel pamoate) — Dogs/Puppies & Cats/Kittens",
+        pronunciation: "PY-ran-tel PAM-oh-ate",
+        meaning: "Liquid dewormer for puppies and kittens. Covers roundworms and hookworms — NOT tapeworms or whipworms. Given weekly to very young animals. No persistent effect. The only product on the formulary labelled for animals under 6 weeks of age.",
+        clientExplanation: "Strongid T is a gentle liquid dewormer for tiny puppies and kittens — given weekly while they are very young. It covers the most common worms in young animals.",
+        category: "Dogs & Cats — Worms (Young Animals)"
+      },
+      {
+        id: "p-09",
+        term: "Advantix — Dogs ONLY (SPECIAL ORDER — TOXIC TO CATS)",
+        pronunciation: "ad-VAN-tiks",
+        meaning: "Topical spot-on for DOGS ONLY. Covers fleas, ticks, and mosquitoes. Applied monthly. Requires a prescription. CRITICAL: Advantix contains permethrin which is DEADLY to cats — never use on cats or apply to dogs in households with cats.",
+        clientExplanation: "Advantix covers fleas, ticks, and mosquitoes — but I must ask first: do you have any cats at home? Advantix contains permethrin which is extremely toxic to cats. Even contact from a recently treated dog can be fatal to a cat. If there are cats in the household we will recommend a different product.",
+        category: "Dogs — Special Order ONLY"
+      },
+      {
+        id: "p-10",
+        term: "Nexgard Combo — Cats",
+        pronunciation: "NEKS-gard KOM-boh",
+        meaning: "Topical spot-on for cats. Covers fleas, ticks, and intestinal worms including tapeworms. Applied monthly. Requires a prescription.",
+        clientExplanation: "Nexgard Combo is our most comprehensive cat parasiticide — one monthly spot-on that covers fleas, ticks, and all the main intestinal worms including tapeworms.",
+        category: "Cats — Fleas, Ticks & Worms"
+      },
+      {
+        id: "p-11",
+        term: "Revolution — Cats",
+        pronunciation: "rev-oh-LOO-shun",
+        meaning: "Topical spot-on for cats. Covers fleas and intestinal worms (roundworms, hookworms) — NOT ticks or tapeworms. Applied monthly. Requires a prescription.",
+        clientExplanation: "Revolution for cats is a monthly spot-on covering fleas and the most common intestinal worms. It does not cover ticks — Revolution Plus would be needed for that.",
+        category: "Cats — Fleas & Worms"
+      },
+      {
+        id: "p-12",
+        term: "Revolution Plus — Cats",
+        pronunciation: "rev-oh-LOO-shun PLUS",
+        meaning: "Topical spot-on for cats. Covers fleas, ticks, and intestinal worms (roundworms, hookworms) — NOT tapeworms. Applied monthly. Requires a prescription.",
+        clientExplanation: "Revolution Plus adds tick coverage to regular Revolution — covering fleas, ticks, and intestinal worms. Does not cover tapeworms.",
+        category: "Cats — Fleas, Ticks & Worms"
+      },
+      {
+        id: "p-13",
+        term: "Bravecto — Cats",
+        pronunciation: "BRAV-ek-toh",
+        meaning: "Topical spot-on for cats. Covers fleas and ticks. Applied every 3 months. Requires a prescription. Safety note: gloves should be worn when applying — wash hands thoroughly afterwards.",
+        clientExplanation: "Bravecto for cats is a spot-on that lasts 3 months — great for owners who find monthly applications tricky. Please wear gloves when applying and wash hands afterwards.",
+        category: "Cats — Fleas & Ticks"
+      },
+      {
+        id: "p-14",
+        term: "Milbemax — Cats",
+        pronunciation: "MIL-beh-maks",
+        meaning: "Oral chewable tablet for cats. Covers intestinal worms including tapeworms. No persistent effect — treats worms present at the time of dosing only. Requires a prescription.",
+        clientExplanation: "Milbemax is a chewable tablet that treats intestinal worms in cats including tapeworms. It works at the time of dosing and is often given alongside a flea product.",
+        category: "Cats — Worms"
+      },
+      {
+        id: "p-15",
+        term: "Profender — Cats",
+        pronunciation: "PRO-fen-der",
+        meaning: "Topical spot-on for cats. Covers intestinal worms including tapeworms. No persistent effect. Useful for cats who resist oral medication. Requires a prescription.",
+        clientExplanation: "Profender is a spot-on dewormer — useful if your cat will not take tablets. It treats intestinal worms including tapeworms at the time of application.",
+        category: "Cats — Worms"
+      },
+      {
+        id: "p-16",
+        term: "Strongid T (pyrantel pamoate) — Cats/Kittens",
+        pronunciation: "PY-ran-tel PAM-oh-ate",
+        meaning: "Liquid dewormer for kittens. Covers roundworms and hookworms — NOT tapeworms. Given weekly to very young kittens. No persistent effect.",
+        clientExplanation: "Strongid T is a gentle liquid dewormer for tiny kittens — given weekly while they are very young.",
+        category: "Cats — Worms (Kittens)"
+      },
+      {
+        id: "p-16b",
+        term: "Advantage II — Cats",
+        pronunciation: "",
+        meaning: "Topical spot-on for cats. Covers fleas ONLY. Applied monthly. Does NOT require a prescription. Safe for use in cats (unlike Advantix, which is toxic to cats).",
+        clientExplanation: "Advantage II is a flea-only spot-on that does not need a prescription — a simple accessible option if fleas are the only concern for your cat.",
+        category: "Cats — Fleas Only"
+      },
+      {
+        id: "p-17",
+        term: "Prescription vs non-prescription parasiticides",
+        pronunciation: "",
+        meaning: "Most parasiticides require a valid veterinarian-client-patient relationship (VCPR) and a prescription. The exception is Advantage II (for both dogs and cats), which is classified as a pesticide and available over the counter.",
+        clientExplanation: "Most of our parasite prevention products are prescription-only. The main exception is Advantage II for dogs and cats, which you can pick up without a prescription.",
+        category: "General"
+      },
+      {
+        id: "p-19",
+        term: "Applying topical parasiticides — safety",
+        pronunciation: "",
+        meaning: "Gloves should always be worn when applying any topical spot-on product. Apply to the back of the neck where the animal cannot lick. Allow to dry before children or other pets contact the area. If product contacts skin, wash with soap and water promptly.",
+        clientExplanation: "When applying spot-on treatments at home: always wear gloves, apply to the back of the neck, and let it dry before letting kids or other pets near the area. Wash hands after applying even with gloves.",
+        category: "Safety"
+      },
+      {
+        id: "p-18",
+        term: "Permethrin toxicity in cats",
+        pronunciation: "per-METH-rin",
+        meaning: "Permethrin is found in some dog-only products (notably Advantix). It is highly toxic to cats — exposure can cause tremors, seizures, and death. Cats can be exposed by direct contact with a recently treated dog. This is a veterinary emergency.",
+        clientExplanation: "Never use dog flea products on cats. If a dog has been treated with Advantix, keep them separated from cats until the product has dried and the dog has been bathed. If a cat is ever exposed, call us immediately — it is an emergency.",
+        category: "Safety"
+      }
+    ]
+  }
 ];
 
 export const termQuizzes = [

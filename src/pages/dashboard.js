@@ -46,7 +46,7 @@ export function renderDashboard(container, navigate) {
         { label: 'Categories completed', val: triageDone, total: triageTotal }
       ], renderTriageRows(triageCategories, p, navigate))}
 
-      ${sectionBlock('🔬', 'Tests & procedures', '#f0fdf4', '#86efac', [
+      ${sectionBlock('🔬', 'Diagnostics', '#f0fdf4', '#86efac', [
         { label: 'Categories reviewed', val: testsViewed, total: testsTotal },
         { label: 'Quiz completed', val: testsQuizDone, total: 1 }
       ], renderTestRows(testCategories, p, navigate))}

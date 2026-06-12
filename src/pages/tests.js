@@ -19,8 +19,8 @@ export function renderTestsHome(container, navigate) {
   container.innerHTML = `
     ${nav('/tests', navigate)}
     <div class="page-content">
-      <h2 style="margin-bottom:0.5rem;">Tests & procedures</h2>
-      <p style="color:var(--ink-mid);margin-bottom:0.5rem;">What each test is for, fasting requirements, sedation, and what to tell clients when booking.</p>
+      <h2 style="margin-bottom:0.5rem;">Diagnostics</h2>
+      <p style="color:var(--ink-mid);margin-bottom:0.5rem;">What each diagnostic test is for, fasting requirements, sedation, and what to tell clients when booking.</p>
       <div style="background:#f0f7ff;border:1px solid #bcd4f5;border-radius:var(--radius);padding:10px 14px;font-size:13.5px;color:#1e3a5f;margin-bottom:2rem;">
         ⚠️ <strong>Key rule:</strong> If injectable sedation is required for any test or procedure, the patient must be fasted for at least 6 hours — regardless of what the test is for.
       </div>
