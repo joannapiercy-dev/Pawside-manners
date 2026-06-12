@@ -61,10 +61,12 @@ export function renderDeck(container, navigate, deckId) {
         <div class="mode-tabs">
           <button class="mode-tab ${mode==='flashcards'?'active':''}" data-mode="flashcards">🃏 Flashcards</button>
           <button class="mode-tab ${mode==='quiz'?'active':''}" data-mode="quiz">✅ Quiz</button>
+          ${deck.id === 'medical-jargon' ? `<button class="mode-tab ${mode==='reference'?'active':''}" data-mode="reference">📋 Quick reference</button>` : ''}
         </div>
 
         ${mode === 'flashcards' ? renderFlashcards(deck, cardIndex, flipped) : ''}
         ${mode === 'quiz' ? renderTermQuiz(quizzes) : ''}
+        ${mode === 'reference' ? renderJargonReference(deck) : ''}
 
         <div style="margin-top:2rem;">
           <button class="btn-ghost" id="back-btn">← Back to terminology</button>
@@ -303,4 +305,84 @@ function setupTermQuiz(quizzes) {
   }
 
   showQuestion();
+}
+
+// ── JARGON QUICK REFERENCE ──
+function renderJargonReference(deck) {
+  // Group terms by top-level category
+  const sectionOrder = [
+    { key: 'General', label: 'General clinical terms' },
+    { key: 'Conditions', label: 'Conditions' },
+    { key: 'Procedures', label: 'Procedures' },
+    { key: 'Acronyms', label: 'Acronyms — general' },
+    { key: 'Acronyms (Internal)', label: 'Acronyms — internal clinic use' },
+  ];
+
+  // Collect all unique top-level categories from the terms
+  const allCats = [...new Set(deck.terms.map(t => {
+    const c = t.category || 'General';
+    // Map to top-level section
+    if (c.startsWith('Acronyms (Internal)')) return 'Acronyms (Internal)';
+    if (c.startsWith('Acronyms')) return 'Acronyms';
+    if (c.includes('Procedures') || c === 'Conditions / Procedures') return 'Procedures';
+    if (c === 'Urology' || c === 'Dentistry / Oral' || c === 'Conditions / Procedures') return 'Conditions';
+    if (['Dermatology','Gastroenterology','Neurology','Oncology','Cardiology',
+         'Internal Medicine','Respiratory','ENT','Breed-specific','Public Health',
+         'Orthopaedics','Ophthalmology'].includes(c)) return 'General';
+    return 'General';
+  }))];
+
+  function termsForSection(sectionKey) {
+    return deck.terms.filter(t => {
+      const c = t.category || 'General';
+      if (sectionKey === 'Acronyms (Internal)') return c.startsWith('Acronyms (Internal)');
+      if (sectionKey === 'Acronyms') return c.startsWith('Acronyms') && !c.startsWith('Acronyms (Internal)');
+      if (sectionKey === 'Procedures') return c.includes('Procedures') || c === 'Conditions / Procedures';
+      if (sectionKey === 'Conditions') return c === 'Urology' || c === 'Dentistry / Oral';
+      // General = everything else that isn't the above
+      return !c.startsWith('Acronyms') && !c.includes('Procedures') &&
+             c !== 'Urology' && c !== 'Dentistry / Oral' && c !== 'Conditions / Procedures';
+    });
+  }
+
+  const sections = sectionOrder.map(s => ({
+    ...s,
+    terms: termsForSection(s.key)
+  })).filter(s => s.terms.length > 0);
+
+  return `
+    <div style="display:flex;flex-direction:column;gap:2rem;">
+      ${sections.map(section => `
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+            color:var(--ink-light);margin-bottom:0.75rem;padding-bottom:6px;
+            border-bottom:2px solid var(--warm-dark);">
+            ${section.label}
+          </div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
+              <thead>
+                <tr style="border-bottom:1px solid var(--warm-dark);">
+                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;
+                    letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:28%;">Term</th>
+                  <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;
+                    letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;">Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${section.terms.map((t, i) => `
+                  <tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+                    <td style="padding:9px 10px;vertical-align:top;">
+                      <div style="font-weight:600;font-size:13.5px;color:var(--ink);">${t.term}</div>
+                      ${t.pronunciation ? `<div style="font-size:11.5px;color:var(--ink-light);font-style:italic;">/ ${t.pronunciation} /</div>` : ''}
+                    </td>
+                    <td style="padding:9px 10px;vertical-align:top;font-size:13px;color:var(--ink-mid);line-height:1.55;">${t.meaning}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `).join('')}
+    </div>`;
 }

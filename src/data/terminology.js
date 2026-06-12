@@ -220,22 +220,22 @@ export const termDecks = [
         term: "Idiopathic cystitis",
         pronunciation: "id-ee-oh-PATH-ik sis-TY-tis",
         meaning: "Bladder inflammation with no identifiable underlying cause — no infection, no crystals, no stones found. Very common in cats, often triggered by stress (Feline Idiopathic Cystitis, or FIC). Signs include straining, frequent urination, blood in urine, and pain. Can look identical to a UTI but does not respond to antibiotics.",
-        clientExplanation: "Your cat's bladder is inflamed, but we haven't found an infection or crystals causing it — in cats this is very common and is often triggered by stress. It's called idiopathic cystitis. Managing stress and increasing water intake are key parts of treatment.",
+        clientExplanation: "Your cat's bladder is inflamed, but we haven't found an infection or crystals causing it — in cats this is very common and is often triggered by stress. Managing stress and increasing water intake are key parts of treatment.",
         category: "Urology"
       },
       {
         id: "j-c02",
         term: "Stomatitis",
         pronunciation: "stoh-mah-TY-tis",
-        meaning: "Severe, painful inflammation of the mouth and oral tissues. In cats, often immune-mediated — the immune system overreacts to dental plaque, causing extreme tissue inflammation throughout the mouth. Treatment often requires full-mouth or near-full-mouth tooth extraction. One of the most painful conditions seen in feline medicine.",
-        clientExplanation: "Stomatitis means severe inflammation of the mouth — it's extremely painful. In cats, it's often caused by the immune system reacting to the teeth themselves. Treatment usually involves removing most or all of the teeth, which sounds drastic but typically provides significant relief.",
+        meaning: "Severe, painful inflammation of the mouth and oral tissues. In cats, often immune-mediated — the immune system overreacts to dental plaque causing extreme tissue inflammation throughout the mouth. Treatment often requires full-mouth or near-full-mouth tooth extraction.",
+        clientExplanation: "Stomatitis means severe inflammation of the mouth — it's extremely painful. In cats it's often caused by the immune system reacting to the teeth themselves. Treatment usually involves removing most or all of the teeth, which sounds drastic but typically provides significant relief.",
         category: "Dentistry / Oral"
       },
       {
         id: "j-p01",
         term: "Cystotomy",
         pronunciation: "sis-TOT-oh-mee",
-        meaning: "Surgical opening of the bladder — performed to remove bladder stones, polyps, or masses, or to investigate the bladder wall. The bladder is sutured closed after the procedure.",
+        meaning: "Surgical opening of the bladder — performed to remove bladder stones, polyps, or masses. The bladder is sutured closed after the procedure.",
         clientExplanation: "A cystotomy is a surgery to open the bladder — usually to remove stones or growths inside. The bladder is stitched closed afterwards and the patient needs rest during recovery.",
         category: "Procedures"
       },
@@ -244,71 +244,71 @@ export const termDecks = [
         term: "Enterotomy",
         pronunciation: "en-teh-ROT-oh-mee",
         meaning: "Surgical incision into the intestine — performed to remove a foreign body, biopsy the intestinal wall, or relieve an obstruction.",
-        clientExplanation: "An enterotomy means making a surgical opening in the intestine — usually to remove something stuck there. It requires careful post-operative monitoring.",
+        clientExplanation: "An enterotomy means making a surgical opening in the intestine — usually to remove something stuck there.",
         category: "Procedures"
       },
       {
         id: "j-p03",
         term: "Exploratory laparotomy",
         pronunciation: "lap-ah-ROT-oh-mee",
-        meaning: "A surgical procedure where the abdomen is opened to examine the abdominal organs directly. Performed when imaging has not provided a definitive diagnosis, or when a problem is identified that requires surgical correction.",
-        clientExplanation: "An exploratory laparotomy means opening the abdomen to have a direct look at the organs inside. It's done when we need to find or fix something that we can't fully assess from the outside.",
+        meaning: "A surgical procedure where the abdomen is opened to examine the organs directly. Performed when imaging has not provided a definitive diagnosis, or when a problem requires surgical correction.",
+        clientExplanation: "An exploratory laparotomy means opening the abdomen to have a direct look at the organs inside — done when we need to find or fix something we can't fully assess from the outside.",
         category: "Procedures"
       },
       {
         id: "j-p04",
         term: "Splenectomy",
         pronunciation: "splen-EK-toh-mee",
-        meaning: "Surgical removal of the spleen. Often performed when a splenic mass or tumour is found. The spleen has important immune functions but dogs and cats can live normally without it.",
-        clientExplanation: "A splenectomy means removing the spleen — usually because a growth has been found on it. The good news is that dogs and cats can live a normal life without their spleen.",
+        meaning: "Surgical removal of the spleen. Often performed when a splenic mass or tumour is found. Dogs and cats can live normally without a spleen.",
+        clientExplanation: "A splenectomy means removing the spleen — usually because a growth has been found on it. Dogs and cats can live a normal life without their spleen.",
         category: "Procedures"
       },
       {
         id: "j-p05",
-        term: "TPLO (Tibial Plateau Levelling Osteotomy)",
+        term: "TPLO",
         pronunciation: "tee-pee-el-oh",
-        meaning: "A surgical procedure to stabilise the knee (stifle) joint after a cranial cruciate ligament (CCL) tear — the canine equivalent of an ACL tear in people. The tibial plateau is cut and rotated to change the mechanics of the joint, eliminating the instability. One of the most common orthopaedic surgeries in dogs.",
-        clientExplanation: "TPLO is the surgery we do to fix a torn cruciate ligament in the knee — similar to an ACL repair in people. We reshape the bone rather than replacing the ligament, and it has excellent outcomes. Recovery takes around 8–12 weeks of strict rest.",
+        meaning: "Tibial Plateau Levelling Osteotomy. A surgical procedure to stabilise the knee (stifle) after a cranial cruciate ligament (CCL) tear — the canine equivalent of an ACL tear. The tibial plateau is cut and rotated to change joint mechanics. One of the most common orthopaedic surgeries in dogs. Recovery takes 8–12 weeks of strict rest.",
+        clientExplanation: "TPLO is the surgery we do to fix a torn cruciate ligament in the knee — similar to an ACL repair in people. Recovery takes around 8–12 weeks of strict rest.",
         category: "Procedures / Orthopaedics"
       },
       {
         id: "j-p06",
         term: "Enucleation",
         pronunciation: "eh-nyoo-klee-AY-shun",
-        meaning: "Surgical removal of the eye. Performed when an eye is irreparably damaged, blind and painful, affected by an uncontrollable tumour, or when severe glaucoma cannot be managed medically.",
-        clientExplanation: "Enucleation means removing the eye. It sounds extreme, but it's often the kindest option when an eye is causing ongoing pain and cannot be saved. Most pets adapt remarkably well and are much more comfortable afterwards.",
+        meaning: "Surgical removal of the eye. Performed when an eye is irreparably damaged, blind and painful, affected by tumour, or when severe glaucoma cannot be managed medically.",
+        clientExplanation: "Enucleation means removing the eye. It's often the kindest option when an eye is causing ongoing pain and cannot be saved. Most pets adapt remarkably well and are much more comfortable afterwards.",
         category: "Procedures / Ophthalmology"
       },
       {
         id: "j-p07",
         term: "Ovariohysterectomy vs Ovariectomy",
         pronunciation: "oh-vair-ee-oh-his-teh-REK-toh-mee / oh-vair-ee-EK-toh-mee",
-        meaning: "Both are forms of spaying. Ovariohysterectomy (OHE) removes both the ovaries AND the uterus — the traditional spay. Ovariectomy removes only the ovaries, leaving the uterus in place. Both are considered equally safe and effective when performed in young healthy animals. Ovariectomy is increasingly preferred as it is a smaller surgery with less risk.",
-        clientExplanation: "Both are spay procedures — one removes just the ovaries, the other removes the ovaries and uterus. The vet will explain which approach they recommend for your pet. Both prevent pregnancy and heat cycles.",
+        meaning: "Both are forms of spaying. Ovariohysterectomy (OHE) removes the ovaries AND uterus. Ovariectomy removes only the ovaries. Both are considered equally safe and effective. Ovariectomy is increasingly preferred as it involves less surgery.",
+        clientExplanation: "Both are spay procedures — one removes just the ovaries, the other removes the ovaries and uterus. Both prevent pregnancy and heat cycles.",
         category: "Procedures"
       },
       {
         id: "j-p08",
         term: "Cryptorchid neuter",
         pronunciation: "krip-TOR-kid",
-        meaning: "Neuter of a male animal where one or both testicles have not descended into the scrotum. The undescended testicle may be in the inguinal canal (between the abdomen and scrotum — inguinal cryptorchid) or inside the abdomen (abdominal cryptorchid). Abdominal cryptorchids require abdominal surgery to locate and remove the testicle. Important to neuter as undescended testicles carry a significantly higher cancer risk.",
-        clientExplanation: "A cryptorchid neuter is for a male pet where one testicle hasn't come down into the normal position. Depending on where the testicle is, we may need to do a more involved surgery to find and remove it. It's important to do this because retained testicles have a much higher risk of becoming cancerous.",
+        meaning: "Neuter of a male animal where one or both testicles have not descended. Inguinal cryptorchid = testicle in the inguinal canal. Abdominal cryptorchid = testicle inside the abdomen (requires abdominal surgery). Retained testicles carry a significantly higher cancer risk.",
+        clientExplanation: "A cryptorchid neuter is for a male pet where one testicle hasn't come down into the normal position. Depending on where the testicle is, a more involved surgery may be needed to find and remove it.",
         category: "Procedures"
       },
       {
         id: "j-p09",
         term: "Anal sacculectomy",
         pronunciation: "AY-nal sak-yoo-LEK-toh-mee",
-        meaning: "Surgical removal of one or both anal sacs. Performed when anal sacs are chronically infected, impacted, ruptured, or affected by tumour (anal sac adenocarcinoma). Carries a risk of faecal incontinence if the surrounding sphincter nerves are damaged.",
-        clientExplanation: "Anal sacculectomy means removing the anal glands — usually because they keep getting infected or there is a growth in one of them. The vet will discuss the risks and recovery with you.",
+        meaning: "Surgical removal of one or both anal sacs. Performed for chronic infection, impaction, rupture, or tumour. Carries a risk of faecal incontinence if sphincter nerves are damaged.",
+        clientExplanation: "Anal sacculectomy means removing the anal glands — usually because they keep getting infected or there is a growth in one of them.",
         category: "Procedures"
       },
       {
         id: "j-p10",
-        term: "FHO (Femoral Head Ostectomy)",
-        pronunciation: "eff-aitch-oh / FEE-moh-ral HEAD os-TEK-toh-mee",
-        meaning: "Surgical removal of the head and neck of the femur (thigh bone) — the ball part of the hip joint. The body forms a 'false joint' of scar tissue that replaces the hip. Used to treat severe hip dysplasia, fractures of the femoral head, or Legg-Calvé-Perthes disease. Better suited to smaller animals.",
-        clientExplanation: "FHO means removing the ball part of the hip joint and letting the body form its own replacement joint using scar tissue. It works best in smaller dogs and cats. Most animals regain good function with physiotherapy.",
+        term: "FHO",
+        pronunciation: "eff-aitch-oh",
+        meaning: "Femoral Head Ostectomy. Surgical removal of the head and neck of the femur (the ball of the hip joint). The body forms a false joint of scar tissue. Used for severe hip dysplasia, femoral head fractures, or Legg-Calvé-Perthes disease. Best suited to smaller animals.",
+        clientExplanation: "FHO means removing the ball part of the hip joint and letting the body form its own replacement joint using scar tissue. Most animals regain good function with physiotherapy.",
         category: "Procedures / Orthopaedics"
       },
       {
@@ -316,270 +316,502 @@ export const termDecks = [
         term: "Gastrotomy",
         pronunciation: "gas-TROT-oh-mee",
         meaning: "Surgical incision into the stomach — performed to remove a foreign body or gastric mass.",
-        clientExplanation: "A gastrotomy means opening the stomach surgically — usually to remove something that has been swallowed and is stuck there.",
+        clientExplanation: "A gastrotomy means opening the stomach surgically — usually to remove something swallowed and stuck there.",
         category: "Procedures"
       },
       {
         id: "j-p12",
         term: "Gastropexy",
         pronunciation: "GAS-troh-pek-see",
-        meaning: "A surgical procedure that permanently attaches the stomach to the abdominal wall to prevent it from rotating. Used to treat or prevent GDV (bloat) in large and giant breed dogs. Can be performed as a standalone preventive procedure or at the time of treating an acute GDV.",
-        clientExplanation: "A gastropexy tacks the stomach to the body wall so it can't twist — it's used to prevent or treat bloat (GDV). It's often recommended as a preventive measure in large deep-chested breeds like Great Danes and German Shepherds.",
+        meaning: "Surgical procedure that permanently attaches the stomach to the abdominal wall to prevent rotation. Used to treat or prevent GDV (bloat) in large and giant breeds. Can be performed preventively or at the time of treating an acute GDV.",
+        clientExplanation: "A gastropexy tacks the stomach to the body wall so it can't twist — it's used to prevent or treat bloat. Often recommended preventively in deep-chested breeds like Great Danes and German Shepherds.",
         category: "Procedures"
       },
       {
         id: "j-p13",
         term: "Perineal urethrostomy (PU)",
         pronunciation: "peh-RIN-ee-al yoo-reeth-ROS-toh-mee",
-        meaning: "A surgical procedure performed in male cats to widen the urethral opening and prevent recurrent urinary blockages. The narrow part of the urethra is removed and a wider opening is created. Considered when a cat has had multiple obstructions. The cat can urinate normally after surgery but the anatomy is permanently changed.",
-        clientExplanation: "A PU surgery widens the urinary opening in male cats who keep getting blocked. It means the narrow part that keeps getting obstructed is removed and a wider opening is made. It significantly reduces the chance of future blockages.",
+        meaning: "Surgical procedure in male cats to widen the urethral opening and prevent recurrent urinary blockages. The narrow part of the urethra is removed and a wider opening created. The cat can urinate normally after surgery.",
+        clientExplanation: "A PU surgery widens the urinary opening in male cats who keep getting blocked. It significantly reduces the chance of future blockages.",
         category: "Procedures / Urology"
       },
       {
         id: "j-p14",
         term: "Pyometra",
         pronunciation: "py-oh-MEE-trah",
-        meaning: "A life-threatening infection of the uterus, most commonly seen in older unspayed female dogs and cats. Pus accumulates in the uterus. Open pyometra: the cervix is open and discharge is visible. Closed pyometra: the cervix is closed, discharge is not visible, and the animal is often more seriously ill. Emergency surgery (OHE) is the treatment of choice.",
-        clientExplanation: "Pyometra is a serious infection of the uterus — it's a life-threatening condition that requires emergency surgery to remove the infected uterus. It's most common in older unspayed females.",
+        meaning: "Life-threatening infection of the uterus, most commonly in older unspayed females. Open pyometra: cervix is open, discharge visible. Closed pyometra: cervix is closed, no discharge, animal often more seriously ill. Emergency OHE is the treatment of choice.",
+        clientExplanation: "Pyometra is a serious infection of the uterus — a life-threatening condition requiring emergency surgery. Most common in older unspayed females.",
         category: "Conditions / Procedures"
       },
       {
         id: "j-p15",
         term: "Oesophagostomy tube (E-tube)",
         pronunciation: "eh-sof-ah-GOS-toh-mee",
-        meaning: "A feeding tube surgically placed through the skin of the neck directly into the oesophagus. Used when a patient cannot or will not eat voluntarily — e.g. severe illness, stomatitis recovery, hepatic lipidosis. Allows the owner to feed liquid food at home. Often placed under a light anaesthetic.",
-        clientExplanation: "An oesophagostomy tube — or E-tube — is a small feeding tube placed in the neck that goes directly into the food pipe. It lets us feed your pet liquid food through the tube at home when they won't eat on their own. We'll show you exactly how to use it.",
+        meaning: "A feeding tube placed through the skin of the neck directly into the oesophagus. Used when a patient cannot or will not eat — e.g. stomatitis recovery, hepatic lipidosis. Allows the owner to feed liquid food at home.",
+        clientExplanation: "An E-tube is a small feeding tube in the neck that goes directly into the food pipe. It lets us feed your pet liquid food through the tube at home when they won't eat on their own.",
         category: "Procedures"
       },
       {
         id: "j-p16",
-        term: "Fecal transplant (Fecal Microbiome Transplant — FMT)",
+        term: "Fecal transplant (FMT)",
         pronunciation: "",
-        meaning: "The transfer of stool from a healthy donor animal into the gastrointestinal tract of a recipient, with the goal of restoring a healthy gut microbiome. Used for chronic diarrhea, inflammatory bowel disease, post-antibiotic dysbiosis, and C. difficile-like conditions. Can be given orally (capsule), rectally, or via enema.",
-        clientExplanation: "A fecal transplant involves introducing stool from a healthy donor into your pet's gut to help restore the normal balance of gut bacteria. It sounds unusual but it can be very effective for certain types of chronic digestive problems.",
+        meaning: "Fecal Microbiome Transplant. Transfer of stool from a healthy donor into a recipient's GI tract to restore a healthy gut microbiome. Used for chronic diarrhea, IBD, post-antibiotic dysbiosis. Can be given orally, rectally, or via enema.",
+        clientExplanation: "A fecal transplant introduces stool from a healthy donor into your pet's gut to help restore normal gut bacteria. It can be very effective for certain chronic digestive problems.",
         category: "Procedures / Gastroenterology"
       },
       {
         id: "j-p17",
         term: "Cystocentesis",
         pronunciation: "sis-toh-sen-TEE-sis",
-        meaning: "Collection of urine by inserting a needle directly through the abdominal wall into the bladder, under ultrasound guidance. The gold standard method for urine collection for culture — avoids contamination from the lower urinary tract and skin.",
-        clientExplanation: "Cystocentesis means collecting urine with a small needle directly into the bladder — it sounds daunting but most pets barely notice. It gives us the cleanest possible sample for testing.",
+        meaning: "Collection of urine by inserting a needle directly through the abdominal wall into the bladder under ultrasound guidance. The gold standard for urine culture — avoids contamination from the lower urinary tract.",
+        clientExplanation: "Cystocentesis means collecting urine with a small needle directly into the bladder — most pets barely notice. It gives us the cleanest possible sample for testing.",
         category: "Procedures / Diagnostics"
       },
       {
         id: "j-p18",
         term: "Thoracocentesis",
         pronunciation: "thor-ah-koh-sen-TEE-sis",
-        meaning: "Insertion of a needle or catheter into the chest cavity (pleural space) to remove abnormal fluid or air. Performed diagnostically (to sample fluid) or therapeutically (to relieve pressure and improve breathing). Also called 'pleural tap'.",
-        clientExplanation: "Thoracocentesis means using a needle to drain fluid or air from around the lungs — it relieves pressure and helps your pet breathe more easily. It's often done as an emergency procedure when fluid is building up in the chest.",
+        meaning: "Insertion of a needle into the chest cavity to remove abnormal fluid or air. Performed diagnostically (to sample fluid) or therapeutically (to relieve pressure and improve breathing). Also called a pleural tap.",
+        clientExplanation: "Thoracocentesis means using a needle to drain fluid or air from around the lungs — it relieves pressure and helps your pet breathe more easily.",
         category: "Procedures"
       },
       {
         id: "j-p19",
         term: "Abdominocentesis",
         pronunciation: "ab-dom-ih-noh-sen-TEE-sis",
-        meaning: "Insertion of a needle into the abdominal cavity to collect or drain fluid (ascites). Used to diagnose the cause of abdominal fluid (e.g. infection, haemorrhage, liver disease, cancer) or to relieve discomfort from fluid accumulation.",
-        clientExplanation: "Abdominocentesis means using a needle to collect or drain fluid from the abdomen — either to find out what is causing the fluid to build up, or to make your pet more comfortable.",
+        meaning: "Insertion of a needle into the abdominal cavity to collect or drain fluid (ascites). Used to diagnose the cause of abdominal fluid or to relieve discomfort from fluid accumulation.",
+        clientExplanation: "Abdominocentesis means using a needle to collect or drain fluid from the abdomen — to find out what is causing the fluid to build up, or to make your pet more comfortable.",
         category: "Procedures"
       },
       {
         id: "j-p20",
         term: "Pericardiocentesis",
         pronunciation: "peh-ree-kar-dee-oh-sen-TEE-sis",
-        meaning: "Insertion of a needle into the pericardial sac (the sac surrounding the heart) to drain fluid that has accumulated there. Fluid around the heart (pericardial effusion) compresses the heart and impairs its ability to pump — a potentially life-threatening condition called cardiac tamponade. Usually performed under ultrasound guidance.",
-        clientExplanation: "Pericardiocentesis means draining fluid from around the heart with a needle — the fluid was compressing the heart and making it hard to pump properly. It's usually an emergency procedure that provides immediate relief.",
+        meaning: "Insertion of a needle into the pericardial sac (surrounding the heart) to drain fluid. Pericardial effusion compresses the heart — a life-threatening condition called cardiac tamponade. Usually performed under ultrasound guidance.",
+        clientExplanation: "Pericardiocentesis means draining fluid from around the heart with a needle — the fluid was compressing the heart and making it hard to pump properly. Usually an emergency procedure that provides immediate relief.",
         category: "Procedures / Cardiology"
       },
       {
         id: "j-a01",
-        term: "ADR — Ain't Doin' Right",
+        term: "ADR",
         pronunciation: "",
-        meaning: "Informal clinical shorthand used when a pet is clearly unwell but no specific diagnosis has been made yet. Used in notes and records to indicate the pet is off colour, lethargic, or not themselves without a clear cause identified.",
-        clientExplanation: "When we say a pet is ADR, we just mean they're clearly not themselves — something is off, but we're still working out what.",
+        meaning: "Ain't Doin' Right. Informal clinical shorthand used when a pet is clearly unwell but no specific diagnosis has been made. Used in notes to indicate the pet is off colour or lethargic without a clear cause identified.",
+        clientExplanation: "ADR just means the pet is clearly not themselves — something is off, but we're still working out what.",
         category: "Acronyms"
       },
       {
         id: "j-a02",
         term: "IM / IV / PO / SQ",
         pronunciation: "",
-        meaning: "Routes of medication administration. IM = intramuscular (injected into muscle). IV = intravenous (injected into a vein). PO = per os (by mouth — oral). SQ/SC = subcutaneous (under the skin).",
+        meaning: "Routes of medication administration. IM = intramuscular (into muscle). IV = intravenous (into a vein). PO = per os (by mouth). SQ/SC = subcutaneous (under the skin).",
         clientExplanation: "These abbreviations describe how a medication is given — by mouth, into a vein, into a muscle, or under the skin.",
         category: "Acronyms"
       },
       {
         id: "j-a03",
-        term: "SID / BID / TID / QID / EOD / PRN",
+        term: "SID / BID / TID / QID",
         pronunciation: "",
-        meaning: "Dosing frequency abbreviations. SID = once daily. BID = twice daily. TID = three times daily. QID = four times daily. EOD = every other day. PRN = as needed (pro re nata). Also: q12h = every 12 hours, q24h = every 24 hours.",
-        clientExplanation: "These are shorthand for how often to give a medication — SID is once a day, BID is twice, TID is three times, and so on. PRN means give it when needed.",
+        meaning: "Dosing frequency. SID = once daily. BID = twice daily. TID = three times daily. QID = four times daily.",
+        clientExplanation: "These are shorthand for how often to give a medication — SID is once a day, BID is twice, TID is three times, QID is four times.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a03b",
+        term: "EOD / PRN / q12h",
+        pronunciation: "",
+        meaning: "More dosing abbreviations. EOD = every other day. PRN = as needed (pro re nata). q12h = every 12 hours. q24h = every 24 hours.",
+        clientExplanation: "EOD means every other day, PRN means give it when needed, q12h means every 12 hours.",
         category: "Acronyms"
       },
       {
         id: "j-a04",
-        term: "DC — Difficult Client",
+        term: "DC",
         pronunciation: "",
-        meaning: "An internal notation used in the patient file to flag that the owner requires careful handling — e.g. has been aggressive, abusive, or has a history of disputes. Placed in a discreet location in the record so staff are aware without the notation being prominently visible to the client. The abbreviation is intentionally non-descriptive.",
-        clientExplanation: "This is an internal staff notation — not something explained to clients.",
-        category: "Acronyms"
+        meaning: "Difficult Client. An internal notation placed discreetly in the patient file to flag that the owner requires careful handling — e.g. has been aggressive, abusive, or has a history of disputes. The abbreviation is intentionally non-descriptive so clients who see the screen won't know what it means.",
+        clientExplanation: "This is an internal staff notation — not explained to clients.",
+        category: "Acronyms (Internal)"
       },
       {
         id: "j-a05",
-        term: "BAR / QAR / ADR",
+        term: "BAR",
         pronunciation: "",
-        meaning: "Clinical assessment of alertness and responsiveness. BAR = Bright, Alert, Responsive (normal). QAR = Quiet, Alert, Responsive (subdued but aware — mild concern). ADR = Ain't Doin' Right (clearly unwell, cause unknown).",
-        clientExplanation: "These describe how alert and responsive your pet is — BAR means they seem completely normal and engaged, QAR means they're a bit quieter than usual but still aware of their surroundings.",
+        meaning: "Bright, Alert, Responsive. Describes a patient that is completely normal in demeanour — engaged, aware, and responding normally to stimuli. The target status.",
+        clientExplanation: "BAR means your pet seems completely normal and engaged — bright, alert, and responsive.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a05b",
+        term: "QAR",
+        pronunciation: "",
+        meaning: "Quiet, Alert, Responsive. The patient is subdued or quieter than normal but still aware of their surroundings. Slightly below BAR — mild concern.",
+        clientExplanation: "QAR means your pet is a bit quieter than usual but still alert and aware of what's going on around them.",
         category: "Acronyms"
       },
       {
         id: "j-a06",
-        term: "TPR — Temperature, Pulse, Respiration",
+        term: "TPR",
         pronunciation: "",
-        meaning: "The three basic vital signs assessed in every patient. Normal dog: T 38–39°C, P 60–120 bpm, R 15–30 breaths/min. Normal cat: T 38–39.5°C, P 120–200 bpm, R 15–30 breaths/min.",
-        clientExplanation: "TPR refers to the three basic vital signs — temperature, heart rate, and breathing rate — that the vet or tech checks as part of the physical exam.",
+        meaning: "Temperature, Pulse, Respiration. The three basic vital signs assessed in every patient. Normal dog: T 38–39°C, P 60–120 bpm, R 15–30 breaths/min. Normal cat: T 38–39.5°C, P 120–200 bpm, R 15–30 breaths/min.",
+        clientExplanation: "TPR refers to the three basic vital signs — temperature, heart rate, and breathing rate.",
         category: "Acronyms"
       },
       {
         id: "j-a07",
-        term: "BCS — Body Condition Score",
+        term: "BCS",
         pronunciation: "",
-        meaning: "A standardised 1–9 scale used to assess body fat and muscle condition. 1 = severely underweight, 5 = ideal, 9 = obese. BCS 4–5 is the target range. Assessed by feeling the ribs, spine, and waist.",
-        clientExplanation: "The body condition score is how we rate your pet's weight on a scale of 1 to 9 — 5 is ideal. It helps us track whether they need to gain or lose weight over time.",
+        meaning: "Body Condition Score. A standardised 1–9 scale assessing body fat and muscle condition. 1 = severely underweight, 5 = ideal, 9 = obese. BCS 4–5 is the target range.",
+        clientExplanation: "The body condition score rates your pet's weight on a scale of 1 to 9 — 5 is ideal. It helps us track whether they need to gain or lose weight.",
         category: "Acronyms"
       },
       {
         id: "j-a08",
-        term: "CRT — Capillary Refill Time",
+        term: "CRT",
         pronunciation: "",
-        meaning: "The time it takes for colour to return to the gums after pressing on them with a finger. Normal is less than 2 seconds. Prolonged CRT (>2 sec) suggests poor perfusion, shock, or cardiovascular compromise.",
-        clientExplanation: "CRT is a quick test where the vet presses briefly on the gums — the colour should return within 2 seconds. A slow refill can be a sign the circulation isn't working as well as it should.",
+        meaning: "Capillary Refill Time. The time for colour to return to the gums after pressing on them. Normal is less than 2 seconds. Prolonged CRT (>2 sec) suggests poor perfusion, shock, or cardiovascular compromise.",
+        clientExplanation: "CRT is a quick test — the vet presses briefly on the gums and the colour should return within 2 seconds. A slow refill can signal poor circulation.",
         category: "Acronyms"
       },
       {
         id: "j-a09",
-        term: "CHF — Congestive Heart Failure",
+        term: "CHF",
         pronunciation: "",
-        meaning: "A condition in which the heart cannot pump effectively, leading to fluid accumulation — most commonly in the lungs (pulmonary oedema) in left-sided heart failure, or in the abdomen (ascites) in right-sided failure. Common in older dogs with mitral valve disease or dilated cardiomyopathy.",
-        clientExplanation: "Congestive heart failure means the heart isn't pumping effectively enough, which causes fluid to build up — usually around the lungs. It's manageable with medication but requires careful ongoing monitoring.",
+        meaning: "Congestive Heart Failure. The heart cannot pump effectively, leading to fluid accumulation — most commonly in the lungs (pulmonary oedema) in left-sided failure, or in the abdomen (ascites) in right-sided failure.",
+        clientExplanation: "Congestive heart failure means the heart isn't pumping effectively, causing fluid to build up — usually around the lungs. It's manageable with medication but requires careful ongoing monitoring.",
         category: "Acronyms / Conditions"
       },
       {
         id: "j-a10",
-        term: "DCM / MVD — Dilated Cardiomyopathy / Mitral Valve Disease",
+        term: "DCM",
         pronunciation: "",
-        meaning: "Two common forms of heart disease in dogs. DCM = the heart muscle becomes thin and weak, causing the heart to enlarge. MVD = the mitral valve between the left atrium and ventricle degenerates and leaks. MVD is the most common heart disease in dogs overall; DCM is more common in large breeds.",
-        clientExplanation: "DCM and MVD are two types of heart disease — MVD affects the valve, DCM affects the muscle itself. Both are managed with medication and monitoring.",
+        meaning: "Dilated Cardiomyopathy. A condition where the heart muscle becomes thin and weak, causing the heart to enlarge. More common in large breeds. Managed with cardiac medications.",
+        clientExplanation: "DCM is a type of heart disease where the heart muscle weakens and the heart enlarges — more common in large breed dogs.",
+        category: "Acronyms / Conditions"
+      },
+      {
+        id: "j-a10b",
+        term: "MVD",
+        pronunciation: "",
+        meaning: "Mitral Valve Disease. Degeneration of the mitral valve between the left atrium and ventricle, causing it to leak. The most common heart disease in dogs overall — especially small breeds.",
+        clientExplanation: "MVD is the most common heart disease in dogs — the valve on the left side of the heart wears out and starts to leak.",
         category: "Acronyms / Conditions"
       },
       {
         id: "j-a11",
-        term: "VPC / A fib — Cardiac arrhythmias",
+        term: "VPC",
         pronunciation: "",
-        meaning: "VPC = Ventricular Premature Complex — an abnormal heartbeat originating from the ventricles earlier than expected. Can occur occasionally in normal animals or indicate serious cardiac disease. A fib = Atrial Fibrillation — rapid, chaotic electrical activity in the atria causing an irregular heartbeat. Both are detected on ECG.",
-        clientExplanation: "VPCs and atrial fibrillation are types of irregular heartbeat — the heart is not following its normal electrical pattern. The vet will explain what this means for your pet and whether treatment is needed.",
+        meaning: "Ventricular Premature Complex. An abnormal heartbeat originating from the ventricles earlier than expected. Can occur occasionally in normal animals or indicate serious cardiac disease. Detected on ECG.",
+        clientExplanation: "A VPC is an extra heartbeat coming from the wrong part of the heart — the vet will explain whether this is significant for your pet.",
+        category: "Acronyms / Cardiology"
+      },
+      {
+        id: "j-a11b",
+        term: "A fib",
+        pronunciation: "",
+        meaning: "Atrial Fibrillation. Rapid, chaotic electrical activity in the atria causing an irregular heartbeat. Detected on ECG. Common in large breed dogs with underlying heart disease.",
+        clientExplanation: "Atrial fibrillation means the top chambers of the heart are beating chaotically instead of in a regular rhythm — it requires treatment and monitoring.",
         category: "Acronyms / Cardiology"
       },
       {
         id: "j-a12",
-        term: "BG / BP / IOP / USG / RR / HR / STT",
+        term: "BG",
         pronunciation: "",
-        meaning: "Common measurement abbreviations. BG = Blood Glucose. BP = Blood Pressure. IOP = Intraocular Pressure (eye pressure). USG = Urine Specific Gravity (concentration). RR = Respiratory Rate. HR = Heart Rate. STT = Schirmer Tear Test (measures tear production — tests for dry eye).",
-        clientExplanation: "These are abbreviations for common measurements taken during a physical exam or diagnostic workup.",
+        meaning: "Blood Glucose. The level of sugar in the blood. Elevated in diabetes mellitus; critically low in hypoglycaemia (especially in puppies and toy breeds).",
+        clientExplanation: "BG is blood glucose — the sugar level in the blood. We monitor this closely in diabetic patients.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a12b",
+        term: "BP",
+        pronunciation: "",
+        meaning: "Blood Pressure. Measured routinely in senior patients, cats with hyperthyroidism or kidney disease, and any patient on medications that affect blood pressure.",
+        clientExplanation: "BP is blood pressure — we check this regularly in older pets and those with certain conditions like kidney disease or hyperthyroidism.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a12c",
+        term: "IOP",
+        pronunciation: "",
+        meaning: "Intraocular Pressure. The pressure inside the eye. Elevated IOP = glaucoma. Reduced IOP can indicate uveitis. Measured with a tonometer.",
+        clientExplanation: "IOP is the pressure inside the eye — high pressure means glaucoma, which can be very painful and damage vision.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a12d",
+        term: "USG",
+        pronunciation: "",
+        meaning: "Urine Specific Gravity. Measures how concentrated the urine is — an indicator of kidney concentrating ability. Normal dogs: 1.015–1.045. Normal cats: 1.020–1.060. Low USG in a sick animal suggests the kidneys are not concentrating properly.",
+        clientExplanation: "USG tells us how concentrated your pet's urine is — it's a useful indicator of how well the kidneys are working.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a12e",
+        term: "RR",
+        pronunciation: "",
+        meaning: "Respiratory Rate. The number of breaths per minute. Normal resting rate: 15–30 breaths/min for dogs and cats. Owners of cardiac patients are often asked to monitor resting RR at home — elevated resting RR can be an early sign of decompensation.",
+        clientExplanation: "RR is respiratory rate — how many breaths per minute. For heart patients we sometimes ask owners to count this at home while their pet is resting.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a12f",
+        term: "HR",
+        pronunciation: "",
+        meaning: "Heart Rate. Beats per minute. Normal dog: 60–120 bpm (larger dogs lower). Normal cat: 120–200 bpm.",
+        clientExplanation: "HR is heart rate — how many times the heart beats per minute.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a12g",
+        term: "STT",
+        pronunciation: "",
+        meaning: "Schirmer Tear Test. Measures tear production in the eye using a small strip of paper placed inside the lower eyelid for one minute. Used to diagnose keratoconjunctivitis sicca (KCS / dry eye). Normal: >15mm wetting per minute.",
+        clientExplanation: "The Schirmer tear test checks whether your pet's eyes are producing enough tears — low tear production causes dry eye, which is uncomfortable and needs treatment.",
         category: "Acronyms"
       },
       {
         id: "j-a13",
-        term: "C/S/V/D / V+ / D+ / C+ / S+",
+        term: "C/S/V/D",
         pronunciation: "",
-        meaning: "Shorthand for clinical signs. C/S/V/D = Coughing / Sneezing / Vomiting / Diarrhea. V+ = vomiting present. D+ or Dha = diarrhea present. C+ = coughing present. S+ = sneezing present. Used in notes and records.",
-        clientExplanation: "These are shorthand symbols staff use in records to note which symptoms a pet is showing.",
+        meaning: "Shorthand for clinical signs: Coughing / Sneezing / Vomiting / Diarrhea. Used in records to note which symptoms are present.",
+        clientExplanation: "C/S/V/D is a quick shorthand for the main symptoms — coughing, sneezing, vomiting, and diarrhea.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a13b",
+        term: "V+ / D+ / C+ / S+",
+        pronunciation: "",
+        meaning: "Symptom shorthand. V+ = vomiting present. D+ (also Dha) = diarrhea present. C+ = coughing present. S+ = sneezing present.",
+        clientExplanation: "These are quick notation symbols used in records to show which symptoms are present.",
         category: "Acronyms"
       },
       {
         id: "j-a14",
-        term: "BM / GI / GIT / PE / NAD / WNL",
+        term: "BM",
         pronunciation: "",
-        meaning: "Common clinical abbreviations. BM = Bowel Movement. GI = Gastrointestinal. GIT = Gastrointestinal Tract. PE = Physical Exam. NAD = No Abnormalities Detected. WNL = Within Normal Limits.",
-        clientExplanation: "These are shorthand terms used in veterinary records and notes.",
+        meaning: "Bowel Movement. Used in records to note whether a patient has defecated — important post-operatively and in patients with GI disease.",
+        clientExplanation: "BM just means bowel movement — we often note whether a pet has had one, especially after surgery.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a14b",
+        term: "GI / GIT",
+        pronunciation: "",
+        meaning: "Gastrointestinal / Gastrointestinal Tract. Refers to the digestive system as a whole — from the oesophagus to the rectum.",
+        clientExplanation: "GI or GIT refers to the digestive system.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a14c",
+        term: "PE",
+        pronunciation: "",
+        meaning: "Physical Examination. The hands-on assessment of a patient — includes observation, palpation, auscultation of heart and lungs, and assessment of vital signs.",
+        clientExplanation: "PE is the physical exam — the full hands-on check the vet does at each visit.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a14d",
+        term: "NAD",
+        pronunciation: "",
+        meaning: "No Abnormalities Detected. Used in records to indicate that a particular system or finding was examined and appeared normal.",
+        clientExplanation: "NAD means nothing abnormal was found — everything checked out normal in that area.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a14e",
+        term: "WNL",
+        pronunciation: "",
+        meaning: "Within Normal Limits. Used similarly to NAD — findings are within the expected normal range.",
+        clientExplanation: "WNL means the results or findings are within the normal range.",
         category: "Acronyms"
       },
       {
         id: "j-a15",
-        term: "Dx / Ddx / Rx / Tx / Sx / Hx / Fx",
+        term: "Dx",
         pronunciation: "",
-        meaning: "Medical shorthand. Dx = Diagnosis. Ddx = Differential Diagnosis (list of possible diagnoses being considered). Rx = Prescription/medication. Tx = Treatment. Sx = Surgery. Hx = History. Fx = Fracture.",
-        clientExplanation: "These are medical abbreviations commonly used in records — Dx is the diagnosis, Rx is the medication, and so on.",
+        meaning: "Diagnosis — the identified condition or disease.",
+        clientExplanation: "Dx is shorthand for diagnosis.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a15b",
+        term: "Ddx",
+        pronunciation: "",
+        meaning: "Differential Diagnosis — the list of possible diagnoses being considered before a definitive diagnosis is made.",
+        clientExplanation: "Ddx is the list of possible diagnoses the vet is considering — it gets narrowed down as test results come in.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a15c",
+        term: "Rx",
+        pronunciation: "",
+        meaning: "Prescription or medication.",
+        clientExplanation: "Rx means the medication or prescription.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a15d",
+        term: "Tx",
+        pronunciation: "",
+        meaning: "Treatment.",
+        clientExplanation: "Tx is shorthand for treatment.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a15e",
+        term: "Sx",
+        pronunciation: "",
+        meaning: "Surgery.",
+        clientExplanation: "Sx means surgery.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a15f",
+        term: "Hx",
+        pronunciation: "",
+        meaning: "History — the patient's medical history and the owner's account of the current problem.",
+        clientExplanation: "Hx is the history — what's happened with your pet's health leading up to today.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a15g",
+        term: "Fx",
+        pronunciation: "",
+        meaning: "Fracture.",
+        clientExplanation: "Fx means fracture — a broken bone.",
         category: "Acronyms"
       },
       {
         id: "j-a16",
-        term: "ECG — Electrocardiogram",
+        term: "ECG",
         pronunciation: "ee-see-jee",
-        meaning: "Records the electrical activity of the heart. Used to detect arrhythmias (irregular heartbeats), conduction abnormalities, and some structural changes. Also written as EKG.",
-        clientExplanation: "An ECG records the heart's electrical activity — it's a quick, painless test using sensors placed on the skin.",
+        meaning: "Electrocardiogram. Records the electrical activity of the heart. Used to detect arrhythmias and conduction abnormalities. Also written as EKG.",
+        clientExplanation: "An ECG records the heart's electrical activity — a quick, painless test using sensors placed on the skin.",
         category: "Acronyms / Diagnostics"
       },
       {
         id: "j-a17",
-        term: "FAD / IBD / IVDD / FLUTD / PUPD",
+        term: "FAD",
         pronunciation: "",
-        meaning: "Common condition abbreviations. FAD = Flea Allergy Dermatitis (skin allergy to flea saliva — most common cause of itching in dogs and cats). IBD = Inflammatory Bowel Disease. IVDD = Intervertebral Disc Disease (slipped disc). FLUTD/FUS = Feline Lower Urinary Tract Disease/Feline Urologic Syndrome. PUPD = Polyuria/Polydipsia (increased urination and increased drinking).",
-        clientExplanation: "These are abbreviations for common conditions — FAD is a flea allergy, IBD affects the gut, IVDD is a slipped disc, and PUPD means drinking and urinating much more than normal.",
+        meaning: "Flea Allergy Dermatitis. A skin allergy to flea saliva — the most common cause of itching in dogs and cats. Even one flea bite can trigger a severe reaction in sensitised animals. Year-round flea prevention is essential.",
+        clientExplanation: "FAD is a flea allergy — your pet is allergic to flea saliva, so even a single flea bite can cause intense itching. Year-round prevention is important.",
+        category: "Acronyms / Conditions"
+      },
+      {
+        id: "j-a17b",
+        term: "IBD",
+        pronunciation: "",
+        meaning: "Inflammatory Bowel Disease. Chronic inflammation of the GI tract causing ongoing vomiting, diarrhea, and weight loss. Diagnosed by biopsy. Managed with diet change, immunosuppressants, and sometimes B12 supplementation.",
+        clientExplanation: "IBD means chronic inflammation of the digestive tract — it causes ongoing gut symptoms and needs long-term management.",
+        category: "Acronyms / Conditions"
+      },
+      {
+        id: "j-a17c",
+        term: "IVDD",
+        pronunciation: "",
+        meaning: "Intervertebral Disc Disease. Degeneration and herniation of the discs between the vertebrae, compressing the spinal cord. Causes pain, weakness, or paralysis. Common in chondrodystrophic breeds (Dachshunds, Corgis, French Bulldogs).",
+        clientExplanation: "IVDD is a slipped disc — the cushioning between the vertebrae herniates and presses on the spinal cord. It can cause pain, weakness, or in severe cases loss of the ability to walk.",
+        category: "Acronyms / Conditions"
+      },
+      {
+        id: "j-a17d",
+        term: "FLUTD / FUS",
+        pronunciation: "",
+        meaning: "Feline Lower Urinary Tract Disease / Feline Urologic Syndrome. An umbrella term for conditions affecting the lower urinary tract in cats — includes idiopathic cystitis, urinary crystals, urethral plugs, and infection. Signs include straining, blood in urine, and frequent trips to the litter box.",
+        clientExplanation: "FLUTD covers all the conditions that can cause urinary problems in cats — straining, blood in the urine, or going to the litter box frequently.",
+        category: "Acronyms / Conditions"
+      },
+      {
+        id: "j-a17e",
+        term: "PUPD",
+        pronunciation: "",
+        meaning: "Polyuria / Polydipsia. Increased urination (PU) and increased drinking (PD). A significant clinical sign pointing to systemic disease — possible causes include diabetes, kidney disease, Cushing's disease, Addison's disease, hyperthyroidism, and pyometra.",
+        clientExplanation: "PUPD means your pet is drinking and urinating much more than normal — it's an important sign that warrants investigation.",
         category: "Acronyms / Conditions"
       },
       {
         id: "j-a18",
-        term: "HBC — Hit By Car",
+        term: "HBC",
         pronunciation: "",
-        meaning: "Shorthand for road traffic accident trauma. An HBC patient requires immediate triage for internal injuries, shock, fractures, and head trauma regardless of how well they appear on the outside.",
-        clientExplanation: "HBC is shorthand for a road traffic accident. Even if a pet seems okay after being hit, internal injuries can be present — immediate assessment is always needed.",
+        meaning: "Hit By Car. Shorthand for road traffic accident trauma. An HBC patient requires immediate triage for internal injuries, shock, fractures, and head trauma regardless of how well they appear.",
+        clientExplanation: "HBC means hit by a car. Even if the pet seems okay, internal injuries can be present — immediate assessment is always needed.",
         category: "Acronyms"
       },
       {
         id: "j-a19",
-        term: "hyperT4 / hypoT4",
+        term: "hyperT4",
         pronunciation: "",
-        meaning: "Thyroid status abbreviations. hyperT4 = hyperthyroidism (overactive thyroid — elevated T4). Most common in older cats. hypoT4 = hypothyroidism (underactive thyroid — low T4). Most common in dogs.",
-        clientExplanation: "hyperT4 means an overactive thyroid — common in older cats. hypoT4 means an underactive thyroid — more common in dogs.",
+        meaning: "Hyperthyroidism — an overactive thyroid gland producing too much T4. Most common in older cats. Signs include weight loss despite good appetite, increased thirst, hyperactivity, vomiting.",
+        clientExplanation: "hyperT4 means the thyroid is overactive — producing too much thyroid hormone. Common in older cats.",
+        category: "Acronyms / Endocrinology"
+      },
+      {
+        id: "j-a19b",
+        term: "hypoT4",
+        pronunciation: "",
+        meaning: "Hypothyroidism — an underactive thyroid gland producing insufficient T4. Most common in dogs. Signs include weight gain, lethargy, coat changes, and cold intolerance.",
+        clientExplanation: "hypoT4 means the thyroid is underactive — not producing enough thyroid hormone. More common in dogs.",
         category: "Acronyms / Endocrinology"
       },
       {
         id: "j-a20",
-        term: "AG — Anal Gland",
+        term: "AG",
         pronunciation: "",
-        meaning: "Abbreviation for anal gland (anal sac). Used in records to note anal gland expression, impaction, infection, or surgery. e.g. 'AG expressed bilaterally — moderate impaction noted'.",
-        clientExplanation: "AG is shorthand for anal gland — the small scent glands on either side of the rectum that sometimes need to be emptied.",
+        meaning: "Anal Gland (anal sac). The small scent glands on either side of the rectum. Used in records to note anal gland expression, impaction, infection, or surgery.",
+        clientExplanation: "AG is shorthand for anal gland — the small glands on either side of the rectum that sometimes need to be emptied.",
         category: "Acronyms"
       },
       {
         id: "j-a21",
-        term: "Radiograph positioning: R lat / L lat / VD / DV",
+        term: "R lat / L lat / VD / DV",
         pronunciation: "",
-        meaning: "Describes how an X-ray is taken. R lat = Right lateral (lying on right side). L lat = Left lateral (lying on left side). VD = Ventrodorsal (lying on back, beam goes from belly to spine). DV = Dorsoventral (lying on stomach, beam goes from spine to belly). The positioning affects what is seen and how organs appear.",
-        clientExplanation: "These describe the position your pet is in when the X-ray is taken — lying on their side, on their back, or on their stomach.",
+        meaning: "Radiograph positioning. R lat = Right lateral (lying on right side). L lat = Left lateral (lying on left side). VD = Ventrodorsal (lying on back). DV = Dorsoventral (lying on stomach).",
+        clientExplanation: "These describe the position your pet is in when the X-ray is taken.",
         category: "Acronyms / Imaging"
       },
       {
         id: "j-a22",
-        term: "Limb abbreviations: LF / RF / RH / LH",
+        term: "LF / RF / RH / LH",
         pronunciation: "",
-        meaning: "Used in records to specify which limb is affected. LF = Left Forelimb. RF = Right Forelimb. RH = Right Hindlimb. LH = Left Hindlimb.",
+        meaning: "Limb abbreviations. LF = Left Forelimb. RF = Right Forelimb. RH = Right Hindlimb. LH = Left Hindlimb.",
         clientExplanation: "These are shorthand for which leg — LF is left front, RF is right front, RH is right hind, LH is left hind.",
         category: "Acronyms"
       },
       {
         id: "j-a23",
-        term: "LN / LRS / SQF / ROM",
+        term: "LN",
         pronunciation: "",
-        meaning: "Common clinical abbreviations. LN = Lymph Node. LRS = Lactated Ringer's Solution (a common IV fluid). SQF = Subcutaneous Fluids (fluids given under the skin at home or in clinic). ROM = Range of Movement (how much a joint can move — assessed during orthopaedic examination).",
-        clientExplanation: "LRS is the most common IV fluid we use. SQF means fluids given under the skin — sometimes owners are taught to do this at home for cats with kidney disease.",
+        meaning: "Lymph Node. Small glands found throughout the body that filter lymphatic fluid and are part of the immune system. Enlarged lymph nodes (lymphadenopathy) can indicate infection, inflammation, or cancer.",
+        clientExplanation: "LN is shorthand for lymph node — the glands that are often checked during a physical exam.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a23b",
+        term: "LRS",
+        pronunciation: "",
+        meaning: "Lactated Ringer's Solution. The most commonly used IV fluid in veterinary medicine — a balanced crystalloid electrolyte solution used for fluid therapy, shock, and surgical patients.",
+        clientExplanation: "LRS is the most common IV drip fluid we use — it replaces fluids and electrolytes.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a23c",
+        term: "SQF",
+        pronunciation: "",
+        meaning: "Subcutaneous Fluids. Fluids given under the skin rather than into a vein. Often administered at home by owners of cats with chronic kidney disease to maintain hydration.",
+        clientExplanation: "SQF means fluids given under the skin — owners of cats with kidney disease are sometimes taught to do this at home.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a23d",
+        term: "ROM",
+        pronunciation: "",
+        meaning: "Range of Movement. How much a joint can move in each direction — assessed during orthopaedic examination. Reduced ROM suggests pain, stiffness, or joint disease.",
+        clientExplanation: "ROM describes how much movement a joint has — reduced range of movement can indicate arthritis or injury.",
         category: "Acronyms"
       },
       {
         id: "j-a24",
-        term: "SNC — See New Communication",
+        term: "SNC",
         pronunciation: "",
-        meaning: "Used as the subject line of internal memos written to vets, to alert them that there is a message on file from the owner. Keeps communication traceable in the patient record without cluttering the main notes.",
+        meaning: "See New Communication. Used as the subject line of internal memos written to vets, alerting them that there is a message on file from the owner. Keeps communication traceable in the patient record.",
         clientExplanation: "This is an internal staff notation — not visible to clients.",
         category: "Acronyms (Internal)"
       },
@@ -587,37 +819,54 @@ export const termDecks = [
         id: "j-a25",
         term: "o / LMOM",
         pronunciation: "",
-        meaning: "Internal record shorthand. o = owner (used in notes, e.g. 'o called re: medications'). LMOM = Left Message On Machine (used to document a phone call attempt when no one answered).",
+        meaning: "Internal record shorthand. o = owner (e.g. 'o called re: medications'). LMOM = Left Message On Machine — documents a phone call attempt when no one answered.",
         clientExplanation: "These are internal notation shortcuts used in patient records.",
         category: "Acronyms (Internal)"
       },
       {
         id: "j-a26",
-        term: "PVD / RCVD — Prescription Diet Abbreviations",
+        term: "PVD",
         pronunciation: "",
-        meaning: "Abbreviations for prescription diet brands. PVD = Purina Veterinary Diets. RCVD = Royal Canin Veterinary Diets. Used in notes when a therapeutic diet has been recommended.",
-        clientExplanation: "PVD and RCVD are shorthand for the two main prescription diet brands we carry — Purina and Royal Canin veterinary diets.",
+        meaning: "Purina Veterinary Diets. Used in records when a Purina therapeutic diet has been recommended.",
+        clientExplanation: "PVD is shorthand for Purina Veterinary Diets — prescription diet foods made by Purina.",
+        category: "Acronyms (Internal)"
+      },
+      {
+        id: "j-a26b",
+        term: "RCVD",
+        pronunciation: "",
+        meaning: "Royal Canin Veterinary Diets. A range of prescription therapeutic diets formulated for specific medical conditions — kidney disease, urinary issues, gastrointestinal conditions, weight management, and more. Used in records when a Royal Canin therapeutic diet has been recommended.",
+        clientExplanation: "RCVD is shorthand for Royal Canin Veterinary Diets — prescription diet foods made by Royal Canin, formulated for specific medical conditions.",
         category: "Acronyms (Internal)"
       },
       {
         id: "j-a27",
-        term: "rads / ROM / RR / HR",
+        term: "rads",
         pronunciation: "",
-        meaning: "More common abbreviations. rads = radiographs (X-rays). ROM = Range of Movement. RR = Respiratory Rate. HR = Heart Rate.",
-        clientExplanation: "Rads is shorthand for X-rays. The others are measurements taken during the physical exam.",
+        meaning: "Informal shorthand for radiographs (X-rays). Commonly used in verbal communication and records.",
+        clientExplanation: "Rads is just an informal shorthand for X-rays.",
         category: "Acronyms"
       },
       {
         id: "j-a28",
-        term: "sr buprenorphine — Slow Release Buprenorphine",
+        term: "sr buprenorphine",
         pronunciation: "",
-        meaning: "A long-acting formulation of buprenorphine (opioid pain reliever) that lasts approximately 72 hours after a single injection. FOR USE IN CATS ONLY — not licensed for dogs. Useful for post-operative pain management, reducing the frequency of injections needed.",
+        meaning: "Slow Release Buprenorphine. A long-acting formulation of buprenorphine (opioid pain reliever) lasting approximately 72 hours after a single injection. FOR USE IN CATS ONLY — not licensed for dogs.",
         clientExplanation: "Slow-release buprenorphine is a long-acting pain medication given as a single injection that lasts about 3 days. It is only used in cats.",
         category: "Acronyms / Medications"
+      },
+      {
+        id: "j-a29",
+        term: "PE (Physical Exam)",
+        pronunciation: "",
+        meaning: "Physical Examination. The hands-on assessment performed at every visit — includes vital signs, auscultation of heart and lungs, palpation of abdomen, lymph nodes, and assessment of overall body condition.",
+        clientExplanation: "PE is the full physical exam the vet does at each visit — checking heart, lungs, abdomen, lymph nodes and overall condition.",
+        category: "Acronyms"
       }
     ]
   },
   {
+    id: "medications",{
     id: "medications",
     title: "Common medications",
     icon: "💊",
