@@ -414,7 +414,6 @@ export const tests = {
       specialNote: "Results from histology typically take 2 weeks or more. Make sure clients are aware of this timeline at the time of booking and again at drop-off — two weeks is longer than most clients expect and worth flagging proactively."
     }
   ],
-  ,
   fecal: [
     {
       id: "op",
