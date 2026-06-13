@@ -871,7 +871,7 @@ export const termDecks = [
     icon: "💊",
     description: "Brand names, generic names, and what each medication is used for — so you can answer basic client questions confidently.",
     color: "#fef3c7",
-    colorDark: "#b45309",,
+    colorDark: "#b45309",
     terms: [
       {
         id: "m-01",
@@ -1217,7 +1217,7 @@ export const termDecks = [
     icon: "🦟",
     description: "Flea, tick, and worm prevention and treatment — what your clinic carries, what each product covers, and key client information.",
     color: "#f0fdf4",
-    colorDark: "#166534",,
+    colorDark: "#166534",
     terms: [
       {
         id: "p-01",
