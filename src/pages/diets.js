@@ -47,10 +47,11 @@ export function renderDietsCategory(container, navigate, catId) {
       <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
         <thead>
           <tr style="border-bottom:1.5px solid var(--warm-dark);">
-            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:15%;">Brand</th>
-            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:28%;">Diet name</th>
-            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:12%;">Forms</th>
-            ${cat.id === 'allergy' ? '<th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:14%;">Protein type</th>' : ''}
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:14%;">Brand</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:22%;">Diet name</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:10%;">Forms</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:18%;">Flavour / format</th>
+            ${cat.id === 'allergy' ? '<th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:13%;">Protein type</th>' : ''}
             <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;">Used for</th>
           </tr>
         </thead>
@@ -64,6 +65,7 @@ export function renderDietsCategory(container, navigate, catId) {
               </td>
               <td style="padding:10px 10px;vertical-align:top;font-weight:600;font-size:13.5px;color:var(--ink);">${d.name}</td>
               <td style="padding:10px 10px;vertical-align:top;display:flex;flex-direction:column;gap:3px;">${forms}</td>
+              <td style="padding:10px 10px;vertical-align:top;font-size:12.5px;color:var(--ink-mid);">${d.flavour || '—'}</td>
               ${cat.id === 'allergy' ? `<td style="padding:10px 10px;vertical-align:top;">
                 ${d.tag === 'hydrolyzed' ? '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;background:#fdf4ff;color:#7e22ce;border:1px solid #e9d5ff;white-space:nowrap;">🔬 Hydrolyzed</span>' :
                   d.tag === 'novel' ? '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;white-space:nowrap;">🥩 Novel protein</span>' :

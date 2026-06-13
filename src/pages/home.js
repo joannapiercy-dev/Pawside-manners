@@ -95,6 +95,8 @@ export function nav(current, navigate) {
       <a class="nav-mobile-item ${current === '/terminology' ? 'active' : ''}" href="#/terminology">🩺 Terminology</a>
       <a class="nav-mobile-item ${current === '/triage' ? 'active' : ''}" href="#/triage">🚨 Triage</a>
       <a class="nav-mobile-item ${current === '/tests' ? 'active' : ''}" href="#/tests">🔬 Diagnostics</a>
+      <a class="nav-mobile-item ${current === '/appointments' ? 'active' : ''}" href="#/appointments">📅 Booking guide</a>
+      <a class="nav-mobile-item ${current === '/diets' ? 'active' : ''}" href="#/diets">🥣 Diets</a>
       <a class="nav-mobile-item ${current === '/progress' ? 'active' : ''}" href="#/progress">📊 Progress</a>
     </div>
   </nav>`;

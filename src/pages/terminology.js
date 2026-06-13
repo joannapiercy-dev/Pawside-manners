@@ -62,8 +62,8 @@ export function renderDeck(container, navigate, deckId) {
 
         <div class="mode-tabs">
           <button class="mode-tab ${mode==='flashcards'?'active':''}" data-mode="flashcards">🃏 Flashcards</button>
-          <button class="mode-tab ${mode==='quiz'?'active':''}" data-mode="quiz">✅ Quiz</button>
           ${['medical-jargon','medications','parasiticides','vaccines'].includes(deck.id) ? `<button class="mode-tab ${mode==='reference'?'active':''}" data-mode="reference">📋 Quick reference</button>` : ''}
+          <button class="mode-tab ${mode==='quiz'?'active':''}" data-mode="quiz">✅ Quiz</button>
         </div>
 
         ${mode === 'flashcards' ? renderFlashcards(deck, cardIndex, flipped, showAll) : ''}
