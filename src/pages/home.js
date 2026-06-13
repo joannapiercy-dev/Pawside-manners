@@ -33,7 +33,7 @@ export function renderHome(container, navigate) {
           <span class="clinic-pill">Royal Bay Veterinary Clinic</span>
         </div>
       </div>
-      <h1>Speak with confidence.<br><em>Connect with clients.</em></h1>
+      <h1>Training Hub</h1>
       <p class="hero-sub">Practical training — build your clinical knowledge, sharpen your communication skills, and feel confident handling whatever the day brings.</p>
 
       <p style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1rem;">Start training</p>

@@ -1,6 +1,6 @@
 export const triageCategories = [
   { id: "vomiting", label: "Vomiting", icon: "🤢" },
-  { id: "diarrhea", label: "Diarrhea", icon: "💧" },
+  { id: "diarrhea", label: "Diarrhea", icon: "💩" },
   { id: "urinary", label: "Urinary issues", icon: "🚿" },
   { id: "breathing", label: "Breathing & cardiac", icon: "🫀" },
   { id: "lameness", label: "Lameness & mobility", icon: "🦮" },

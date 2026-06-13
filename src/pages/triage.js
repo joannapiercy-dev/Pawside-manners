@@ -511,6 +511,7 @@ function renderTriageQuiz(categoryId, catMeta) {
       awardBadgesAndCelebrate(newBadges, false);
     }
     if (pct >= 80) updateBadgeStat('quizPasses', 1);
+    markComplete('triage-' + categoryId, 'completed');
     document.getElementById('tq-retry').addEventListener('click', () => { qIdx = 0; score = 0; renderQ(); });
   }
 
