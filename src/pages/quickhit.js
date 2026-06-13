@@ -7,15 +7,16 @@ import { getTodayDateStr, getDqhState, saveDqhState, hasCompletedDqhToday, updat
 function buildQuestionPool() {
   const pool = [];
 
-  // Terminology quizzes
-  Object.values(termQuizzes || {}).forEach(qs => {
-    qs.forEach(q => pool.push({ ...q, source: 'Terminology' }));
+  // Terminology quizzes — termQuizzes is a flat array of quiz objects each with a questions array
+  (termQuizzes || []).forEach(quiz => {
+    const label = quiz.deckId ? quiz.deckId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : 'Terminology';
+    (quiz.questions || []).forEach(q => pool.push({ ...q, question: q.question || q.q, source: `Terminology — ${label}` }));
   });
 
-  // Triage quizzes
+  // Triage quizzes — object keyed by category
   Object.entries(triageQuizzes || {}).forEach(([cat, qs]) => {
     const label = cat.charAt(0).toUpperCase() + cat.slice(1);
-    qs.forEach(q => pool.push({ ...q, source: `Triage — ${label}` }));
+    (qs || []).forEach(q => pool.push({ ...q, question: q.q || q.question, source: `Triage — ${label}` }));
   });
 
   return pool;
@@ -69,7 +70,7 @@ export function renderQuickHit(container, navigate) {
         </div>
 
         <div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);padding:1.5rem;box-shadow:var(--shadow-sm);margin-bottom:1.25rem;">
-          <p style="font-size:15px;font-weight:500;color:var(--ink);line-height:1.6;margin:0 0 1.25rem;">${q.q}</p>
+          <p style="font-size:15px;font-weight:500;color:var(--ink);line-height:1.6;margin:0 0 1.25rem;">${q.question || q.q}</p>
           <div style="display:flex;flex-direction:column;gap:8px;">
             ${q.options.map((opt, i) => {
               let bg = 'white', border = 'var(--warm-dark)', color = 'var(--ink)', fw = '400';
