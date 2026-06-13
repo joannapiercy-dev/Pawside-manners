@@ -326,7 +326,7 @@ function renderCategoryQuiz(container, navigate, catId) {
 
     setupHamburger();
     document.getElementById('bc-cat')?.addEventListener('click', () => navigate('/tests/' + catId));
-    document.getElementById('cancel-btn').addEventListener('click', () => navigate('/tests/' + catId));
+    document.getElementById('cancel-btn').addEventListener('click', () => renderTestCategory(container, navigate, catId));
 
     container.querySelectorAll('.quiz-option').forEach(btn => {
       btn.addEventListener('click', function() {
@@ -377,9 +377,9 @@ function renderCategoryQuiz(container, navigate, catId) {
       </div>
     `;
     setupHamburger();
-    document.getElementById('bc-cat-score')?.addEventListener('click', () => navigate('/tests/' + catId));
+    document.getElementById('bc-cat-score')?.addEventListener('click', () => renderTestCategory(container, navigate, catId));
     document.getElementById('retry-btn').addEventListener('click', () => { qIdx = 0; score = 0; renderQ(); });
-    document.getElementById('back-cat-btn').addEventListener('click', () => navigate('/tests/' + catId));
+    document.getElementById('back-cat-btn').addEventListener('click', () => renderTestCategory(container, navigate, catId));
     document.getElementById('all-quiz-btn').addEventListener('click', () => navigate('/tests/quiz'));
   }
 
