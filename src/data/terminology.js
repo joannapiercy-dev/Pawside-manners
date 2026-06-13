@@ -1810,5 +1810,122 @@ export const termQuizzes = [
         explanation: "Bravecto for cats is a topical spot-on covering both fleas and ticks, lasting 3 months — no tablets needed, making it ideal here. Revolution is a common wrong answer — it covers fleas but does not cover ticks reliably; you would need Revolution Plus for tick coverage. Milbemax and Profender are dewormers only and do not cover fleas or ticks at all."
       }
     ]
+  }  ,
+  {
+    id: "quiz-vaccines-1",
+    deckId: "vaccines",
+    title: "Vaccines — Quiz",
+    questions: [
+      {
+        question: "A client calls to book annual vaccines for their healthy 3-year-old dog. Which vaccines would you expect them to be due for?",
+        options: [
+          "DAPP only — it's a 3-year vaccine",
+          "Rabies only — it's a 3-year vaccine",
+          "It depends on when they last had each vaccine — DAPP and Rabies are 3-yearly after the first adult booster, but Bordetella and Leptospirosis are annual",
+          "All vaccines are annual for dogs"
+        ],
+        correct: 2,
+        explanation: "After the first adult booster at 1 year, DAPP and Rabies move to every 3 years. Bordetella and Leptospirosis remain annual. Always check the individual vaccine history rather than assuming everything is due at once."
+      },
+      {
+        question: "A client is bringing in their 8-week-old puppy for their first visit. Which vaccines would typically be given today?",
+        options: [
+          "DAPP, Rabies, Bordetella, and Leptospirosis all at once",
+          "Rabies only — it's the most important",
+          "DAPP, and possibly Bordetella — Rabies and Leptospirosis come later",
+          "No vaccines at 8 weeks — wait until 12 weeks"
+        ],
+        correct: 2,
+        explanation: "At 8 weeks, puppies receive their first DAPP. Bordetella can be given at 12 or 16 weeks. Rabies is given at 16 weeks. Leptospirosis starts at 12 weeks. Giving Rabies before 16 weeks is not part of the standard schedule."
+      },
+      {
+        question: "A client says they're planning to travel internationally with their dog and need a Rabies vaccine. The dog was just microchipped today. Can you give the Rabies vaccine today?",
+        options: [
+          "Yes — the sooner the better for travel",
+          "Yes — microchipping and Rabies can be done in any order",
+          "Yes, but only if the vet approves it",
+          "Yes — the microchip was placed today so the Rabies can be given today as well, since the chip is on file before the vaccine"
+        ],
+        correct: 3,
+        explanation: "For international travel, the Rabies vaccine must be given AFTER the microchip is implanted and recorded. Since the chip was placed today and is on file, the vaccine can be given today. What would invalidate it is if the vaccine had been given before the chip."
+      },
+      {
+        question: "A cat comes in for their first FVRCP vaccine and is 8 months old — they have never been vaccinated before. How many doses do they need to start?",
+        options: [
+          "Three doses — 8, 12, and 16 weeks apart",
+          "Two doses — 4 weeks apart, same as kittens",
+          "One dose — cats over 6 months only need a single dose to start",
+          "One dose now, then boost in 3 years"
+        ],
+        correct: 2,
+        explanation: "Unlike kittens (who need three doses to complete the series), cats receiving their first FVRCP at over 6 months of age only need a single dose. The 1-year booster clock starts from that single dose."
+      },
+      {
+        question: "A client's dog has been getting Leptospirosis vaccine every year. They missed last year's appointment. Do they need two doses to restart, or just one?",
+        options: [
+          "Two doses 4 weeks apart — any lapse means starting over",
+          "Just one dose — their immune system was already primed from previous vaccination",
+          "It depends on how long they've been overdue",
+          "No doses needed — natural immunity covers them"
+        ],
+        correct: 1,
+        explanation: "The two-dose initial series for Leptospirosis is only required when the animal has never had the vaccine before (naive immune system). A previously vaccinated dog whose booster has lapsed only needs a single dose to reinstate protection — they don't restart the series."
+      },
+      {
+        question: "What is the primary local wildlife reservoir for Rabies in the Victoria area?",
+        options: [
+          "Raccoons",
+          "Skunks",
+          "Bats",
+          "Deer"
+        ],
+        correct: 2,
+        explanation: "Bats are the primary Rabies reservoir in our area. This is relevant when advising clients — even indoor cats can occasionally encounter a bat that gets inside the home, which is one reason Rabies vaccination is recommended even for cats that don't go outside."
+      },
+      {
+        question: "A client brings in a kitten at 12 weeks for vaccines. Which vaccines can be given today?",
+        options: [
+          "DAPP and Rabies",
+          "DAPP, Bordetella, and Leptospirosis — the second dose of each",
+          "DAPP (second dose), Bordetella (first or second dose), and Leptospirosis (first dose)",
+          "Rabies only — it's the most overdue"
+        ],
+        correct: 2,
+        explanation: "At 12 weeks: DAPP second dose, Bordetella (first or second dose depending on when started), and Leptospirosis first dose. Rabies is not given until 16 weeks."
+      },
+      {
+        question: "FeLV is described as a non-core vaccine. What does this mean in practice?",
+        options: [
+          "It's optional and rarely recommended",
+          "It's only available by special order",
+          "It's recommended based on individual risk factors rather than for every cat — but we still recommend it for cats with any exposure to other cats",
+          "It's not as effective as core vaccines so we don't mention it"
+        ],
+        correct: 2,
+        explanation: "Non-core means the vaccine is recommended based on lifestyle and risk rather than for every animal automatically. FeLV is recommended for cats with any contact with other cats — indoor or outdoor — since even limited exposure carries risk. It's non-core but still widely recommended."
+      },
+      {
+        question: "A client asks how long they need to leave between booster doses. You tell them we schedule at 4 weeks — but what is the actual acceptable window?",
+        options: [
+          "Exactly 4 weeks — no flexibility",
+          "3 to 6 weeks is acceptable — we use 4 weeks for scheduling simplicity",
+          "2 to 8 weeks",
+          "4 to 8 weeks minimum"
+        ],
+        correct: 1,
+        explanation: "The acceptable window for booster intervals is 3 to 6 weeks. We schedule at 4 weeks because it's easy to remember and fits neatly into the schedule — but clients don't need to panic if they're a few days early or late."
+      },
+      {
+        question: "After a kitten receives their 16-week FeLV vaccine, when is their next FeLV booster due, and how often after that?",
+        options: [
+          "6 months later, then annually",
+          "1 year later, then every 2 years",
+          "1 year later, then every 3 years",
+          "Annually forever"
+        ],
+        correct: 1,
+        explanation: "After the completed initial FeLV series (12 and 16 weeks), the first booster is due 1 year later. After that, FeLV is boosted every 2 years — unlike FVRCP and Rabies which move to every 3 years after the 1-year booster."
+      },
+    ]
   }
-];
+]

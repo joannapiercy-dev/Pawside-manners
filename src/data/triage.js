@@ -942,6 +942,54 @@ export const triageQuizzes = {
       correct: 2,
       explanation: "True lily ingestion in cats causes acute kidney failure — any part, any amount, even pollen. Emergency regardless of whether symptoms are present yet."
     },
+    {
+      q: "A dog ate grapes about 2 hours ago. He seems completely fine and only ate a small amount. What urgency?",
+      options: ["Monitor at home — a small amount is probably fine", "Same day to be safe", "Emergency", "Call back only if vomiting starts"],
+      correct: 2,
+      explanation: "There is no established safe dose for grapes or raisins. Some dogs develop acute kidney failure after very small amounts while others seem unaffected by larger quantities — the mechanism is unknown. Always treat as emergency regardless of amount or current symptoms."
+    },
+    {
+      q: "A dog has chewed a battery. What is the main concern and what do you advise?",
+      options: ["Choking risk only — monitor at home", "Chemical burns from leaking alkali — same-day assessment, do not induce vomiting", "Heavy metal poisoning — emergency", "The battery will pass safely — no action needed"],
+      correct: 1,
+      explanation: "Chewed batteries (especially alkaline ones) leak caustic material causing chemical burns to the mouth and GI tract. Lithium coin batteries are particularly dangerous. Same-day assessment is needed. Do not induce vomiting as this risks further burns to the esophagus."
+    },
+    {
+      q: "A dog has eaten compost from the garden bin and is now trembling. What urgency?",
+      options: ["Monitor at home — compost isn't toxic", "Same day", "Within 48 hours", "Emergency"],
+      correct: 3,
+      explanation: "Mouldy compost contains tremorgenic mycotoxins that cause rapid onset muscle tremors, hyperthermia, and seizures. Trembling after compost ingestion = emergency. The onset can be very fast."
+    },
+    {
+      q: "A dog ingested antifreeze. The owner says it was only a small amount and the dog seems fine. What do you do?",
+      options: ["Monitor at home — small amounts are unlikely to cause harm", "Same day appointment", "Call back if symptoms develop", "Emergency — come in immediately even if asymptomatic"],
+      correct: 3,
+      explanation: "Antifreeze (ethylene glycol) causes fatal kidney failure. Treatment is only effective within hours of ingestion. Even small amounts can be lethal — a teaspoon in a small dog, less in cats. The animal may seem fine initially while damage progresses internally. Do not wait for symptoms."
+    },
+    {
+      q: "An owner calls to say their dog ate zinc oxide cream (nappy rash cream). What urgency?",
+      options: ["Monitor at home — it's just a skin cream", "Same day", "Within 48 hours", "Emergency"],
+      correct: 1,
+      explanation: "Zinc causes haemolytic anaemia (destruction of red blood cells). Signs may be delayed 12–24 hours. Same-day assessment to evaluate the amount ingested and start monitoring. Not an immediate emergency unless large amounts were consumed."
+    },
+    {
+      q: "A client's dog ate an unknown species of mushroom in the garden. The dog seems fine. What urgency?",
+      options: ["Monitor — if the dog seems fine, the mushroom is probably harmless", "Same day if symptoms develop", "Emergency regardless of symptoms", "Within 48 hours"],
+      correct: 2,
+      explanation: "Always treat as emergency if the species is unknown. Some mushrooms (Amanita species) cause fatal liver failure with a delayed onset of 6–24 hours — the animal may seem completely normal initially. Never wait for symptoms. Photograph or bring a sample if possible."
+    },
+    {
+      q: "A client calls to say their dog has been chewing on their rhododendron bush in the garden. What urgency?",
+      options: ["Monitor at home — outdoor plants are rarely toxic", "Same day", "Within 48 hours", "Emergency"],
+      correct: 1,
+      explanation: "Rhododendron contains grayanotoxins which cause vomiting, weakness, low blood pressure, and potentially cardiac arrhythmias. Same-day assessment is appropriate — it can be serious but is not usually as immediately life-threatening as some other toxins unless large amounts were eaten."
+    },
+    {
+      q: "A client tells you their dog got into their sugar-free gum. What is the key toxic ingredient and what urgency is this?",
+      options: ["Aspartame — monitor at home", "Xylitol — emergency, causes rapid hypoglycaemia and potentially liver failure", "Sorbitol — same day as a precaution", "Artificial sweeteners are harmless to dogs"],
+      correct: 1,
+      explanation: "Xylitol (found in sugar-free gum, some peanut butters, vitamins, and baked goods) causes rapid, profound hypoglycaemia in dogs and can cause acute liver failure. Even a few pieces of gum can be dangerous. Emergency regardless of amount."
+    },
   ],
 
 };

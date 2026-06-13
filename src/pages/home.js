@@ -34,7 +34,7 @@ export function renderHome(container, navigate) {
         </div>
       </div>
       <h1>Speak with confidence.<br><em>Connect with clients.</em></h1>
-      <p class="hero-sub">Practical training for every member of the Oaklands and Royal Bay team — build the skills, knowledge, and confidence to handle any situation.</p>
+      <p class="hero-sub">Practical training — build your clinical knowledge, sharpen your communication skills, and feel confident handling whatever the day brings.</p>
 
       <p style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1rem;">Start training</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;max-width:720px;margin:0 auto 1rem;">
@@ -130,8 +130,10 @@ export function nav(current, navigate) {
       <a class="nav-btn ${current === '/triage' ? 'active' : ''}" href="#/triage">Triage</a>
       <a class="nav-btn ${current === '/tests' ? 'active' : ''}" href="#/tests">Diagnostics</a>
       <a class="nav-btn ${current === '/social' ? 'active' : ''}" href="#/social">Social Styles</a>
+      <a class="nav-btn ${current === '/quickprompts' ? 'active' : ''}" href="#/quickprompts">What would you say?</a>
       <a class="nav-btn ${current === '/appointments' ? 'active' : ''}" href="#/appointments">Booking</a>
       <a class="nav-btn ${current === '/diets' ? 'active' : ''}" href="#/diets">Diets</a>
+      <a class="nav-btn ${current === '/badges' ? 'active' : ''}" href="#/badges">Badges</a>
       <a class="nav-btn ${current === '/progress' ? 'active' : ''}" href="#/progress">Progress</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger-btn" aria-label="Open menu">☰</button>

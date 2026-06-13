@@ -287,7 +287,7 @@ function renderCategoryQuiz(container, navigate, catId) {
     container.innerHTML = `
       ${nav('/tests', navigate)}
       <div class="page-content" style="max-width:600px;margin:0 auto;">
-        <div class="breadcrumb"><a href="#/tests">Diagnostics</a> › <a href="#/tests/${catId}">${cat?.label}</a> › Quiz</div>
+        <div class="breadcrumb"><a href="#/tests">Diagnostics</a> › <span class="breadcrumb-link" id="bc-cat">${cat?.label}</span> › Quiz</div>
 
         <div style="background:linear-gradient(135deg,#1e3a5f,#2d5a8e);border-radius:var(--radius-lg);padding:1rem 1.5rem;margin-bottom:1.5rem;color:white;">
           <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
@@ -317,6 +317,7 @@ function renderCategoryQuiz(container, navigate, catId) {
     `;
 
     setupHamburger();
+    document.getElementById('bc-cat')?.addEventListener('click', () => navigate('/tests/' + catId));
     document.getElementById('cancel-btn').addEventListener('click', () => navigate('/tests/' + catId));
 
     container.querySelectorAll('.quiz-option').forEach(btn => {
@@ -355,7 +356,7 @@ function renderCategoryQuiz(container, navigate, catId) {
     container.innerHTML = `
       ${nav('/tests', navigate)}
       <div class="page-content" style="max-width:600px;margin:0 auto;text-align:center;padding-top:2rem;">
-        <div class="breadcrumb" style="text-align:left;"><a href="#/tests">Diagnostics</a> › <a href="#/tests/${catId}">${cat?.label}</a> › Quiz</div>
+        <div class="breadcrumb" style="text-align:left;"><a href="#/tests">Diagnostics</a> › <span class="breadcrumb-link" id="bc-cat-score">${cat?.label}</span> › Quiz</div>
         <div style="font-size:3rem;font-weight:700;color:var(--ink);margin:1.5rem 0 0.5rem;">${score} / ${questions.length}</div>
         <p style="color:var(--ink-mid);margin-bottom:2rem;">
           ${pct === 100 ? 'Perfect score!' : pct >= 80 ? 'Great work.' : pct >= 60 ? 'Good effort — review the reference cards and try again.' : 'Keep studying and give it another go.'}
@@ -368,6 +369,7 @@ function renderCategoryQuiz(container, navigate, catId) {
       </div>
     `;
     setupHamburger();
+    document.getElementById('bc-cat-score')?.addEventListener('click', () => navigate('/tests/' + catId));
     document.getElementById('retry-btn').addEventListener('click', () => { qIdx = 0; score = 0; renderQ(); });
     document.getElementById('back-cat-btn').addEventListener('click', () => navigate('/tests/' + catId));
     document.getElementById('all-quiz-btn').addEventListener('click', () => navigate('/tests/quiz'));
