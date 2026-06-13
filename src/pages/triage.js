@@ -405,7 +405,7 @@ function renderToxinsPage(container, navigate) {
       </div>
 
       </div><!-- end toxins-content -->
-      <div id="toxins-quiz-mount" style="display:none;"></div>
+      <div id="triage-quiz-mount" style="display:none;"></div>
       <div style="margin-top:1rem;">
         <button class="btn-ghost" id="back-triage-btn">← All categories</button>
       </div>
@@ -416,7 +416,7 @@ function renderToxinsPage(container, navigate) {
   document.getElementById('back-triage-btn').addEventListener('click', () => navigate('/triage'));
   document.getElementById('toxins-quiz-btn')?.addEventListener('click', () => {
     document.getElementById('toxins-content').style.display = 'none';
-    document.getElementById('toxins-quiz-mount').style.display = 'block';
+    document.getElementById('triage-quiz-mount').style.display = 'block';
     document.getElementById('toxins-quiz-btn').style.background = 'white';
     document.getElementById('toxins-quiz-btn').style.boxShadow = 'var(--shadow-sm)';
     document.getElementById('toxins-ref-btn').style.background = 'none';
@@ -425,7 +425,7 @@ function renderToxinsPage(container, navigate) {
   });
   document.getElementById('toxins-ref-btn')?.addEventListener('click', () => {
     document.getElementById('toxins-content').style.display = 'block';
-    document.getElementById('toxins-quiz-mount').style.display = 'none';
+    document.getElementById('triage-quiz-mount').style.display = 'none';
     document.getElementById('toxins-ref-btn').style.background = 'white';
     document.getElementById('toxins-ref-btn').style.boxShadow = 'var(--shadow-sm)';
     document.getElementById('toxins-quiz-btn').style.background = 'none';
