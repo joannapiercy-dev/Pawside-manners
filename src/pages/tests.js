@@ -61,19 +61,27 @@ export function renderTestCategory(container, navigate, catId) {
     ${nav('/tests', navigate)}
     <div class="page-content">
       <div class="breadcrumb"><a href="#/tests">Tests & procedures</a> › ${cat.label}</div>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:2rem;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;">
         <div style="width:44px;height:44px;background:var(--warm);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">${cat.icon}</div>
         <h2>${cat.label}</h2>
       </div>
+
+      ${testQuizByCategory[catId] ? `
+      <div style="background:linear-gradient(135deg,#1e3a5f,#2d5a8e);border-radius:var(--radius-lg);padding:1.1rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <div>
+          <div style="font-weight:700;font-size:0.95rem;color:white;">✅ Ready to test yourself?</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-top:2px;">Take the ${cat.label} quiz — covers everything on this page.</div>
+        </div>
+        <button id="cat-quiz-btn" style="background:white;color:#1e3a5f;border:none;border-radius:var(--radius);padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;flex-shrink:0;">Start quiz →</button>
+      </div>` : \'\'}
 
       <div style="display:flex;flex-direction:column;gap:16px;">
         ${catTests.map(t => renderTestCard(t)).join('')}
       </div>
 
-      <div style="margin-top:2rem;display:flex;gap:8px;flex-wrap:wrap;">
+      <div style="margin-top:2rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
         <button class="btn-ghost" id="back-btn">← All categories</button>
         <button class="btn-secondary" id="quiz-btn">Take the full quiz →</button>
-        ${testQuizByCategory[catId] ? '<button class="btn-ghost" id="cat-quiz-btn" style="margin-top:0.5rem;">✅ Quiz: ' + (testCategories.find(c=>c.id===catId)?.label||catId) + ' only</button>' : ''}
       </div>
     </div>
   `;
