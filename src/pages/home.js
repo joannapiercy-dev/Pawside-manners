@@ -1,6 +1,30 @@
 export function renderHome(container, navigate) {
+  let dqhDone = false;
+  let streakCount = 0;
+  try {
+    const dqhState = JSON.parse(localStorage.getItem('pawside_dqh') || '{}');
+    const today = new Date().toISOString().slice(0, 10);
+    dqhDone = dqhState.lastCompleted === today;
+    const streak = JSON.parse(localStorage.getItem('pawside_streak') || '{"count":0}');
+    streakCount = streak.count || 0;
+  } catch(e) {}
+
   container.innerHTML = `
     ${nav('/', navigate)}
+    <div class="page-content" style="max-width:720px;margin:0 auto;padding-top:1.5rem;">
+
+      <!-- Daily Quick Hit banner -->
+      <div id="dqh-banner" style="background:${dqhDone ? 'linear-gradient(135deg,#166534,#15803d)' : 'linear-gradient(135deg,#1e3a5f,#2d5a8e)'};border-radius:var(--radius-lg);padding:1.1rem 1.5rem;margin-bottom:1.5rem;cursor:${dqhDone ? 'default' : 'pointer'};display:flex;align-items:center;gap:14px;">
+        <div style="font-size:2rem;">${dqhDone ? '✅' : '⚡'}</div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:1rem;color:white;">${dqhDone ? "Today's Quick Hit complete!" : '⚡ Daily Quick Hit'}</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.75);">${dqhDone ? 'Come back tomorrow for a new question' : 'One question · takes 30 seconds'}</div>
+        </div>
+        ${streakCount > 1 ? `<div style="background:rgba(255,255,255,0.15);border-radius:20px;padding:4px 10px;display:flex;align-items:center;gap:5px;"><span style="font-size:1rem;">🔥</span><span style="font-size:13px;font-weight:700;color:white;">${streakCount}</span></div>` : ''}
+        ${!dqhDone ? '<div style="color:rgba(255,255,255,0.6);font-size:1.2rem;">→</div>' : ''}
+      </div>
+    </div>
+
     <div class="hero">
       <div class="hero-logo-lockup">
         <img src="public/oaklands-logo.jpg" alt="Oaklands Veterinary Hospital logo" />
@@ -66,6 +90,8 @@ export function renderHome(container, navigate) {
           <span style="font-weight:600;color:white;">View my progress</span>
         </button>
       </div>
+    </div>
+
     </div>
 
     <div class="page-content">

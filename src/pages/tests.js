@@ -1,4 +1,5 @@
-import { testCategories, tests, testQuiz } from '../data/tests.js';
+import { testCategories, tests, testQuiz, testQuizByCategory } from '../data/tests.js';
+import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';
 import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
 
@@ -71,7 +72,8 @@ export function renderTestCategory(container, navigate, catId) {
 
       <div style="margin-top:2rem;display:flex;gap:8px;flex-wrap:wrap;">
         <button class="btn-ghost" id="back-btn">← All categories</button>
-        <button class="btn-secondary" id="quiz-btn">Take the quiz →</button>
+        <button class="btn-secondary" id="quiz-btn">Take the full quiz →</button>
+        ${testQuizByCategory[catId] ? '<button class="btn-ghost" id="cat-quiz-btn" style="margin-top:0.5rem;">✅ Quiz: ' + (testCategories.find(c=>c.id===catId)?.label||catId) + ' only</button>' : ''}
       </div>
     </div>
   `;
@@ -79,6 +81,7 @@ export function renderTestCategory(container, navigate, catId) {
   setupHamburger();
   document.getElementById('back-btn').addEventListener('click', () => navigate('/tests'));
   document.getElementById('quiz-btn').addEventListener('click', () => navigate('/tests/quiz'));
+  document.getElementById('cat-quiz-btn')?.addEventListener('click', () => renderCategoryQuiz(container, navigate, catId));
 
   // Expand/collapse handlers
   markComplete('tests-' + catId, 'viewed');
@@ -240,6 +243,11 @@ function renderTestQuiz(container, navigate) {
     window.scrollTo(0, 0);
     markComplete('tests-quiz', 'quiz');
     const pct = Math.round(score / testQuiz.length * 100);
+    if (pct >= 80) {
+      const nb = updateBadgeStat('quizPasses', 1);
+      if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }
+      awardBadgesAndCelebrate(nb, false);
+    }
     container.innerHTML = `
       ${nav('/tests', navigate)}
       <div class="scenario-layout" style="text-align:center;padding-top:3rem;">
@@ -258,6 +266,111 @@ function renderTestQuiz(container, navigate) {
     `;
     document.getElementById('retry-btn').addEventListener('click', () => { qIdx = 0; score = 0; renderQ(); });
     document.getElementById('back-btn').addEventListener('click', () => navigate('/tests'));
+  }
+
+  renderQ();
+}
+
+function renderCategoryQuiz(container, navigate, catId) {
+  const questions = testQuizByCategory[catId];
+  const cat = testCategories.find(c => c.id === catId);
+  if (!questions || questions.length === 0) { navigate('/tests/' + catId); return; }
+
+  let qIdx = 0, score = 0, answered = false;
+
+  function renderQ() {
+    window.scrollTo(0, 0);
+    answered = false;
+    const q = questions[qIdx];
+    const pct = Math.round((qIdx / questions.length) * 100);
+
+    container.innerHTML = `
+      ${nav('/tests', navigate)}
+      <div class="page-content" style="max-width:600px;margin:0 auto;">
+        <div class="breadcrumb"><a href="#/tests">Diagnostics</a> › <a href="#/tests/${catId}">${cat?.label}</a> › Quiz</div>
+
+        <div style="background:linear-gradient(135deg,#1e3a5f,#2d5a8e);border-radius:var(--radius-lg);padding:1rem 1.5rem;margin-bottom:1.5rem;color:white;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <span style="font-size:12px;opacity:0.8;">Question ${qIdx + 1} of ${questions.length}</span>
+            <span style="font-size:12px;opacity:0.8;">${pct}%</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.2);border-radius:20px;height:5px;overflow:hidden;">
+            <div style="background:white;height:100%;width:${pct}%;border-radius:20px;transition:width 0.3s;"></div>
+          </div>
+        </div>
+
+        <div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);padding:1.5rem;box-shadow:var(--shadow-sm);">
+          <p style="font-size:15px;font-weight:500;color:var(--ink);line-height:1.6;margin:0 0 1.25rem;">${q.question}</p>
+          <div id="opts" style="display:flex;flex-direction:column;gap:8px;">
+            ${q.options.map((opt, i) => `
+              <button class="quiz-option" data-idx="${i}" style="text-align:left;padding:12px 14px;border-radius:var(--radius);border:1.5px solid var(--warm-dark);background:white;font-size:13.5px;color:var(--ink);cursor:pointer;font-family:'DM Sans',sans-serif;line-height:1.5;">${opt}</button>
+            `).join('')}
+          </div>
+          <div id="feedback" class="hidden"></div>
+          <div id="next-wrap" class="hidden" style="margin-top:1rem;">
+            <button class="btn-primary" id="next-btn">${qIdx < questions.length - 1 ? 'Next →' : 'See results'}</button>
+          </div>
+        </div>
+
+        <button class="btn-ghost" style="margin-top:1rem;" id="cancel-btn">← Back to ${cat?.label}</button>
+      </div>
+    `;
+
+    setupHamburger();
+    document.getElementById('cancel-btn').addEventListener('click', () => navigate('/tests/' + catId));
+
+    container.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (answered) return;
+        answered = true;
+        const sel = parseInt(this.dataset.idx);
+        container.querySelectorAll('.quiz-option').forEach(b => b.disabled = true);
+        const correct = sel === q.correct;
+        if (correct) { this.classList.add('correct'); score++; }
+        else {
+          this.classList.add('incorrect');
+          container.querySelectorAll('.quiz-option')[q.correct].classList.add('correct');
+        }
+        const fb = document.getElementById('feedback');
+        fb.className = correct ? 'feedback-box feedback-correct' : 'feedback-box feedback-incorrect';
+        fb.innerHTML = `<strong>${correct ? 'Correct!' : 'Not quite.'}</strong> ${q.explanation}`;
+        document.getElementById('next-wrap').classList.remove('hidden');
+        document.getElementById('next-btn').addEventListener('click', () => {
+          qIdx++;
+          if (qIdx < questions.length) renderQ();
+          else showScore();
+        });
+      });
+    });
+  }
+
+  function showScore() {
+    window.scrollTo(0, 0);
+    const pct = Math.round((score / questions.length) * 100);
+    if (pct >= 80) {
+      const nb = updateBadgeStat('quizPasses', 1);
+      if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }
+      awardBadgesAndCelebrate(nb, false);
+    }
+    container.innerHTML = `
+      ${nav('/tests', navigate)}
+      <div class="page-content" style="max-width:600px;margin:0 auto;text-align:center;padding-top:2rem;">
+        <div class="breadcrumb" style="text-align:left;"><a href="#/tests">Diagnostics</a> › <a href="#/tests/${catId}">${cat?.label}</a> › Quiz</div>
+        <div style="font-size:3rem;font-weight:700;color:var(--ink);margin:1.5rem 0 0.5rem;">${score} / ${questions.length}</div>
+        <p style="color:var(--ink-mid);margin-bottom:2rem;">
+          ${pct === 100 ? 'Perfect score!' : pct >= 80 ? 'Great work.' : pct >= 60 ? 'Good effort — review the reference cards and try again.' : 'Keep studying and give it another go.'}
+        </p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <button class="btn-primary" id="retry-btn">Try again</button>
+          <button class="btn-ghost" id="back-cat-btn">← Back to ${cat?.label}</button>
+          <button class="btn-ghost" id="all-quiz-btn">Full quiz →</button>
+        </div>
+      </div>
+    `;
+    setupHamburger();
+    document.getElementById('retry-btn').addEventListener('click', () => { qIdx = 0; score = 0; renderQ(); });
+    document.getElementById('back-cat-btn').addEventListener('click', () => navigate('/tests/' + catId));
+    document.getElementById('all-quiz-btn').addEventListener('click', () => navigate('/tests/quiz'));
   }
 
   renderQ();

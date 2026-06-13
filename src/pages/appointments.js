@@ -75,10 +75,11 @@ function renderApptCard(a) {
   const flags = [];
   if (a.flags.includes('vet-approval')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fef2f2;color:#991b1b;border:1px solid #fecaca;">⚠️ Vet approval needed</span>');
   if (a.flags.includes('advance-check')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fef9c3;color:#713f12;border:1px solid #fef08a;">📋 Check with owner in advance</span>');
-  if (a.flags.includes('quote-needed')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;">💰 Quote needed</span>');
+  if (a.flags.includes('estimate-needed')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;">💰 Estimate needed</span>');
   if (a.flags.includes('sedation') && !a.flags.includes('sedation-required')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fdf4ff;color:#7e22ce;border:1px solid #e9d5ff;">💊 Sedation may be required</span>');
   if (a.flags.includes('sedation-required')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fdf4ff;color:#7e22ce;border:1px solid #e9d5ff;">💊 Sedation required</span>');
   if (a.flags.includes('fasting')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;">🍽️ Fasting required</span>');
+  if (a.flags.includes('dropoff')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#f0f9ff;color:#0c4a6e;border:1px solid #bae6fd;">📦 Drop-off</span>');
   if (a.flags.includes('consent')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;">📝 Consent form</span>');
 
   return `
@@ -88,7 +89,7 @@ function renderApptCard(a) {
           <span style="font-weight:700;font-size:1rem;color:${a.textColor};">${a.name}</span>
           ${flags.join(' ')}
         </div>
-        <span style="font-size:12.5px;font-weight:600;color:${a.textColor};opacity:0.8;white-space:nowrap;">⏱ ${a.duration}</span>
+        <span style="font-size:12.5px;font-weight:600;color:${a.textColor};opacity:0.8;white-space:nowrap;">⏱ ${a.flags.includes('dropoff') && (a.id === 'pcvc' || a.id === 'vidi') ? 'Tech appointment slot' : a.duration}</span>
       </div>
       <div style="padding:0.85rem 1.25rem;">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);margin-bottom:4px;">Book when</div>
