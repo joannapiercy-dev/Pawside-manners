@@ -3,7 +3,7 @@ import { nav, setupHamburger } from './home.js';
 
 const RC_COLOR   = '#c8102e';
 const PUR_COLOR  = '#003087';
-const HILLS_COLOR = '#004B87';
+const HILLS_COLOR = '#2d7a2d';
 const FORM_LABELS = { dry: 'Dry', canned: 'Canned', liquid: 'Liquid' };
 
 export function renderDietsHome(container, navigate) {
