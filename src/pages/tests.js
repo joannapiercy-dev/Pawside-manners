@@ -73,7 +73,7 @@ export function renderTestCategory(container, navigate, catId) {
           <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-top:2px;">Take the ${cat.label} quiz — covers everything on this page.</div>
         </div>
         <button id="cat-quiz-btn" style="background:white;color:#1e3a5f;border:none;border-radius:var(--radius);padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;flex-shrink:0;">Start quiz →</button>
-      </div>` : \'\'}
+      </div>` : ''}
 
       <div style="display:flex;flex-direction:column;gap:16px;">
         ${catTests.map(t => renderTestCard(t)).join('')}
