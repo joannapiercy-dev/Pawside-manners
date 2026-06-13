@@ -351,6 +351,11 @@ function setupTermQuiz(quizzes) {
       'Keep studying the flashcards and give it another go.';
 
     markComplete('term-quiz-' + (quizzes[0]?.deckId || 'unknown'), 'quiz');
+    if (pct >= 80) {
+      const nb = updateBadgeStat('quizPasses', 1);
+      if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }
+      awardBadgesAndCelebrate(nb, false);
+    }
     document.getElementById('tq-restart-btn').addEventListener('click', () => {
       qIdx = 0; score = 0;
       scoreArea.classList.add('hidden');

@@ -1,4 +1,5 @@
 import { nav, setupHamburger } from './home.js';
+import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';
 
 const STYLES = {
   analytical: {
@@ -380,6 +381,8 @@ function renderQuiz(container, navigate) {
     `;
     setupHamburger();
     document.getElementById('bc-social')?.addEventListener('click', () => renderSocialHome(container, navigate));
+    const nb = updateBadgeStat('socialQuiz', 1);
+    awardBadgesAndCelebrate(nb, false);
     document.getElementById('read-more-btn').addEventListener('click', () => renderStyleDetail(container, navigate, primaryId));
     document.getElementById('retake-btn').addEventListener('click', () => renderQuiz(container, navigate));
     document.getElementById('all-styles-btn').addEventListener('click', () => renderSocialHome(container, navigate));
