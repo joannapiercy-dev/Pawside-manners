@@ -11,7 +11,7 @@ export function renderDietsHome(container, navigate) {
     ${nav('/diets', navigate)}
     <div class="page-content">
       <h2 style="margin-bottom:0.25rem;">Prescription diets</h2>
-      <p style="color:var(--ink-mid);margin-bottom:1.5rem;">Royal Canin and Purina veterinary diets — what each is used for, by condition.</p>
+      <p style="color:var(--ink-mid);margin-bottom:1.5rem;">Royal Canin, Purina and Hills prescription veterinary diets — what each is used for, by condition.</p>
 
       <div class="card-grid" style="margin-bottom:2rem;">
         ${dietCategories.map(cat => `

@@ -1,5 +1,6 @@
 import { scenarios, categories } from '../data/scenarios.js';
 import { markComplete, isComplete } from '../lib/progress.js';
+import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';
 import { getRoleplayFeedback, getTrainerAnswer } from '../lib/api.js';
 import { nav, setupHamburger } from './home.js';
 
@@ -156,6 +157,11 @@ function setupQuiz(scenario) {
       feedbackEl.classList.remove('hidden');
       nextEl.classList.remove('hidden');
       markComplete(scenario.id, 'quiz');
+      if (pct >= 80) {
+        const nb = updateBadgeStat('quizPasses', 1);
+        if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }
+        awardBadgesAndCelebrate(nb, false);
+      }
     });
   });
 
@@ -242,6 +248,8 @@ function setupRoleplay(scenario) {
       chatHistory.push({ role: 'user', content: text });
       chatHistory.push({ role: 'assistant', content: clientReply });
       markComplete(scenario.id, 'roleplay');
+      const nbRp = updateBadgeStat('roleplays', 1);
+      awardBadgesAndCelebrate(nbRp, false);
     } catch (err) {
       loadingEl.textContent = 'Error: ' + err.message;
     }

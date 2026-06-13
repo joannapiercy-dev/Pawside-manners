@@ -2,6 +2,7 @@ import { triageCategories, triageTrees, OUTCOMES, triageQuizzes } from '../data/
 import { triageReference } from '../data/triageReference.js';
 import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
+import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';
 
 export function renderTriageHome(container, navigate) {
   container.innerHTML = `
@@ -474,6 +475,12 @@ function renderTriageQuiz(categoryId, catMeta) {
         </p>
         <button class="btn-primary" id="tq-retry">Try again</button>
       </div>`;
+    if (pct >= 80) {
+      const newBadges = updateBadgeStat('triageQuizzes', 1);
+      if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }
+      awardBadgesAndCelebrate(newBadges, false);
+    }
+    if (pct >= 80) updateBadgeStat('quizPasses', 1);
     document.getElementById('tq-retry').addEventListener('click', () => { qIdx = 0; score = 0; renderQ(); });
   }
 

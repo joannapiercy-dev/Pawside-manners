@@ -9,6 +9,9 @@ import { renderCrucial } from './pages/crucial.js';
 import { renderDietsHome, renderDietsCategory } from './pages/diets.js';
 import { renderAppointmentsHome } from './pages/appointments.js';
 import { renderSocialHome } from './pages/social.js';
+import { renderQuickHit } from './pages/quickhit.js';
+import { renderQuickPromptsHome } from './pages/quickprompts.js';
+import { renderBadges } from './pages/badges.js';
 
 const app = document.getElementById('app');
 
@@ -36,6 +39,12 @@ function render() {
     renderTriageTree(app, navigate, route.replace('/triage/', ''));
   } else if (route === '/crucial') {
     renderCrucial(app, navigate);
+  } else if (route === '/quickprompts') {
+    renderQuickPromptsHome(app, navigate);
+  } else if (route === '/quickhit') {
+    renderQuickHit(app, navigate);
+  } else if (route === '/badges') {
+    renderBadges(app, navigate);
   } else if (route === '/social') {
     renderSocialHome(app, navigate);
   } else if (route === '/appointments') {

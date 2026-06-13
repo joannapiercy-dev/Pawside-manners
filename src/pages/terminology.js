@@ -1,13 +1,14 @@
 import { termDecks, termQuizzes } from '../data/terminology.js';
 import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
+import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';
 
 export function renderTerminology(container, navigate) {
   container.innerHTML = `
     ${nav('/terminology', navigate)}
     <div class="page-content">
-      <h2 style="margin-bottom:0.5rem;">Medical terminology</h2>
-      <p style="color:var(--ink-mid);margin-bottom:2rem;">Learn medical jargon and common medications — what they mean and how to explain them to clients.</p>
+      <h2 style="margin-bottom:0.5rem;">Medical terminology and drug/vaccine names</h2>
+      <p style="color:var(--ink-mid);margin-bottom:2rem;">Flashcards and quick reference guides covering medical jargon, common medications, parasiticides, and vaccines — what each term means, how to pronounce it, and how to explain it to clients.</p>
 
       <p class="section-label">Choose a deck</p>
       <div class="card-grid">
@@ -193,7 +194,18 @@ function setupFlashcards(deck, idx, render, showAll = false) {
 
   document.getElementById('flashcard')?.addEventListener('click', () => {
     currentFlipped = !currentFlipped;
-    if (currentFlipped) markComplete('term-' + deck.id, 'flashcard');
+    if (currentFlipped) {
+      markComplete('term-' + deck.id, 'flashcard');
+      const completed = ['medical-jargon','medications','parasiticides','vaccines'].filter(id => {
+        const p = JSON.parse(localStorage.getItem('pawside_progress') || '{}');
+        return p['term-' + id]?.flashcard;
+      }).length + 1;
+      const nb = updateBadgeStat('decksCompleted', 0);
+      import('../lib/gamification.js').then(({ setBadgeStat, awardBadgesAndCelebrate }) => {
+        const newBadges = setBadgeStat('decksCompleted', completed);
+        if (newBadges.length) awardBadgesAndCelebrate(newBadges, false);
+      });
+    }
     render('flashcards', currentIdx, currentFlipped, currentShowAll);
   });
 
@@ -463,10 +475,10 @@ function renderMedsReference(deck) {
     'm-27':  { freq: 'BID', food: true },
     'm-28':  { freq: 'SID', food: false },
     'm-29':  { freq: 'BID', food: false },
-    'm-30':  { freq: 'BID (1hr before food)', food: false },
+    'm-30':  { freq: 'BID (1hr before food)', food: 'empty' },
     'm-31':  { freq: 'SID', food: true },
     'm-32':  { freq: 'BID–TID', food: true },
-    'm-33':  { freq: 'SID', food: false },
+    'm-33':  { freq: 'SID', food: 'small' },
     'm-34':  { freq: 'SID', food: false },
     'm-35':  { freq: 'SID', food: true },
     'm-36':  { freq: 'PRN', food: 'empty' },
@@ -586,8 +598,8 @@ function renderMedsReference(deck) {
                 <tbody>
                   ${terms.map((t, i) => {
                     const meta = medMeta[t.id] || {};
-                    const foodLabel = meta.food === true ? '✅ Yes' : meta.food === 'empty' ? '⚠️ Empty stomach' : '—';
-                    const foodColor = meta.food === true ? '#166534' : meta.food === 'empty' ? '#92400e' : 'var(--ink-light)';
+                    const foodLabel = meta.food === true ? '✅ Yes' : meta.food === 'empty' ? '⚠️ Empty stomach' : meta.food === 'small' ? '⚠️ Small amount only' : '—';
+                    const foodColor = meta.food === true ? '#166534' : meta.food === 'empty' ? '#92400e' : meta.food === 'small' ? '#92400e' : 'var(--ink-light)';
                     return `<tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
                       <td style="padding:9px 10px;vertical-align:top;font-weight:600;font-size:13px;color:var(--ink);">${t.term}</td>
                       <td style="padding:9px 10px;vertical-align:top;font-size:13px;color:var(--ink-mid);line-height:1.5;">${t.meaning.split('.')[0]}.</td>

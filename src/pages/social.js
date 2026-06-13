@@ -191,7 +191,7 @@ function renderStyleDetail(container, navigate, styleId) {
   container.innerHTML = `
     ${nav('/social', navigate)}
     <div class="page-content">
-      <div class="breadcrumb"><a href="#/social">Social Styles</a> › ${s.name}</div>
+      <div class="breadcrumb"><span class="breadcrumb-link" id="bc-social">Social Styles</span> › ${s.name}</div>
 
       <div style="background:${s.color};border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;">
         <div style="font-size:2.5rem;margin-bottom:6px;">${s.emoji}</div>
@@ -242,6 +242,7 @@ function renderStyleDetail(container, navigate, styleId) {
     </div>
   `;
   setupHamburger();
+  document.getElementById('bc-social')?.addEventListener('click', () => renderSocialHome(container, navigate));
   document.getElementById('back-btn').addEventListener('click', () => renderSocialHome(container, navigate));
   document.getElementById('quiz-btn').addEventListener('click', () => renderQuiz(container, navigate));
 }
@@ -261,7 +262,7 @@ function renderQuiz(container, navigate) {
     container.innerHTML = `
       ${nav('/social', navigate)}
       <div class="page-content" style="max-width:600px;margin:0 auto;">
-        <div class="breadcrumb"><a href="#/social">Social Styles</a> › Find your style</div>
+        <div class="breadcrumb"><span class="breadcrumb-link" id="bc-social">Social Styles</span> › Find your style</div>
 
         <div style="background:linear-gradient(135deg,#4c1d95,#7c3aed);border-radius:var(--radius-lg);padding:1.1rem 1.5rem;margin-bottom:1.5rem;color:white;">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
@@ -288,6 +289,7 @@ function renderQuiz(container, navigate) {
       </div>
     `;
     setupHamburger();
+    document.getElementById('bc-social')?.addEventListener('click', () => renderSocialHome(container, navigate));
 
     container.querySelectorAll('.quiz-option').forEach(btn => {
       btn.addEventListener('click', function() {
@@ -325,7 +327,7 @@ function renderQuiz(container, navigate) {
     container.innerHTML = `
       ${nav('/social', navigate)}
       <div class="page-content" style="max-width:600px;margin:0 auto;">
-        <div class="breadcrumb"><a href="#/social">Social Styles</a> › Your result</div>
+        <div class="breadcrumb"><span class="breadcrumb-link" id="bc-social">Social Styles</span> › Your result</div>
 
         <div style="background:${primary.color};border-radius:var(--radius-lg);padding:1.75rem;margin-bottom:1.5rem;text-align:center;">
           <div style="font-size:3rem;margin-bottom:8px;">${primary.emoji}</div>
@@ -377,6 +379,7 @@ function renderQuiz(container, navigate) {
       </div>
     `;
     setupHamburger();
+    document.getElementById('bc-social')?.addEventListener('click', () => renderSocialHome(container, navigate));
     document.getElementById('read-more-btn').addEventListener('click', () => renderStyleDetail(container, navigate, primaryId));
     document.getElementById('retake-btn').addEventListener('click', () => renderQuiz(container, navigate));
     document.getElementById('all-styles-btn').addEventListener('click', () => renderSocialHome(container, navigate));

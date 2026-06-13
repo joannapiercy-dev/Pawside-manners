@@ -161,8 +161,8 @@ export const appointmentTypes = [
     textColor: "#ffffff",
     category: "Tech",
     when: "Any tech appointment for X-rays.",
-    notes: "⚠️ Sedation may be required depending on the patient and the views needed — quote for possible sedation (and therefore fasting) when booking.",
-    flags: ["quote-needed"],
+    notes: "⚠️ Sedation may be required depending on the patient and the views needed.",
+    flags: ["sedation"],
   },
   {
     id: "surgery",
@@ -217,7 +217,7 @@ export const appointmentTypes = [
     category: "Specialist",
     when: "Any cardiology consult with Dr. Lichtenberger.",
     notes: "⚠️ Prepare oral sedation in advance so the owner can give it at home 2–3 hours before the appointment. The pet will require shaving and must be dropped off. Confirm all of this with the owner when booking.",
-    flags: ["advance-check", "sedation", 'consent'],
+    flags: ["sedation-required"],
   },
   {
     id: "vidi",
@@ -228,7 +228,7 @@ export const appointmentTypes = [
     category: "Specialist",
     when: "Any ultrasound with Dr. Burke.",
     notes: "⚠️ Requires fasting, injectable sedation, shaving, and drop-off. Confirm all of this with the owner when booking.",
-    flags: ["advance-check", "sedation", "fasting"],
+    flags: ["sedation-required", "fasting", "consent"],
   },
   {
     id: "new-client",

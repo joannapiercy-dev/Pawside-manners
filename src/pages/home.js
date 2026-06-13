@@ -34,6 +34,11 @@ export function renderHome(container, navigate) {
           <span style="font-weight:600;">Diagnostics</span>
           <span style="font-size:12px;color:var(--ink-light);">Tests & procedures</span>
         </button>
+        <button class="nav-card-btn" id="btn-quickprompts">
+          <span style="font-size:1.5rem;">💬</span>
+          <span style="font-weight:600;">What would you say?</span>
+          <span style="font-size:12px;color:var(--ink-light);">Roleplay prompts</span>
+        </button>
         <button class="nav-card-btn" id="btn-social">
           <span style="font-size:1.5rem;">🦁</span>
           <span style="font-weight:600;">Social Styles</span>
@@ -48,6 +53,11 @@ export function renderHome(container, navigate) {
           <span style="font-size:1.5rem;">🥣</span>
           <span style="font-weight:600;">Diets</span>
           <span style="font-size:12px;color:var(--ink-light);">Prescription diets</span>
+        </button>
+        <button class="nav-card-btn" id="btn-badges">
+          <span style="font-size:1.5rem;">🏅</span>
+          <span style="font-weight:600;">Badges</span>
+          <span style="font-size:12px;color:var(--ink-light);">Achievements</span>
         </button>
       </div>
       <div style="max-width:720px;margin:0 auto;">
@@ -69,7 +79,10 @@ export function renderHome(container, navigate) {
   document.getElementById('btn-terminology').addEventListener('click', () => navigate('/terminology'));
   document.getElementById('btn-triage').addEventListener('click', () => navigate('/triage'));
   document.getElementById('btn-diagnostics').addEventListener('click', () => navigate('/tests'));
+  document.getElementById('btn-quickprompts').addEventListener('click', () => navigate('/quickprompts'));
   document.getElementById('btn-social').addEventListener('click', () => navigate('/social'));
+  document.getElementById('btn-badges').addEventListener('click', () => navigate('/badges'));
+  if (!dqhDone) document.getElementById('dqh-banner')?.addEventListener('click', () => navigate('/quickhit'));
   document.getElementById('btn-appointments').addEventListener('click', () => navigate('/appointments'));
   document.getElementById('btn-diets').addEventListener('click', () => navigate('/diets'));
   document.getElementById('btn-progress').addEventListener('click', () => navigate('/progress'));
@@ -102,6 +115,9 @@ export function nav(current, navigate) {
       <a class="nav-mobile-item ${current === '/terminology' ? 'active' : ''}" href="#/terminology">🩺 Terminology</a>
       <a class="nav-mobile-item ${current === '/triage' ? 'active' : ''}" href="#/triage">🚨 Triage</a>
       <a class="nav-mobile-item ${current === '/tests' ? 'active' : ''}" href="#/tests">🔬 Diagnostics</a>
+      <a class="nav-mobile-item ${current === '/quickhit' ? 'active' : ''}" href="#/quickhit">⚡ Daily Quick Hit</a>
+      <a class="nav-mobile-item ${current === '/badges' ? 'active' : ''}" href="#/badges">🏅 Badges</a>
+      <a class="nav-mobile-item ${current === '/quickprompts' ? 'active' : ''}" href="#/quickprompts">💬 What would you say?</a>
       <a class="nav-mobile-item ${current === '/social' ? 'active' : ''}" href="#/social">🦁 Social Styles</a>
       <a class="nav-mobile-item ${current === '/appointments' ? 'active' : ''}" href="#/appointments">📅 Booking guide</a>
       <a class="nav-mobile-item ${current === '/diets' ? 'active' : ''}" href="#/diets">🥣 Diets</a>
