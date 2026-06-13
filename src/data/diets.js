@@ -1,5 +1,5 @@
 export const dietCategories = [
-  { id: 'gi', label: 'Gastrointestinal', icon: '🫁' },
+  { id: 'gi', label: 'Gastrointestinal', icon: '💩' },
   { id: 'renal', label: 'Kidney / Renal', icon: '🫘' },
   { id: 'hepatic', label: 'Liver / Hepatic', icon: '🟤' },
   { id: 'cardiac', label: 'Cardiac / Heart', icon: '🫀' },
@@ -42,8 +42,15 @@ export const diets = {
       {
         brand: 'Royal Canin',
         name: 'Gastrointestinal Low Fat',
-        forms: ['dry', 'canned'],
+        forms: ['dry'],
         flavour: "Chicken",
+        use: 'Pancreatitis, fat intolerance, hyperlipidemia, lymphangiectasia. Key choice when fat restriction is required.',
+      },
+      {
+        brand: 'Royal Canin',
+        name: 'Gastrointestinal Low Fat',
+        forms: ['canned'],
+        flavour: "Pork",
         use: 'Pancreatitis, fat intolerance, hyperlipidemia, lymphangiectasia. Key choice when fat restriction is required.',
       },
       {
@@ -106,9 +113,16 @@ export const diets = {
       {
         brand: 'Hills',
         name: 'i/d',
-        forms: ["dry", "canned"],
+        forms: ["dry"],
         flavour: "Chicken",
         use: 'Acute and chronic vomiting and diarrhea, gastroenteritis, IBD, EPI, esophageal disorders, surgery recovery (pre and post-op). Highly digestible with ActivBiome+ prebiotic fibers. The go-to general GI diet for dogs.',
+      },
+      {
+        brand: 'Hills',
+        name: 'i/d',
+        forms: ["canned"],
+        flavour: "Turkey / chicken",
+        use: 'Acute and chronic vomiting and diarrhea, gastroenteritis, IBD, EPI, esophageal disorders, surgery recovery (pre and post-op). Highly digestible with ActivBiome+ prebiotic fibers. The go-to general GI diet for dogs.'
       },
       {
         brand: 'Hills',
@@ -765,7 +779,7 @@ export const diets = {
         name: 'Skintopic',
         tag: 'other',
         forms: ['dry', 'canned'],
-        flavour: "Hydrolyzed soy",
+        flavour: "Chicken",
         use: 'Atopic dermatitis (environmental allergy). Supports the skin barrier.',
       },
       {
@@ -781,16 +795,16 @@ export const diets = {
         name: 'DRM Dermatologic Management Naturals',
         tag: 'novel',
         forms: ['dry'],
-        flavour: "Salmon",
+        flavour: "Trout",
         use: 'Atopic dermatitis, food allergic dermatitis, skin and coat support.',
       },
     ,
       {
         brand: 'Hills',
-        name: 'd/d (Duck & Rice or Salmon & Rice)',
+        name: 'd/d (Venison & Rice, Duck & Rice, or Salmon & Rice)',
         tag: 'novel',
         forms: ["dry", "canned"],
-        flavour: "Duck / salmon",
+        flavour: "Venison / duck / salmon",
         use: 'Dietary elimination trial and food allergy management. Single novel protein and single carbohydrate source. Available in Duck & Rice or Salmon & Rice. For food allergic dermatitis and food allergic GI disease.',
       },
       {
@@ -822,7 +836,7 @@ export const diets = {
         name: 'z/d Low Fat',
         tag: 'hydrolyzed',
         forms: ["dry"],
-        flavour: "Hydrolyzed chicken",
+        flavour: "Hydrolyzed soy",
         use: 'Fully hydrolyzed protein (as z/d) with low fat — for food allergies concurrent with pancreatitis or fat intolerance.',
       }
     ],
