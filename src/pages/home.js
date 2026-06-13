@@ -58,15 +58,15 @@ export function renderHome(container, navigate) {
           <span style="font-weight:600;">Diagnostics</span>
           <span style="font-size:12px;color:var(--ink-light);">Tests & procedures</span>
         </button>
-        <button class="nav-card-btn" id="btn-appointments">
-          <span style="font-size:1.5rem;">📅</span>
-          <span style="font-weight:600;">Booking guide</span>
-          <span style="font-size:12px;color:var(--ink-light);">Which appointment to book</span>
-        </button>
         <button class="nav-card-btn" id="btn-diets">
           <span style="font-size:1.5rem;">🥣</span>
           <span style="font-weight:600;">Diets</span>
           <span style="font-size:12px;color:var(--ink-light);">Prescription diets</span>
+        </button>
+        <button class="nav-card-btn" id="btn-appointments">
+          <span style="font-size:1.5rem;">📅</span>
+          <span style="font-weight:600;">Booking guide</span>
+          <span style="font-size:12px;color:var(--ink-light);">Which appointment to book</span>
         </button>
         <button class="nav-card-btn" id="btn-social">
           <span style="font-size:1.5rem;">🦁</span>
@@ -115,8 +115,8 @@ export function nav(current, navigate) {
       <a class="nav-btn ${current === '/terminology' ? 'active' : ''}" href="#/terminology">Terminology</a>
       <a class="nav-btn ${current === '/triage' ? 'active' : ''}" href="#/triage">Triage</a>
       <a class="nav-btn ${current === '/tests' ? 'active' : ''}" href="#/tests">Diagnostics</a>
-      <a class="nav-btn ${current === '/appointments' ? 'active' : ''}" href="#/appointments">Booking</a>
       <a class="nav-btn ${current === '/diets' ? 'active' : ''}" href="#/diets">Diets</a>
+      <a class="nav-btn ${current === '/appointments' ? 'active' : ''}" href="#/appointments">Booking</a>
       <a class="nav-btn ${current === '/social' ? 'active' : ''}" href="#/social">Social Styles</a>
       <a class="nav-btn ${current === '/progress' ? 'active' : ''}" href="#/progress">Progress</a>
     </div>
@@ -128,8 +128,8 @@ export function nav(current, navigate) {
       <a class="nav-mobile-item ${current === '/triage' ? 'active' : ''}" href="#/triage">🚨 Triage</a>
       <a class="nav-mobile-item ${current === '/tests' ? 'active' : ''}" href="#/tests">🔬 Diagnostics</a>
       <a class="nav-mobile-item ${current === '/quickhit' ? 'active' : ''}" href="#/quickhit">⚡ Daily Quick Hit</a>
-      <a class="nav-mobile-item ${current === '/appointments' ? 'active' : ''}" href="#/appointments">📅 Booking guide</a>
       <a class="nav-mobile-item ${current === '/diets' ? 'active' : ''}" href="#/diets">🥣 Diets</a>
+      <a class="nav-mobile-item ${current === '/appointments' ? 'active' : ''}" href="#/appointments">📅 Booking guide</a>
       <a class="nav-mobile-item ${current === '/social' ? 'active' : ''}" href="#/social">🦁 Social Styles</a>
       <a class="nav-mobile-item ${current === '/progress' ? 'active' : ''}" href="#/progress">📊 Progress</a>
     </div>
