@@ -73,16 +73,9 @@ export function renderHome(container, navigate) {
           <span style="font-weight:600;">Diets</span>
           <span style="font-size:12px;color:var(--ink-light);">Prescription diets</span>
         </button>
-        <button class="nav-card-btn" id="btn-badges">
-          <span style="font-size:1.5rem;">🏅</span>
-          <span style="font-weight:600;">Badges</span>
-          <span style="font-size:12px;color:var(--ink-light);">Achievements</span>
-        </button>
-      </div>
-      <div style="max-width:720px;margin:0 auto;">
         <button class="nav-card-btn" id="btn-progress" style="width:100%;background:var(--ink);color:white;border-color:var(--ink);">
           <span style="font-size:1.5rem;">📊</span>
-          <span style="font-weight:600;color:white;">View my progress</span>
+          <span style="font-weight:600;color:white;">View my progress & badges</span>
         </button>
       </div>
     </div>
@@ -101,7 +94,6 @@ export function renderHome(container, navigate) {
   document.getElementById('btn-triage').addEventListener('click', () => navigate('/triage'));
   document.getElementById('btn-diagnostics').addEventListener('click', () => navigate('/tests'));
   document.getElementById('btn-social').addEventListener('click', () => navigate('/social'));
-  document.getElementById('btn-badges').addEventListener('click', () => navigate('/badges'));
   if (!dqhDone) document.getElementById('dqh-banner')?.addEventListener('click', () => navigate('/quickhit'));
   document.getElementById('btn-appointments').addEventListener('click', () => navigate('/appointments'));
   document.getElementById('btn-diets').addEventListener('click', () => navigate('/diets'));
@@ -126,7 +118,6 @@ export function nav(current, navigate) {
       <a class="nav-btn ${current === '/social' ? 'active' : ''}" href="#/social">Social Styles</a>
       <a class="nav-btn ${current === '/appointments' ? 'active' : ''}" href="#/appointments">Booking</a>
       <a class="nav-btn ${current === '/diets' ? 'active' : ''}" href="#/diets">Diets</a>
-      <a class="nav-btn ${current === '/badges' ? 'active' : ''}" href="#/badges">Badges</a>
       <a class="nav-btn ${current === '/progress' ? 'active' : ''}" href="#/progress">Progress</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger-btn" aria-label="Open menu">☰</button>
@@ -137,7 +128,6 @@ export function nav(current, navigate) {
       <a class="nav-mobile-item ${current === '/triage' ? 'active' : ''}" href="#/triage">🚨 Triage</a>
       <a class="nav-mobile-item ${current === '/tests' ? 'active' : ''}" href="#/tests">🔬 Diagnostics</a>
       <a class="nav-mobile-item ${current === '/quickhit' ? 'active' : ''}" href="#/quickhit">⚡ Daily Quick Hit</a>
-      <a class="nav-mobile-item ${current === '/badges' ? 'active' : ''}" href="#/badges">🏅 Badges</a>
       <a class="nav-mobile-item ${current === '/social' ? 'active' : ''}" href="#/social">🦁 Social Styles</a>
       <a class="nav-mobile-item ${current === '/appointments' ? 'active' : ''}" href="#/appointments">📅 Booking guide</a>
       <a class="nav-mobile-item ${current === '/diets' ? 'active' : ''}" href="#/diets">🥣 Diets</a>

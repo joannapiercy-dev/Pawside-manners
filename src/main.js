@@ -12,7 +12,6 @@ import { renderAppointmentsHome } from './pages/appointments.js';
 import { renderSocialHome } from './pages/social.js';
 import { renderQuickHit } from './pages/quickhit.js';
 import { renderQuickPromptsHome } from './pages/quickprompts.js';
-import { renderBadges } from './pages/badges.js';
 
 const app = document.getElementById('app');
 
@@ -46,8 +45,6 @@ function render() {
     renderQuickPromptsHome(app, navigate);
   } else if (route === '/quickhit') {
     renderQuickHit(app, navigate);
-  } else if (route === '/badges') {
-    renderBadges(app, navigate);
   } else if (route === '/social') {
     renderSocialHome(app, navigate);
   } else if (route === '/appointments') {

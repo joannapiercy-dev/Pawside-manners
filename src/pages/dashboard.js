@@ -84,7 +84,7 @@ export function renderDashboard(container, navigate) {
 
       ${sectionBlock('🏅', 'Badges', '#fffbeb', '#fde68a', [
         { label: 'Earned', val: badgesEarned, total: badgesTotal }
-      ], renderBadgeRows(earnedBadges))}
+      ], renderBadgeGrid(earnedBadges))}
 
       <button class="btn-ghost" id="reset-all" style="margin-top:2rem;color:var(--ink-light);">Reset all progress</button>
     </div>
@@ -133,7 +133,7 @@ function sectionBlock(icon, title, bgColor, borderColor, stats, rows) {
             </div>
           </div>`).join('')}
       </div>
-      <div style="padding:0.75rem 1.5rem;display:flex;flex-direction:column;gap:6px;">${rows}</div>
+      <div style="padding:0.75rem 1.5rem;display:flex;flex-direction:column;gap:8px;">${rows}</div>
     </div>`;
 }
 
@@ -210,17 +210,17 @@ function renderQpRows(prompts, badgeStats) {
   </div>`;
 }
 
-function renderBadgeRows(earnedBadges) {
-  if (earnedBadges.length === 0) {
-    return `<div style="padding:8px 0;font-size:13.5px;color:var(--ink-light);font-style:italic;">No badges earned yet — complete activities to unlock them.</div>`;
-  }
-  return BADGE_DEFS.filter(b => earnedBadges.includes(b.id)).map(b => `
-    <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--warm-mid);">
-      <span style="font-size:1.4rem;">${b.icon}</span>
-      <div>
-        <div style="font-size:13.5px;font-weight:600;color:var(--ink);">${b.name}</div>
-        <div style="font-size:12px;color:var(--ink-light);">${b.desc}</div>
-      </div>
-      <span style="margin-left:auto;font-size:1rem;">✅</span>
-    </div>`).join('');
+function renderBadgeGrid(earnedBadges) {
+  return BADGE_DEFS.map(badge => {
+    const isEarned = earnedBadges.includes(badge.id);
+    return `
+      <div style="background:${isEarned ? 'white' : 'var(--warm)'};border:1px solid ${isEarned ? '#fde68a' : 'var(--warm-mid)'};border-radius:var(--radius-lg);padding:0.9rem 1.25rem;display:flex;align-items:center;gap:14px;opacity:${isEarned ? '1' : '0.5'};">
+        <div style="font-size:2rem;width:40px;text-align:center;flex-shrink:0;${isEarned ? '' : 'filter:grayscale(1);'}">${badge.icon}</div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:14px;color:${isEarned ? 'var(--ink)' : 'var(--ink-light)'};">${badge.name}</div>
+          <div style="font-size:12.5px;color:var(--ink-light);margin-top:2px;">${badge.desc}</div>
+        </div>
+        ${isEarned ? '<span style="font-size:1rem;">✅</span>' : '<span style="font-size:12px;color:var(--ink-light);">🔒</span>'}
+      </div>`;
+  }).join('');
 }
