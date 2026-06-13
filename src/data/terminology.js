@@ -5,7 +5,7 @@ export const termDecks = [
     icon: "🩺",
     description: "Common terms receptionists hear daily — what they mean and how to explain them to clients.",
     color: "#e8f0fe",
-    colorDark: "#1a56db",,
+    colorDark: "#1a56db",
     terms: [
       {
         id: "j-01",
