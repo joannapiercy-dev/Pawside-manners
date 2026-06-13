@@ -42,11 +42,12 @@ export function renderDeck(container, navigate, deckId) {
   let flipped = false;
   let showAll = false;
 
-  function render(m, idx = 0, isFlipped = false, showAll = false) {
+  function render(m, idx = 0, isFlipped = false, newShowAll = false) {
     window.scrollTo(0, 0);
     mode = m;
     cardIndex = idx;
     flipped = isFlipped;
+    showAll = newShowAll;
 
     container.innerHTML = `
       ${nav('/terminology', navigate)}
@@ -62,7 +63,7 @@ export function renderDeck(container, navigate, deckId) {
         <div class="mode-tabs">
           <button class="mode-tab ${mode==='flashcards'?'active':''}" data-mode="flashcards">🃏 Flashcards</button>
           <button class="mode-tab ${mode==='quiz'?'active':''}" data-mode="quiz">✅ Quiz</button>
-          ${['medical-jargon','medications','parasiticides'].includes(deck.id) ? `<button class="mode-tab ${mode==='reference'?'active':''}" data-mode="reference">📋 Quick reference</button>` : ''}
+          ${['medical-jargon','medications','parasiticides','vaccines'].includes(deck.id) ? `<button class="mode-tab ${mode==='reference'?'active':''}" data-mode="reference">📋 Quick reference</button>` : ''}
         </div>
 
         ${mode === 'flashcards' ? renderFlashcards(deck, cardIndex, flipped, showAll) : ''}
@@ -70,6 +71,7 @@ export function renderDeck(container, navigate, deckId) {
         ${mode === 'reference' && deck.id === 'medical-jargon' ? renderJargonReference(deck) : ''}
         ${mode === 'reference' && deck.id === 'medications' ? renderMedsReference(deck) : ''}
         ${mode === 'reference' && deck.id === 'parasiticides' ? renderParasiticidesReference(deck) : ''}
+        ${mode === 'reference' && deck.id === 'vaccines' ? renderVaccineReference(deck) : ''}
 
         <div style="margin-top:2rem;">
           <button class="btn-ghost" id="back-btn">← Back to terminology</button>
@@ -205,14 +207,11 @@ function setupFlashcards(deck, idx, render, showAll = false) {
     e.stopPropagation();
     const term = displayTerms[currentIdx];
     toggleKnown(deck.id, term.id);
-    currentFlipped = false;
-    // If marking as known and not showing all, advance to next card
     const newKnown = getKnownIds(deck.id);
     const newActive = currentShowAll ? deck.terms : deck.terms.filter(t => !newKnown.includes(t.id));
     const newDisplay = newActive.length > 0 ? newActive : deck.terms;
     const newIdx = Math.min(currentIdx, newDisplay.length - 1);
     render('flashcards', newIdx, false, currentShowAll);
-    setupFlashcards(deck, newIdx, render, currentShowAll);
   });
 
   document.getElementById('prev-btn')?.addEventListener('click', () => {
@@ -225,9 +224,7 @@ function setupFlashcards(deck, idx, render, showAll = false) {
 
   document.getElementById('show-all-btn')?.addEventListener('click', () => {
     currentShowAll = !currentShowAll;
-    currentFlipped = false;
     render('flashcards', 0, false, currentShowAll);
-    setupFlashcards(deck, 0, render, currentShowAll);
   });
 
   document.getElementById('shuffle-btn')?.addEventListener('click', () => {
@@ -237,9 +234,7 @@ function setupFlashcards(deck, idx, render, showAll = false) {
       const j = Math.floor(Math.random() * (i + 1));
       [active[i], active[j]] = [active[j], active[i]];
     }
-    currentFlipped = false;
     render('flashcards', 0, false, currentShowAll);
-    setupFlashcards(deck, 0, render, currentShowAll);
   });
 
   document.onkeydown = (e) => {
@@ -538,19 +533,26 @@ function renderMedsReference(deck) {
               <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
                 <thead>
                   <tr style="border-bottom:1px solid var(--warm-dark);">
-                    <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:30%;">Name(s)</th>
-                    <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:35%;">What it's for</th>
+                    <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:25%;">Name(s)</th>
+                    <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:30%;">What it's for</th>
+                    <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:14%;">Frequency</th>
+                    <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;width:10%;">With food</th>
                     <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:5px 10px;">Tell the client</th>
                   </tr>
                 </thead>
                 <tbody>
-                  ${terms.map((t, i) => `
-                    <tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+                  ${terms.map((t, i) => {
+                    const meta = medMeta[t.id] || {};
+                    const foodLabel = meta.food === true ? '✅ Yes' : meta.food === 'empty' ? '⚠️ Empty stomach' : '—';
+                    const foodColor = meta.food === true ? '#166534' : meta.food === 'empty' ? '#92400e' : 'var(--ink-light)';
+                    return `<tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
                       <td style="padding:9px 10px;vertical-align:top;font-weight:600;font-size:13px;color:var(--ink);">${t.term}</td>
                       <td style="padding:9px 10px;vertical-align:top;font-size:13px;color:var(--ink-mid);line-height:1.5;">${t.meaning.split('.')[0]}.</td>
+                      <td style="padding:9px 10px;vertical-align:top;font-size:13px;color:var(--ink-mid);">${meta.freq || '—'}</td>
+                      <td style="padding:9px 10px;vertical-align:top;font-size:12.5px;font-weight:600;color:${foodColor};">${foodLabel}</td>
                       <td style="padding:9px 10px;vertical-align:top;font-size:13px;color:var(--ink-mid);line-height:1.5;font-style:italic;">"${t.clientExplanation.split('.')[0]}."</td>
-                    </tr>
-                  `).join('')}
+                    </tr>`;
+                  }).join('')}
                 </tbody>
               </table>
             </div>
@@ -635,3 +637,168 @@ function renderParasiticidesReference(deck) {
     </div>`;
 }
 
+
+// ── VACCINE QUICK REFERENCE ──
+function renderVaccineReference(deck) {
+
+  function scheduleRow(vaccine, rows, bgHeader) {
+    return `
+      <div style="margin-bottom:1.5rem;">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+          color:white;background:${bgHeader};border-radius:var(--radius) var(--radius) 0 0;
+          padding:7px 12px;">${vaccine}</div>
+        <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;border:1px solid var(--warm-dark);border-top:none;border-radius:0 0 var(--radius) var(--radius);overflow:hidden;">
+          <tbody>
+            ${rows.map((r, i) => `
+              <tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+                <td style="padding:8px 12px;font-size:13px;font-weight:600;color:var(--ink);width:38%;vertical-align:top;">${r[0]}</td>
+                <td style="padding:8px 12px;font-size:13px;color:var(--ink-mid);vertical-align:top;">${r[1]}</td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  }
+
+  const dogBlue = '#1e3a5f';
+  const catPurple = '#4c1d95';
+
+  return `
+    <div style="display:flex;flex-direction:column;gap:2rem;">
+
+      <!-- DOGS -->
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;padding-bottom:6px;border-bottom:2px solid ${dogBlue};">
+          <span style="font-size:1.2rem;">🐕</span>
+          <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${dogBlue};">Canine vaccines</span>
+        </div>
+
+        <div style="overflow-x:auto;margin-bottom:1.25rem;">
+          <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
+            <thead>
+              <tr style="background:${dogBlue};">
+                <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:white;padding:7px 10px;width:18%;">Vaccine</th>
+                <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:white;padding:7px 10px;width:12%;">Type</th>
+                <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:white;padding:7px 10px;width:32%;">Protects against</th>
+                <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:white;padding:7px 10px;">When to recommend</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${[
+                ['DAPP', 'Core', 'Distemper, Adenovirus (hepatitis), Parainfluenza, Parvovirus', 'All dogs that will be around other animals. Fatal diseases if unvaccinated.'],
+                ['Rabies', 'Core', 'Rabies virus', 'All dogs. Required for travel. Must be given after microchipping if for international travel.'],
+                ['Bordetella', 'Non-core', 'Kennel cough (Bordetella bronchiseptica)', 'Dogs that board, groom, attend training, dog parks, or daycare.'],
+                ['Leptospirosis', 'Non-core', 'Leptospira bacteria (found in soil, water, wildlife)', 'Dogs that drink from puddles, eat things off the ground, or encounter wildlife. Zoonotic risk.'],
+              ].map((r, i) => `
+                <tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+                  <td style="padding:9px 10px;font-weight:700;font-size:13px;color:${dogBlue};vertical-align:top;">${r[0]}</td>
+                  <td style="padding:9px 10px;vertical-align:top;">
+                    <span style="font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:20px;
+                      background:${r[1]==='Core'?'#dbeafe':'#f0fdf4'};
+                      color:${r[1]==='Core'?'#1e40af':'#166534'};">${r[1]}</span>
+                  </td>
+                  <td style="padding:9px 10px;font-size:13px;color:var(--ink-mid);vertical-align:top;">${r[2]}</td>
+                  <td style="padding:9px 10px;font-size:13px;color:var(--ink-mid);vertical-align:top;">${r[3]}</td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+
+        <p style="font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-light);margin-bottom:0.75rem;">Canine vaccination schedule</p>
+        ${scheduleRow('DAPP', [
+          ['8 weeks', 'First dose'],
+          ['12 weeks', 'Second dose'],
+          ['16 weeks', 'Third dose — series complete'],
+          ['1 year after 16-week dose', 'First adult booster'],
+          ['Every 3 years after', 'Ongoing booster'],
+        ], dogBlue)}
+        ${scheduleRow('Rabies', [
+          ['16 weeks', 'First dose'],
+          ['1 year after 16-week dose', 'First adult booster'],
+          ['Every 3 years after', 'Ongoing booster'],
+          ['⚠️ Travel note', 'Must be given after microchipping. Check country-specific timing requirements well in advance.'],
+        ], dogBlue)}
+        ${scheduleRow('Bordetella', [
+          ['12 or 16 weeks', 'First dose (puppies)'],
+          ['Every 1 year', 'Annual booster — always'],
+        ], dogBlue)}
+        ${scheduleRow('Leptospirosis', [
+          ['12 weeks', 'First dose (puppies)'],
+          ['16 weeks', 'Second dose (puppies)'],
+          ['First time in adult dog', 'Two doses 4 weeks apart'],
+          ['Every 1 year', 'Annual booster once series complete'],
+        ], dogBlue)}
+      </div>
+
+      <!-- CATS -->
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;padding-bottom:6px;border-bottom:2px solid ${catPurple};">
+          <span style="font-size:1.2rem;">🐈</span>
+          <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${catPurple};">Feline vaccines</span>
+        </div>
+
+        <div style="overflow-x:auto;margin-bottom:1.25rem;">
+          <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
+            <thead>
+              <tr style="background:${catPurple};">
+                <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:white;padding:7px 10px;width:18%;">Vaccine</th>
+                <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:white;padding:7px 10px;width:12%;">Type</th>
+                <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:white;padding:7px 10px;width:32%;">Protects against</th>
+                <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:white;padding:7px 10px;">When to recommend</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${[
+                ['FVRCP', 'Core', 'Rhinotracheitis (herpesvirus), Calicivirus, Panleukopenia', 'All cats — indoor and outdoor. Some viruses can be carried in on clothing.'],
+                ['Rabies', 'Core', 'Rabies virus', 'All cats, especially outdoor cats. Required for travel.'],
+                ['FeLV', 'Non-core', 'Feline Leukemia Virus', 'Indoor and outdoor cats with any contact with other cats. No cure — prevention is key.'],
+              ].map((r, i) => `
+                <tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+                  <td style="padding:9px 10px;font-weight:700;font-size:13px;color:${catPurple};vertical-align:top;">${r[0]}</td>
+                  <td style="padding:9px 10px;vertical-align:top;">
+                    <span style="font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:20px;
+                      background:${r[1]==='Core'?'#ede9fe':'#f0fdf4'};
+                      color:${r[1]==='Core'?'#4c1d95':'#166534'};">${r[1]}</span>
+                  </td>
+                  <td style="padding:9px 10px;font-size:13px;color:var(--ink-mid);vertical-align:top;">${r[2]}</td>
+                  <td style="padding:9px 10px;font-size:13px;color:var(--ink-mid);vertical-align:top;">${r[3]}</td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+
+        <p style="font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-light);margin-bottom:0.75rem;">Feline vaccination schedule</p>
+        ${scheduleRow('FVRCP', [
+          ['8 weeks', 'First dose (kittens)'],
+          ['12 weeks', 'Second dose (kittens)'],
+          ['16 weeks', 'Third dose — series complete'],
+          ['1 year after 16-week dose', 'First adult booster'],
+          ['Every 3 years after', 'Ongoing booster'],
+          ['⚠️ First vaccine over 6 months old', 'Two doses 4 weeks apart to start, then 1-year clock begins'],
+        ], catPurple)}
+        ${scheduleRow('Rabies', [
+          ['16 weeks', 'First dose (kittens)'],
+          ['1 year after 16-week dose', 'First adult booster'],
+          ['Every 3 years after', 'Ongoing booster'],
+        ], catPurple)}
+        ${scheduleRow('FeLV', [
+          ['12 weeks', 'First dose (kittens)'],
+          ['16 weeks', 'Second dose (kittens)'],
+          ['First time at any other age', 'Two doses 4 weeks apart'],
+          ['1 year after completed series', 'First booster'],
+          ['Every 2 years after', 'Ongoing booster'],
+        ], catPurple)}
+      </div>
+
+      <!-- GENERAL NOTES -->
+      <div style="background:var(--warm);border-radius:var(--radius);padding:12px 16px;font-size:13px;color:var(--ink-mid);line-height:1.7;">
+        <strong style="color:var(--ink);">Key reminders:</strong>
+        <ul style="margin:6px 0 0 16px;padding:0;">
+          <li>Vaccines requiring an initial series (Lepto, FeLV) need two doses 4 weeks apart when given for the first time — in any age animal</li>
+          <li>Rabies must be given <strong>after</strong> microchipping for international travel</li>
+          <li>Booster timing for international travel can be critical — advise clients to ask well in advance</li>
+          <li>DAPP and Leptospirosis are sometimes combined into a single injection</li>
+        </ul>
+      </div>
+
+    </div>`;
+}

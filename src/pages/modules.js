@@ -48,6 +48,18 @@ export function renderModules(container, navigate, activeRole = 'all') {
       <h2 style="margin-bottom:0.5rem;">Training scenarios</h2>
       <p style="color:var(--ink-mid);margin-bottom:1.25rem;">Choose a scenario to practise. Each one offers three ways to learn.</p>
 
+      <div style="background:linear-gradient(135deg,#1e3a5f,#2d5a8e);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.75rem;cursor:pointer;" id="crucial-card">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:44px;height:44px;background:rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">🗣️</div>
+          <div>
+            <div style="font-weight:700;font-size:1rem;color:white;margin-bottom:3px;">Crucial Conversation Prep</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);">An 8-step guided prep tool for any difficult conversation — with a colleague, a manager, or a client.</div>
+          </div>
+          <div style="margin-left:auto;color:rgba(255,255,255,0.6);font-size:1.2rem;flex-shrink:0;">→</div>
+        </div>
+      </div>
+
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-light);margin-bottom:0.75rem;">Scenarios</p>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:2rem;">
         ${ROLES.map(r => `
           <button class="role-filter-btn ${activeRole === r.id ? 'active' : ''}" data-role="${r.id}"
@@ -66,6 +78,7 @@ export function renderModules(container, navigate, activeRole = 'all') {
   `;
 
   setupHamburger();
+  document.getElementById('crucial-card')?.addEventListener('click', () => navigate('/crucial'));
   container.querySelectorAll('[data-scenario]').forEach(card => {
     card.addEventListener('click', () => navigate('/scenario/' + card.dataset.scenario));
   });

@@ -5,7 +5,7 @@ export const termDecks = [
     icon: "🩺",
     description: "Common terms receptionists hear daily — what they mean and how to explain them to clients.",
     color: "#e8f0fe",
-    colorDark: "#1a56db",
+    colorDark: "#1a56db",,
     terms: [
       {
         id: "j-01",
@@ -51,7 +51,7 @@ export const termDecks = [
         id: "j-06",
         term: "Brachycephalic",
         pronunciation: "brak-ee-seh-FAL-ik",
-        meaning: "Describes breeds with shortened, flattened skulls and faces — e.g. pugs, bulldogs, Persian cats. Often associated with breathing difficulties.",
+        meaning: "Describes breeds with shortened, flattened skulls and faces — e.g. pugs, bulldogs, Persian cats. Often associated with breathing difficulties and overheating.",
         clientExplanation: "Your pet is a brachycephalic breed — that means they have a flat face, which can sometimes make breathing harder, especially in heat or after exercise.",
         category: "Breed-specific"
       },
@@ -67,7 +67,7 @@ export const termDecks = [
         id: "j-07b",
         term: "Crepitus",
         pronunciation: "KREP-ih-tus",
-        meaning: "A grinding, crackling, or crunching sensation or sound felt or heard when a joint or bone is moved. Indicates roughened joint surfaces, bone fragments, or damage within a joint. An important finding during physical examination of a lame animal.",
+        meaning: "A grinding, crackling, or crunching sensation or sound felt or heard when a joint or bone is moved. Indicates roughened joint surfaces, bone fragments, or damage within a joint. When felt under the skin, indicates subcutaneous air.",
         clientExplanation: "When the vet talks about crepitus, they mean a grinding or crackling feeling in the joint — it's a sign that the surfaces inside the joint are not moving smoothly, which can indicate arthritis, a fracture, or other damage.",
         category: "Orthopaedics"
       },
@@ -81,7 +81,7 @@ export const termDecks = [
       },
       {
         id: "j-09",
-        term: "Dyspnoea",
+        term: "Dyspnea",
         pronunciation: "disp-NEE-uh",
         meaning: "Difficulty breathing or laboured breathing — the animal is working hard to breathe.",
         clientExplanation: "Your pet is having difficulty breathing — we call that dyspnoea. It's something we take seriously and want to assess straight away.",
@@ -97,7 +97,7 @@ export const termDecks = [
       },
       {
         id: "j-11",
-        term: "Haematuria",
+        term: "Hematuria",
         pronunciation: "hee-mah-TYOO-ree-uh",
         meaning: "Blood in the urine — visible as pink, red, or brown discolouration.",
         clientExplanation: "We've found blood in your pet's urine — the medical term is haematuria. It has several possible causes and we'll run some tests to find out why.",
@@ -131,7 +131,7 @@ export const termDecks = [
         id: "j-15",
         term: "Metastasis",
         pronunciation: "meh-TAS-tah-sis",
-        meaning: "The spread of cancer from its original site to other organs or tissues.",
+        meaning: "The spread of cancer from its original site to other distant organs or tissues.",
         clientExplanation: "The cancer has spread from where it started to other areas of the body — that's what we mean by metastasis. The vet will explain what that means for treatment options.",
         category: "Oncology"
       },
@@ -171,7 +171,7 @@ export const termDecks = [
         id: "j-20",
         term: "Regurgitation",
         pronunciation: "reh-gur-jih-TAY-shun",
-        meaning: "Passive expulsion of undigested food from the oesophagus, without the abdominal effort of vomiting. Important clinical distinction.",
+        meaning: "Passive expulsion of undigested food from the esophagus, without the abdominal effort of vomiting. Important clinical distinction.",
         clientExplanation: "There's an important difference between vomiting and regurgitation — regurgitation is when food comes back up without much effort, usually shortly after eating. It points to a different set of causes than vomiting.",
         category: "Gastroenterology"
       },
@@ -214,7 +214,7 @@ export const termDecks = [
         meaning: "A disease that can be transmitted from animals to humans.",
         clientExplanation: "A zoonotic disease is one that can potentially spread from your pet to people. We'll make sure you know what precautions to take.",
         category: "Public Health"
-      }      ,
+      },
       {
         id: "j-c01",
         term: "Idiopathic cystitis",
@@ -267,8 +267,8 @@ export const termDecks = [
         id: "j-p05",
         term: "TPLO",
         pronunciation: "tee-pee-el-oh",
-        meaning: "Tibial Plateau Levelling Osteotomy. A surgical procedure to stabilise the knee (stifle) after a cranial cruciate ligament (CCL) tear — the canine equivalent of an ACL tear. The tibial plateau is cut and rotated to change joint mechanics. One of the most common orthopaedic surgeries in dogs. Recovery takes 8–12 weeks of strict rest.",
-        clientExplanation: "TPLO is the surgery we do to fix a torn cruciate ligament in the knee — similar to an ACL repair in people. Recovery takes around 8–12 weeks of strict rest.",
+        meaning: "Tibial Plateau Levelling Osteotomy. A surgical procedure to stabilise the knee (stifle) after a cranial cruciate ligament (CCL) tear — the canine equivalent of an ACL tear. The tibial plateau is cut and rotated to change joint mechanics. One of the most common orthopaedic surgeries in dogs. Recovery takes 12 weeks of strict rest and physiotherapy.",
+        clientExplanation: "TPLO is the surgery we do to fix a torn cruciate ligament in the knee — similar to an ACL repair in people. Recovery takes around 12 weeks of strict rest and physiotherapy.",
         category: "Procedures / Orthopaedics"
       },
       {
@@ -283,7 +283,7 @@ export const termDecks = [
         id: "j-p07",
         term: "Ovariohysterectomy vs Ovariectomy",
         pronunciation: "oh-vair-ee-oh-his-teh-REK-toh-mee / oh-vair-ee-EK-toh-mee",
-        meaning: "Both are forms of spaying. Ovariohysterectomy (OHE) removes the ovaries AND uterus. Ovariectomy removes only the ovaries. Both are considered equally safe and effective. Ovariectomy is increasingly preferred as it involves less surgery.",
+        meaning: "Both are forms of spaying. Ovariohysterectomy (OHE) removes the ovaries AND uterus. Ovariectomy removes only the ovaries. Both are considered equally safe and effective.",
         clientExplanation: "Both are spay procedures — one removes just the ovaries, the other removes the ovaries and uterus. Both prevent pregnancy and heat cycles.",
         category: "Procedures"
       },
@@ -299,7 +299,7 @@ export const termDecks = [
         id: "j-p09",
         term: "Anal sacculectomy",
         pronunciation: "AY-nal sak-yoo-LEK-toh-mee",
-        meaning: "Surgical removal of one or both anal sacs. Performed for chronic infection, impaction, rupture, or tumour. Carries a risk of faecal incontinence if sphincter nerves are damaged.",
+        meaning: "Surgical removal of one or both anal sacs. Performed for chronic infection, impaction, rupture, or tumour. Carries a risk of fecal incontinence if sphincter nerves are damaged.",
         clientExplanation: "Anal sacculectomy means removing the anal glands — usually because they keep getting infected or there is a growth in one of them.",
         category: "Procedures"
       },
@@ -323,8 +323,8 @@ export const termDecks = [
         id: "j-p12",
         term: "Gastropexy",
         pronunciation: "GAS-troh-pek-see",
-        meaning: "Surgical procedure that permanently attaches the stomach to the abdominal wall to prevent rotation. Used to treat or prevent GDV (bloat) in large and giant breeds. Can be performed preventively or at the time of treating an acute GDV.",
-        clientExplanation: "A gastropexy tacks the stomach to the body wall so it can't twist — it's used to prevent or treat bloat. Often recommended preventively in deep-chested breeds like Great Danes and German Shepherds.",
+        meaning: "Surgical procedure that permanently attaches the stomach to the abdominal wall to prevent rotation. Used to treat or prevent GDV (bloat) in large and giant breeds. Can be performed preventively (e.g. during a spay) or at the time of treating an acute GDV.",
+        clientExplanation: "A gastropexy tacks the stomach to the body wall so it can't twist — it's used to prevent or treat bloat. Often recommended preventively in deep-chested breeds like Great Danes.",
         category: "Procedures"
       },
       {
@@ -339,7 +339,7 @@ export const termDecks = [
         id: "j-p14",
         term: "Pyometra",
         pronunciation: "py-oh-MEE-trah",
-        meaning: "Life-threatening infection of the uterus, most commonly in older unspayed females. Open pyometra: cervix is open, discharge visible. Closed pyometra: cervix is closed, no discharge, animal often more seriously ill. Emergency OHE is the treatment of choice.",
+        meaning: "Life-threatening infection of the uterus, most commonly in older unspayed females. Open pyometra: cervix is open, discharge visible, usually not as obviously ill. Closed pyometra: cervix is closed, no discharge, animal often more seriously ill. Emergency ovariohysterectomy is the treatment of choice.",
         clientExplanation: "Pyometra is a serious infection of the uterus — a life-threatening condition requiring emergency surgery. Most common in older unspayed females.",
         category: "Conditions / Procedures"
       },
@@ -347,15 +347,15 @@ export const termDecks = [
         id: "j-p15",
         term: "Esophagostomy tube (E-tube)",
         pronunciation: "eh-sof-ah-GOS-toh-mee",
-        meaning: "A feeding tube placed through the skin of the neck directly into the esophagus. Used when a patient cannot or will not eat — e.g. stomatitis recovery, hepatic lipidosis. Allows the owner to feed liquid food at home.",
-        clientExplanation: "An E-tube is a small feeding tube in the neck that goes directly into the food pipe. It lets us feed your pet liquid food through the tube at home when they won't eat on their own.",
+        meaning: "A feeding tube placed through the skin of the neck directly into the esophagus. Used when a patient cannot or will not eat — e.g. stomatitis recovery, hepatic lipidosis. Allows the owner to feed liquid food and give medications more easily at home.",
+        clientExplanation: "An E-tube is a small feeding tube in the neck that goes directly into the food pipe. It lets us feed your pet liquid food and medications through the tube at home when they won't eat on their own.",
         category: "Procedures"
       },
       {
         id: "j-p16",
         term: "Fecal transplant (FMT)",
         pronunciation: "",
-        meaning: "Fecal Microbiome Transplant. Transfer of stool from a healthy donor into a recipient's GI tract to restore a healthy gut microbiome. Used for chronic diarrhea, IBD, post-antibiotic dysbiosis. Can be given orally, rectally, or via enema.",
+        meaning: "Fecal Microbiome Transplant. Transfer of stool from a healthy donor into a recipient's GI tract to restore a healthy gut microbiome. Used for chronic diarrhea, IBD, post-antibiotic dysbiosis. Can be given orally in the form of pills, or rectally in the form of an enema.",
         clientExplanation: "A fecal transplant introduces stool from a healthy donor into your pet's gut to help restore normal gut bacteria. It can be very effective for certain chronic digestive problems.",
         category: "Procedures / Gastroenterology"
       },
@@ -451,7 +451,7 @@ export const termDecks = [
         id: "j-a06",
         term: "TPR",
         pronunciation: "",
-        meaning: "Temperature, Pulse, Respiration. The three basic vital signs assessed in every patient. Normal dog: T 38–39°C, P 60–120 bpm, R 15–30 breaths/min. Normal cat: T 38–39.5°C, P 120–200 bpm, R 15–30 breaths/min.",
+        meaning: "Temperature, Pulse, Respiration. The three basic vital signs assessed in every patient.",
         clientExplanation: "TPR refers to the three basic vital signs — temperature, heart rate, and breathing rate.",
         category: "Acronyms"
       },
@@ -515,7 +515,7 @@ export const termDecks = [
         id: "j-a12",
         term: "BG",
         pronunciation: "",
-        meaning: "Blood Glucose. The level of sugar in the blood. Elevated in diabetes mellitus; critically low in hypoglycaemia (especially in puppies and toy breeds).",
+        meaning: "Blood Glucose. The level of sugar in the blood. Elevated in diabetes mellitus; critically low in hypoglycemia (especially in puppies and toy breeds).",
         clientExplanation: "BG is blood glucose — the sugar level in the blood. We monitor this closely in diabetic patients.",
         category: "Acronyms"
       },
@@ -531,7 +531,7 @@ export const termDecks = [
         id: "j-a12c",
         term: "IOP",
         pronunciation: "",
-        meaning: "Intraocular Pressure. The pressure inside the eye. Elevated IOP = glaucoma. Reduced IOP can indicate uveitis. Measured with a tonometer.",
+        meaning: "Intraocular Pressure. The pressure inside the eye. Elevated IOP = glaucoma. Reduced IOP = uveitis.",
         clientExplanation: "IOP is the pressure inside the eye — high pressure means glaucoma, which can be very painful and damage vision.",
         category: "Acronyms"
       },
@@ -539,15 +539,15 @@ export const termDecks = [
         id: "j-a12d",
         term: "USG",
         pronunciation: "",
-        meaning: "Urine Specific Gravity. Measures how concentrated the urine is — an indicator of kidney concentrating ability. Normal dogs: 1.015–1.045. Normal cats: 1.020–1.060. Low USG in a sick animal suggests the kidneys are not concentrating properly.",
+        meaning: "Urine Specific Gravity. Measures how concentrated the urine is — an indicator of kidney function.",
         clientExplanation: "USG tells us how concentrated your pet's urine is — it's a useful indicator of how well the kidneys are working.",
         category: "Acronyms"
       },
       {
         id: "j-a12e",
-        term: "RR",
+        term: "RR, RRR (or SRR)",
         pronunciation: "",
-        meaning: "Respiratory Rate. The number of breaths per minute. Normal resting rate: 15–30 breaths/min for dogs and cats. Owners of cardiac patients are often asked to monitor resting RR at home — elevated resting RR can be an early sign of decompensation.",
+        meaning: "Respiratory Rate. The number of breaths per minute. Owners of cardiac patients are often asked to monitor resting respiratory rate (RRR) or sleeping respiratory rate (SRR) at home — elevated RRR/SRR can be an early sign of heart failure.",
         clientExplanation: "RR is respiratory rate — how many breaths per minute. For heart patients we sometimes ask owners to count this at home while their pet is resting.",
         category: "Acronyms"
       },
@@ -555,7 +555,7 @@ export const termDecks = [
         id: "j-a12f",
         term: "HR",
         pronunciation: "",
-        meaning: "Heart Rate. Beats per minute. Normal dog: 60–120 bpm (larger dogs lower). Normal cat: 120–200 bpm.",
+        meaning: "Heart Rate. Beats per minute.",
         clientExplanation: "HR is heart rate — how many times the heart beats per minute.",
         category: "Acronyms"
       },
@@ -563,7 +563,7 @@ export const termDecks = [
         id: "j-a12g",
         term: "STT",
         pronunciation: "",
-        meaning: "Schirmer Tear Test. Measures tear production in the eye using a small strip of paper placed inside the lower eyelid for one minute. Used to diagnose keratoconjunctivitis sicca (KCS / dry eye). Normal: >15mm wetting per minute.",
+        meaning: "Schirmer Tear Test. Measures tear production. Used to diagnose keratoconjunctivitis sicca (KCS / dry eye).",
         clientExplanation: "The Schirmer tear test checks whether your pet's eyes are producing enough tears — low tear production causes dry eye, which is uncomfortable and needs treatment.",
         category: "Acronyms"
       },
@@ -571,7 +571,7 @@ export const termDecks = [
         id: "j-a13",
         term: "C/S/V/D",
         pronunciation: "",
-        meaning: "Shorthand for clinical signs: Coughing / Sneezing / Vomiting / Diarrhea. Used in records to note which symptoms are present.",
+        meaning: "Coughing / Sneezing / Vomiting / Diarrhea. Used in records to note which symptoms are present.",
         clientExplanation: "C/S/V/D is a quick shorthand for the main symptoms — coughing, sneezing, vomiting, and diarrhea.",
         category: "Acronyms"
       },
@@ -579,7 +579,7 @@ export const termDecks = [
         id: "j-a13b",
         term: "V+ / D+ / C+ / S+",
         pronunciation: "",
-        meaning: "Symptom shorthand. V+ = vomiting present. D+ (also Dha) = diarrhea present. C+ = coughing present. S+ = sneezing present.",
+        meaning: "V+ = vomiting present. D+ (also Dha) = diarrhea present. C+ = coughing present. S+ = sneezing present.",
         clientExplanation: "These are quick notation symbols used in records to show which symptoms are present.",
         category: "Acronyms"
       },
@@ -587,7 +587,7 @@ export const termDecks = [
         id: "j-a14",
         term: "BM",
         pronunciation: "",
-        meaning: "Bowel Movement. Used in records to note whether a patient has defecated — important post-operatively and in patients with GI disease.",
+        meaning: "Bowel Movement.",
         clientExplanation: "BM just means bowel movement — we often note whether a pet has had one, especially after surgery.",
         category: "Acronyms"
       },
@@ -595,7 +595,7 @@ export const termDecks = [
         id: "j-a14b",
         term: "GI / GIT",
         pronunciation: "",
-        meaning: "Gastrointestinal / Gastrointestinal Tract. Refers to the digestive system as a whole — from the oesophagus to the rectum.",
+        meaning: "Gastrointestinal / Gastrointestinal Tract. Refers to the digestive system as a whole — from the esophagus to the rectum.",
         clientExplanation: "GI or GIT refers to the digestive system.",
         category: "Acronyms"
       },
@@ -643,8 +643,8 @@ export const termDecks = [
         id: "j-a15c",
         term: "Rx",
         pronunciation: "",
-        meaning: "Prescription or medication.",
-        clientExplanation: "Rx means the medication or prescription.",
+        meaning: "Prescription",
+        clientExplanation: "Rx means the prescription.",
         category: "Acronyms"
       },
       {
@@ -659,7 +659,7 @@ export const termDecks = [
         id: "j-a15e",
         term: "Sx",
         pronunciation: "",
-        meaning: "Surgery.",
+        meaning: "Surgery",
         clientExplanation: "Sx means surgery.",
         category: "Acronyms"
       },
@@ -667,7 +667,7 @@ export const termDecks = [
         id: "j-a15f",
         term: "Hx",
         pronunciation: "",
-        meaning: "History — the patient's medical history and the owner's account of the current problem.",
+        meaning: "History — the patient's medical background and the owner's account of the current problem.",
         clientExplanation: "Hx is the history — what's happened with your pet's health leading up to today.",
         category: "Acronyms"
       },
@@ -675,7 +675,7 @@ export const termDecks = [
         id: "j-a15g",
         term: "Fx",
         pronunciation: "",
-        meaning: "Fracture.",
+        meaning: "Fracture",
         clientExplanation: "Fx means fracture — a broken bone.",
         category: "Acronyms"
       },
@@ -691,7 +691,7 @@ export const termDecks = [
         id: "j-a17",
         term: "FAD",
         pronunciation: "",
-        meaning: "Flea Allergy Dermatitis. A skin allergy to flea saliva — the most common cause of itching in dogs and cats. Even one flea bite can trigger a severe reaction in sensitised animals. Year-round flea prevention is essential.",
+        meaning: "Flea Allergy Dermatitis. A skin allergy to flea saliva — the most common cause of itching in dogs and cats. Even one flea bite can trigger a severe reaction in sensitised animals.",
         clientExplanation: "FAD is a flea allergy — your pet is allergic to flea saliva, so even a single flea bite can cause intense itching. Year-round prevention is important.",
         category: "Acronyms / Conditions"
       },
@@ -699,7 +699,7 @@ export const termDecks = [
         id: "j-a17b",
         term: "IBD",
         pronunciation: "",
-        meaning: "Inflammatory Bowel Disease. Chronic inflammation of the GI tract causing ongoing vomiting, diarrhea, and weight loss. Diagnosed by biopsy. Managed with diet change, immunosuppressants, and sometimes B12 supplementation.",
+        meaning: "Inflammatory Bowel Disease. Chronic inflammation of the GI tract causing ongoing vomiting, diarrhea, and/or weight loss. Managed with diet change, immunosuppressants, and sometimes B12 supplementation.",
         clientExplanation: "IBD means chronic inflammation of the digestive tract — it causes ongoing gut symptoms and needs long-term management.",
         category: "Acronyms / Conditions"
       },
@@ -707,7 +707,7 @@ export const termDecks = [
         id: "j-a17c",
         term: "IVDD",
         pronunciation: "",
-        meaning: "Intervertebral Disc Disease. Degeneration and herniation of the discs between the vertebrae, compressing the spinal cord. Causes pain, weakness, or paralysis. Common in chondrodystrophic breeds (Dachshunds, Corgis, French Bulldogs).",
+        meaning: "Intervertebral Disc Disease. Degeneration and herniation of the discs between the vertebrae, compressing the spinal cord. Causes pain, weakness, or paralysis. Common in Dachshunds, Corgis, French Bulldogs.",
         clientExplanation: "IVDD is a slipped disc — the cushioning between the vertebrae herniates and presses on the spinal cord. It can cause pain, weakness, or in severe cases loss of the ability to walk.",
         category: "Acronyms / Conditions"
       },
@@ -723,7 +723,7 @@ export const termDecks = [
         id: "j-a17e",
         term: "PUPD",
         pronunciation: "",
-        meaning: "Polyuria / Polydipsia. Increased urination (PU) and increased drinking (PD). A significant clinical sign pointing to systemic disease — possible causes include diabetes, kidney disease, Cushing's disease, Addison's disease, hyperthyroidism, and pyometra.",
+        meaning: "Polyuria / Polydipsia. Increased urination (PU) and increased drinking (PD). Possible causes include diabetes, kidney disease, Cushing's disease, Addison's disease, hyperthyroidism, and pyometra.",
         clientExplanation: "PUPD means your pet is drinking and urinating much more than normal — it's an important sign that warrants investigation.",
         category: "Acronyms / Conditions"
       },
@@ -739,7 +739,7 @@ export const termDecks = [
         id: "j-a19",
         term: "hyperT4",
         pronunciation: "",
-        meaning: "Hyperthyroidism — an overactive thyroid gland producing too much T4. Most common in older cats. Signs include weight loss despite good appetite, increased thirst, hyperactivity, vomiting.",
+        meaning: "Hyperthyroidism — an overactive thyroid gland producing too much T4. Only in cats older than 7 years. Signs include weight loss despite good appetite, increased thirst, hyperactivity, vomiting.",
         clientExplanation: "hyperT4 means the thyroid is overactive — producing too much thyroid hormone. Common in older cats.",
         category: "Acronyms / Endocrinology"
       },
@@ -747,7 +747,7 @@ export const termDecks = [
         id: "j-a19b",
         term: "hypoT4",
         pronunciation: "",
-        meaning: "Hypothyroidism — an underactive thyroid gland producing insufficient T4. Most common in dogs. Signs include weight gain, lethargy, coat changes, and cold intolerance.",
+        meaning: "Hypothyroidism — an underactive thyroid gland producing too little T4. Usually in dogs. Signs include weight gain, lethargy, coat changes, and cold intolerance.",
         clientExplanation: "hypoT4 means the thyroid is underactive — not producing enough thyroid hormone. More common in dogs.",
         category: "Acronyms / Endocrinology"
       },
@@ -755,7 +755,7 @@ export const termDecks = [
         id: "j-a20",
         term: "AG",
         pronunciation: "",
-        meaning: "Anal Gland (anal sac). The small scent glands on either side of the rectum. Used in records to note anal gland expression, impaction, infection, or surgery.",
+        meaning: "Anal Gland (anal sac). The small scent glands on either side of the rectum.",
         clientExplanation: "AG is shorthand for anal gland — the small glands on either side of the rectum that sometimes need to be emptied.",
         category: "Acronyms"
       },
@@ -763,7 +763,7 @@ export const termDecks = [
         id: "j-a21",
         term: "R lat / L lat / VD / DV",
         pronunciation: "",
-        meaning: "Radiograph positioning. R lat = Right lateral (lying on right side). L lat = Left lateral (lying on left side). VD = Ventrodorsal (lying on back). DV = Dorsoventral (lying on stomach).",
+        meaning: "Radiograph (X-ray) positioning. R lat = Right lateral (lying on right side). L lat = Left lateral (lying on left side). VD = Ventrodorsal (lying on back). DV = Dorsoventral (lying on stomach).",
         clientExplanation: "These describe the position your pet is in when the X-ray is taken.",
         category: "Acronyms / Imaging"
       },
@@ -811,7 +811,7 @@ export const termDecks = [
         id: "j-a24",
         term: "SNC",
         pronunciation: "",
-        meaning: "See New Communication. Used as the subject line of internal memos written to vets, alerting them that there is a message on file from the owner. Keeps communication traceable in the patient record.",
+        meaning: "See New Communication. Used as the subject line of internal memos written to vets, alerting them that there is a message on file from the owner.",
         clientExplanation: "This is an internal staff notation — not visible to clients.",
         category: "Acronyms (Internal)"
       },
@@ -827,7 +827,7 @@ export const termDecks = [
         id: "j-a26",
         term: "PVD",
         pronunciation: "",
-        meaning: "Purina Veterinary Diets. Used in records when a Purina therapeutic diet has been recommended.",
+        meaning: "Purina Veterinary Diets. Prescription food.",
         clientExplanation: "PVD is shorthand for Purina Veterinary Diets — prescription diet foods made by Purina.",
         category: "Acronyms (Internal)"
       },
@@ -835,7 +835,7 @@ export const termDecks = [
         id: "j-a26b",
         term: "RCVD",
         pronunciation: "",
-        meaning: "Royal Canin Veterinary Diets. A range of prescription therapeutic diets formulated for specific medical conditions — kidney disease, urinary issues, gastrointestinal conditions, weight management, and more. Used in records when a Royal Canin therapeutic diet has been recommended.",
+        meaning: "Royal Canin Veterinary Diets.  Prescription food.",
         clientExplanation: "RCVD is shorthand for Royal Canin Veterinary Diets — prescription diet foods made by Royal Canin, formulated for specific medical conditions.",
         category: "Acronyms (Internal)"
       },
@@ -851,7 +851,7 @@ export const termDecks = [
         id: "j-a28",
         term: "sr buprenorphine",
         pronunciation: "",
-        meaning: "Slow Release Buprenorphine. A long-acting formulation of buprenorphine (opioid pain reliever) lasting approximately 72 hours after a single injection. FOR USE IN CATS ONLY — not licensed for dogs.",
+        meaning: "Slow Release Buprenorphine. A long-acting formulation of buprenorphine (opioid pain reliever) lasting approximately 72 hours after a single injection. FOR USE IN CATS ONLY.",
         clientExplanation: "Slow-release buprenorphine is a long-acting pain medication given as a single injection that lasts about 3 days. It is only used in cats.",
         category: "Acronyms / Medications"
       },
@@ -871,13 +871,13 @@ export const termDecks = [
     icon: "💊",
     description: "Brand names, generic names, and what each medication is used for — so you can answer basic client questions confidently.",
     color: "#fef3c7",
-    colorDark: "#b45309",
+    colorDark: "#b45309",,
     terms: [
       {
         id: "m-01",
         term: "Amoxicillin / Clavulanate (Clavaseptin, Clavamox)",
         pronunciation: "ah-mox-ih-SIL-in / klav-yoo-LAN-ate",
-        meaning: "A broad-spectrum antibiotic combination. Brand names include Clavaseptin and Clavamox. Used for skin, respiratory, urinary, and soft tissue infections.",
+        meaning: "For skin, respiratory, urinary, and soft tissue infections. Twice daily. Give with food.",
         clientExplanation: "This is an antibiotic — it treats bacterial infections. Always finish the full course even if your pet seems better.",
         category: "Antibiotics"
       },
@@ -885,7 +885,7 @@ export const termDecks = [
         id: "m-01b",
         term: "Apoquel (oclacitinib)",
         pronunciation: "AP-oh-kwel / ok-lah-SIH-tih-nib",
-        meaning: "A JAK inhibitor used to control itch and inflammation associated with allergic skin disease in dogs. For dogs only. Fast-acting — often within 4 hours. Given twice daily initially, then once daily for maintenance.",
+        meaning: "To control allergic skin disease in dogs, similar to Zenrelia and Numelvi. Fast-acting — often within 4 hours. Twice daily initially, then once daily for maintenance.",
         clientExplanation: "Apoquel targets the itch signal directly in dogs with skin allergies — it works quickly, often within a few hours. Given twice daily at first, then once daily long-term.",
         category: "Dermatology"
       },
@@ -893,7 +893,7 @@ export const termDecks = [
         id: "m-02",
         term: "Atopica (cyclosporine)",
         pronunciation: "at-OH-pih-kah / sy-kloh-SPOR-een",
-        meaning: "An immunosuppressant used to control allergic skin disease in dogs and cats. Reduces the immune response driving itch. Takes 4-6 weeks to reach full effect.",
+        meaning: "To control allergic skin disease in dogs and cats. Immunosuppressive.  Takes 4-6 weeks to reach full effect. Once daily.",
         clientExplanation: "Atopica damps down the part of the immune system causing the allergic reaction. It takes a few weeks to see the full benefit and is often reduced to every other day once controlled.",
         category: "Dermatology / Immunosuppressants"
       },
@@ -901,7 +901,7 @@ export const termDecks = [
         id: "m-03",
         term: "Baytril (enrofloxacin)",
         pronunciation: "BAY-tril / en-roh-FLOX-ah-sin",
-        meaning: "A fluoroquinolone antibiotic used for skin, urinary, respiratory, and ear infections. Use with caution in young growing animals as it can affect cartilage development.",
+        meaning: "For skin, urinary, respiratory, and ear infections. Use with caution in young growing animals as it can affect cartilage development. Oral version is once daily (except in exotic pets), topical version is twice daily. Oral version to be given with food.",
         clientExplanation: "Baytril is a strong antibiotic often used for ear or urinary infections, or when other antibiotics have not worked.",
         category: "Antibiotics"
       },
@@ -909,7 +909,7 @@ export const termDecks = [
         id: "m-04",
         term: "Benazepril (Fortekor)",
         pronunciation: "ben-AY-zeh-pril / FOR-teh-kor",
-        meaning: "An ACE inhibitor used to manage heart disease, high blood pressure, and chronic kidney disease in dogs and cats. Reduces the workload on the heart and kidneys.",
+        meaning: "To manage heart disease, high blood pressure, and chronic kidney disease in dogs and cats. Usually once daily.",
         clientExplanation: "Fortekor helps reduce the strain on your pet's heart and kidneys. It is an important part of managing these conditions long-term and is usually given once daily.",
         category: "Cardiology / Nephrology"
       },
@@ -917,7 +917,7 @@ export const termDecks = [
         id: "m-05",
         term: "Buprenorphine",
         pronunciation: "byoo-PREN-or-feen",
-        meaning: "An opioid pain reliever used for moderate to severe pain. Commonly used post-operatively. In cats, often given as an oral transmucosal liquid absorbed through the gums.",
+        meaning: "An opioid pain reliever used for moderate to severe pain. Injectable for cats and dogs.  In cats, often given as an oral transmucosal liquid absorbed through the gums. Usually twice daily.  A slow-release version that lasts 72 hours can be used in cats only. Can cause sedation.",
         clientExplanation: "This is a strong pain medication — your pet may seem sleepy or calm while on it, which is expected. In cats it is often given as a liquid absorbed through the gums.",
         category: "Pain Management"
       },
@@ -925,23 +925,23 @@ export const termDecks = [
         id: "m-06",
         term: "Cerenia / Emavert (maropitant)",
         pronunciation: "seh-REE-nee-uh / em-ah-VERT / mair-OH-pih-tant",
-        meaning: "An antiemetic (anti-vomiting) medication. Brand names Cerenia and Emavert. Also used for motion sickness. Works within 1-2 hours.",
-        clientExplanation: "Cerenia or Emavert stops vomiting and nausea quickly. It can also be used before car travel to prevent motion sickness.",
+        meaning: "An antiemetic (anti-vomiting) which also has some pain relief/antiinflammatory effect. Also used for motion sickness, sneezing and coughing (off label). Works within 1-2 hours. Once daily.",
+        clientExplanation: "Most potent anti-nausea medication available in cats and dogs, stops vomiting and nausea within 1-2 hours. It can also be used before car travel to prevent motion sickness.",
         category: "Gastrointestinal"
       },
       {
         id: "m-07",
         term: "Cephalexin (Cefaseptin)",
         pronunciation: "sef-ah-LEX-in / sef-ah-SEP-tin",
-        meaning: "A first-generation cephalosporin antibiotic. Brand name Cefaseptin. Used for skin, soft tissue, and urinary tract infections. One of the most commonly used antibiotics in veterinary practice.",
-        clientExplanation: "Cefaseptin is a commonly used antibiotic for skin and urinary infections. Give with food to reduce the chance of stomach upset.",
+        meaning: "For skin, soft tissue, and urinary tract infections. Twice daily.  Give with food.",
+        clientExplanation: "Cefaseptin is the veterinary version of Cephalexin - a chewable, flavoured tablet commonly used antibiotic for skin and urinary infections. Give with food to reduce the chance of stomach upset.",
         category: "Antibiotics"
       },
       {
         id: "m-08",
-        term: "Clindamycin (Antirobe)",
+        term: "Clindamycin (Antirobe/Clinacin)",
         pronunciation: "klin-dah-MY-sin / AN-tih-robe",
-        meaning: "An antibiotic effective against dental, skin, bone, and soft tissue infections. Commonly used after dental procedures.",
+        meaning: "For dental, skin, bone, and soft tissue infections. Twice daily.  Give with food.",
         clientExplanation: "This antibiotic is particularly good for mouth and dental infections, which is why it is often prescribed after a dental procedure.",
         category: "Antibiotics"
       },
@@ -949,7 +949,7 @@ export const termDecks = [
         id: "m-09",
         term: "Clomicalm (clomipramine)",
         pronunciation: "KLOH-mih-kalm / kloh-MIP-rah-meen",
-        meaning: "A tricyclic antidepressant used to treat separation anxiety and compulsive behaviours in dogs. Works best alongside behavioural modification. Takes several weeks to reach full effect.",
+        meaning: "A tricyclic antidepressant used to treat separation anxiety and compulsive behaviours in dogs. Works best alongside behavioural modification. Takes several weeks to reach full effect. Once or twice daily.",
         clientExplanation: "Clomicalm helps with anxiety — particularly separation anxiety. It works best alongside training and behavioural support and takes several weeks to reach full effect.",
         category: "Behavioural / Anxiolytics"
       },
@@ -965,15 +965,15 @@ export const termDecks = [
         id: "m-11",
         term: "Deramaxx (deracoxib)",
         pronunciation: "deh-rah-MAX / deh-rah-KOX-ib",
-        meaning: "A COX-2 selective NSAID used for pain and inflammation in dogs — post-surgical pain and osteoarthritis. Do not use in cats.",
+        meaning: "An NSAID used for pain and inflammation in dogs — post-surgical pain and osteoarthritis. Do not use in cats. Once daily.",
         clientExplanation: "Deramaxx is an anti-inflammatory pain reliever for dogs. Give with food. Never give to cats.",
         category: "Pain Management / NSAIDs"
       },
       {
         id: "m-12",
-        term: "Dexamethasone / Prednisolone",
-        pronunciation: "dex-ah-METH-ah-zone / pred-NIS-oh-lone",
-        meaning: "Corticosteroids used to reduce inflammation and suppress the immune system. Used for allergies, inflammatory conditions, immune-mediated disease, and some cancers.",
+        term: "Prednisone /Prednisolone",
+        pronunciation: "pred-NIS-one / pred-NIS-oh-lone",
+        meaning: "Corticosteroids to reduce inflammation and/or suppress the immune system. Used for allergies, inflammatory conditions, immune-mediated disease, and some cancers. Twice daily.  PREDNISOLONE for CATS.",
         clientExplanation: "This is a steroid medication — it reduces inflammation and calms the immune system. Side effects are possible with long-term use, so we will monitor carefully.",
         category: "Steroids"
       },
@@ -981,7 +981,7 @@ export const termDecks = [
         id: "m-13",
         term: "Doxycycline",
         pronunciation: "dok-see-SY-kleen",
-        meaning: "A broad-spectrum tetracycline antibiotic effective against tick-borne diseases (Lyme, Anaplasma), respiratory infections, and atypical bacteria. Must be given with food and water — can cause oesophageal stricture if dry-swallowed, especially in cats.",
+        meaning: "For tick-borne diseases (Lyme, Anaplasma), respiratory infections, and atypical bacteria. Must be given with food and water — can cause oesophageal stricture if dry-swallowed, especially in cats. Twice daily.",
         clientExplanation: "Doxycycline is often used for tick-borne infections and respiratory conditions. Always give with food and make sure your pet swallows it with water — never give it dry, especially to cats.",
         category: "Antibiotics"
       },
@@ -989,7 +989,7 @@ export const termDecks = [
         id: "m-14",
         term: "Famotidine",
         pronunciation: "fah-MOH-tih-deen",
-        meaning: "An H2 blocker (antacid) used to reduce stomach acid. Helps with gastric ulcers and acid reflux. Often used alongside NSAIDs or steroids to protect the stomach lining.",
+        meaning: "An H2 blocker (antacid) to reduce stomach acid. Helps with gastric ulcers and acid reflux. Twice daily.",
         clientExplanation: "Famotidine reduces stomach acid — it is often given alongside other medications to protect the stomach. Similar to how Pepcid works in people.",
         category: "Gastrointestinal"
       },
@@ -997,7 +997,7 @@ export const termDecks = [
         id: "m-15",
         term: "Felimazole (methimazole)",
         pronunciation: "feh-LIM-ah-zole / meth-IM-ah-zole",
-        meaning: "An antithyroid medication used to treat hyperthyroidism in cats. Reduces thyroid hormone production. Requires regular blood monitoring for thyroid levels and kidney function.",
+        meaning: "Antithyroid medication to treat hyperthyroidism in cats. Requires regular blood monitoring for thyroid levels and kidney function. Once or twice daily.",
         clientExplanation: "Felimazole controls an overactive thyroid in cats. Regular blood tests are important — usually every few weeks at first, then every 6 months once stable.",
         category: "Endocrinology"
       },
@@ -1005,7 +1005,7 @@ export const termDecks = [
         id: "m-16",
         term: "Fluoxetine (Prozac, Reconcile)",
         pronunciation: "floo-OX-eh-teen",
-        meaning: "An SSRI antidepressant used for anxiety, compulsive behaviours, and aggression in dogs and cats. Brand names Prozac and Reconcile. Takes 4-6 weeks for full effect. Best used alongside behavioural modification.",
+        meaning: "An SSRI antidepressant for anxiety, compulsive behaviours, and aggression in dogs and cats. Brand names Prozac and Reconcile. Takes 4-6 weeks for full effect. Best used alongside behavioural modification. Once daily.",
         clientExplanation: "Fluoxetine helps with anxiety and compulsive behaviours — it is the same medication as Prozac in people. It takes several weeks to work fully, and behaviour training alongside it is important.",
         category: "Behavioural / Anxiolytics"
       },
@@ -1013,23 +1013,23 @@ export const termDecks = [
         id: "m-17",
         term: "Furosemide (Lasix)",
         pronunciation: "fyoo-ROH-seh-mide / LAY-siks",
-        meaning: "A diuretic (water pill) that helps remove excess fluid from the body. Brand name Lasix. Used in heart failure and conditions causing fluid accumulation.",
-        clientExplanation: "Lasix is a water tablet — it helps the kidneys remove excess fluid that has built up, particularly around the lungs or abdomen. You may notice your pet urinating more.",
+        meaning: "A diuretic (water pill) that helps remove excess fluid from the body. Used in heart failure and conditions causing fluid accumulation. Twice to three times daily. Must have water available at all times.",
+        clientExplanation: "Lasix is a water tablet — it helps the kidneys remove excess fluid that has built up, particularly around the lungs or abdomen. You may notice your pet urinating more. ENSURE WATER IS AVAILABLE AT ALL TIMES.",
         category: "Cardiology"
       },
       {
         id: "m-18",
         term: "Gabapentin",
         pronunciation: "gab-ah-PEN-tin",
-        meaning: "Used for neuropathic pain, seizures, and as a sedative or anxiolytic before procedures. Widely used for anxiety in cats before veterinary visits.",
-        clientExplanation: "Gabapentin can be used for nerve pain, seizure control, or to help with anxiety. It often makes pets a bit drowsy, which is expected.",
+        meaning: "For neuropathic pain and as a sedative or anxiolytic before procedures/travel. Widely used for anxiety in cats before veterinary visits. Twice daily.",
+        clientExplanation: "Gabapentin can be used for nerve pain or to help with anxiety. It often makes pets a bit drowsy at higher doses, which is expected.",
         category: "Pain Management / Neurology"
       },
       {
         id: "m-19",
         term: "Galliprant (grapiprant)",
         pronunciation: "GAL-ih-prant / grah-PIP-rant",
-        meaning: "A newer piprant-class NSAID used for osteoarthritis pain in dogs. Works differently from traditional NSAIDs and is often better tolerated in dogs with GI sensitivity.",
+        meaning: "An NSAID used for osteoarthritis pain in dogs. Works differently from traditional NSAIDs and is often better tolerated in dogs with GI sensitivity. Once daily.   Give with food.",
         clientExplanation: "Galliprant is a newer type of anti-inflammatory for arthritis in dogs. It works a bit differently from traditional options and is sometimes better on the stomach.",
         category: "Pain Management / NSAIDs"
       },
@@ -1037,7 +1037,7 @@ export const termDecks = [
         id: "m-20",
         term: "GS-441524",
         pronunciation: "jee-ess four-four-one five-two-four",
-        meaning: "An antiviral used off-label to treat feline infectious peritonitis (FIP) — a previously fatal coronavirus disease in cats. Treatment is typically 84 days. Not yet formally licensed in Canada but used under veterinary supervision with strong success rates.",
+        meaning: "An antiviral used off-label to treat feline infectious peritonitis (FIP) — a previously fatal coronavirus disease in cats. Treatment is typically 84 days. Once or twice daily.",
         clientExplanation: "GS-441524 is an antiviral treatment for FIP — a disease that used to be fatal in cats. Treatment takes about 12 weeks and requires close monitoring.",
         category: "Antivirals"
       },
@@ -1045,7 +1045,7 @@ export const termDecks = [
         id: "m-21",
         term: "Ketoconazole",
         pronunciation: "kee-toh-KON-ah-zole",
-        meaning: "An antifungal used for systemic or skin fungal infections. Also used in Cushing's disease management when Vetoryl is not tolerated. Interacts with many other medications — always check for drug interactions.",
+        meaning: "An antifungal used for systemic or skin fungal infections. Also used in Cushing's disease management when Vetoryl is not tolerated. Interacts with many other medications. Once or twice daily.",
         clientExplanation: "Ketoconazole treats fungal infections. Let us know what other medications your pet is on as interactions are possible.",
         category: "Antifungals / Endocrinology"
       },
@@ -1053,7 +1053,7 @@ export const termDecks = [
         id: "m-22",
         term: "Meloxicam (Metacam, Meloxidin)",
         pronunciation: "meh-LOX-ih-kam / MET-ah-kam / mel-OX-ih-din",
-        meaning: "An NSAID used for pain and inflammation. Brand names Metacam and Meloxidin. Used for post-surgical pain and osteoarthritis. Use in cats requires careful dosing and monitoring.",
+        meaning: "An NSAID used for pain and inflammation. Brand names Metacam and Meloxidin. Used for post-surgical pain and osteoarthritis. Use in cats requires careful dosing and monitoring. Once daily.  Give with food.",
         clientExplanation: "Metacam or Meloxidin is an anti-inflammatory pain reliever. Give with food to protect the stomach.",
         category: "Pain Management / NSAIDs"
       },
@@ -1061,7 +1061,7 @@ export const termDecks = [
         id: "m-23",
         term: "Metronidazole (Flagyl)",
         pronunciation: "meh-troh-NYE-dah-zole / FLAY-jil",
-        meaning: "An antibiotic and antiprotozoal used for gastrointestinal infections and giardia. Can cause neurological side effects at high doses.",
+        meaning: "For gastrointestinal infections and giardia. Can cause neurological side effects at high doses. Twice daily.  Give with food.",
         clientExplanation: "This medication treats gut infections and certain parasites like giardia. Giving it with a small amount of food can help reduce nausea.",
         category: "Antibiotics / Gastrointestinal"
       },
@@ -1069,7 +1069,7 @@ export const termDecks = [
         id: "m-24",
         term: "Mirtazapine (Mirataz)",
         pronunciation: "mir-TAZ-ah-peen / MIR-ah-taz",
-        meaning: "An appetite stimulant and antiemetic used commonly in cats. Mirataz is a transdermal gel applied to the inner ear flap. Also used in dogs for appetite stimulation.",
+        meaning: "An appetite stimulant and antiemetic used commonly in cats and occasionally dogs. Mirataz is a transdermal gel applied to the inner ear flap. Once daily.",
         clientExplanation: "Mirataz is a gel applied to the inside of the ear flap to stimulate appetite. Apply a small amount as directed, rotate ears with each dose, and wash hands after applying.",
         category: "Gastrointestinal / Appetite"
       },
@@ -1077,7 +1077,7 @@ export const termDecks = [
         id: "m-25",
         term: "Numelvi (lokivetmab)",
         pronunciation: "noo-MEL-vee",
-        meaning: "A JAK inhibitor used to control itch and inflammation associated with allergic skin disease in dogs. For dogs only. Oral tablet given daily.",
+        meaning: "Tto control itch and inflammation associated with allergic skin disease in dogs, similar to Apoquel and Zenrelia. For dogs only. Once daily.",
         clientExplanation: "Numelvi is an oral allergy treatment for dogs that targets the itch signal directly. It works quickly and is given daily.",
         category: "Dermatology"
       },
@@ -1085,7 +1085,7 @@ export const termDecks = [
         id: "m-25b",
         term: "Cytopoint (lokivetmab)",
         pronunciation: "SY-toh-point",
-        meaning: "A monoclonal antibody injection used to control itch and skin inflammation associated with allergic skin disease in dogs. Targets canine IL-31, a key itch signalling protein. For dogs only. Given as an injection at the clinic every 4–8 weeks. Fast-acting — often within 24 hours.",
+        meaning: "A monoclonal antibody injection used to control itch and inflammation associated with allergic skin disease in dogs. For dogs only. Given as an injection at the clinic every 4–8 weeks. Fast-acting — often within 12 hours.",
         clientExplanation: "Cytopoint is an injection we give here at the clinic that directly targets the itch signal — it typically starts working within 24 hours and lasts 4–8 weeks. It's very safe and well tolerated.",
         category: "Dermatology"
       },
@@ -1093,15 +1093,15 @@ export const termDecks = [
         id: "m-26",
         term: "Omeprazole",
         pronunciation: "oh-MEP-rah-zole",
-        meaning: "A proton pump inhibitor that reduces stomach acid more powerfully than famotidine. Used for gastric ulcers, acid reflux, and GI protection.",
-        clientExplanation: "Omeprazole is a stronger acid reducer than famotidine — used when the stomach needs more protection. Similar to Losec or Prilosec in people.",
+        meaning: "Reduces stomach acid more powerfully than famotidine. Used for gastric ulcers, acid reflux, and GI protection. Twice daily, given 30-45 minutes before a meal.",
+        clientExplanation: "Omeprazole is a stronger acid reducer than famotidine — used when the stomach needs more protection.",
         category: "Gastrointestinal"
       },
       {
         id: "m-27",
         term: "Onsior (robenacoxib)",
         pronunciation: "ON-see-or / roh-ben-ah-KOX-ib",
-        meaning: "A COX-2 selective NSAID used for short-term pain and inflammation in cats and dogs. Particularly useful in cats where long-term meloxicam use requires extra caution.",
+        meaning: "An NSAID used for short-term pain and inflammation in cats and dogs. Particularly useful in cats where long-term meloxicam use requires extra caution. Once daily.  Give with food.",
         clientExplanation: "Onsior is an anti-inflammatory pain reliever often used for short-term pain after procedures. Give with food.",
         category: "Pain Management / NSAIDs"
       },
@@ -1109,7 +1109,7 @@ export const termDecks = [
         id: "m-28",
         term: "PEG 3350 powder (MiraLax)",
         pronunciation: "pee-ee-jee three-three-five-oh",
-        meaning: "An osmotic laxative used to treat constipation — particularly in cats with megacolon or chronic constipation. Mixed into food or water. Same product as MiraLax for people.",
+        meaning: "A laxative used to treat constipation — particularly in cats with megacolon or chronic constipation. Mixed into food or water. Same product as RestoraLAX for people. Once or twice daily.",
         clientExplanation: "PEG 3350 is a tasteless powder mixed into food or water to help with constipation. It softens stool by drawing water into the intestine.",
         category: "Gastrointestinal"
       },
@@ -1117,7 +1117,7 @@ export const termDecks = [
         id: "m-29",
         term: "Phenobarbital",
         pronunciation: "fee-noh-BAR-bih-tal",
-        meaning: "An anticonvulsant used to manage epilepsy and seizure disorders in dogs and cats. Requires blood monitoring for drug levels and liver function every 6 months.",
+        meaning: "An anticonvulsant to manage seizures in dogs and cats. Requires blood monitoring for drug levels and liver function. Twice daily.",
         clientExplanation: "Phenobarbital controls seizures. Blood tests every 6 months are important to make sure the levels and liver are okay.",
         category: "Neurology"
       },
@@ -1125,7 +1125,7 @@ export const termDecks = [
         id: "m-30",
         term: "Pimobendan (Vetmedin)",
         pronunciation: "pih-MOH-ben-dan / vet-MEH-din",
-        meaning: "A cardiac medication that improves heart muscle function and dilates blood vessels. Used in dogs with dilated cardiomyopathy and mitral valve disease. Ideally given one hour before feeding.",
+        meaning: "A heart medication that improves heart muscle function and dilates blood vessels. Used in cats and dogs. Ideally given 1-2 hours before or after feeding (i.e. on an empty stomach). Usually twice daily.",
         clientExplanation: "Vetmedin helps the heart pump more effectively. Give twice daily, ideally about an hour before food.",
         category: "Cardiology"
       },
@@ -1133,7 +1133,7 @@ export const termDecks = [
         id: "m-31",
         term: "Prednisolone vs Prednisone",
         pronunciation: "pred-NIS-oh-lone / PRED-nih-zone",
-        meaning: "Both are corticosteroids. Prednisolone is the active form — prednisone must be converted by the liver. Cats absorb prednisolone better and it is the preferred form for feline patients.",
+        meaning: "Corticosteroids. Prednisolone is the active form — prednisone must be converted by the liver. Cats absorb prednisolone better and it is the preferred form for feline patients. Once or twice daily.",
         clientExplanation: "Both are steroids that work similarly — the vet chose this specific one because it is better absorbed by your pet.",
         category: "Steroids"
       },
@@ -1141,7 +1141,7 @@ export const termDecks = [
         id: "m-32",
         term: "Proin / Propalin (phenylpropanolamine)",
         pronunciation: "PROH-in / PRO-pah-lin / fen-il-proh-PAH-nohl-ah-meen",
-        meaning: "Used to treat urinary incontinence in spayed female dogs by tightening the urethral sphincter. Blood pressure monitoring recommended during treatment.",
+        meaning: "To treat urinary incontinence in spayed female dogs by tightening the urethral sphincter. Blood pressure monitoring recommended during treatment. Twice daily.",
         clientExplanation: "Proin or Propalin helps with urinary leakage — it strengthens the muscle that controls urination. Blood pressure monitoring is recommended.",
         category: "Urology"
       },
@@ -1149,7 +1149,7 @@ export const termDecks = [
         id: "m-33",
         term: "Semintra (telmisartan)",
         pronunciation: "seh-MIN-trah / tel-mih-SAR-tan",
-        meaning: "An angiotensin receptor blocker used in cats to manage systemic hypertension and reduce protein loss in urine in chronic kidney disease. Given as an oral solution.",
+        meaning: "An angiotensin receptor blocker used in cats to manage hypertension and reduce protein loss in urine in chronic kidney disease. Given as an oral solution. Once daily.",
         clientExplanation: "Semintra is an oral liquid that helps control blood pressure and protects the kidneys. Shake well before use and give the exact dose prescribed.",
         category: "Cardiology / Nephrology"
       },
@@ -1157,7 +1157,7 @@ export const termDecks = [
         id: "m-34",
         term: "Senvelgo (velagliflozin)",
         pronunciation: "sen-VEL-goh / vel-ah-GLIF-loh-zin",
-        meaning: "An oral solution used to manage diabetes mellitus in cats. Causes the kidneys to excrete excess glucose in the urine. An alternative to insulin in some feline diabetics.",
+        meaning: "An oral solution used to manage diabetes mellitus in cats. Causes the kidneys to excrete excess glucose in the urine. An alternative to insulin in some feline diabetics. Close monitoring for ketones is CRITICAL. Once daily.",
         clientExplanation: "Senvelgo is a liquid medication for diabetes in cats — it helps the kidneys remove excess sugar. It can be an alternative to insulin injections for some cats.",
         category: "Endocrinology"
       },
@@ -1165,7 +1165,7 @@ export const termDecks = [
         id: "m-35",
         term: "Simplicef (cefpodoxime)",
         pronunciation: "SIM-plih-sef / sef-poh-DOX-eem",
-        meaning: "A third-generation cephalosporin antibiotic used for skin infections, urinary tract infections, and wound infections in dogs. Once-daily dosing.",
+        meaning: "For skin infections, urinary tract infections, and wound infections in dogs. Once daily.  Give with food.",
         clientExplanation: "Simplicef is an antibiotic given once a day — convenient for owners. Often used for skin or urinary tract infections. Give with food.",
         category: "Antibiotics"
       },
@@ -1173,7 +1173,7 @@ export const termDecks = [
         id: "m-36",
         term: "Sulcrate / Sucralfate liquid",
         pronunciation: "SUL-krayt / soo-KRAL-fate",
-        meaning: "A gastrointestinal protectant that coats and protects ulcers and irritated areas of the stomach. Works locally and is not absorbed. Best given on an empty stomach, spaced at least 2 hours from other medications.",
+        meaning: "A gastrointestinal protectant that coats and protects ulcers and irritated areas of the stomach. Best given on an empty stomach, spaced at least 2 hours from other medications since it will impair their aborption. Twice daily.",
         clientExplanation: "Sulcrate coats and protects the stomach lining. Give on an empty stomach and space it at least 2 hours from other medications.",
         category: "Gastrointestinal"
       },
@@ -1181,23 +1181,15 @@ export const termDecks = [
         id: "m-37",
         term: "Thyro-Tabs (thyroxine / levothyroxine)",
         pronunciation: "THY-roh-tabs / thy-ROX-een",
-        meaning: "Thyroid hormone replacement used to treat hypothyroidism (underactive thyroid) in dogs. Given once or twice daily. Requires regular thyroid level monitoring to adjust dose.",
-        clientExplanation: "Thyro-Tabs replaces the thyroid hormone your dog is not producing enough of. Regular blood tests are needed to make sure the dose is right.",
+        meaning: "Thyroid hormone replacement used to treat hypothyroidism in dogs. Once or twice daily.",
+        clientExplanation: "Thyro-Tabs replaces the thyroid hormone your dog is not producing enough of.",
         category: "Endocrinology"
-      },
-      {
-        id: "m-38",
-        term: "Tramadol",
-        pronunciation: "TRAM-ah-dol",
-        meaning: "An opioid-based analgesic for moderate pain. Limited efficacy in cats as they lack the enzyme to convert it to its active form.",
-        clientExplanation: "Tramadol is a pain reliever. If your pet seems uncomfortable despite it, let us know — we may need to adjust the pain management plan.",
-        category: "Pain Management"
       },
       {
         id: "m-39",
         term: "Vetoryl (trilostane)",
         pronunciation: "VET-oh-ril / try-LOH-stayn",
-        meaning: "Used to treat Cushing's disease in dogs — reduces cortisol production by the adrenal glands. Requires regular ACTH stimulation testing to monitor adrenal function. Timing of monitoring relative to dosing is critical.",
+        meaning: "To treat Cushing's disease in dogs — reduces cortisol production by the adrenal glands. Requires regular ACTH stimulation testing (or pre-pill cortisol testing) to monitor adrenal function. Timing of monitoring relative to dosing is critical. Once or twice daily.  Give with food.  DISCONTINUE IMMEDIATELY OF NOT EATING.",
         clientExplanation: "Vetoryl controls Cushing's disease by reducing steroid hormone production. Regular blood tests are essential — timing matters so we will schedule these carefully.",
         category: "Endocrinology"
       },
@@ -1205,28 +1197,27 @@ export const termDecks = [
         id: "m-40",
         term: "Zenrelia",
         pronunciation: "zen-REE-lee-ah",
-        meaning: "A JAK inhibitor used to control itch and skin inflammation in cats with allergic skin disease. Fast-acting. Requires a prescription.",
+        meaning: "To control itch and skin inflammation in cats with allergic skin disease in dogs, similar to Apoquel and Numelvi. Fast-acting, works within 4-6 hours. Once daily.",
         clientExplanation: "Zenrelia targets the itch signal directly in cats with skin allergies — it works quickly and does not have the same side effects as steroids.",
         category: "Dermatology"
       },
       {
         id: "m-41",
-        term: "Zentonil (SAMe + milk thistle)",
+        term: "Zentonil",
         pronunciation: "zen-TOH-nil",
-        meaning: "A hepatoprotectant supplement containing S-adenosylmethionine (SAMe) and milk thistle. Supports liver function and reduces oxidative stress. Used alongside treatment for liver disease or when hepatotoxic drugs are prescribed.",
+        meaning: "A liver protecting supplement containing S-adenosylmethionine (SAMe) and milk thistle. Once daily.",
         clientExplanation: "Zentonil supports liver health — it contains two natural compounds that help protect the liver. Often given alongside other treatments when the liver needs extra support.",
         category: "Hepatology / Supplements"
       }
     ]
-  }
-  ,
+  },
   {
     id: "parasiticides",
     title: "Parasiticides",
     icon: "🦟",
     description: "Flea, tick, and worm prevention and treatment — what your clinic carries, what each product covers, and key client information.",
     color: "#f0fdf4",
-    colorDark: "#166534",
+    colorDark: "#166534",,
     terms: [
       {
         id: "p-01",
@@ -1387,6 +1378,152 @@ export const termDecks = [
         meaning: "Permethrin is found in some dog-only products (notably Advantix). It is highly toxic to cats — exposure can cause tremors, seizures, and death. Cats can be exposed by direct contact with a recently treated dog. This is a veterinary emergency.",
         clientExplanation: "Never use dog flea products on cats. If a dog has been treated with Advantix, keep them separated from cats until the product has dried and the dog has been bathed. If a cat is ever exposed, call us immediately — it is an emergency.",
         category: "Safety"
+      }
+    ]
+  }  ,
+  {
+    id: "vaccines",
+    title: "Vaccines",
+    icon: "💉",
+    description: "What vaccines we offer, what they protect against, who needs them, and when to give them.",
+    color: "#f0fdf4",
+    colorDark: "#166534",
+    terms: [
+      {
+        id: "v-d01",
+        term: "DAPP (canine)",
+        pronunciation: "dee-ay-pee-pee",
+        meaning: "Distemper, Adenovirus (hepatitis), Parainfluenza, Parvovirus. Core canine vaccine. Also called DA2PP, DAP, DAPPL, or DHPP depending on formulation. Recommended for any dog that will be around other animals. All four diseases can be severe and potentially fatal in unvaccinated dogs. Sometimes given as a combination product with Leptospirosis.",
+        clientExplanation: "DAPP protects against four serious diseases — distemper, hepatitis, parainfluenza, and parvo. It's a core vaccine we recommend for all dogs, especially any dog that will be around other animals.",
+        category: "Canine vaccines"
+      },
+      {
+        id: "v-d02",
+        term: "Rabies (canine)",
+        pronunciation: "",
+        meaning: "Core canine vaccine. Required for international travel. If the dog is being vaccinated for travel purposes, rabies must be given AFTER microchipping — the microchip number must be on file before the vaccine is administered. Timing of boosters is critical for overseas travel — check specific country requirements well in advance.",
+        clientExplanation: "Rabies is a core vaccine we recommend for all dogs. If you're planning to travel with your dog internationally, the rabies vaccine must be given after the microchip is placed — and the timing of boosters can matter a lot for international travel, so let us know your plans early.",
+        category: "Canine vaccines"
+      },
+      {
+        id: "v-d03",
+        term: "Bordetella (canine)",
+        pronunciation: "bor-deh-TEL-ah",
+        meaning: "Kennel cough vaccine. Recommended for dogs that will be around other dogs — boarding, grooming, dog parks, training classes, doggy daycare. Not a core vaccine but strongly recommended for social dogs. Boosted annually.",
+        clientExplanation: "Bordetella is the kennel cough vaccine. We recommend it for any dog that spends time around other dogs — boarding facilities often require it. It's given once a year.",
+        category: "Canine vaccines"
+      },
+      {
+        id: "v-d04",
+        term: "Leptospirosis (canine)",
+        pronunciation: "lep-toh-spy-ROH-sis",
+        meaning: "Bacterial disease found in wildlife, soil, and water — particularly stagnant or slow-moving water. Recommended for dogs prone to drinking from puddles, eating things off the ground, or spending time in areas frequented by wildlife (raccoons, skunks, deer). Can cause kidney and liver failure. Can be transmitted to humans (zoonotic). Sometimes given as a combination product with DAPP.",
+        clientExplanation: "Lepto is a bacterial infection found in soil and water — especially puddles and anywhere wildlife has been. We recommend it for dogs that like to drink from puddles or pick things up on walks. It can also spread to people, so it's worth protecting against.",
+        category: "Canine vaccines"
+      },
+      {
+        id: "v-d05",
+        term: "DAPP schedule (canine)",
+        pronunciation: "",
+        meaning: "Puppies: 8 weeks, 12 weeks, 16 weeks. After the 16-week dose: boost in 1 year. After the 1-year booster: boost every 3 years. Note: the series must be completed — a puppy that only receives 1 or 2 doses is not fully protected.",
+        clientExplanation: "Puppies get DAPP at 8, 12, and 16 weeks. After that, a booster at 1 year, then every 3 years. It's important to complete the full puppy series.",
+        category: "Canine schedule"
+      },
+      {
+        id: "v-d06",
+        term: "Rabies schedule (canine)",
+        pronunciation: "",
+        meaning: "Puppies: first dose at 16 weeks. After the 16-week dose: boost in 1 year. After the 1-year booster: boost every 3 years. If vaccinating for international travel, timing relative to the date of travel may be critically important — confirm country-specific requirements.",
+        clientExplanation: "Puppies get their first rabies vaccine at 16 weeks, a booster at 1 year, then every 3 years. If you're planning international travel, the timing matters — let us know well in advance.",
+        category: "Canine schedule"
+      },
+      {
+        id: "v-d07",
+        term: "Bordetella schedule (canine)",
+        pronunciation: "",
+        meaning: "Puppies: can be given at 12 or 16 weeks. Boosted annually (every 1 year) regardless of when first given.",
+        clientExplanation: "Bordetella can be given from 12 weeks and is boosted every year.",
+        category: "Canine schedule"
+      },
+      {
+        id: "v-d08",
+        term: "Leptospirosis schedule (canine)",
+        pronunciation: "",
+        meaning: "Puppies: 12 weeks and 16 weeks (two doses, 4 weeks apart). If given for the first time to an adult dog, a booster is required 4 weeks after the first dose. Once the initial series is complete: boost annually (every 1 year).",
+        clientExplanation: "Lepto requires two doses given 4 weeks apart when given for the first time — whether that's a puppy or an adult dog. After that, it's once a year.",
+        category: "Canine schedule"
+      },
+      {
+        id: "v-c01",
+        term: "FVRCP (feline)",
+        pronunciation: "eff-vee-ar-see-pee",
+        meaning: "Feline Viral Rhinotracheitis (herpesvirus), Calicivirus, Panleukopenia. Core feline vaccine. Recommended for all cats — both indoor and outdoor. Panleukopenia (feline parvovirus) is highly contagious and can be fatal. Rhinotracheitis and calicivirus cause upper respiratory disease.",
+        clientExplanation: "FVRCP protects against three serious diseases — cat flu viruses and a potentially fatal disease called panleukopenia. We recommend it for all cats, even indoor ones, as some of these viruses can be carried in on clothing and shoes.",
+        category: "Feline vaccines"
+      },
+      {
+        id: "v-c02",
+        term: "Rabies (feline)",
+        pronunciation: "",
+        meaning: "Core feline vaccine. Particularly recommended for outdoor cats or cats with any potential exposure to wildlife. Same microchip and travel timing considerations as for dogs.",
+        clientExplanation: "Rabies is recommended for all cats that go outside or could potentially be exposed to wildlife. As with dogs, it must be given after microchipping if needed for travel.",
+        category: "Feline vaccines"
+      },
+      {
+        id: "v-c03",
+        term: "FeLV (feline)",
+        pronunciation: "fell-vee",
+        meaning: "Feline Leukemia Virus. Non-core vaccine. Recommended for both indoor and outdoor cats — indoor cats may still be exposed if they have contact with other cats. FeLV is spread through saliva, mutual grooming, and shared food/water bowls. Can cause immune suppression and cancer. No cure — prevention through vaccination is important.",
+        clientExplanation: "FeLV protects against feline leukemia — a serious viral disease with no cure. We recommend it for cats that go outside or have any contact with other cats. Even some indoor cats are at risk if they interact with cats that go outside.",
+        category: "Feline vaccines"
+      },
+      {
+        id: "v-c04",
+        term: "FVRCP schedule (feline)",
+        pronunciation: "",
+        meaning: "Kittens: 8 weeks, 12 weeks, 16 weeks. After the 16-week dose: boost in 1 year. After the 1-year booster: boost every 3 years. Special rule: if a cat receives their FIRST FVRCP dose at older than 6 months, they need a booster 4 weeks after that first dose, then the 1-year clock starts.",
+        clientExplanation: "Kittens get FVRCP at 8, 12, and 16 weeks, then at 1 year, then every 3 years. If an older cat has never been vaccinated before, they'll need two doses 4 weeks apart to start.",
+        category: "Feline schedule"
+      },
+      {
+        id: "v-c05",
+        term: "Rabies schedule (feline)",
+        pronunciation: "",
+        meaning: "Kittens: first dose at 16 weeks. After the 16-week dose: boost in 1 year. After the 1-year booster: boost every 3 years.",
+        clientExplanation: "First rabies vaccine at 16 weeks, a booster at 1 year, then every 3 years.",
+        category: "Feline schedule"
+      },
+      {
+        id: "v-c06",
+        term: "FeLV schedule (feline)",
+        pronunciation: "",
+        meaning: "Kittens: 12 weeks and 16 weeks. If given for the first time at any age other than 12 weeks: a booster is needed 4 weeks after the first dose. After the initial 16-week dose (or completed initial series): boost in 1 year. After the 1-year booster: boost every 2 years.",
+        clientExplanation: "Kittens get FeLV at 12 and 16 weeks, then at 1 year, then every 2 years. If an older cat is starting FeLV for the first time, they need two doses 4 weeks apart first.",
+        category: "Feline schedule"
+      },
+      {
+        id: "v-g01",
+        term: "Core vs non-core vaccines",
+        pronunciation: "",
+        meaning: "Core vaccines are recommended for all animals regardless of lifestyle — they protect against widespread, severe, or zoonotic diseases. Non-core vaccines are recommended based on individual risk factors (lifestyle, environment, travel). Canine core: DAPP, Rabies. Canine non-core: Bordetella, Leptospirosis. Feline core: FVRCP, Rabies (outdoor cats). Feline non-core: FeLV.",
+        clientExplanation: "Core vaccines are ones we recommend for every pet. Non-core vaccines are recommended based on your pet's lifestyle — whether they spend time outside, around other animals, or near wildlife.",
+        category: "General"
+      },
+      {
+        id: "v-g02",
+        term: "Microchip before rabies for travel",
+        pronunciation: "",
+        meaning: "For international travel, the rabies vaccine must be administered AFTER the microchip is implanted and the chip number is recorded. If the vaccine is given before the microchip, the vaccine does not count for travel purposes and the series may need to be restarted. Always confirm travel plans early — some countries have waiting periods after vaccination.",
+        clientExplanation: "If your pet is being vaccinated for international travel, the microchip must go in first — then the rabies vaccine. If it's done in the wrong order, the vaccine won't be valid for travel and may need to be redone. Please let us know your travel plans as early as possible.",
+        category: "General"
+      },
+      {
+        id: "v-g03",
+        term: "Initial series — why two doses?",
+        pronunciation: "",
+        meaning: "Several vaccines (Leptospirosis, FeLV, and FVRCP in older first-time cats) require two doses given 4 weeks apart when given for the first time. The first dose primes the immune system; the second dose is needed to generate full protection. A single dose in a naive animal does not provide adequate immunity.",
+        clientExplanation: "Some vaccines need two doses when given for the very first time — the first dose gets the immune system started, and the second one, given 4 weeks later, builds full protection.",
+        category: "General"
       }
     ]
   }
