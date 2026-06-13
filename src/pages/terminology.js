@@ -389,7 +389,7 @@ function renderJargonReference(deck) {
 
   const sections = sectionOrder.map(s => ({
     ...s,
-    terms: termsForSection(s.key)
+    terms: termsForSection(s.key).sort((a, b) => a.term.localeCompare(b.term))
   })).filter(s => s.terms.length > 0);
 
   return `

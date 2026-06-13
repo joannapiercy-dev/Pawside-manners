@@ -1,6 +1,30 @@
 const baseScenarios = [
   // ── Bad News ──
   {
+    id: "bn-3",
+    roles: ["reception"],
+    category: "bad-news",
+    title: "Euthanasia appointment booking",
+    difficulty: "intermediate",
+    tags: ["empathy", "scheduling", "sensitivity"],
+    clientMessage: "I need to make an appointment... for putting my dog to sleep. I think it's time.",
+    context: "A client phones to book a euthanasia appointment. They sound tearful and are speaking quietly.",
+    keyPrinciples: [
+      "Match their quiet, gentle tone",
+      "Never treat this as a routine booking",
+      "Acknowledge the courage it takes to make this decision",
+      "Offer a private appointment time"
+    ],
+    modelAnswer: "Of course — I'm really glad you called, and I'm so sorry you're facing this. Making this decision for your dog takes real love. I want to make this as gentle as possible for you both. We can arrange a private appointment at a quiet time so you have as long as you need. Would morning or afternoon work better for you?",
+    tip: "Ask if they would like to bring anyone with them. Offering that option acknowledges this is a significant moment.",
+    quizOptions: [
+      { text: "\"Of course. I'm so sorry — let's find a time that works for you. Would you prefer morning or afternoon, and is there a day that's better?\"", correct: true, explanation: "Simple, warm, and practical. It honours the gravity of the call without overcomplicating things." },
+      { text: "\"Name? Date of birth of the pet? Okay, we have a slot Thursday at 3pm.\"", correct: false, explanation: "Treating this as a routine booking misses entirely the emotional weight of the call." },
+      { text: "\"Are you sure? Have you explored all options with the vet?\"", correct: false, explanation: "Questioning the client's decision is inappropriate. This is not the receptionist's role and can cause real harm." },
+      { text: "\"We actually have a cancellation today at 5pm if that helps?\"", correct: false, explanation: "While offering availability is fine, leading with 'a cancellation' trivialises the appointment." }
+    ]
+  },
+  {
     id: "bn-1",
     roles: ["reception"],
     category: "bad-news",
@@ -46,30 +70,6 @@ const baseScenarios = [
       { text: "\"Oh, I'm afraid Chester didn't make it through the surgery. I'm so sorry.\"", correct: false, explanation: "It is the vet's responsibility to deliver this news. Doing so at the front desk, in public, is inappropriate." },
       { text: "\"The vet will be with you in about 20 minutes, just take a seat in the waiting room.\"", correct: false, explanation: "Leaving a client in a busy waiting room when difficult news is coming shows poor judgement about the situation." },
       { text: "\"There were some complications — let me go find out what happened.\"", correct: false, explanation: "Vague hints cause anxiety and are worse than either clear information or a clear redirect." }
-    ]
-  },
-  {
-    id: "bn-3",
-    roles: ["reception"],
-    category: "bad-news",
-    title: "Euthanasia appointment booking",
-    difficulty: "intermediate",
-    tags: ["empathy", "scheduling", "sensitivity"],
-    clientMessage: "I need to make an appointment... for putting my dog to sleep. I think it's time.",
-    context: "A client phones to book a euthanasia appointment. They sound tearful and are speaking quietly.",
-    keyPrinciples: [
-      "Match their quiet, gentle tone",
-      "Never treat this as a routine booking",
-      "Acknowledge the courage it takes to make this decision",
-      "Offer a private appointment time"
-    ],
-    modelAnswer: "Of course — I'm really glad you called, and I'm so sorry you're facing this. Making this decision for your dog takes real love. I want to make this as gentle as possible for you both. We can arrange a private appointment at a quiet time so you have as long as you need. Would morning or afternoon work better for you?",
-    tip: "Ask if they would like to bring anyone with them. Offering that option acknowledges this is a significant moment.",
-    quizOptions: [
-      { text: "\"Of course. I'm so sorry — let's find a time that works for you. Would you prefer morning or afternoon, and is there a day that's better?\"", correct: true, explanation: "Simple, warm, and practical. It honours the gravity of the call without overcomplicating things." },
-      { text: "\"Name? Date of birth of the pet? Okay, we have a slot Thursday at 3pm.\"", correct: false, explanation: "Treating this as a routine booking misses entirely the emotional weight of the call." },
-      { text: "\"Are you sure? Have you explored all options with the vet?\"", correct: false, explanation: "Questioning the client's decision is inappropriate. This is not the receptionist's role and can cause real harm." },
-      { text: "\"We actually have a cancellation today at 5pm if that helps?\"", correct: false, explanation: "While offering availability is fine, leading with 'a cancellation' trivialises the appointment." }
     ]
   },
 
@@ -377,22 +377,13 @@ const baseScenarios = [
 
 export const categories = [
   {
-    id: "bad-news",
+    id: "scheduling",
     roles: ["reception", "tech", "vet"],
-    label: "Delivering bad news",
-    icon: "💙",
-    iconBg: "#e8f4fb",
-    description: "Handling diagnoses, prognosis conversations, and euthanasia appointments with care.",
+    label: "Scheduling & triage",
+    icon: "📅",
+    iconBg: "#f3f0fb",
+    description: "Booking appointments, triaging urgency, and supporting anxious first-time clients.",
     tagColor: "tag-teal"
-  },
-  {
-    id: "difficult-clients",
-    roles: ["reception", "tech", "vet"],
-    label: "Difficult clients",
-    icon: "🛡️",
-    iconBg: "#fdf0eb",
-    description: "De-escalating conflict, managing complaints, and setting respectful boundaries.",
-    tagColor: "tag-rust"
   },
   {
     id: "costs",
@@ -413,22 +404,31 @@ export const categories = [
     tagColor: "tag-green"
   },
   {
-    id: "scheduling",
+    id: "bad-news",
     roles: ["reception", "tech", "vet"],
-    label: "Scheduling & triage",
-    icon: "📅",
-    iconBg: "#f3f0fb",
-    description: "Booking appointments, triaging urgency, and supporting anxious first-time clients.",
+    label: "Delivering bad news",
+    icon: "💙",
+    iconBg: "#e8f4fb",
+    description: "Handling diagnoses, prognosis conversations, and euthanasia appointments with care.",
     tagColor: "tag-teal"
   },
   {
-    id: "vet-client",
+    id: "difficult-clients",
     roles: ["reception", "tech", "vet"],
-    label: "Vet to client",
-    icon: "🩺",
-    iconBg: "#f0f4ff",
-    description: "Delivering diagnoses, end-of-life conversations, disclosing complications, and handling disagreement.",
-    tagColor: "tag-teal"
+    label: "Difficult clients",
+    icon: "🛡️",
+    iconBg: "#fdf0eb",
+    description: "De-escalating conflict, managing complaints, and setting respectful boundaries.",
+    tagColor: "tag-rust"
+  },
+  {
+    id: "team",
+    roles: ["reception", "tech", "vet"],
+    label: "Team conversations",
+    icon: "🤝",
+    iconBg: "#fff7ed",
+    description: "Speaking up about concerns, giving feedback, resolving conflict, and communicating across roles.",
+    tagColor: "tag-gold"
   },
   {
     id: "tech-client",
@@ -440,13 +440,13 @@ export const categories = [
     tagColor: "tag-green"
   },
   {
-    id: "team",
+    id: "vet-client",
     roles: ["reception", "tech", "vet"],
-    label: "Team conversations",
-    icon: "🤝",
-    iconBg: "#fff7ed",
-    description: "Speaking up about concerns, giving feedback, resolving conflict, and communicating across roles.",
-    tagColor: "tag-gold"
+    label: "Vet to client",
+    icon: "🩺",
+    iconBg: "#f0f4ff",
+    description: "Delivering diagnoses, end-of-life conversations, disclosing complications, and handling disagreement.",
+    tagColor: "tag-teal"
   }
 ];
 

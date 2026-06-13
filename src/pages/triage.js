@@ -32,6 +32,11 @@ export function renderTriageHome(container, navigate) {
 }
 
 export function renderTriageTree(container, navigate, categoryId) {
+  // Toxins has no decision tree — go straight to reference
+  if (categoryId === 'toxins') {
+    renderToxinsPage(container, navigate);
+    return;
+  }
   // Check for tab in URL e.g. /triage/vomiting?tab=reference
   const params = new URLSearchParams(window.location.search);
   const initialTab = params.get('tab') === 'reference' ? 'reference' : 'tree';
@@ -281,4 +286,86 @@ function renderReferenceTable(categoryId) {
         <tbody>${rows}</tbody>
       </table>
     </div>`;
+}
+
+function renderToxinsPage(container, navigate) {
+  const ref = triageReference['toxins'];
+  if (!ref) { navigate('/triage'); return; }
+
+  const cat = { id: 'toxins', label: 'Toxins & poisons', icon: '☠️' };
+
+  const PILL = {
+    EMERGENCY: { label: 'Emergency',        bg: '#fef2f2', color: '#991b1b' },
+    URGENT:    { label: 'Same day',          bg: '#fffbeb', color: '#92400e' },
+    SOON:      { label: 'Within 48 hrs',     bg: '#eff6ff', color: '#1e40af' },
+    ROUTINE:   { label: 'Routine',           bg: '#f0fdf4', color: '#166534' },
+    MONITOR:   { label: 'Monitor at home',   bg: '#f9fafb', color: '#374151' },
+  };
+
+  const rows = ref.rows.map((r, i) => {
+    const p = PILL[r.outcome] || PILL.MONITOR;
+    const iscat = r.note.includes('CATS ONLY') || r.note.includes('cats only');
+    const isdog = r.note.includes('dogs only') || r.note.includes('DOGS ONLY');
+    const badge = iscat
+      ? '<span style="font-size:10px;font-weight:700;padding:1px 6px;border-radius:10px;background:#f3e8ff;color:#6b21a8;margin-left:6px;">Cats</span>'
+      : isdog
+      ? '<span style="font-size:10px;font-weight:700;padding:1px 6px;border-radius:10px;background:#dbeafe;color:#1e40af;margin-left:6px;">Dogs</span>'
+      : '';
+    return `<tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+      <td style="padding:10px 12px;font-size:13.5px;color:var(--ink);font-weight:500;vertical-align:top;width:28%;">${r.sign}${badge}</td>
+      <td style="padding:10px 12px;vertical-align:top;width:17%;">
+        <span style="display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;background:${p.bg};color:${p.color};white-space:nowrap;">${p.label}</span>
+      </td>
+      <td style="padding:10px 12px;font-size:13px;color:var(--ink-mid);vertical-align:top;line-height:1.55;">${r.note}</td>
+    </tr>`;
+  }).join('');
+
+  container.innerHTML = `
+    ${nav('/triage', navigate)}
+    <div class="page-content">
+      <div class="breadcrumb"><a href="#/triage">Triage</a> › ${cat.label}</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+        <div style="width:44px;height:44px;background:var(--warm);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">${cat.icon}</div>
+        <h2 style="margin:0;">${cat.label}</h2>
+      </div>
+
+      <div style="background:#fef9e7;border:1.5px solid #fde047;border-radius:var(--radius);padding:10px 14px;font-size:13px;color:#713f12;margin-bottom:1.25rem;">
+        ⚠️ <strong>When in doubt, treat as emergency.</strong> Many toxins have delayed onset — an animal that seems fine now may deteriorate rapidly. Always ask what was ingested, how much, and how long ago, and escalate to the clinical team immediately.
+      </div>
+
+      <div style="background:var(--warm);border-radius:var(--radius);padding:10px 14px;font-size:13px;color:var(--ink-mid);margin-bottom:1.25rem;">
+        <strong style="color:var(--ink);">Key questions to ask:</strong> ${ref.askFirst}
+      </div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem;">
+        ${Object.values(PILL).map(p => `<span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:${p.color};">
+          <span style="width:9px;height:9px;border-radius:50%;background:${p.color};opacity:0.7;flex-shrink:0;"></span>${p.label}
+        </span>`).join('')}
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--warm-dark);">
+              <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);padding:6px 12px;width:28%;">Toxin / situation</th>
+              <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);padding:6px 12px;width:17%;">Urgency</th>
+              <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);padding:6px 12px;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:1.5rem;background:var(--warm);border-radius:var(--radius);padding:10px 14px;font-size:12.5px;color:var(--ink-mid);">
+        🐾 <strong>Cats / Dogs badges</strong> indicate species-specific concerns. Unmarked rows apply to both species unless the note specifies otherwise.
+      </div>
+
+      <div style="margin-top:1rem;">
+        <button class="btn-ghost" id="back-triage-btn">← All categories</button>
+      </div>
+    </div>
+  `;
+
+  setupHamburger();
+  document.getElementById('back-triage-btn').addEventListener('click', () => navigate('/triage'));
 }

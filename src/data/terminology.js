@@ -203,7 +203,7 @@ export const termDecks = [
         id: "j-24",
         term: "Vomiting vs regurgitation",
         pronunciation: "",
-        meaning: "Vomiting involves active abdominal contractions and expulsion of digested stomach contents. Regurgitation is passive and involves undigested food from the oesophagus.",
+        meaning: "Vomiting involves active abdominal contractions and expulsion of digested stomach contents. Regurgitation is passive and involves undigested food from the esophagus.",
         clientExplanation: "We sometimes ask clients to describe carefully what they saw — the difference between vomiting and regurgitation helps us work out where in the digestive system the problem is.",
         category: "Gastroenterology"
       },
@@ -475,7 +475,7 @@ export const termDecks = [
         id: "j-a09",
         term: "CHF",
         pronunciation: "",
-        meaning: "Congestive Heart Failure. The heart cannot pump effectively, leading to fluid accumulation — most commonly in the lungs (pulmonary oedema) in left-sided failure, or in the abdomen (ascites) in right-sided failure.",
+        meaning: "Congestive Heart Failure. The heart cannot pump effectively, leading to fluid accumulation — most commonly in the lungs (pulmonary edema) in left-sided failure, or in the abdomen (ascites) in right-sided failure.",
         clientExplanation: "Congestive heart failure means the heart isn't pumping effectively, causing fluid to build up — usually around the lungs. It's manageable with medication but requires careful ongoing monitoring.",
         category: "Acronyms / Conditions"
       },
@@ -981,7 +981,7 @@ export const termDecks = [
         id: "m-13",
         term: "Doxycycline",
         pronunciation: "dok-see-SY-kleen",
-        meaning: "For tick-borne diseases (Lyme, Anaplasma), respiratory infections, and atypical bacteria. Must be given with food and water — can cause oesophageal stricture if dry-swallowed, especially in cats. Twice daily.",
+        meaning: "For tick-borne diseases (Lyme, Anaplasma), respiratory infections, and atypical bacteria. Must be given with food and water — can cause esophageal stricture if dry-swallowed, especially in cats. Twice daily.",
         clientExplanation: "Doxycycline is often used for tick-borne infections and respiratory conditions. Always give with food and make sure your pet swallows it with water — never give it dry, especially to cats.",
         category: "Antibiotics"
       },
@@ -1588,7 +1588,7 @@ export const termQuizzes = [
           "Vomiting only occurs in dogs; regurgitation only in cats"
         ],
         correct: 1,
-        explanation: "Vomiting involves active abdominal contractions and stomach contents. Regurgitation is passive, involving undigested food from the oesophagus — an important distinction for diagnosis."
+        explanation: "Vomiting involves active abdominal contractions and stomach contents. Regurgitation is passive, involving undigested food from the esophagus — an important distinction for diagnosis."
       },
       {
         question: "Which term describes the spread of cancer from its original site to other parts of the body?",

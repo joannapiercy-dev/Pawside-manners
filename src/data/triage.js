@@ -7,7 +7,8 @@ export const triageCategories = [
   { id: "eyes", label: "Eyes", icon: "👁️" },
   { id: "wounds", label: "Wounds & trauma", icon: "🩹" },
   { id: "neuro", label: "Neurological signs", icon: "🧠" },
-  { id: "lethargy", label: "Not eating / lethargy", icon: "😴" }
+  { id: "lethargy", label: "Not eating / lethargy", icon: "😴" },
+  { id: "toxins", label: "Toxins & poisons", icon: "☠️" }
 ];
 
 // Outcome levels
@@ -30,7 +31,7 @@ export const OUTCOMES = {
     bg: "#fffbeb",
     border: "#fde68a",
     icon: "⚠️",
-    instruction: "This pet needs to be seen today. Find a slot, speak to a vet or tech if unsure, and advise the client to monitor closely and call back if anything worsens before the appointment."
+    instruction: "This pet should be seen today. Find a slot, speak to a vet or tech if unsure, and advise the client to monitor closely and call back if anything worsens before the appointment."
   },
   SOON: {
     id: "soon",
@@ -248,8 +249,16 @@ export const triageTrees = {
       u3b: {
         question: "Is the animal also drinking significantly more water than normal?",
         hint: "Ask: 'Have you noticed them at the water bowl much more than usual?'",
-        yes: { outcome: "URGENT", note: "Increased urination AND increased drinking (polyuria/polydipsia) is a significant clinical sign — possible diabetes, kidney disease, Addison's, or other systemic illness. Needs prompt assessment." },
+        yes: "u3c",
         no: { outcome: "SOON", note: "Increased urination frequency without increased thirst — likely lower urinary tract issue. Appointment within 24–48 hours, bring a urine sample if possible." }
+      },
+      u3c: {
+        question: "How is the animal's energy and appetite?",
+        hint: "Ask: 'Is your pet eating and acting normally, or do they seem quieter or less interested in food than usual?'",
+        options: [
+          { label: "Energy and appetite are normal", next: { outcome: "ROUTINE", note: "Increased urination and drinking (polyuria/polydipsia) with otherwise normal energy and appetite — significant finding but stable. Book a routine appointment for bloodwork and urinalysis to investigate the underlying cause (possible early diabetes, kidney disease, or other systemic illness)." } },
+          { label: "Energy or appetite are reduced", next: { outcome: "URGENT", note: "Increased urination and drinking with reduced energy or appetite — possible diabetes, kidney disease, Addison's disease, or other systemic illness. Needs same-day assessment." } }
+        ]
       },
       u4: {
         question: "Has the animal urinated at all in the last 12 hours?",
@@ -288,7 +297,7 @@ export const triageTrees = {
         hint: "Ask: 'Is there a cough? Is it a dry honking cough, a wet productive cough, or a cough that seems to bring something up?'",
         options: [
           { label: "Sudden onset coughing with distress or gagging", next: { outcome: "EMERGENCY", note: "Possible foreign body inhalation or acute cardiac event — emergency assessment." } },
-          { label: "Wet, productive cough — especially at night or after exercise", next: { outcome: "URGENT", note: "Wet cough, especially positional or exercise-related, can indicate fluid on the lungs (pulmonary oedema) from heart disease. Same-day assessment." } },
+          { label: "Wet, productive cough — especially at night or after exercise", next: { outcome: "URGENT", note: "Wet cough, especially positional or exercise-related, can indicate fluid on the lungs (pulmonary edema) from heart disease. Same-day assessment." } },
           { label: "Dry, intermittent cough — otherwise well", next: "b5" },
           { label: "No cough", next: "b5" }
         ]
@@ -302,7 +311,7 @@ export const triageTrees = {
       b6: {
         question: "Is the animal's breathing faster than normal at rest, or has the owner noticed a change in their breathing pattern?",
         hint: "Ask: 'At rest — sitting still or sleeping — does their breathing seem faster or more laboured than it used to be?'",
-        yes: { outcome: "URGENT", note: "Resting tachypnoea (fast breathing at rest) is a significant finding, even without obvious distress. Same-day assessment." },
+        yes: { outcome: "URGENT", note: "Resting tachypnea (fast breathing at rest) is a significant finding, even without obvious distress. Same-day assessment." },
         no: { outcome: "SOON", note: "No immediate red flags — but any change in breathing pattern warrants assessment within 24–48 hours." }
       }
     }
