@@ -1,5 +1,5 @@
 import { triageCategories, triageTrees, OUTCOMES, triageQuizzes } from '../data/triage.js';
-import { triageReference } from '../data/triageReference.js';
+import { triageReference } from '../data/triageReference.js?v=2';
 import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
 import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';

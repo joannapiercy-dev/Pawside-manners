@@ -372,7 +372,130 @@ const baseScenarios = [
       { text: "\"Barley is ready to go — here's his care sheet. Call us if you're worried about anything tonight.\"", correct: false, explanation: "Discharging a post-surgical patient to someone who you have genuine reason to believe cannot provide adequate overnight care is a serious animal welfare failure and a professional liability. Concern noted by a staff member must be acted on." },
       { text: "\"My receptionist mentioned you seemed a little unwell — are you sure you're okay to take him home?\"", correct: false, explanation: "Referencing what the receptionist said puts a colleague in an awkward position and frames this as a personal health check rather than a welfare-focused clinical conversation. It also gives the client an easy out — 'I'm fine' — without addressing the actual concern." }
     ]
-  }
+  },
+
+  // ── New scenarios ──
+  {
+    id: "cp-4",
+    roles: ["reception", "tech", "vet"],
+    category: "costs",
+    title: "Explaining the value of pre-anaesthetic bloodwork",
+    difficulty: "intermediate",
+    tags: ["consent", "transparency", "surgery prep"],
+    clientMessage: "Do we really have to do the blood tests before the surgery? It seems like you're just adding things on to make more money.",
+    context: "A client has brought their 6-year-old Labrador in for a routine desexing. The vet has recommended pre-anaesthetic bloodwork. The client is resistant, questioning whether it is necessary and implying the clinic is profit-driven.",
+    keyPrinciples: [
+      "Acknowledge the concern without being defensive",
+      "Explain the purpose clearly in plain language",
+      "Frame it as protecting their pet, not upselling",
+      "Make clear it is their choice, but be honest about the risk of declining"
+    ],
+    modelAnswer: "I completely understand why that might feel that way — and it's a fair question to ask. The reason we recommend it isn't to add to your bill. Anaesthesia is very safe, but it puts stress on the organs — particularly the liver and kidneys — which are responsible for processing it. The blood test lets us check that everything is working the way we'd expect before we put Buddy under. Occasionally it picks up something we wouldn't have known about, and in those cases it genuinely changes what we do. You're absolutely welcome to decline, but I want to be upfront that if we do find a problem during or after surgery, we'd wish we'd known sooner. It's there to protect him.",
+    tip: "Never get defensive when a client questions cost — it almost always comes from anxiety, not hostility. Framing the bloodwork as a safety net for the pet rather than a clinical requirement shifts the conversation completely.",
+    quizOptions: [
+      { text: "\"That's a fair question. The blood test checks that Buddy's organs can handle the anaesthetic safely — it's there to protect him. Occasionally it picks up something important. You can decline, but I'd want you to understand what we're checking for.\"", correct: true, explanation: "Acknowledges the concern, explains the purpose clearly, is honest about the option to decline and the reason it matters." },
+      { text: "\"It's just standard procedure — we do it for all surgeries.\"", correct: false, explanation: "Doesn't answer the concern at all. Saying it's standard without explaining why reinforces the idea that it might be unnecessary." },
+      { text: "\"Fine — we can skip it if you want, but don't blame us if something goes wrong.\"", correct: false, explanation: "Defensive, passive-aggressive, and completely inappropriate. This would severely damage trust and is not how informed consent works." },
+      { text: "\"The vet has recommended it so it needs to be done.\"", correct: false, explanation: "Dismisses the client's question and gives them no information. Clients have the right to understand what they're consenting to." }
+    ]
+  },
+  {
+    id: "bn-4",
+    roles: ["reception"],
+    category: "bad-news",
+    title: "Grieving client with an outstanding bill",
+    difficulty: "advanced",
+    tags: ["grief", "billing", "sensitivity", "empathy"],
+    clientMessage: "I got a bill in the post. I can't even look at it. My dog died two weeks ago and I'm still not okay.",
+    context: "A client calls the clinic. Their dog passed away two weeks ago following emergency treatment. They have received an outstanding invoice in the post and are clearly still deeply grieving. The invoice is legitimate and overdue.",
+    keyPrinciples: [
+      "Grief comes first — do not lead with the bill",
+      "Acknowledge their loss sincerely before anything else",
+      "Never pressure a bereaved client over the phone",
+      "Offer options and breathing room without writing the bill off"
+    ],
+    modelAnswer: "I'm so sorry — I can hear how hard the last few weeks have been, and I'm really sorry for your loss. Please know there is no pressure at all right now. When you feel ready, we can talk through the invoice together and look at what works for you — there's no rush today. Would it help if I made a note on your account so our team knows to be sensitive when they speak with you?",
+    tip: "A bereaved client who receives a bill in the post often feels like they are being asked to pay for their pet's death. Acknowledging the grief first — before any mention of the bill — completely changes the tone of the conversation. The bill can wait a moment.",
+    quizOptions: [
+      { text: "\"I'm so sorry for your loss — please don't worry about the invoice today. When you're ready, we can go through it together and work out what suits you. There's no pressure from us right now.\"", correct: true, explanation: "Grief before business. This is compassionate, removes immediate pressure, and still acknowledges the invoice without ignoring it." },
+      { text: "\"I understand, but the account is now overdue — can we arrange a payment today?\"", correct: false, explanation: "Pursuing payment immediately from a grieving client is deeply inappropriate and will cause lasting damage to the relationship." },
+      { text: "\"I'll pass your details to our accounts team and they'll be in touch.\"", correct: false, explanation: "Deflecting to accounts removes the human connection entirely and leaves the client feeling like a number." },
+      { text: "\"I'm sorry to hear that. The invoice is for the treatment your dog received — is there a reason you haven't paid it yet?\"", correct: false, explanation: "Asking a grieving client why they haven't paid is tone-deaf and will feel accusatory regardless of intent." }
+    ]
+  },
+  {
+    id: "sch-3",
+    roles: ["reception"],
+    category: "scheduling",
+    title: "First-time client — new to the area",
+    difficulty: "beginner",
+    tags: ["new client", "welcome", "relationship building"],
+    clientMessage: "Hi, we've just moved to Victoria from Calgary. We have a 3-year-old golden retriever called Mango and we're looking for a new vet clinic. Can we register with you?",
+    context: "A new client calls to register with the clinic. They have recently relocated and are looking for a permanent vet for their healthy adult dog. This is the clinic's opportunity to make a great first impression.",
+    keyPrinciples: [
+      "Make them feel genuinely welcome — not processed",
+      "Gather key information warmly, not like a form",
+      "Ask about their previous vet to request records",
+      "Offer a new client consult rather than waiting for something to go wrong"
+    ],
+    modelAnswer: "Welcome to Victoria — and welcome to Oaklands! We'd love to have Mango as a patient. I'll get you registered now. Can I grab your name and a contact number to start? It's also really helpful if we can get records from your vet in Calgary — even a vaccination history makes a big difference. And just so you know, we do offer a new patient consult for pets joining us — it's a chance for the vet to meet Mango and make sure everything's up to date. Would that be something you'd be interested in?",
+    tip: "New clients who feel warmly welcomed in the first phone call become loyal clients. Use the pet's name as much as possible, and offer the new patient consult proactively — it builds the relationship and ensures continuity of care.",
+    quizOptions: [
+      { text: "\"Welcome to Victoria! We'd love to have Mango with us. Let me get your details, and if you can get records from your Calgary vet that would be great. We also offer a new patient consult so the vet can meet Mango — would that be useful?\"", correct: true, explanation: "Warm, uses the pet's name, gathers what's needed, and proactively offers a consult to build the relationship." },
+      { text: "\"Yes, I can register you. Name, address, and pet's date of birth?\"", correct: false, explanation: "Technically correct but completely transactional. A new client deserves more than a form read aloud at them." },
+      { text: "\"We're quite busy at the moment — can you call back next week to register?\"", correct: false, explanation: "Turning away a new client who has come to you enthusiastically is a significant missed opportunity." },
+      { text: "\"We'll register Mango but just so you know, we're not taking on new clients for routine care right now.\"", correct: false, explanation: "If the clinic isn't accepting new clients that's fine — but leading with restrictions before even welcoming them is poor form." }
+    ]
+  },
+  {
+    id: "vc-5",
+    roles: ["vet", "tech"],
+    category: "vet-client",
+    title: "Worried about vaccine side effects",
+    difficulty: "beginner",
+    tags: ["vaccines", "client education", "reassurance"],
+    clientMessage: "I've been reading online that vaccines can cause all sorts of problems. My last cat got really sick after her vaccine and I'm worried about giving them to my new kitten.",
+    context: "A client has brought in their 8-week-old kitten for their first vaccination appointment. The client is visibly anxious and has done a lot of online research, some of which has alarmed them. They had a previous cat who was lethargic after a vaccination.",
+    keyPrinciples: [
+      "Validate the previous experience — don't dismiss it",
+      "Explain what normal post-vaccine responses look like",
+      "Be honest about rare risks without catastrophising",
+      "Empower them with what to watch for and when to call"
+    ],
+    modelAnswer: "I'm really glad you mentioned that, and I'm sorry that experience with your previous cat was worrying. It's actually really common for cats to feel a bit flat for 24 to 48 hours after a vaccination — a mild temperature, a bit less energy, maybe not wanting to eat as much. That's the immune system responding, which means it's working. Serious reactions do exist but they're genuinely rare — and when they happen, they usually occur within 20 to 30 minutes, which is why we ask clients to wait here for a little while after. What I'd suggest is that we go ahead today, keep Luna here for 20 minutes afterward, and I'll give you a clear list of what to watch for at home and when to call us. How does that sound?",
+    tip: "Never dismiss online research or prior experience — clients who feel heard are far more likely to follow medical advice. Acknowledge, explain, and empower. Give them something concrete to do so they leave feeling informed rather than anxious.",
+    quizOptions: [
+      { text: "\"That makes complete sense after what happened with your last cat. Mild lethargy after vaccines is actually normal — it means the immune system is responding. Serious reactions are rare and usually happen quickly, which is why we like clients to wait 20 minutes afterward. We'll watch the kitten closely and give you a clear list of what to look for at home.\"", correct: true, explanation: "Validates the experience, explains the science simply, is honest about rare risks, and gives practical next steps." },
+      { text: "\"Vaccines are very safe — the things you read online are exaggerated. There's nothing to worry about.\"", correct: false, explanation: "Dismissing the client's research and lived experience will shut down the conversation and damage trust, even if the information is broadly accurate." },
+      { text: "\"If you're not comfortable, we can skip the vaccines today and you can think about it.\"", correct: false, explanation: "While consent is important, offering to skip core kitten vaccines without any education first is not in the kitten's interest. Education should come before deferral." },
+      { text: "\"What did you read specifically? A lot of that stuff online is just not accurate.\"", correct: false, explanation: "Challenging the client's sources before acknowledging their concern is defensive and will make them feel judged rather than supported." }
+    ]
+  },
+  {
+    id: "tc-5",
+    roles: ["tech", "vet"],
+    category: "tech-client",
+    title: "Selling the value of a dental",
+    difficulty: "intermediate",
+    tags: ["dentals", "client education", "treatment plans"],
+    clientMessage: "The vet said Biscuit needs a dental but it sounds really expensive and risky. His teeth don't look that bad to me. Can't we just leave it and see how he goes?",
+    context: "You are a vet tech following up after a consultation. The vet has recommended a dental procedure for a 7-year-old cat with grade 2-3 periodontal disease. The client saw the vet's concern but is unconvinced, partly due to cost and partly due to anaesthetic anxiety.",
+    keyPrinciples: [
+      "Acknowledge the anaesthetic concern — it's legitimate",
+      "Make the connection between dental disease and systemic health",
+      "Use concrete language, not clinical grades",
+      "Help them understand what 'wait and see' actually means for the animal"
+    ],
+    modelAnswer: "I completely understand the hesitation — anaesthesia always feels like a big deal, and the cost is real. What I'd want you to know is that the pain from dental disease is something cats hide incredibly well. Biscuit may seem fine, but grade 2 to 3 disease means there's active infection and inflammation in there, and cats will just eat through it because they don't have a choice. The other thing worth knowing is that bacteria from the mouth do get into the bloodstream and over time that puts stress on the kidneys and heart — which matters a lot more at 7 than it would have at 3. The procedure itself is very routine for us, and we do pre-anaesthetic bloodwork to make sure he's a good candidate before we go anywhere near anaesthesia. 'Wait and see' usually means things get worse and the procedure becomes more complex. I'm not trying to pressure you — I just want to make sure you have the full picture.",
+    tip: "Clients often say 'his teeth don't look that bad' because they're comparing to human dental standards and because cats hide pain so effectively. Concrete language — 'active infection', 'bacteria reaching the kidneys', 'eating through the pain' — lands better than clinical grades. And always address the anaesthetic anxiety directly; it is the real barrier for most people.",
+    quizOptions: [
+      { text: "\"The hesitation makes complete sense — anaesthesia feels significant and the cost is real. But cats hide dental pain incredibly well, and grade 2-3 means there's active infection. Over time that affects the kidneys and heart. The procedure is routine and we do bloodwork first to make sure he's ready. Waiting usually means things get worse.\"", correct: true, explanation: "Addresses the real concerns, uses plain language, explains systemic risk, and is honest about what deferral means without being pushy." },
+      { text: "\"It's really important — you should book it as soon as possible.\"", correct: false, explanation: "Gives no information and just adds pressure. The client needs education, not urgency without explanation." },
+      { text: "\"If you want to wait, that's your decision — just keep an eye on his eating.\"", correct: false, explanation: "While consent is the client's right, offering no information or advocacy for the patient is a disservice to both the client and the cat." },
+      { text: "\"Grade 2-3 periodontal disease is a significant finding and warrants prompt intervention.\"", correct: false, explanation: "Clinical language that means nothing to a lay client. 'Grade 2-3' and 'warrants prompt intervention' don't help a worried owner make a decision." }
+    ]
+  },
+
 ];
 
 export const categories = [
