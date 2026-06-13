@@ -1,4 +1,5 @@
 import { renderHome } from './pages/home.js';
+import { renderCommunicationHome } from './pages/communication.js';
 import { renderModules } from './pages/modules.js';
 import { renderScenario } from './pages/scenario.js';
 import { renderDashboard } from './pages/dashboard.js';
@@ -23,6 +24,8 @@ function render() {
   const route = getRoute();
   if (route === '/' || route === '') {
     renderHome(app, navigate);
+  } else if (route === '/communication') {
+    renderCommunicationHome(app, navigate);
   } else if (route === '/train') {
     renderModules(app, navigate);
   } else if (route.startsWith('/scenario/')) {

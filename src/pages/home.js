@@ -41,7 +41,7 @@ export function renderHome(container, navigate) {
         <button class="nav-card-btn" id="btn-communication">
           <span style="font-size:1.5rem;">💬</span>
           <span style="font-weight:600;">Communication</span>
-          <span style="font-size:12px;color:var(--ink-light);">Scenarios & role-play</span>
+          <span style="font-size:12px;color:var(--ink-light);">Scenarios, role-play & prompts</span>
         </button>
         <button class="nav-card-btn" id="btn-terminology">
           <span style="font-size:1.5rem;">🩺</span>
@@ -57,11 +57,6 @@ export function renderHome(container, navigate) {
           <span style="font-size:1.5rem;">🔬</span>
           <span style="font-weight:600;">Diagnostics</span>
           <span style="font-size:12px;color:var(--ink-light);">Tests & procedures</span>
-        </button>
-        <button class="nav-card-btn" id="btn-quickprompts">
-          <span style="font-size:1.5rem;">💬</span>
-          <span style="font-weight:600;">What would you say?</span>
-          <span style="font-size:12px;color:var(--ink-light);">Roleplay prompts</span>
         </button>
         <button class="nav-card-btn" id="btn-social">
           <span style="font-size:1.5rem;">🦁</span>
@@ -101,11 +96,10 @@ export function renderHome(container, navigate) {
   `;
 
   setupHamburger();
-  document.getElementById('btn-communication').addEventListener('click', () => navigate('/train'));
+  document.getElementById('btn-communication').addEventListener('click', () => navigate('/communication'));
   document.getElementById('btn-terminology').addEventListener('click', () => navigate('/terminology'));
   document.getElementById('btn-triage').addEventListener('click', () => navigate('/triage'));
   document.getElementById('btn-diagnostics').addEventListener('click', () => navigate('/tests'));
-  document.getElementById('btn-quickprompts').addEventListener('click', () => navigate('/quickprompts'));
   document.getElementById('btn-social').addEventListener('click', () => navigate('/social'));
   document.getElementById('btn-badges').addEventListener('click', () => navigate('/badges'));
   if (!dqhDone) document.getElementById('dqh-banner')?.addEventListener('click', () => navigate('/quickhit'));
@@ -125,12 +119,11 @@ export function nav(current, navigate) {
     </a>
     <div class="nav-links nav-desktop">
       <a class="nav-btn ${current === '/' ? 'active' : ''}" href="#/">Home</a>
-      <a class="nav-btn ${current === '/train' ? 'active' : ''}" href="#/train">Communication</a>
+      <a class="nav-btn ${['/communication','/train','/quickprompts'].includes(current) ? 'active' : ''}" href="#/communication">Communication</a>
       <a class="nav-btn ${current === '/terminology' ? 'active' : ''}" href="#/terminology">Terminology</a>
       <a class="nav-btn ${current === '/triage' ? 'active' : ''}" href="#/triage">Triage</a>
       <a class="nav-btn ${current === '/tests' ? 'active' : ''}" href="#/tests">Diagnostics</a>
       <a class="nav-btn ${current === '/social' ? 'active' : ''}" href="#/social">Social Styles</a>
-      <a class="nav-btn ${current === '/quickprompts' ? 'active' : ''}" href="#/quickprompts">What would you say?</a>
       <a class="nav-btn ${current === '/appointments' ? 'active' : ''}" href="#/appointments">Booking</a>
       <a class="nav-btn ${current === '/diets' ? 'active' : ''}" href="#/diets">Diets</a>
       <a class="nav-btn ${current === '/badges' ? 'active' : ''}" href="#/badges">Badges</a>
@@ -139,13 +132,12 @@ export function nav(current, navigate) {
     <button class="nav-hamburger" id="nav-hamburger-btn" aria-label="Open menu">☰</button>
     <div class="nav-mobile-menu" id="nav-mobile-menu" style="display:none;">
       <a class="nav-mobile-item ${current === '/' ? 'active' : ''}" href="#/">🏠 Home</a>
-      <a class="nav-mobile-item ${current === '/train' ? 'active' : ''}" href="#/train">💬 Communication</a>
+      <a class="nav-mobile-item ${['/communication','/train','/quickprompts'].includes(current) ? 'active' : ''}" href="#/communication">💬 Communication</a>
       <a class="nav-mobile-item ${current === '/terminology' ? 'active' : ''}" href="#/terminology">🩺 Terminology</a>
       <a class="nav-mobile-item ${current === '/triage' ? 'active' : ''}" href="#/triage">🚨 Triage</a>
       <a class="nav-mobile-item ${current === '/tests' ? 'active' : ''}" href="#/tests">🔬 Diagnostics</a>
       <a class="nav-mobile-item ${current === '/quickhit' ? 'active' : ''}" href="#/quickhit">⚡ Daily Quick Hit</a>
       <a class="nav-mobile-item ${current === '/badges' ? 'active' : ''}" href="#/badges">🏅 Badges</a>
-      <a class="nav-mobile-item ${current === '/quickprompts' ? 'active' : ''}" href="#/quickprompts">💬 What would you say?</a>
       <a class="nav-mobile-item ${current === '/social' ? 'active' : ''}" href="#/social">🦁 Social Styles</a>
       <a class="nav-mobile-item ${current === '/appointments' ? 'active' : ''}" href="#/appointments">📅 Booking guide</a>
       <a class="nav-mobile-item ${current === '/diets' ? 'active' : ''}" href="#/diets">🥣 Diets</a>

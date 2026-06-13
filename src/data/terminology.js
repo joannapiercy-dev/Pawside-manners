@@ -1832,11 +1832,11 @@ export const termQuizzes = [
         options: [
           "DAPP, Rabies, Bordetella, and Leptospirosis all at once",
           "Rabies only — it's the most important",
-          "DAPP, and possibly Bordetella — Rabies and Leptospirosis come later",
+          "DAPP only — Rabies, Leptospirosis, and Bordetella all come later",
           "No vaccines at 8 weeks — wait until 12 weeks"
         ],
         correct: 2,
-        explanation: "At 8 weeks, puppies receive their first DAPP. Bordetella can be given at 12 or 16 weeks. Rabies is given at 16 weeks. Leptospirosis starts at 12 weeks. Giving Rabies before 16 weeks is not part of the standard schedule."
+        explanation: "At 8 weeks, puppies receive their first DAPP and nothing else. Bordetella and Leptospirosis start at 12 weeks. Rabies is given at 16 weeks."
       },
       {
         question: "A client says they're planning to travel internationally with their dog and need a Rabies vaccine. The dog was just microchipped today. Can you give the Rabies vaccine today?",
@@ -1883,7 +1883,7 @@ export const termQuizzes = [
         explanation: "Bats are the primary Rabies reservoir in our area. This is relevant when advising clients — even indoor cats can occasionally encounter a bat that gets inside the home, which is one reason Rabies vaccination is recommended even for cats that don't go outside."
       },
       {
-        question: "A client brings in a kitten at 12 weeks for vaccines. Which vaccines can be given today?",
+        question: "A client brings in a puppy at 12 weeks for vaccines. Which vaccines can be given today?",
         options: [
           "DAPP and Rabies",
           "DAPP, Bordetella, and Leptospirosis — the second dose of each",
