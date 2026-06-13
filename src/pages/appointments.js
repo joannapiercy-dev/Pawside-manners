@@ -76,8 +76,9 @@ function renderApptCard(a) {
   if (a.flags.includes('vet-approval')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fef2f2;color:#991b1b;border:1px solid #fecaca;">⚠️ Vet approval needed</span>');
   if (a.flags.includes('advance-check')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fef9c3;color:#713f12;border:1px solid #fef08a;">📋 Check with owner in advance</span>');
   if (a.flags.includes('quote-needed')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;">💰 Quote needed</span>');
-  if (a.flags.includes('sedation')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fdf4ff;color:#7e22ce;border:1px solid #e9d5ff;">💊 Sedation required</span>');
+  if (a.flags.includes('sedation')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fdf4ff;color:#7e22ce;border:1px solid #e9d5ff;">💊 Sedation may be required</span>');
   if (a.flags.includes('fasting')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;">🍽️ Fasting required</span>');
+  if (a.flags.includes('consent')) flags.push('<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;">📝 Consent form</span>');
 
   return `
     <div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);">

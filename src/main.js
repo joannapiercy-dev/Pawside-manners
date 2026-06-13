@@ -8,6 +8,7 @@ import { renderTestsHome, renderTestCategory } from './pages/tests.js';
 import { renderCrucial } from './pages/crucial.js';
 import { renderDietsHome, renderDietsCategory } from './pages/diets.js';
 import { renderAppointmentsHome } from './pages/appointments.js';
+import { renderSocialHome } from './pages/social.js';
 
 const app = document.getElementById('app');
 
@@ -35,6 +36,8 @@ function render() {
     renderTriageTree(app, navigate, route.replace('/triage/', ''));
   } else if (route === '/crucial') {
     renderCrucial(app, navigate);
+  } else if (route === '/social') {
+    renderSocialHome(app, navigate);
   } else if (route === '/appointments') {
     renderAppointmentsHome(app, navigate);
   } else if (route === '/diets') {

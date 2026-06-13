@@ -353,12 +353,20 @@ input:focus, textarea:focus, select:focus {
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 13.5px;
-  font-weight: 500;
+  font-weight: 600;
   background: none;
   color: var(--ink-mid);
   text-align: center;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: color 0.15s;
 }
-.mode-tab.active { background: white; color: var(--ink); box-shadow: var(--shadow-sm); }
+.mode-tab.active {
+  background: white;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
 .mode-tab:hover:not(.active) { color: var(--ink); }
 
 /* ── Quiz ── */
@@ -597,7 +605,6 @@ input:focus, textarea:focus, select:focus {
   .page-content, .scenario-layout { padding: 1.5rem 1rem; }
   .hero { padding: 3rem 1rem 2.5rem; }
   .stat-row { grid-template-columns: 1fr 1fr; }
-  .mode-tabs { flex-direction: column; }
 }
 
 @media (min-width: 721px) {

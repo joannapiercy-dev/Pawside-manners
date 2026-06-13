@@ -129,7 +129,7 @@ export const appointmentTypes = [
     category: "End of Life",
     when: "Owner has decided on euthanasia. Book in a quiet slot where possible. Ask if they would like to bring anyone with them.",
     notes: "Handle this call with extra care. Acknowledge the difficulty of the decision. Offer a private appointment time at a quiet moment in the day.",
-    flags: [],
+    flags: ['consent'],
   },
   {
     id: "tech",
@@ -138,8 +138,8 @@ export const appointmentTypes = [
     color: "#33B6D4",
     textColor: "#ffffff",
     category: "Tech",
-    when: "Bloodwork, X-rays, cytology, or other diagnostics/treatments recommended by a vet. Booster vaccines approved by a vet for a patient seen within 1–2 months (not puppy/kitten series vaccines). Demonstrations for injections or SQ fluids at home. Note: capacity depends on how many techs are in rooms and how many are occupied with PCVC echos or VIDI ultrasounds — check before booking.",
-    notes: "",
+    when: "Bloodwork, X-rays, cytology, or other diagnostics/treatments recommended by a vet. Booster vaccines approved by a vet for a patient seen within 1–2 months (not puppy/kitten series vaccines). Demonstrations for injections or SQ fluids at home.",
+    notes: "Capacity depends on how many techs are scheduled in rooms and how many are occupied with PCVC echos or VIDI ultrasounds — check before booking more than one per hour.",
     flags: [],
   },
   {
@@ -149,8 +149,8 @@ export const appointmentTypes = [
     color: "#0080FF",
     textColor: "#ffffff",
     category: "Tech",
-    when: "Routine/regular injections: Solensia, Librela, Cartrophen, Portela, Lenivia, Zycortal. Nail trims. Anal gland expression. Can also be booked as a Tech Appointment if a tech is needed.",
-    notes: "",
+    when: "Routine/regular injections: Solensia, Librela, Cartrophen, Cytopoint, Portela, Lenivia, Zycortal. Nail trims. Anal gland expression.",
+    notes: "Can also be booked as a Tech Appointment if Tech Assistant Appointments are blocked off.",
     flags: [],
   },
   {
@@ -173,7 +173,7 @@ export const appointmentTypes = [
     category: "Surgery",
     when: "Any procedure requiring sedation or general anaesthesia that is not an orthopaedic surgery. Length depends on the procedure — confirm with the clinical team.",
     notes: "",
-    flags: [],
+    flags: ['fasting', 'consent'],
   },
   {
     id: "ortho-surgery",
@@ -184,7 +184,7 @@ export const appointmentTypes = [
     category: "Surgery",
     when: "Fracture repairs, FHO, TPLO, and other orthopaedic surgeries.",
     notes: "",
-    flags: [],
+    flags: ['fasting', 'consent'],
   },
   {
     id: "exotic-surgery",
@@ -195,7 +195,7 @@ export const appointmentTypes = [
     category: "Surgery",
     when: "Any surgery on rabbits, rats, or other pocket pets.",
     notes: "",
-    flags: [],
+    flags: ['fasting', 'consent'],
   },
   {
     id: "dental",
@@ -206,7 +206,7 @@ export const appointmentTypes = [
     category: "Surgery",
     when: "Any dental procedure under general anaesthetic. Maximum 2–3 dentals per day depending on the vet — confirm availability before booking.",
     notes: "",
-    flags: [],
+    flags: ['fasting', 'consent'],
   },
   {
     id: "pcvc",
@@ -217,7 +217,7 @@ export const appointmentTypes = [
     category: "Specialist",
     when: "Any cardiology consult with Dr. Lichtenberger.",
     notes: "⚠️ Prepare oral sedation in advance so the owner can give it at home 2–3 hours before the appointment. The pet will require shaving and must be dropped off. Confirm all of this with the owner when booking.",
-    flags: ["advance-check", "sedation"],
+    flags: ["advance-check", "sedation", 'consent'],
   },
   {
     id: "vidi",

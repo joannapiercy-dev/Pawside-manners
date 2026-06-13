@@ -50,7 +50,7 @@ export function renderDietsCategory(container, navigate, catId) {
             <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:14%;">Brand</th>
             <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:22%;">Diet name</th>
             <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:10%;">Forms</th>
-            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:18%;">Flavour / format</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:18%;">Primary protein</th>
             ${cat.id === 'allergy' ? '<th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:13%;">Protein type</th>' : ''}
             <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;">Used for</th>
           </tr>
