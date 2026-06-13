@@ -139,7 +139,6 @@ export const triageReference = {
       { sign: "Slightly quieter than usual, eating and drinking normally, started today", outcome: "MONITOR", note: "Monitor closely for 12–24 hours. Note any additional symptoms. Call back if worsens or stops drinking." },
     ]
   }
-};
 ,
 
   toxins: {
@@ -172,3 +171,4 @@ export const triageReference = {
       { sign: "Permethrin (some dog flea products, e.g. Advantix) — applied to or contacted by a cat", outcome: "EMERGENCY", note: "Cats cannot metabolise permethrin. Causes muscle tremors, hypersalivation, seizures, and death. Can occur from direct application or from contact with a recently treated dog. Wash the cat immediately with washing-up liquid and seek emergency treatment. Time-critical." },
     ]
   }
+};
