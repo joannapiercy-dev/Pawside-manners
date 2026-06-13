@@ -228,11 +228,9 @@ function setupFlashcards(deck, idx, render, showAll = false) {
   });
 
   document.getElementById('shuffle-btn')?.addEventListener('click', () => {
-    const terms = currentShowAll ? deck.terms : deck.terms.filter(t => !getKnownIds(deck.id).includes(t.id));
-    const active = terms.length > 0 ? terms : deck.terms;
-    for (let i = active.length - 1; i > 0; i--) {
+    for (let i = deck.terms.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [active[i], active[j]] = [active[j], active[i]];
+      [deck.terms[i], deck.terms[j]] = [deck.terms[j], deck.terms[i]];
     }
     render('flashcards', 0, false, currentShowAll);
   });
@@ -449,7 +447,7 @@ function renderMedsReference(deck) {
     {
       label: 'Pain relief — opioids & other',
       icon: '💊',
-      ids: ['m-05','m-18','m-38','m-28b'],
+      ids: ['m-05','m-18'],
       note: 'sr buprenorphine = cats only, lasts 72 hours.'
     },
     {
@@ -773,7 +771,7 @@ function renderVaccineReference(deck) {
           ['16 weeks', 'Third dose — series complete'],
           ['1 year after 16-week dose', 'First adult booster'],
           ['Every 3 years after', 'Ongoing booster'],
-          ['⚠️ First vaccine over 6 months old', 'Two doses 4 weeks apart to start, then 1-year clock begins'],
+          ['⚠️ First vaccine over 6 months old', 'Single dose is sufficient (no booster needed to start). 1-year clock begins from that dose.'],
         ], catPurple)}
         ${scheduleRow('Rabies', [
           ['16 weeks', 'First dose (kittens)'],
@@ -795,8 +793,10 @@ function renderVaccineReference(deck) {
         <ul style="margin:6px 0 0 16px;padding:0;">
           <li>Vaccines requiring an initial series (Lepto, FeLV) need two doses 4 weeks apart when given for the first time — in any age animal</li>
           <li>Rabies must be given <strong>after</strong> microchipping for international travel</li>
-          <li>Booster timing for international travel can be critical — advise clients to ask well in advance</li>
+          <li>Rabies booster timing is critical for international travel — advise clients to ask well in advance</li>
+          <li>Booster vaccines can be given 3 to 6 weeks after the previous dose — we schedule at 4 weeks for simplicity</li>
           <li>DAPP and Leptospirosis are sometimes combined into a single injection</li>
+          <li>Bats are the primary rabies reservoir in this area — relevant for both dogs and outdoor cats</li>
         </ul>
       </div>
 

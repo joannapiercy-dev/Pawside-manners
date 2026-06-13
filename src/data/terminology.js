@@ -1401,8 +1401,8 @@ export const termDecks = [
         id: "v-d02",
         term: "Rabies (canine)",
         pronunciation: "",
-        meaning: "Core canine vaccine. Required for international travel. If the dog is being vaccinated for travel purposes, rabies must be given AFTER microchipping — the microchip number must be on file before the vaccine is administered. Timing of boosters is critical for overseas travel — check specific country requirements well in advance.",
-        clientExplanation: "Rabies is a core vaccine we recommend for all dogs. If you're planning to travel with your dog internationally, the rabies vaccine must be given after the microchip is placed — and the timing of boosters can matter a lot for international travel, so let us know your plans early.",
+        meaning: "Core canine vaccine. Required for international travel. If the dog is being vaccinated for travel purposes, rabies must be given AFTER microchipping — the microchip number must be on file before the vaccine is administered. Timing of boosters is critical for overseas travel — check specific country requirements well in advance. Local wildlife reservoir: bats are the primary rabies reservoir in this area.",
+        clientExplanation: "Rabies is a core vaccine we recommend for all dogs. If you're planning to travel with your dog internationally, the rabies vaccine must be given after the microchip is placed — and the timing of boosters can matter a lot for international travel, so let us know your plans early. In our area, bats are the main wildlife source of rabies.",
         category: "Canine vaccines"
       },
       {
@@ -1465,8 +1465,8 @@ export const termDecks = [
         id: "v-c02",
         term: "Rabies (feline)",
         pronunciation: "",
-        meaning: "Core feline vaccine. Particularly recommended for outdoor cats or cats with any potential exposure to wildlife. Same microchip and travel timing considerations as for dogs.",
-        clientExplanation: "Rabies is recommended for all cats that go outside or could potentially be exposed to wildlife. As with dogs, it must be given after microchipping if needed for travel.",
+        meaning: "Core feline vaccine. Particularly recommended for outdoor cats or cats with any potential exposure to wildlife. Same microchip and travel timing considerations as for dogs. Local wildlife reservoir: bats are the primary rabies reservoir in this area — even indoor cats can occasionally encounter bats inside the home.",
+        clientExplanation: "Rabies is recommended for all cats that go outside or could potentially be exposed to wildlife. Even indoor cats can occasionally encounter a bat that gets inside. As with dogs, the vaccine must be given after microchipping if needed for travel.",
         category: "Feline vaccines"
       },
       {
@@ -1481,8 +1481,8 @@ export const termDecks = [
         id: "v-c04",
         term: "FVRCP schedule (feline)",
         pronunciation: "",
-        meaning: "Kittens: 8 weeks, 12 weeks, 16 weeks. After the 16-week dose: boost in 1 year. After the 1-year booster: boost every 3 years. Special rule: if a cat receives their FIRST FVRCP dose at older than 6 months, they need a booster 4 weeks after that first dose, then the 1-year clock starts.",
-        clientExplanation: "Kittens get FVRCP at 8, 12, and 16 weeks, then at 1 year, then every 3 years. If an older cat has never been vaccinated before, they'll need two doses 4 weeks apart to start.",
+        meaning: "Kittens: 8 weeks, 12 weeks, 16 weeks. After the 16-week dose: boost in 1 year. After the 1-year booster: boost every 3 years. Special rule for unvaccinated cats over 6 months: a single dose of FVRCP is sufficient to start — a booster is NOT required (unlike kittens who need the full series). The 1-year clock starts from that single dose.",
+        clientExplanation: "Kittens get FVRCP at 8, 12, and 16 weeks, then at 1 year, then every 3 years. If an adult cat over 6 months has never been vaccinated, a single dose is all that is needed to start — then a booster at 1 year.",
         category: "Feline schedule"
       },
       {
