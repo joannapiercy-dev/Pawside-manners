@@ -1,4 +1,4 @@
-import { triageCategories, triageTrees, OUTCOMES } from '../data/triage.js';
+import { triageCategories, triageTrees, OUTCOMES, triageQuizzes } from '../data/triage.js';
 import { triageReference } from '../data/triageReference.js';
 import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
@@ -70,6 +70,7 @@ export function renderTriageTree(container, navigate, categoryId) {
         <div style="display:flex;gap:4px;background:var(--warm);border:1px solid var(--warm-dark);border-radius:var(--radius);padding:4px;margin-bottom:1.5rem;">
           <button id="tab-tree" style="flex:1;padding:7px 12px;border-radius:8px;font-size:13.5px;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;background:${currentTab==='tree'?'white':'none'};color:${currentTab==='tree'?'var(--ink)':'var(--ink-mid)'};box-shadow:${currentTab==='tree'?'var(--shadow-sm)':'none'};">🌳 Decision tree</button>
           <button id="tab-ref" style="flex:1;padding:7px 12px;border-radius:8px;font-size:13.5px;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;background:${currentTab==='reference'?'white':'none'};color:${currentTab==='reference'?'var(--ink)':'var(--ink-mid)'};box-shadow:${currentTab==='reference'?'var(--shadow-sm)':'none'};">📋 Quick reference</button>
+          ${triageQuizzes[categoryId] ? `<button id="tab-quiz" style="flex:1;padding:7px 12px;border-radius:8px;font-size:13.5px;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;background:${currentTab==='quiz'?'white':'none'};color:${currentTab==='quiz'?'var(--ink)':'var(--ink-mid)'};box-shadow:${currentTab==='quiz'?'var(--shadow-sm)':'none'};">✅ Quiz</button>` : ''}
         </div>
 
         ${currentTab === 'tree' ? `
@@ -78,6 +79,11 @@ export function renderTriageTree(container, navigate, categoryId) {
           <div style="display:flex;gap:8px;margin-top:2rem;flex-wrap:wrap;">
             ${history.length > 0 ? `<button class="btn-secondary" id="back-node-btn">← Back</button>` : ''}
             ${outcome ? `<button class="btn-ghost" id="restart-btn">🔄 Start again</button>` : ''}
+            <button class="btn-ghost" id="back-triage-btn">← All categories</button>
+          </div>
+        ` : currentTab === 'quiz' ? `
+          <div id="triage-quiz-mount"></div>
+          <div style="margin-top:1rem;">
             <button class="btn-ghost" id="back-triage-btn">← All categories</button>
           </div>
         ` : `
@@ -103,6 +109,8 @@ export function renderTriageTree(container, navigate, categoryId) {
     document.getElementById('back-triage-btn')?.addEventListener('click', () => navigate('/triage'));
     document.getElementById('tab-tree')?.addEventListener('click', () => { currentTab = 'tree'; render(); });
     document.getElementById('tab-ref')?.addEventListener('click', () => { currentTab = 'reference'; render(); });
+    document.getElementById('tab-quiz')?.addEventListener('click', () => { currentTab = 'quiz'; render(); renderTriageQuiz(categoryId, catMeta); });
+    if (currentTab === 'quiz') renderTriageQuiz(categoryId, catMeta);
     document.getElementById('back-node-btn')?.addEventListener('click', () => {
       if (history.length > 0) {
         currentNode = history.pop();
@@ -333,6 +341,11 @@ function renderToxinsPage(container, navigate) {
         ⚠️ <strong>When in doubt, treat as emergency.</strong> Many toxins have delayed onset — an animal that seems fine now may deteriorate rapidly. Always ask what was ingested, how much, and how long ago, and escalate to the clinical team immediately.
       </div>
 
+      <div style="display:flex;gap:4px;background:var(--warm);border:1px solid var(--warm-dark);border-radius:var(--radius);padding:4px;margin-bottom:1.25rem;" id="toxins-tabs">
+        <button id="toxins-ref-btn" style="flex:1;padding:7px 12px;border-radius:8px;font-size:13.5px;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;background:white;color:var(--ink);box-shadow:var(--shadow-sm);">📋 Quick reference</button>
+        <button id="toxins-quiz-btn" style="flex:1;padding:7px 12px;border-radius:8px;font-size:13.5px;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;background:none;color:var(--ink-mid);">✅ Quiz</button>
+      </div>
+      <div id="toxins-content">
       <div style="background:var(--warm);border-radius:var(--radius);padding:10px 14px;font-size:13px;color:var(--ink-mid);margin-bottom:1.25rem;">
         <strong style="color:var(--ink);">Key questions to ask:</strong> ${ref.askFirst}
       </div>
@@ -360,6 +373,8 @@ function renderToxinsPage(container, navigate) {
         🐾 <strong>Cats / Dogs badges</strong> indicate species-specific concerns. Unmarked rows apply to both species unless the note specifies otherwise.
       </div>
 
+      </div><!-- end toxins-content -->
+      <div id="toxins-quiz-mount" style="display:none;"></div>
       <div style="margin-top:1rem;">
         <button class="btn-ghost" id="back-triage-btn">← All categories</button>
       </div>
@@ -368,4 +383,99 @@ function renderToxinsPage(container, navigate) {
 
   setupHamburger();
   document.getElementById('back-triage-btn').addEventListener('click', () => navigate('/triage'));
+  document.getElementById('toxins-quiz-btn')?.addEventListener('click', () => {
+    document.getElementById('toxins-content').style.display = 'none';
+    document.getElementById('toxins-quiz-mount').style.display = 'block';
+    document.getElementById('toxins-quiz-btn').style.background = 'white';
+    document.getElementById('toxins-quiz-btn').style.boxShadow = 'var(--shadow-sm)';
+    document.getElementById('toxins-ref-btn').style.background = 'none';
+    document.getElementById('toxins-ref-btn').style.boxShadow = 'none';
+    renderTriageQuiz('toxins', { label: 'Toxins & poisons', icon: '☠️' });
+  });
+  document.getElementById('toxins-ref-btn')?.addEventListener('click', () => {
+    document.getElementById('toxins-content').style.display = 'block';
+    document.getElementById('toxins-quiz-mount').style.display = 'none';
+    document.getElementById('toxins-ref-btn').style.background = 'white';
+    document.getElementById('toxins-ref-btn').style.boxShadow = 'var(--shadow-sm)';
+    document.getElementById('toxins-quiz-btn').style.background = 'none';
+    document.getElementById('toxins-quiz-btn').style.boxShadow = 'none';
+  });
+}
+
+function renderTriageQuiz(categoryId, catMeta) {
+  const questions = triageQuizzes[categoryId];
+  const mount = document.getElementById('triage-quiz-mount');
+  if (!questions || !mount) return;
+
+  let qIdx = 0;
+  let score = 0;
+  let answered = false;
+
+  function renderQ() {
+    window.scrollTo(0, 0);
+    answered = false;
+    const q = questions[qIdx];
+    mount.innerHTML = `
+      <div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);padding:1.75rem;box-shadow:var(--shadow-sm);">
+        <div style="font-size:12px;color:var(--ink-light);margin-bottom:0.5rem;">Question ${qIdx+1} of ${questions.length}</div>
+        <div class="progress-bar-wrap" style="margin-bottom:1.25rem;">
+          <div class="progress-bar-fill" style="width:${Math.round(qIdx/questions.length*100)}%"></div>
+        </div>
+        <p style="font-size:15px;font-weight:500;margin-bottom:1.25rem;line-height:1.55;">${q.q}</p>
+        <div id="tq-options">
+          ${q.options.map((opt, i) => `<button class="quiz-option" data-idx="${i}">${opt}</button>`).join('')}
+        </div>
+        <div id="tq-feedback" class="hidden"></div>
+        <div id="tq-next" class="hidden" style="margin-top:1rem;">
+          <button class="btn-primary" id="tq-next-btn">${qIdx < questions.length - 1 ? 'Next question →' : 'See results'}</button>
+        </div>
+      </div>`;
+
+    mount.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (answered) return;
+        answered = true;
+        const selected = parseInt(this.dataset.idx);
+        mount.querySelectorAll('.quiz-option').forEach(b => b.disabled = true);
+        const fb = document.getElementById('tq-feedback');
+        if (selected === q.correct) {
+          this.classList.add('correct');
+          score++;
+          fb.className = 'feedback-box feedback-correct';
+          fb.innerHTML = `<strong>Correct!</strong> ${q.explanation}`;
+        } else {
+          this.classList.add('incorrect');
+          mount.querySelectorAll('.quiz-option')[q.correct].classList.add('correct');
+          fb.className = 'feedback-box feedback-incorrect';
+          fb.innerHTML = `<strong>Not quite.</strong> ${q.explanation}`;
+        }
+        fb.classList.remove('hidden');
+        document.getElementById('tq-next').classList.remove('hidden');
+        document.getElementById('tq-next-btn').addEventListener('click', () => {
+          qIdx++;
+          if (qIdx < questions.length) renderQ();
+          else showScore();
+        });
+      });
+    });
+  }
+
+  function showScore() {
+    window.scrollTo(0, 0);
+    const pct = Math.round(score / questions.length * 100);
+    mount.innerHTML = `
+      <div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);padding:2rem;text-align:center;box-shadow:var(--shadow-sm);">
+        <div style="font-size:3rem;font-family:'DM Serif Display',serif;color:var(--ink);">${score} / ${questions.length}</div>
+        <p style="color:var(--ink-mid);margin:0.75rem 0 2rem;">
+          ${pct === 100 ? 'Perfect score!' :
+            pct >= 80 ? 'Great work.' :
+            pct >= 60 ? 'Good effort — review the ones you missed.' :
+            'Keep practising — the quick reference table is a good place to review.'}
+        </p>
+        <button class="btn-primary" id="tq-retry">Try again</button>
+      </div>`;
+    document.getElementById('tq-retry').addEventListener('click', () => { qIdx = 0; score = 0; renderQ(); });
+  }
+
+  renderQ();
 }

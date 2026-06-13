@@ -605,3 +605,343 @@ export const triageTrees = {
     }
   }
 };
+
+export const triageQuizzes = {
+
+  vomiting: [
+    {
+      q: "A client calls — their large-breed dog has been retching repeatedly for 30 minutes but nothing is coming up, and his belly looks swollen. What do you do?",
+      options: ["Book a same-day appointment", "Tell them to monitor for another hour", "Treat as emergency — come in immediately", "Ask if he ate anything unusual and book a routine appointment"],
+      correct: 2,
+      explanation: "Unproductive retching with a distended abdomen in a large-breed dog is a classic presentation of GDV (bloat) — a life-threatening emergency. Do not leave this animal to wait."
+    },
+    {
+      q: "A puppy of 10 weeks, unvaccinated, has vomited 4 times this morning and is quiet. What urgency?",
+      options: ["Monitor at home", "Routine appointment", "Within 48 hours", "Same day"],
+      correct: 3,
+      explanation: "Young unvaccinated puppies vomiting are at high risk of parvovirus, which can be fatal within hours. Same-day assessment is essential."
+    },
+    {
+      q: "A 5-year-old cat vomited once this morning, is bright and alert, and eating normally. What do you advise?",
+      options: ["Emergency — come in now", "Same-day appointment", "Monitor at home — call back if it continues or they stop drinking", "Routine appointment"],
+      correct: 2,
+      explanation: "A single vomiting episode in an otherwise well, alert cat that is still eating is low concern. Monitor at home with clear criteria to call back."
+    },
+    {
+      q: "A client describes dark brown, coffee-ground material in her dog's vomit. What urgency?",
+      options: ["Monitor at home", "Within 48 hours", "Same day", "Emergency"],
+      correct: 3,
+      explanation: "Coffee-ground material indicates digested blood from the upper GI tract — a sign of significant bleeding that requires immediate assessment."
+    },
+    {
+      q: "A dog vomited 3 times yesterday, is still drinking, seems a bit quiet but not collapsed. What's appropriate?",
+      options: ["Monitor at home", "Within 24–48 hours", "Same day", "Emergency"],
+      correct: 1,
+      explanation: "Moderate vomiting with maintained hydration and no emergency signs — appointment within 24–48 hours, with instructions to call back if worsening."
+    },
+  ],
+
+  diarrhea: [
+    {
+      q: "A client's 8-week-old unvaccinated puppy has had watery diarrhea with blood for 12 hours and is very flat. What do you do?",
+      options: ["Monitor at home", "Book within 48 hours", "Same-day appointment", "Emergency — come in immediately"],
+      correct: 3,
+      explanation: "Bloody watery diarrhea in an unvaccinated puppy is a parvovirus presentation until proven otherwise. This is a life-threatening emergency."
+    },
+    {
+      q: "A dog has had 2 loose stools today, is bright, eating, and drinking normally. The owner thinks it might be from a new food. What do you advise?",
+      options: ["Emergency", "Same-day appointment", "Monitor at home — bland diet, call back if worsening", "Routine appointment"],
+      correct: 2,
+      explanation: "Mild, recent onset diarrhea in an otherwise well animal with a likely dietary cause — monitor at home with bland diet and clear instructions to call back."
+    },
+    {
+      q: "A dog has had loose stools for 3 weeks, but is maintaining weight and seems well. What is appropriate?",
+      options: ["Emergency", "Same day", "Within 48 hours", "Routine appointment"],
+      correct: 3,
+      explanation: "Chronic intermittent diarrhea in a stable, well animal needs investigation but is not urgent — routine appointment for workup."
+    },
+    {
+      q: "A client describes black, tarry stools in their dog. What urgency?",
+      options: ["Monitor at home", "Within 48 hours", "Same day", "Emergency"],
+      correct: 3,
+      explanation: "Dark tarry stools (melena) indicate bleeding in the upper GI tract — more serious than fresh blood. Emergency assessment required."
+    },
+    {
+      q: "A cat has had diarrhea AND vomiting for 36 hours. She is still drinking small amounts. What urgency?",
+      options: ["Monitor at home", "Within 48 hours", "Same day", "Emergency"],
+      correct: 2,
+      explanation: "Combined vomiting and diarrhea for over 24 hours creates significant dehydration risk — same-day assessment needed."
+    },
+  ],
+
+  urinary: [
+    {
+      q: "A client calls about her male cat who has been going in and out of the litter box all morning producing nothing. What do you do?",
+      options: ["Book a same-day appointment", "Tell her to monitor until tomorrow", "Emergency — come in immediately", "Book within 48 hours"],
+      correct: 2,
+      explanation: "Male cat straining with no urine output is a urethral obstruction until proven otherwise — a life-threatening emergency that can cause death within hours."
+    },
+    {
+      q: "A female dog has blood in her urine, is eating and drinking normally, and shows no signs of pain. What urgency?",
+      options: ["Emergency", "Same day", "Within 48 hours", "Routine"],
+      correct: 1,
+      explanation: "Hematuria without pain signs — likely a UTI or cystitis. Needs urinalysis and assessment, same-day or next day."
+    },
+    {
+      q: "A dog is drinking and urinating much more than normal, but is eating well and seems energetic. What urgency?",
+      options: ["Emergency", "Same day", "Within 48 hours", "Routine appointment"],
+      correct: 3,
+      explanation: "PUPD with normal energy and appetite — significant finding but stable. Routine appointment for bloodwork and urinalysis to investigate the cause."
+    },
+    {
+      q: "A dog is drinking and urinating much more than normal AND has been quieter and less interested in food for 2 days. What urgency?",
+      options: ["Monitor at home", "Routine appointment", "Within 48 hours", "Same day"],
+      correct: 3,
+      explanation: "PUPD with reduced energy and appetite — possible diabetes, kidney disease, or Addison's disease. Same-day assessment needed."
+    },
+    {
+      q: "A cat hasn't urinated in over 12 hours according to the owner. What urgency?",
+      options: ["Monitor at home", "Within 48 hours", "Same day", "Emergency"],
+      correct: 3,
+      explanation: "No urine output for 12+ hours is an emergency — possible obstruction or acute kidney injury regardless of species."
+    },
+  ],
+
+  breathing: [
+    {
+      q: "A cat is breathing with its mouth open. What do you do?",
+      options: ["Book same-day appointment", "Monitor for an hour", "Emergency — come in immediately", "Book within 48 hours"],
+      correct: 2,
+      explanation: "Open-mouth breathing in a cat is ALWAYS an emergency — no exceptions. Cats only breathe through their mouths when in severe respiratory distress."
+    },
+    {
+      q: "A client says her dog's gums look pale and greyish and he is breathing fast. What urgency?",
+      options: ["Same day", "Within 48 hours", "Monitor at home", "Emergency"],
+      correct: 3,
+      explanation: "Abnormal gum colour with rapid breathing indicates inadequate oxygen delivery — immediate emergency care is needed."
+    },
+    {
+      q: "A dog with known heart disease has started coughing at night and seems more breathless after walks than usual. What urgency?",
+      options: ["Monitor at home", "Routine appointment", "Within 48 hours", "Same day"],
+      correct: 3,
+      explanation: "A known cardiac patient with new respiratory signs is at risk of decompensation — same-day assessment needed."
+    },
+    {
+      q: "A dog has had a dry intermittent cough for 3 days with no other symptoms and pink gums. What urgency?",
+      options: ["Emergency", "Same day", "Within 24–48 hours", "Monitor at home"],
+      correct: 2,
+      explanation: "Dry intermittent cough in an otherwise well dog with normal gum colour — appointment within 24–48 hours."
+    },
+    {
+      q: "A dog is breathing faster than normal while resting but gums are pink and she is not distressed. What urgency?",
+      options: ["Monitor at home", "Routine appointment", "Within 48 hours", "Same day"],
+      correct: 3,
+      explanation: "Elevated resting respiratory rate is significant even without visible distress — same-day assessment."
+    },
+  ],
+
+  lameness: [
+    {
+      q: "A client's cat suddenly cannot use its back legs and the legs feel cold. What do you do?",
+      options: ["Book same-day appointment", "Emergency — come in immediately", "Monitor at home", "Book within 48 hours"],
+      correct: 1,
+      explanation: "Sudden loss of hindlimb function with cold limbs in a cat is aortic thromboembolism (saddle thrombus) — a cardiac emergency that is time-critical."
+    },
+    {
+      q: "A dog was hit by a car and seems to be walking, though limping. What urgency?",
+      options: ["Monitor at home if walking", "Book same-day appointment", "Emergency — come in immediately", "Book within 48 hours"],
+      correct: 2,
+      explanation: "Any road traffic accident requires immediate assessment regardless of apparent ability to walk — internal injuries can be present with no external signs."
+    },
+    {
+      q: "A dog has been mildly limping on one front leg for 4 days, is still bearing weight, and there is no swelling. What urgency?",
+      options: ["Emergency", "Same day", "Within 48 hours", "Routine appointment"],
+      correct: 3,
+      explanation: "Mild chronic lameness with full weight-bearing and no swelling — routine appointment for assessment."
+    },
+    {
+      q: "A dog is completely non-weight bearing on a hind leg with no known trauma. What urgency?",
+      options: ["Monitor at home", "Within 48 hours", "Same day", "Emergency"],
+      correct: 2,
+      explanation: "Complete non-weight bearing without known trauma — possible fracture, dislocation, or severe soft tissue injury. Same-day assessment."
+    },
+    {
+      q: "A limping dog has a visibly abnormal angle to its leg and you can hear a crunching sound when it moves. What urgency?",
+      options: ["Same day", "Within 48 hours", "Routine", "Emergency"],
+      correct: 3,
+      explanation: "Obvious deformity with crepitus (crunching) suggests fracture or dislocation — emergency assessment."
+    },
+  ],
+
+  eyes: [
+    {
+      q: "A client says her French Bulldog's eye is bulging forward and looks much larger than the other one. What do you do?",
+      options: ["Book same-day appointment", "Emergency — come in immediately", "Monitor at home", "Book within 48 hours"],
+      correct: 1,
+      explanation: "Proptosis (eye bulging forward) or acute glaucoma causes permanent vision loss if not treated immediately — emergency."
+    },
+    {
+      q: "A cat has one eye completely closed and is pawing at it. What urgency?",
+      options: ["Monitor at home", "Within 48 hours", "Same day", "Emergency"],
+      correct: 2,
+      explanation: "Eye completely shut with signs of pain — possible corneal ulcer, acute glaucoma, or foreign body. Eye conditions deteriorate rapidly — same-day."
+    },
+    {
+      q: "A dog has thick yellow-green discharge from one eye but the eye is open and the dog seems comfortable. What urgency?",
+      options: ["Emergency", "Same day", "Within 24–48 hours", "Monitor at home"],
+      correct: 2,
+      explanation: "Thick coloured discharge suggests infection — appointment within 24–48 hours."
+    },
+    {
+      q: "A Pug has any eye concern at all. How do you approach this compared to other breeds?",
+      options: ["Same urgency as any other dog", "Slightly more urgent — brachycephalic breeds have higher corneal risk", "Less urgent — their eyes are always a bit unusual", "Only urgent if the eye is completely closed"],
+      correct: 1,
+      explanation: "Brachycephalic breeds (Pugs, Bulldogs, French Bulldogs, Persians) have shallow eye sockets and exposed corneas — they are at much higher risk of corneal injury and should be seen same-day for any eye concern."
+    },
+    {
+      q: "A dog has clear watery discharge from both eyes but seems comfortable and the eyes look normal. What urgency?",
+      options: ["Emergency", "Same day", "Within 48 hours", "Routine — monitor, call back if persistent"],
+      correct: 3,
+      explanation: "Clear watery discharge in a comfortable dog with otherwise normal eyes — routine. Advise the owner to prevent rubbing and call back if it worsens or changes character."
+    },
+  ],
+
+  wounds: [
+    {
+      q: "A dog is bleeding heavily from a leg wound after catching it on a fence. What do you do?",
+      options: ["Book same-day appointment", "Emergency — apply pressure and come in immediately", "Monitor at home", "Book within 48 hours"],
+      correct: 1,
+      explanation: "Heavy uncontrolled bleeding is an emergency. Advise the owner to apply gentle pressure with a clean cloth and come in immediately."
+    },
+    {
+      q: "A cat came home with a small puncture wound on its side — the owner thinks it may have been in a fight. What urgency?",
+      options: ["Monitor at home — it's small", "Routine appointment", "Within 48 hours", "Same day"],
+      correct: 3,
+      explanation: "Bite wounds are always deeper than they look and carry a very high infection risk including abscess and sepsis. All bite wounds need same-day assessment."
+    },
+    {
+      q: "A dog has a small superficial graze on its leg, is not limping, and the wound looks clean. What do you advise?",
+      options: ["Emergency", "Same day", "Within 48 hours", "Clean at home, monitor, routine appointment if not healing"],
+      correct: 3,
+      explanation: "Small, superficial, clean wounds in otherwise well animals can be managed at home with basic care and monitoring."
+    },
+    {
+      q: "A dog has a wound near its knee joint. Why does this need same-day assessment even if it looks minor?",
+      options: ["It doesn't — minor wounds near joints are fine to monitor", "Risk of joint cavity involvement — infection in a joint is very serious", "Only if the dog is limping", "Only if the wound is deep"],
+      correct: 1,
+      explanation: "Wounds near joints carry a risk of penetrating the joint cavity. Joint infections (septic arthritis) are extremely serious and can cause permanent damage — always assess same-day."
+    },
+    {
+      q: "A wound has become swollen, warm, and is producing a foul-smelling discharge 3 days after the original injury. What urgency?",
+      options: ["Monitor — this is normal healing", "Routine appointment", "Within 48 hours", "Same day"],
+      correct: 3,
+      explanation: "Signs of infection in a wound — swelling, heat, discharge, odour — need same-day assessment and likely antibiotics."
+    },
+  ],
+
+  neuro: [
+    {
+      q: "A dog is having a seizure that has lasted 6 minutes and is still going. What do you do?",
+      options: ["Tell the owner to wait and see if it stops", "Book a same-day appointment for when it stops", "Emergency — come in immediately, keep away from hard surfaces", "Book within 48 hours"],
+      correct: 2,
+      explanation: "A seizure lasting more than 5 minutes is status epilepticus — a life-threatening emergency. The owner should keep the pet safe from hard objects and come in immediately."
+    },
+    {
+      q: "A dog had a single seizure 20 minutes ago and is now conscious but confused and wobbly. What urgency?",
+      options: ["Monitor at home", "Routine appointment", "Within 48 hours", "Same day"],
+      correct: 3,
+      explanation: "A first or isolated seizure needs same-day assessment to investigate the cause, even once the post-ictal phase has passed."
+    },
+    {
+      q: "A cat has suddenly developed a head tilt and is rolling to one side — this started an hour ago. What urgency?",
+      options: ["Monitor at home", "Routine appointment", "Within 48 hours", "Same day"],
+      correct: 3,
+      explanation: "Acute vestibular syndrome needs same-day assessment — it can be benign peripheral disease or a serious intracranial problem, and they need to be distinguished."
+    },
+    {
+      q: "A dog suddenly cannot walk and is dragging its back legs. What urgency?",
+      options: ["Same day", "Within 48 hours", "Emergency", "Routine"],
+      correct: 2,
+      explanation: "Sudden inability to walk or hindlimb paralysis is a spinal emergency (possible disc herniation) or aortic thromboembolism in cats — time-critical."
+    },
+    {
+      q: "An owner says their elderly dog seems confused, keeps walking into walls, and didn't recognise them this morning. What urgency?",
+      options: ["Monitor at home", "Routine appointment", "Within 48 hours", "Same day"],
+      correct: 3,
+      explanation: "Acute behavioural changes including confusion and disorientation need same-day assessment — possible intracranial disease or hepatic encephalopathy."
+    },
+  ],
+
+  lethargy: [
+    {
+      q: "A cat hasn't eaten for 3 days and is very flat. What urgency?",
+      options: ["Monitor at home", "Within 48 hours", "Same day", "Emergency"],
+      correct: 2,
+      explanation: "Cats that don't eat for more than 48 hours are at risk of hepatic lipidosis (fatty liver disease) — same-day assessment is essential."
+    },
+    {
+      q: "A dog's gums look white and she is collapsed on the floor. What urgency?",
+      options: ["Same day", "Within 48 hours", "Monitor at home", "Emergency"],
+      correct: 3,
+      explanation: "Collapse with white/pale gums indicates severe anaemia, internal bleeding, or shock — immediate emergency."
+    },
+    {
+      q: "A 12-year-old dog has been a bit quieter than usual for 2 days but is still eating and drinking. What urgency?",
+      options: ["Monitor at home", "Routine appointment", "Within 48 hours", "Same day"],
+      correct: 3,
+      explanation: "Elderly patients have less physiological reserve — even mild lethargy warrants same-day assessment in senior animals."
+    },
+    {
+      q: "A 3-year-old dog is slightly quieter than normal today, eating and drinking normally, no other symptoms. What do you advise?",
+      options: ["Emergency", "Same day", "Within 48 hours", "Monitor for 12–24 hours, call back if worsening"],
+      correct: 3,
+      explanation: "Mild, very recent lethargy in an otherwise well young adult dog with no other symptoms — monitor closely at home with clear criteria to call back."
+    },
+    {
+      q: "A dog with known Addison's disease is lethargic and vomiting. What urgency?",
+      options: ["Monitor at home", "Routine appointment", "Within 48 hours", "Emergency"],
+      correct: 3,
+      explanation: "An Addisonian patient showing clinical signs is at risk of an Addisonian crisis — a potentially fatal emergency. Any known medical condition combined with lethargy and vomiting warrants emergency assessment."
+    },
+  ],
+
+  toxins: [
+    {
+      q: "A dog ate a large amount of dark chocolate an hour ago. She is 5kg and seems fine so far. What urgency?",
+      options: ["Monitor at home — she seems fine", "Call back if symptoms develop", "Same day", "Emergency — come in immediately"],
+      correct: 3,
+      explanation: "Dark chocolate in a small dog is an emergency regardless of current symptoms — theobromine toxicity has a delayed onset. Inducing vomiting is most effective within 1–2 hours, so time matters."
+    },
+    {
+      q: "A cat has been exposed to Advantix — the owner applied their dog's flea treatment to the cat by mistake. What do you do?",
+      options: ["Monitor the cat for symptoms", "Book a same-day appointment", "Tell the owner to wash it off and monitor", "Emergency — wash off immediately and come in"],
+      correct: 3,
+      explanation: "Permethrin (in Advantix) is rapidly fatal to cats. Instruct the owner to wash the cat immediately with washing-up liquid AND come in immediately — do not wait for symptoms."
+    },
+    {
+      q: "A dog may have drunk from a puddle with a blue-green sheen on it while on a walk. He seems fine. What urgency?",
+      options: ["Monitor at home — he seems fine", "Call back if symptoms develop", "Same day", "Emergency — come in now"],
+      correct: 3,
+      explanation: "Blue-green algae (cyanobacteria) can cause rapid fatal liver failure and neurological signs within minutes to hours. There is no antidote. Do not wait for symptoms."
+    },
+    {
+      q: "A dog ate slug pellets from the garden about 30 minutes ago. No symptoms yet. What urgency?",
+      options: ["Monitor at home", "Same day", "Within 48 hours", "Emergency"],
+      correct: 3,
+      explanation: "Metaldehyde (slug bait) causes rapid, severe, often fatal tremors and seizures. No antidote — treatment is supportive and time-critical. Emergency even before symptoms appear."
+    },
+    {
+      q: "An owner admits their dog may have eaten some of their cannabis edibles. He's a bit wobbly. What urgency?",
+      options: ["Monitor at home — cannabis isn't fatal in dogs", "Same day", "Within 48 hours", "Emergency"],
+      correct: 1,
+      explanation: "Cannabis ingestion in dogs needs same-day assessment. Edibles may also contain xylitol or chocolate which are more dangerous. Approach the owner non-judgementally — accurate disclosure helps treatment."
+    },
+    {
+      q: "Any cat that has eaten any part of an Easter lily — even just chewed a leaf. What urgency?",
+      options: ["Monitor for vomiting", "Same day if showing symptoms", "Emergency regardless of symptoms", "Within 48 hours"],
+      correct: 2,
+      explanation: "True lily ingestion in cats causes acute kidney failure — any part, any amount, even pollen. Emergency regardless of whether symptoms are present yet."
+    },
+  ],
+
+};

@@ -1,8 +1,9 @@
 import { dietCategories, diets } from '../data/diets.js';
 import { nav, setupHamburger } from './home.js';
 
-const RC_COLOR  = '#c8102e';
-const PUR_COLOR = '#003087';
+const RC_COLOR   = '#c8102e';
+const PUR_COLOR  = '#003087';
+const HILLS_COLOR = '#004B87';
 const FORM_LABELS = { dry: 'Dry', canned: 'Canned', liquid: 'Liquid' };
 
 export function renderDietsHome(container, navigate) {
@@ -47,14 +48,15 @@ export function renderDietsCategory(container, navigate, catId) {
         <thead>
           <tr style="border-bottom:1.5px solid var(--warm-dark);">
             <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:15%;">Brand</th>
-            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:30%;">Diet name</th>
-            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:14%;">Forms</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:28%;">Diet name</th>
+            <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:12%;">Forms</th>
+            ${cat.id === 'allergy' ? '<th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;width:14%;">Protein type</th>' : ''}
             <th style="text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);padding:6px 10px;">Used for</th>
           </tr>
         </thead>
         <tbody>
           ${items.map((d, i) => {
-            const brandColor = d.brand === 'Royal Canin' ? RC_COLOR : PUR_COLOR;
+            const brandColor = d.brand === 'Royal Canin' ? RC_COLOR : d.brand === 'Hills' ? HILLS_COLOR : PUR_COLOR;
             const forms = d.forms.map(f => `<span style="font-size:11px;font-weight:600;padding:2px 7px;border-radius:20px;background:var(--warm);border:1px solid var(--warm-dark);color:var(--ink-mid);white-space:nowrap;">${FORM_LABELS[f]}</span>`).join(' ');
             return `<tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
               <td style="padding:10px 10px;vertical-align:top;">
@@ -62,6 +64,11 @@ export function renderDietsCategory(container, navigate, catId) {
               </td>
               <td style="padding:10px 10px;vertical-align:top;font-weight:600;font-size:13.5px;color:var(--ink);">${d.name}</td>
               <td style="padding:10px 10px;vertical-align:top;display:flex;flex-direction:column;gap:3px;">${forms}</td>
+              ${cat.id === 'allergy' ? `<td style="padding:10px 10px;vertical-align:top;">
+                ${d.tag === 'hydrolyzed' ? '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;background:#fdf4ff;color:#7e22ce;border:1px solid #e9d5ff;white-space:nowrap;">🔬 Hydrolyzed</span>' :
+                  d.tag === 'novel' ? '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;white-space:nowrap;">🥩 Novel protein</span>' :
+                  '<span style="font-size:11px;padding:3px 9px;color:var(--ink-light);">—</span>'}
+              </td>` : ''}
               <td style="padding:10px 10px;vertical-align:top;font-size:13px;color:var(--ink-mid);line-height:1.6;">${d.use}</td>
             </tr>`;
           }).join('')}
@@ -101,6 +108,7 @@ export function renderDietsCategory(container, navigate, catId) {
       <div style="background:var(--warm);border-radius:var(--radius);padding:10px 14px;font-size:12.5px;color:var(--ink-mid);display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;">
         <span><strong style="color:${RC_COLOR};">Royal Canin</strong> = RCVD</span>
         <span><strong style="color:${PUR_COLOR};">Purina</strong> = PVD</span>
+        <span><strong style="color:${HILLS_COLOR};">Hills</strong> = Hill's Prescription Diet</span>
       </div>
 
       <button class="btn-ghost" id="back-btn">← All categories</button>

@@ -34,6 +34,11 @@ export function renderHome(container, navigate) {
           <span style="font-weight:600;">Diagnostics</span>
           <span style="font-size:12px;color:var(--ink-light);">Tests & procedures</span>
         </button>
+        <button class="nav-card-btn" id="btn-appointments">
+          <span style="font-size:1.5rem;">📅</span>
+          <span style="font-weight:600;">Booking guide</span>
+          <span style="font-size:12px;color:var(--ink-light);">Which appointment to book</span>
+        </button>
         <button class="nav-card-btn" id="btn-diets">
           <span style="font-size:1.5rem;">🥣</span>
           <span style="font-weight:600;">Diets</span>
@@ -59,6 +64,7 @@ export function renderHome(container, navigate) {
   document.getElementById('btn-terminology').addEventListener('click', () => navigate('/terminology'));
   document.getElementById('btn-triage').addEventListener('click', () => navigate('/triage'));
   document.getElementById('btn-diagnostics').addEventListener('click', () => navigate('/tests'));
+  document.getElementById('btn-appointments').addEventListener('click', () => navigate('/appointments'));
   document.getElementById('btn-diets').addEventListener('click', () => navigate('/diets'));
   document.getElementById('btn-progress').addEventListener('click', () => navigate('/progress'));
 }
@@ -78,6 +84,7 @@ export function nav(current, navigate) {
       <a class="nav-btn ${current === '/terminology' ? 'active' : ''}" href="#/terminology">Terminology</a>
       <a class="nav-btn ${current === '/triage' ? 'active' : ''}" href="#/triage">Triage</a>
       <a class="nav-btn ${current === '/tests' ? 'active' : ''}" href="#/tests">Diagnostics</a>
+      <a class="nav-btn ${current === '/appointments' ? 'active' : ''}" href="#/appointments">Booking</a>
       <a class="nav-btn ${current === '/diets' ? 'active' : ''}" href="#/diets">Diets</a>
       <a class="nav-btn ${current === '/progress' ? 'active' : ''}" href="#/progress">Progress</a>
     </div>
