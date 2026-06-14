@@ -149,7 +149,7 @@ export const appointmentTypes = [
     color: "#33B6D4",
     textColor: "#ffffff",
     category: "Tech",
-    when: "Bloodwork, X-rays, cytology, or other diagnostics/treatments recommended by a vet. Booster vaccines approved by a vet for a patient seen within 1–2 months (not puppy/kitten series vaccines). Demonstrations for injections or SQ fluids at home.",
+    when: "Bloodwork, X-rays, cytology, or other diagnostics/treatments recommended by a vet. Booster vaccines approved by a vet for a patient seen within 1–2 months (not puppy/kitten series vaccines). Demonstrations for injections or SQ fluids at home. Freestyle Libre monitor placement.",
     notes: "Capacity depends on how many techs are scheduled in rooms and how many are occupied with PCVC echos or VIDI ultrasounds — check before booking more than one per hour.",
     flags: [],
   },

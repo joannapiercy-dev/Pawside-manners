@@ -1417,7 +1417,7 @@ export const termDecks = [
         id: "v-d04",
         term: "Leptospirosis (canine)",
         pronunciation: "lep-toh-spy-ROH-sis",
-        meaning: "Bacterial disease found in wildlife, soil, and water — particularly stagnant or slow-moving water. Recommended for dogs prone to drinking from puddles, eating things off the ground, or spending time in areas frequented by wildlife (raccoons, skunks, deer). Can cause kidney and liver failure. Can be transmitted to humans (zoonotic). Sometimes given as a combination product with DAPP.",
+        meaning: "Core canine vaccine. Bacterial disease found in wildlife, soil, and water — particularly stagnant or slow-moving water. Causes kidney and liver failure. Can be transmitted to humans (zoonotic). Sometimes given as a combination product with DAPP. Recommended for all dogs.",
         clientExplanation: "Lepto is a bacterial infection found in soil and water — especially puddles and anywhere wildlife has been. We recommend it for dogs that like to drink from puddles or pick things up on walks. It can also spread to people, so it's worth protecting against.",
         category: "Canine vaccines"
       },

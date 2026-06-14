@@ -766,9 +766,9 @@ function renderVaccineReference(deck) {
             <tbody>
               ${[
                 ['DAPP', 'Core', 'Distemper, Adenovirus (hepatitis), Parainfluenza, Parvovirus', 'All dogs that will be around other animals. Fatal diseases if unvaccinated.'],
+                ['Leptospirosis', 'Core', 'Leptospira bacteria (found in soil, water, wildlife)', 'Dogs that drink from puddles, eat things off the ground, or encounter wildlife. Zoonotic risk.'],
                 ['Rabies', 'Core', 'Rabies virus', 'All dogs. Required for travel. Must be given after microchipping if for international travel.'],
                 ['Bordetella', 'Non-core', 'Kennel cough (Bordetella bronchiseptica)', 'Dogs that board, groom, attend training, dog parks, or daycare.'],
-                ['Leptospirosis', 'Non-core', 'Leptospira bacteria (found in soil, water, wildlife)', 'Dogs that drink from puddles, eat things off the ground, or encounter wildlife. Zoonotic risk.'],
               ].map((r, i) => `
                 <tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
                   <td style="padding:9px 10px;font-weight:700;font-size:13px;color:${dogBlue};vertical-align:top;">${r[0]}</td>
@@ -791,23 +791,23 @@ function renderVaccineReference(deck) {
           ['16 weeks', 'Third dose — series complete'],
           ['1 year after 16-week dose', 'First adult booster'],
           ['Every 3 years after', 'Ongoing booster'],
-        ], dogBlue)}
-        ${scheduleRow('Rabies', [
-          ['16 weeks', 'First dose'],
-          ['1 year after 16-week dose', 'First adult booster'],
-          ['Every 3 years after', 'Ongoing booster'],
-          ['⚠️ Travel note', 'Must be given after microchipping. Check country-specific timing requirements well in advance.'],
-        ], dogBlue)}
-        ${scheduleRow('Bordetella', [
-          ['12 or 16 weeks', 'First dose (puppies)'],
-          ['Every 1 year', 'Annual booster — always'],
-        ], dogBlue)}
+        ], '#4a6fa5')}
         ${scheduleRow('Leptospirosis', [
           ['12 weeks', 'First dose (puppies)'],
           ['16 weeks', 'Second dose (puppies)'],
           ['First time in adult dog', 'Two doses 4 weeks apart'],
           ['Every 1 year', 'Annual booster once series complete'],
-        ], dogBlue)}
+        ], '#4a6fa5')}
+        ${scheduleRow('Rabies', [
+          ['16 weeks', 'First dose'],
+          ['1 year after 16-week dose', 'First adult booster'],
+          ['Every 3 years after', 'Ongoing booster'],
+          ['⚠️ Travel note', 'Must be given after microchipping. Check country-specific timing requirements well in advance.'],
+        ], '#4a6fa5')}
+        ${scheduleRow('Bordetella', [
+          ['12 or 16 weeks', 'First dose (puppies)'],
+          ['Every 1 year', 'Annual booster — always'],
+        ], '#4a6fa5')}
       </div>
 
       <!-- CATS -->
@@ -830,8 +830,8 @@ function renderVaccineReference(deck) {
             <tbody>
               ${[
                 ['FVRCP', 'Core', 'Rhinotracheitis (herpesvirus), Calicivirus, Panleukopenia', 'All cats — indoor and outdoor. Some viruses can be carried in on clothing.'],
-                ['Rabies', 'Core', 'Rabies virus', 'All cats, especially outdoor cats. Required for travel.'],
                 ['FeLV', 'Non-core', 'Feline Leukemia Virus', 'Indoor and outdoor cats with any contact with other cats. No cure — prevention is key.'],
+                ['Rabies', 'Core', 'Rabies virus', 'All cats, especially outdoor cats. Required for travel.'],
               ].map((r, i) => `
                 <tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
                   <td style="padding:9px 10px;font-weight:700;font-size:13px;color:${catPurple};vertical-align:top;">${r[0]}</td>
@@ -855,19 +855,19 @@ function renderVaccineReference(deck) {
           ['1 year after 16-week dose', 'First adult booster'],
           ['Every 3 years after', 'Ongoing booster'],
           ['⚠️ First vaccine over 6 months old', 'Single dose is sufficient (no booster needed to start). 1-year clock begins from that dose.'],
-        ], catPurple)}
-        ${scheduleRow('Rabies', [
-          ['16 weeks', 'First dose (kittens)'],
-          ['1 year after 16-week dose', 'First adult booster'],
-          ['Every 3 years after', 'Ongoing booster'],
-        ], catPurple)}
+        ], '#7c3aed')}
         ${scheduleRow('FeLV', [
           ['12 weeks', 'First dose (kittens)'],
           ['16 weeks', 'Second dose (kittens)'],
           ['First time at any other age', 'Two doses 4 weeks apart'],
           ['1 year after completed series', 'First booster'],
           ['Every 2 years after', 'Ongoing booster'],
-        ], catPurple)}
+        ], '#7c3aed')}
+        ${scheduleRow('Rabies', [
+          ['16 weeks', 'First dose (kittens)'],
+          ['1 year after 16-week dose', 'First adult booster'],
+          ['Every 3 years after', 'Ongoing booster'],
+        ], '#7c3aed')}
       </div>
 
       <!-- GENERAL NOTES -->

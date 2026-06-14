@@ -327,10 +327,10 @@ export const tests = {
       sedationNote: null,
       shave: true,
       shaveNote: "A patch on the side of the chest is shaved to allow electrode placement. This is more extensive than a spot-shave — advise owners in advance.",
-      dropoff: true,
-      dropoffNote: "Patient is dropped off, electrodes are placed and the monitor is fitted, then they go home wearing the monitor in a neoprene jacket for 24 hours. They return the following day for monitor removal and data download.",
+      dropoff: false,
+      dropoffNote: "Drop-off is not required — electrode placement typically takes 15–30 minutes and owners can wait. Drop-off is fine if the owner prefers it.",
       clientScript: "A Holter monitor is like a continuous ECG worn at home for 24 hours — it records the heart's rhythm all day and night so we can catch any irregularities that might only happen occasionally. We'll shave a patch on the side of the chest to attach the electrodes, fit the monitor, and send your pet home in a little jacket that holds it all in place. They come back the next day for removal. Most pets tolerate it well. Just make sure they can't chew at the jacket overnight.",
-      flags: ["shave", "dropoff"],
+      flags: ["shave"],
       specialNote: "Advise owners not to let the pet get wet or chew at the jacket. The data is downloaded and analysed after return."
     }
   ],

@@ -75,9 +75,19 @@ export function renderTestCategory(container, navigate, catId) {
         <button id="cat-quiz-btn" style="background:white;color:#1e3a5f;border:none;border-radius:var(--radius);padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;flex-shrink:0;">Start quiz →</button>
       </div>` : ''}
 
-      <div style="display:flex;flex-direction:column;gap:16px;">
+      ${catId === 'blood' ? `
+      <div id="test-filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0.5rem;">
+        <button class="test-filter-chip active" data-filter="all"  style="padding:6px 14px;border-radius:20px;border:1.5px solid var(--warm-dark);background:var(--ink);color:white;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:600;">All tests</button>
+        <button class="test-filter-chip" data-filter="fast"        style="padding:6px 14px;border-radius:20px;border:1.5px solid #fde68a;background:#fef9ec;color:#92400e;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">🍽️ Fasting required</button>
+        <button class="test-filter-chip" data-filter="sedation"    style="padding:6px 14px;border-radius:20px;border:1.5px solid #f0abde;background:#fdf2f8;color:#831843;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">💉 Sedation</button>
+        <button class="test-filter-chip" data-filter="dropoff"     style="padding:6px 14px;border-radius:20px;border:1.5px solid #86efac;background:#f0fdf4;color:#14532d;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">🏥 Drop-off required</button>
+        <button class="test-filter-chip" data-filter="no-fast"     style="padding:6px 14px;border-radius:20px;border:1.5px solid var(--warm-dark);background:white;color:var(--ink-mid);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">✅ No fasting</button>
+      </div>` : ''}
+
+      <div id="test-cards" style="display:flex;flex-direction:column;gap:16px;">
         ${catTests.map(t => renderTestCard(t)).join('')}
       </div>
+      <div id="test-no-results" style="display:none;text-align:center;padding:2rem;color:var(--ink-light);font-style:italic;">No tests match this filter.</div>
 
       <div style="margin-top:2rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
         <button class="btn-ghost" id="back-btn">← All categories</button>
@@ -90,6 +100,42 @@ export function renderTestCategory(container, navigate, catId) {
   document.getElementById('back-btn').addEventListener('click', () => navigate('/tests'));
   document.getElementById('quiz-btn').addEventListener('click', () => navigate('/tests/quiz'));
   document.getElementById('cat-quiz-btn')?.addEventListener('click', () => renderCategoryQuiz(container, navigate, catId));
+
+  // Filter chips (blood category only)
+  if (catId === 'blood') {
+    const cards = container.querySelectorAll('#test-cards > div[data-test-id]');
+    const noResults = document.getElementById('test-no-results');
+    container.querySelectorAll('.test-filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        container.querySelectorAll('.test-filter-chip').forEach(c => {
+          c.style.background = c.dataset.filter === 'all' ? 'white' : c.style.background;
+          c.style.fontWeight = '';
+          c.classList.remove('active');
+        });
+        chip.classList.add('active');
+        if (chip.dataset.filter === 'all') {
+          chip.style.background = 'var(--ink)';
+          chip.style.color = 'white';
+          chip.style.fontWeight = '600';
+        }
+        const f = chip.dataset.filter;
+        let visible = 0;
+        cards.forEach(card => {
+          const t = catTests.find(x => x.id === card.dataset.testId);
+          if (!t) return;
+          let show = false;
+          if (f === 'all')      show = true;
+          else if (f === 'fast')     show = t.fast === true;
+          else if (f === 'sedation') show = t.sedation === 'yes' || t.sedation === 'oral-only' || t.sedation === 'sometimes';
+          else if (f === 'dropoff')  show = t.dropoff === true;
+          else if (f === 'no-fast')  show = t.fast === false;
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        noResults.style.display = visible === 0 ? 'block' : 'none';
+      });
+    });
+  }
 
   // Expand/collapse handlers
   markComplete('tests-' + catId, 'viewed');
@@ -115,7 +161,7 @@ function renderTestCard(t) {
                   t.sedation === 'sometimes' ? '💉 Sedation sometimes required' : null;
 
   return `
-    <div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);">
+    <div data-test-id="${t.id}" style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);">
 
       <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--warm-mid);">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;">
