@@ -234,6 +234,27 @@ function setupFlashcards(deck, idx, render, showAll = false) {
     if (currentIdx < displayTerms.length - 1) { currentFlipped = false; render('flashcards', currentIdx + 1, false, currentShowAll); }
   });
 
+  // Swipe to navigate
+  const card = document.getElementById('flashcard');
+  if (card) {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    card.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    card.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return; // too short or mostly vertical — treat as tap
+      if (dx < 0 && currentIdx < displayTerms.length - 1) {
+        currentFlipped = false; render('flashcards', currentIdx + 1, false, currentShowAll); // swipe left = next
+      } else if (dx > 0 && currentIdx > 0) {
+        currentFlipped = false; render('flashcards', currentIdx - 1, false, currentShowAll); // swipe right = prev
+      }
+    }, { passive: true });
+  }
+
   document.getElementById('show-all-btn')?.addEventListener('click', () => {
     currentShowAll = !currentShowAll;
     render('flashcards', 0, false, currentShowAll);

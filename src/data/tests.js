@@ -700,9 +700,9 @@ export const testQuizByCategory = {
     },
     {
       question: "A vet has taken a fine needle aspirate of a lump. Where does this sample go and how long do results take?",
-      options: ["In-house — results in 30 minutes", "To an external laboratory — typically 3–5 business days", "To a hospital — 24 hours", "Results are immediate from the microscope"],
+      options: ["In-house — results in 30 minutes", "It depends — some FNAs are read in-house (1–4 days), others are sent to an external lab (3–5 days)", "To a hospital — 24 hours", "Results are immediate from the microscope"],
       correct: 1,
-      explanation: "FNA slides are prepared in-house and sent to an external veterinary pathologist. Results typically take 3–5 business days. The vet may have a preliminary in-house look, but the pathologist provides the official report."
+      explanation: "FNAs can be evaluated in-house or sent to an external veterinary pathologist depending on complexity. In-house results typically take 1–4 days; external lab results take 3–5 business days. Simpler samples (e.g. some skin or soft tissue lumps) may be read in-house, while more complex cases are sent out for a pathologist's report."
     },
     {
       question: "A client asks if a biopsy (histology) will definitively tell them if a mass is cancer. What do you say?",
