@@ -88,6 +88,8 @@ export function renderDeck(container, navigate, deckId) {
 
     if (mode === 'flashcards') setupFlashcards(deck, cardIndex, render, showAll);
     if (mode === 'quiz') setupTermQuiz(quizzes);
+    if (mode === 'reference' && deck.id === 'medical-jargon') setupJargonSearch();
+    if (mode === 'reference' && deck.id === 'medications') setupMedsSearch();
   }
 
   render(mode);
@@ -431,9 +433,15 @@ function renderJargonReference(deck) {
   })).filter(s => s.terms.length > 0);
 
   return `
-    <div style="display:flex;flex-direction:column;gap:2rem;">
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+      <div style="position:relative;">
+        <input id="jargon-search" type="text" placeholder="🔍  Search by term or meaning..." style="width:100%;box-sizing:border-box;padding:10px 16px;border:1.5px solid var(--warm-dark);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);background:white;outline:none;" />
+        <button id="jargon-search-clear" style="display:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1rem;color:var(--ink-light);">✕</button>
+      </div>
+      <div id="jargon-no-results" style="display:none;text-align:center;padding:2rem;color:var(--ink-light);font-style:italic;">No terms match your search.</div>
+      <div id="jargon-sections" style="display:flex;flex-direction:column;gap:2rem;">
       ${sections.map(section => `
-        <div>
+        <div class="jargon-section">
           <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
             color:var(--ink-light);margin-bottom:0.75rem;padding-bottom:6px;
             border-bottom:2px solid var(--warm-dark);">
@@ -451,7 +459,7 @@ function renderJargonReference(deck) {
               </thead>
               <tbody>
                 ${section.terms.map((t, i) => `
-                  <tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+                  <tr data-search="${(t.term + ' ' + t.meaning).toLowerCase()}" style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
                     <td style="padding:9px 10px;vertical-align:top;">
                       <div style="font-weight:600;font-size:13.5px;color:var(--ink);">${t.term}</div>
                       ${t.pronunciation ? `<div style="font-size:11.5px;color:var(--ink-light);font-style:italic;">/ ${t.pronunciation} /</div>` : ''}
@@ -464,6 +472,7 @@ function renderJargonReference(deck) {
           </div>
         </div>
       `).join('')}
+      </div>
     </div>`;
 }
 
@@ -599,12 +608,18 @@ function renderMedsReference(deck) {
   deck.terms.forEach(t => termMap[t.id] = t);
 
   return `
-    <div style="display:flex;flex-direction:column;gap:1.75rem;">
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+      <div style="position:relative;">
+        <input id="meds-search" type="text" placeholder="🔍  Search by drug name, use, or client explanation..." style="width:100%;box-sizing:border-box;padding:10px 16px;border:1.5px solid var(--warm-dark);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);background:white;outline:none;" />
+        <button id="meds-search-clear" style="display:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1rem;color:var(--ink-light);">✕</button>
+      </div>
+      <div id="meds-no-results" style="display:none;text-align:center;padding:2rem;color:var(--ink-light);font-style:italic;">No medications match your search.</div>
+      <div id="meds-sections" style="display:flex;flex-direction:column;gap:1.75rem;">
       ${sections.map(s => {
         const terms = s.ids.map(id => termMap[id]).filter(Boolean);
         if (terms.length === 0) return '';
         return `
-          <div>
+          <div class="meds-section">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.75rem;padding-bottom:6px;border-bottom:2px solid var(--warm-dark);">
               <span style="font-size:1.1rem;">${s.icon}</span>
               <span style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);">${s.label}</span>
@@ -626,7 +641,7 @@ function renderMedsReference(deck) {
                     const meta = medMeta[t.id] || {};
                     const foodLabel = meta.food === true ? '✅ Yes' : meta.food === 'empty' ? '⚠️ Empty stomach' : meta.food === 'small' ? '⚠️ Small amount only' : '—';
                     const foodColor = meta.food === true ? '#166534' : meta.food === 'empty' ? '#92400e' : meta.food === 'small' ? '#92400e' : 'var(--ink-light)';
-                    return `<tr style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
+                    return `<tr data-search="${(t.term + ' ' + t.meaning + ' ' + t.clientExplanation).toLowerCase()}" style="border-bottom:1px solid var(--warm-mid);background:${i%2===0?'white':'var(--warm)'};">
                       <td style="padding:9px 10px;vertical-align:top;font-weight:600;font-size:13px;color:var(--ink);">${t.term}</td>
                       <td style="padding:9px 10px;vertical-align:top;font-size:13px;color:var(--ink-mid);line-height:1.5;">${t.meaning.split('.')[0]}.</td>
                       <td style="padding:9px 10px;vertical-align:top;font-size:13px;color:var(--ink-mid);">${meta.freq || '—'}</td>
@@ -639,7 +654,78 @@ function renderMedsReference(deck) {
             </div>
           </div>`;
       }).join('')}
+      </div>
     </div>`;
+}
+
+// ── JARGON SEARCH ──
+function setupJargonSearch() {
+  const input = document.getElementById('jargon-search');
+  const clear = document.getElementById('jargon-search-clear');
+  const noResults = document.getElementById('jargon-no-results');
+  const sectionsEl = document.getElementById('jargon-sections');
+  if (!input) return;
+  function doSearch() {
+    const q = input.value.trim().toLowerCase();
+    clear.style.display = q ? 'block' : 'none';
+    if (!q) {
+      sectionsEl.querySelectorAll('tr[data-search]').forEach(r => r.style.display = '');
+      sectionsEl.querySelectorAll('.jargon-section').forEach(s => s.style.display = '');
+      noResults.style.display = 'none';
+      return;
+    }
+    let total = 0;
+    sectionsEl.querySelectorAll('.jargon-section').forEach(section => {
+      let vis = 0;
+      section.querySelectorAll('tr[data-search]').forEach(row => {
+        const match = row.dataset.search.includes(q);
+        row.style.display = match ? '' : 'none';
+        if (match) vis++;
+      });
+      section.style.display = vis > 0 ? '' : 'none';
+      total += vis;
+    });
+    noResults.style.display = total === 0 ? 'block' : 'none';
+  }
+  input.addEventListener('input', doSearch);
+  input.addEventListener('focus', () => { input.style.borderColor = 'var(--ink)'; });
+  input.addEventListener('blur', () => { input.style.borderColor = 'var(--warm-dark)'; });
+  clear.addEventListener('click', () => { input.value = ''; doSearch(); input.focus(); });
+}
+
+// ── MEDICATIONS SEARCH ──
+function setupMedsSearch() {
+  const input = document.getElementById('meds-search');
+  const clear = document.getElementById('meds-search-clear');
+  const noResults = document.getElementById('meds-no-results');
+  const sectionsEl = document.getElementById('meds-sections');
+  if (!input) return;
+  function doSearch() {
+    const q = input.value.trim().toLowerCase();
+    clear.style.display = q ? 'block' : 'none';
+    if (!q) {
+      sectionsEl.querySelectorAll('tr[data-search]').forEach(r => r.style.display = '');
+      sectionsEl.querySelectorAll('.meds-section').forEach(s => s.style.display = '');
+      noResults.style.display = 'none';
+      return;
+    }
+    let total = 0;
+    sectionsEl.querySelectorAll('.meds-section').forEach(section => {
+      let vis = 0;
+      section.querySelectorAll('tr[data-search]').forEach(row => {
+        const match = row.dataset.search.includes(q);
+        row.style.display = match ? '' : 'none';
+        if (match) vis++;
+      });
+      section.style.display = vis > 0 ? '' : 'none';
+      total += vis;
+    });
+    noResults.style.display = total === 0 ? 'block' : 'none';
+  }
+  input.addEventListener('input', doSearch);
+  input.addEventListener('focus', () => { input.style.borderColor = 'var(--ink)'; });
+  input.addEventListener('blur', () => { input.style.borderColor = 'var(--warm-dark)'; });
+  clear.addEventListener('click', () => { input.value = ''; doSearch(); input.focus(); });
 }
 
 // ── PARASITICIDES QUICK REFERENCE ──

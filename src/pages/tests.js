@@ -79,7 +79,6 @@ export function renderTestCategory(container, navigate, catId) {
       <div id="test-filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0.5rem;">
         <button class="test-filter-chip active" data-filter="all"  style="padding:6px 14px;border-radius:20px;border:1.5px solid var(--warm-dark);background:var(--ink);color:white;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:600;">All tests</button>
         <button class="test-filter-chip" data-filter="fast"        style="padding:6px 14px;border-radius:20px;border:1.5px solid #fde68a;background:#fef9ec;color:#92400e;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">🍽️ Fasting required</button>
-        <button class="test-filter-chip" data-filter="sedation"    style="padding:6px 14px;border-radius:20px;border:1.5px solid #f0abde;background:#fdf2f8;color:#831843;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">💉 Sedation</button>
         <button class="test-filter-chip" data-filter="dropoff"     style="padding:6px 14px;border-radius:20px;border:1.5px solid #86efac;background:#f0fdf4;color:#14532d;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">🏥 Drop-off required</button>
         <button class="test-filter-chip" data-filter="no-fast"     style="padding:6px 14px;border-radius:20px;border:1.5px solid var(--warm-dark);background:white;color:var(--ink-mid);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">✅ No fasting</button>
       </div>` : ''}
@@ -105,30 +104,39 @@ export function renderTestCategory(container, navigate, catId) {
   if (catId === 'blood') {
     const cards = container.querySelectorAll('#test-cards > div[data-test-id]');
     const noResults = document.getElementById('test-no-results');
+    const chipStyles = {
+      'all':     { bg: 'var(--ink)', color: 'white',         border: 'var(--ink)',         weight: '600' },
+      'fast':    { bg: '#fef9ec',    color: '#92400e',        border: '#fde68a',            weight: '' },
+      'dropoff': { bg: '#f0fdf4',    color: '#14532d',        border: '#86efac',            weight: '' },
+      'no-fast': { bg: 'white',      color: 'var(--ink-mid)', border: 'var(--warm-dark)',   weight: '' },
+    };
     container.querySelectorAll('.test-filter-chip').forEach(chip => {
       chip.addEventListener('click', () => {
+        // Reset all to resting style
         container.querySelectorAll('.test-filter-chip').forEach(c => {
-          c.style.background = c.dataset.filter === 'all' ? 'white' : c.style.background;
-          c.style.fontWeight = '';
+          const s = chipStyles[c.dataset.filter] || {};
+          c.style.background  = s.bg     || 'white';
+          c.style.color       = s.color  || 'var(--ink)';
+          c.style.borderColor = s.border || 'var(--warm-dark)';
+          c.style.fontWeight  = s.weight || '';
           c.classList.remove('active');
         });
+        // Highlight clicked chip as active (dark)
         chip.classList.add('active');
-        if (chip.dataset.filter === 'all') {
-          chip.style.background = 'var(--ink)';
-          chip.style.color = 'white';
-          chip.style.fontWeight = '600';
-        }
+        chip.style.background  = 'var(--ink)';
+        chip.style.color       = 'white';
+        chip.style.borderColor = 'var(--ink)';
+        chip.style.fontWeight  = '600';
         const f = chip.dataset.filter;
         let visible = 0;
         cards.forEach(card => {
           const t = catTests.find(x => x.id === card.dataset.testId);
           if (!t) return;
           let show = false;
-          if (f === 'all')      show = true;
-          else if (f === 'fast')     show = t.fast === true;
-          else if (f === 'sedation') show = t.sedation === 'yes' || t.sedation === 'oral-only' || t.sedation === 'sometimes';
-          else if (f === 'dropoff')  show = t.dropoff === true;
-          else if (f === 'no-fast')  show = t.fast === false;
+          if (f === 'all')          show = true;
+          else if (f === 'fast')    show = t.fast === true;
+          else if (f === 'dropoff') show = t.dropoff === true;
+          else if (f === 'no-fast') show = t.fast === false;
           card.style.display = show ? '' : 'none';
           if (show) visible++;
         });
