@@ -38,7 +38,7 @@ export function renderDeck(container, navigate, deckId) {
   if (!deck) { navigate('/terminology'); return; }
   const quizzes = termQuizzes.filter(q => q.deckId === deckId);
 
-  let mode = 'flashcards';
+  let mode = 'reference';
   let cardIndex = 0;
   let flipped = false;
   let showAll = false;
@@ -62,8 +62,8 @@ export function renderDeck(container, navigate, deckId) {
         </div>
 
         <div class="mode-tabs">
-          <button class="mode-tab ${mode==='flashcards'?'active':''}" data-mode="flashcards">🃏 Flashcards</button>
           ${['medical-jargon','medications','parasiticides','vaccines'].includes(deck.id) ? `<button class="mode-tab ${mode==='reference'?'active':''}" data-mode="reference">📋 Quick reference</button>` : ''}
+          <button class="mode-tab ${mode==='flashcards'?'active':''}" data-mode="flashcards">🃏 Flashcards</button>
           <button class="mode-tab ${mode==='quiz'?'active':''}" data-mode="quiz">✅ Quiz</button>
         </div>
 

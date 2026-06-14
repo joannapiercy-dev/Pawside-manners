@@ -77,7 +77,7 @@ export function renderTestCategory(container, navigate, catId) {
 
       ${catId === 'blood' ? `
       <div id="test-filters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0.5rem;">
-        <button class="test-filter-chip active" data-filter="all"  style="padding:6px 14px;border-radius:20px;border:1.5px solid var(--warm-dark);background:var(--ink);color:white;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:600;">All tests</button>
+        <button class="test-filter-chip active" data-filter="all"  style="padding:6px 14px;border-radius:20px;border:1.5px solid #1e3a5f;background:#1e3a5f;color:white;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:600;">All tests</button>
         <button class="test-filter-chip" data-filter="fast"        style="padding:6px 14px;border-radius:20px;border:1.5px solid #fde68a;background:#fef9ec;color:#92400e;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">🍽️ Fasting required</button>
         <button class="test-filter-chip" data-filter="dropoff"     style="padding:6px 14px;border-radius:20px;border:1.5px solid #86efac;background:#f0fdf4;color:#14532d;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">🏥 Drop-off required</button>
         <button class="test-filter-chip" data-filter="no-fast"     style="padding:6px 14px;border-radius:20px;border:1.5px solid var(--warm-dark);background:white;color:var(--ink-mid);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">✅ No fasting</button>
@@ -105,7 +105,7 @@ export function renderTestCategory(container, navigate, catId) {
     const cards = container.querySelectorAll('#test-cards > div[data-test-id]');
     const noResults = document.getElementById('test-no-results');
     const chipStyles = {
-      'all':     { bg: 'var(--ink)', color: 'white',         border: 'var(--ink)',         weight: '600' },
+      'all':     { bg: '#1e3a5f',    color: 'white',         border: '#1e3a5f',            weight: '600' },
       'fast':    { bg: '#fef9ec',    color: '#92400e',        border: '#fde68a',            weight: '' },
       'dropoff': { bg: '#f0fdf4',    color: '#14532d',        border: '#86efac',            weight: '' },
       'no-fast': { bg: 'white',      color: 'var(--ink-mid)', border: 'var(--warm-dark)',   weight: '' },
@@ -123,9 +123,9 @@ export function renderTestCategory(container, navigate, catId) {
         });
         // Highlight clicked chip as active (dark)
         chip.classList.add('active');
-        chip.style.background  = 'var(--ink)';
+        chip.style.background  = '#1e3a5f';
         chip.style.color       = 'white';
-        chip.style.borderColor = 'var(--ink)';
+        chip.style.borderColor = '#1e3a5f';
         chip.style.fontWeight  = '600';
         const f = chip.dataset.filter;
         let visible = 0;
