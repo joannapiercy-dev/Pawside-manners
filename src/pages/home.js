@@ -1,4 +1,7 @@
-export function renderHome(container, navigate) {
+import { getProfile, signOut } from '../lib/supabase.js';
+export async function renderHome(container, navigate) {
+  const profile = await getProfile();
+  const userName = profile?.full_name?.split(' ')[0] || 'there';
   let dqhDone = false;
   let streakCount = 0;
   try {
@@ -35,6 +38,10 @@ export function renderHome(container, navigate) {
       </div>
       <h1>Training Hub</h1>
       <p class="hero-sub">Practical training — build your clinical knowledge, sharpen your communication skills, and feel confident handling whatever the day brings.</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:0.75rem;margin-bottom:0.25rem;flex-wrap:wrap;">
+        <span style="font-size:13.5px;color:var(--ink-mid);">👋 Hi, <strong>${userName}</strong></span>
+        <button id="logout-btn" style="font-size:12px;color:var(--ink-light);background:none;border:1px solid var(--warm-dark);border-radius:20px;padding:4px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;">Sign out</button>
+      </div>
 
       <p style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1rem;">Start training</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;max-width:720px;margin:0 auto 1rem;">
@@ -98,6 +105,10 @@ export function renderHome(container, navigate) {
   document.getElementById('btn-appointments').addEventListener('click', () => navigate('/appointments'));
   document.getElementById('btn-diets').addEventListener('click', () => navigate('/diets'));
   document.getElementById('btn-progress').addEventListener('click', () => navigate('/progress'));
+  document.getElementById('logout-btn').addEventListener('click', async () => {
+    await signOut();
+    navigate('/login');
+  });
 }
 
 export function nav(current, navigate) {

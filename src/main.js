@@ -12,16 +12,35 @@ import { renderAppointmentsHome } from './pages/appointments.js';
 import { renderSocialHome } from './pages/social.js';
 import { renderQuickHit } from './pages/quickhit.js';
 import { renderQuickPromptsHome } from './pages/quickprompts.js';
+import { renderLogin } from './pages/login.js';
+import { renderSignup } from './pages/signup.js';
+import { getSession } from './lib/supabase.js';
 
 const app = document.getElementById('app');
+
+const PUBLIC_ROUTES = ['/login', '/signup'];
 
 function getRoute() {
   return window.location.hash.slice(1) || '/';
 }
 
-function render() {
+async function render() {
   const route = getRoute();
-  if (route === '/' || route === '') {
+
+  // Allow login/signup without a session
+  if (!PUBLIC_ROUTES.includes(route)) {
+    const session = await getSession();
+    if (!session) {
+      window.location.hash = '/login';
+      return;
+    }
+  }
+
+  if (route === '/login') {
+    renderLogin(app, navigate);
+  } else if (route === '/signup') {
+    renderSignup(app, navigate);
+  } else if (route === '/' || route === '') {
     renderHome(app, navigate);
   } else if (route === '/communication') {
     renderCommunicationHome(app, navigate);
@@ -64,7 +83,6 @@ function render() {
 
 function navigate(path) {
   window.location.hash = path;
-  // hashchange listener handles render() and scrollTo
 }
 
 window.addEventListener('hashchange', () => {
