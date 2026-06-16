@@ -122,13 +122,18 @@ export async function renderRxCheck(container, navigate) {
         })
       });
 
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(`Server error ${res.status}: ${errText.slice(0, 200)}`);
+      }
       const result = await res.json();
       await showResult(result, profile);
 
     } catch (err) {
       renderPage(`
         <div style="background:#fef2f2;border:1.5px solid #fca5a5;border-radius:var(--radius-lg);padding:1.5rem;text-align:center;">
-          <p style="color:#b91c1c;font-weight:600;">Something went wrong. Please try again.</p>
+          <p style="color:#b91c1c;font-weight:600;">Something went wrong.</p>
+          <p style="color:#b91c1c;font-size:13px;margin-top:0.5rem;">${err.message || 'Unknown error'}</p>
           <button class="btn-ghost" id="retry-btn" style="margin-top:1rem;">← Try again</button>
         </div>`);
       setupHamburger();
