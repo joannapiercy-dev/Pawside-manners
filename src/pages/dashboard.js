@@ -8,10 +8,66 @@ import { getEarnedBadges, getBadgeStats, BADGE_DEFS, getStreak, getDqhState, get
 import { nav, setupHamburger } from './home.js';
 import { getMyPoints } from '../lib/points.js';
 import { getSupabase, getProfile } from '../lib/supabase.js';
+import { getSupabase, getProfile } from '../lib/supabase.js';
 
 export async function renderDashboard(container, navigate) {
   const p = getProgress();
   const totalPoints = await getMyPoints();
+
+  // Fetch leaderboard data
+  let leaderboardHtml = '';
+  try {
+    const sb = await getSupabase();
+    const currentProfile = await getProfile();
+    const { data: profiles } = await sb.from('profiles').select('id, full_name, clinic');
+    const { data: events } = await sb.from('points_events').select('user_id, points, event_type');
+    if (profiles && events) {
+      const clinicLabel = { oaklands: 'Oaklands', royalbay: 'Royal Bay' };
+      const medals = ['🥇', '🥈', '🥉'];
+      const pointsMap = {}, quizMap = {}, rpMap = {};
+      for (const e of events) {
+        pointsMap[e.user_id] = (pointsMap[e.user_id] || 0) + e.points;
+        if (e.event_type === 'quiz_pass') quizMap[e.user_id] = (quizMap[e.user_id] || 0) + 1;
+        if (e.event_type === 'roleplay_complete') rpMap[e.user_id] = (rpMap[e.user_id] || 0) + 1;
+      }
+      const sorted = [...profiles].sort((a, b) => (pointsMap[b.id] || 0) - (pointsMap[a.id] || 0));
+      const rows = sorted.map((p, i) => {
+        const pts = pointsMap[p.id] || 0;
+        const quizzes = quizMap[p.id] || 0;
+        const roleplays = rpMap[p.id] || 0;
+        const isMe = p.id === currentProfile?.id;
+        const medal = i < 3 && pts > 0 ? medals[i] : (i + 1);
+        const youBadge = isMe ? ' <span style="font-size:11px;background:#fde047;border-radius:10px;padding:1px 7px;color:#a16207;">you</span>' : '';
+        const rowBg = isMe ? 'background:#fefce8;' : i % 2 === 0 ? '' : 'background:var(--warm);';
+        return '<tr style="border-bottom:1px solid var(--warm-mid);' + rowBg + '">'
+          + '<td style="padding:10px 14px;font-size:13px;color:var(--ink-light);width:36px;">' + medal + '</td>'
+          + '<td style="padding:10px 14px;">'
+          + '<div style="font-size:13.5px;color:var(--ink);">' + p.full_name + youBadge + '</div>'
+          + '<div style="font-size:12px;color:var(--ink-light);">' + (clinicLabel[p.clinic] || p.clinic) + '</div>'
+          + '</td>'
+          + '<td style="padding:10px 14px;font-size:13px;color:var(--ink-mid);text-align:center;">' + quizzes + '</td>'
+          + '<td style="padding:10px 14px;font-size:13px;color:var(--ink-mid);text-align:center;">' + roleplays + '</td>'
+          + '<td style="padding:10px 14px;text-align:right;">'
+          + '<span style="font-size:1rem;font-weight:700;color:' + (pts > 0 ? '#a16207' : 'var(--ink-light)') + ';">' + pts + '</span>'
+          + '<span style="font-size:11px;color:var(--ink-light);"> pts</span>'
+          + '</td></tr>';
+      }).join('');
+      leaderboardHtml = '<div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);overflow:hidden;margin-top:1.5rem;">'
+        + '<table style="width:100%;border-collapse:collapse;">'
+        + '<thead><tr style="background:#1e3a5f;color:white;">'
+        + '<th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:600;">#</th>'
+        + '<th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:600;">Name</th>'
+        + '<th style="padding:10px 14px;text-align:center;font-size:11px;font-weight:600;">Quizzes</th>'
+        + '<th style="padding:10px 14px;text-align:center;font-size:11px;font-weight:600;">Role-plays</th>'
+        + '<th style="padding:10px 14px;text-align:right;font-size:11px;font-weight:600;">Points</th>'
+        + '</tr></thead>'
+        + '<tbody>' + rows + '</tbody>'
+        + '</table></div>';
+    }
+  } catch(e) {
+    leaderboardHtml = '<p style="color:var(--ink-light);font-size:13px;font-style:italic;">Leaderboard unavailable.</p>';
+  }
+
 
   // Fetch leaderboard data
   let leaderboardHtml = '';
@@ -157,6 +213,18 @@ export async function renderDashboard(container, navigate) {
           </div>
         </div>
         \${leaderboardHtml}
+      </div>
+
+      <!-- Leaderboard -->
+      <div style="margin-top:2rem;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
+          <span style="font-size:1.5rem;">🏆</span>
+          <div>
+            <h3 style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;margin:0;">Team leaderboard</h3>
+            <p style="font-size:13px;color:var(--ink-light);margin:0;">Points earned across quizzes and role-plays</p>
+          </div>
+        </div>
+        ${leaderboardHtml}
       </div>
 
       <button class="btn-ghost" id="reset-all" style="margin-top:2rem;color:var(--ink-light);">Reset all progress</button>
