@@ -495,18 +495,19 @@ function renderTriageQuiz(categoryId, catMeta) {
   function showScore() {
     window.scrollTo(0, 0);
     const pct = Math.round(score / questions.length * 100);
+    const pointsAwarded = pct >= 75 ? await awardQuizPoints('triage-' + categoryId) : false;
     mount.innerHTML = `
       <div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);padding:2rem;text-align:center;box-shadow:var(--shadow-sm);">
         <div style="font-size:3rem;font-family:'DM Serif Display',serif;color:var(--ink);">${score} / ${questions.length}</div>
-        <p style="color:var(--ink-mid);margin:0.75rem 0 2rem;">
+        <p style="color:var(--ink-mid);margin:0.75rem 0 ${pointsAwarded ? '1rem' : '2rem'};">
           ${pct === 100 ? 'Perfect score!' :
             pct >= 80 ? 'Great work.' :
             pct >= 60 ? 'Good effort — review the ones you missed.' :
             'Keep practising — the quick reference table is a good place to review.'}
         </p>
+        ${pointsAwarded ? '<div style="display:inline-block;background:#fefce8;border:1.5px solid #fde047;border-radius:var(--radius);padding:8px 20px;font-size:14px;font-weight:600;color:#a16207;margin-bottom:1.5rem;">⭐ +10 points earned!</div><br>' : ''}
         <button class="btn-primary" id="tq-retry">Try again</button>
       </div>`;
-    if (pct >= 75) { awardQuizPoints('triage-' + categoryId); }
     if (pct >= 80) {
       const newBadges = updateBadgeStat('triageQuizzes', 1);
       if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }

@@ -249,7 +249,13 @@ function setupRoleplay(scenario) {
       chatHistory.push({ role: 'user', content: text });
       chatHistory.push({ role: 'assistant', content: clientReply });
       markComplete(scenario.id, 'roleplay');
-      awardRoleplayPoints(scenario.id);
+      const rpPointsAwarded = await awardRoleplayPoints(scenario.id);
+      if (rpPointsAwarded) {
+        const pill = document.createElement('div');
+        pill.style.cssText = 'background:#fefce8;border:1.5px solid #fde047;border-radius:10px;padding:8px 20px;font-size:14px;font-weight:600;color:#a16207;margin-top:0.75rem;display:inline-block;';
+        pill.textContent = '⭐ +10 points earned!';
+        document.querySelector('.roleplay-complete-msg')?.appendChild(pill);
+      }
       const nbRp = updateBadgeStat('roleplays', 1);
       awardBadgesAndCelebrate(nbRp, false);
     } catch (err) {

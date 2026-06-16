@@ -362,7 +362,7 @@ function setupTermQuiz(quizzes) {
     });
   }
 
-  function showScore() {
+  async function showScore() {
     document.getElementById('tq-question-area').innerHTML = '';
     const scoreArea = document.getElementById('tq-score-area');
     scoreArea.classList.remove('hidden');
@@ -375,7 +375,13 @@ function setupTermQuiz(quizzes) {
       'Keep studying the flashcards and give it another go.';
 
     markComplete('term-quiz-' + (quizzes[0]?.deckId || 'unknown'), 'quiz');
-    if (pct >= 75) { awardQuizPoints('term-' + (quizzes[0]?.deckId || 'unknown')); }
+    const pointsAwarded = pct >= 75 ? await awardQuizPoints('term-' + (quizzes[0]?.deckId || 'unknown')) : false;
+    if (pointsAwarded) {
+      const pill = document.createElement('div');
+      pill.style.cssText = 'display:inline-block;background:#fefce8;border:1.5px solid #fde047;border-radius:10px;padding:8px 20px;font-size:14px;font-weight:600;color:#a16207;margin:0.5rem 0 1rem;';
+      pill.textContent = '⭐ +10 points earned!';
+      document.getElementById('tq-score-area').insertBefore(pill, document.getElementById('tq-restart-btn'));
+    }
     if (pct >= 80) {
       const nb = updateBadgeStat('quizPasses', 1);
       if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }

@@ -18,7 +18,7 @@ export async function awardQuizPoints(sourceId) {
       .eq('event_type', 'quiz_pass')
       .maybeSingle();
 
-    if (existing) return; // Already awarded — no more points
+    if (existing) return false; // Already awarded — no more points
 
     await sb.from('points_events').insert({
       user_id:    session.user.id,
@@ -26,8 +26,10 @@ export async function awardQuizPoints(sourceId) {
       source_id:  sourceId,
       points:     10
     });
+    return true;
   } catch (e) {
     console.error('awardQuizPoints error:', e);
+    return false;
   }
 }
 
@@ -46,7 +48,7 @@ export async function awardRoleplayPoints(sourceId) {
       .eq('event_type', 'roleplay_complete')
       .maybeSingle();
 
-    if (existing) return;
+    if (existing) return false;
 
     await sb.from('points_events').insert({
       user_id:    session.user.id,
@@ -54,8 +56,10 @@ export async function awardRoleplayPoints(sourceId) {
       source_id:  sourceId,
       points:     10
     });
+    return true;
   } catch (e) {
     console.error('awardRoleplayPoints error:', e);
+    return false;
   }
 }
 

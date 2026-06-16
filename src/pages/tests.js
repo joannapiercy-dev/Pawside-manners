@@ -302,11 +302,12 @@ function renderTestQuiz(container, navigate) {
     });
   }
 
-  function showScore() {
+  async function showScore() {
     window.scrollTo(0, 0);
     markComplete('tests-quiz', 'quiz');
     const pct = Math.round(score / testQuiz.length * 100);
-    if (pct >= 75) { awardQuizPoints('diagnostics-full'); }
+    let pointsAwarded = false;
+    if (pct >= 75) { pointsAwarded = await awardQuizPoints('diagnostics-full'); }
     if (pct >= 80) {
       const nb = updateBadgeStat('quizPasses', 1);
       if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }
@@ -316,12 +317,13 @@ function renderTestQuiz(container, navigate) {
       ${nav('/tests', navigate)}
       <div class="scenario-layout" style="text-align:center;padding-top:3rem;">
         <div style="font-size:3.5rem;font-family:'DM Serif Display',serif;color:var(--ink);">${score} / ${testQuiz.length}</div>
-        <p style="color:var(--ink-mid);margin:0.75rem 0 2rem;">
+        <p style="color:var(--ink-mid);margin:0.75rem 0 1rem;">
           ${pct === 100 ? 'Perfect — excellent work!' :
             pct >= 75 ? 'Strong result — well done.' :
             pct >= 50 ? 'Good effort — review the ones you missed and try again.' :
             'Keep studying the reference cards and give it another go.'}
         </p>
+        ${pointsAwarded ? '<div style="display:inline-block;background:#fefce8;border:1.5px solid #fde047;border-radius:var(--radius);padding:8px 20px;font-size:14px;font-weight:600;color:#a16207;margin-bottom:1.25rem;">⭐ +10 points earned!</div>' : ''}
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
           <button class="btn-primary" id="retry-btn">Try again</button>
           <button class="btn-ghost" id="back-btn">← Back to tests</button>
@@ -409,10 +411,11 @@ function renderCategoryQuiz(container, navigate, catId) {
     });
   }
 
-  function showScore() {
+  async function showScore() {
     window.scrollTo(0, 0);
     const pct = Math.round((score / questions.length) * 100);
-    if (pct >= 75) { awardQuizPoints('diagnostics-' + catId); }
+    let pointsAwarded = false;
+    if (pct >= 75) { pointsAwarded = await awardQuizPoints('diagnostics-' + catId); }
     if (pct >= 80) {
       const nb = updateBadgeStat('quizPasses', 1);
       if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }
@@ -423,9 +426,10 @@ function renderCategoryQuiz(container, navigate, catId) {
       <div class="page-content" style="max-width:600px;margin:0 auto;text-align:center;padding-top:2rem;">
         <div class="breadcrumb" style="text-align:left;"><a href="#/tests">Diagnostics</a> › <span class="breadcrumb-link" id="bc-cat-score">${cat?.label}</span> › Quiz</div>
         <div style="font-size:3rem;font-weight:700;color:var(--ink);margin:1.5rem 0 0.5rem;">${score} / ${questions.length}</div>
-        <p style="color:var(--ink-mid);margin-bottom:2rem;">
+        <p style="color:var(--ink-mid);margin-bottom:${pointsAwarded ? '1rem' : '2rem'};">
           ${pct === 100 ? 'Perfect score!' : pct >= 80 ? 'Great work.' : pct >= 60 ? 'Good effort — review the reference cards and try again.' : 'Keep studying and give it another go.'}
         </p>
+        ${pointsAwarded ? '<div style="display:inline-block;background:#fefce8;border:1.5px solid #fde047;border-radius:var(--radius);padding:8px 20px;font-size:14px;font-weight:600;color:#a16207;margin-bottom:1.5rem;">⭐ +10 points earned!</div>' : ''}
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
           <button class="btn-primary" id="retry-btn">Try again</button>
           <button class="btn-ghost" id="back-cat-btn">← Back to ${cat?.label}</button>
