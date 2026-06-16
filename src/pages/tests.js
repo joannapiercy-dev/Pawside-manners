@@ -1,5 +1,6 @@
 import { testCategories, tests, testQuiz, testQuizByCategory } from '../data/tests.js';
 import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';
+import { awardQuizPoints } from '../lib/points.js';
 import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
 
@@ -305,6 +306,7 @@ function renderTestQuiz(container, navigate) {
     window.scrollTo(0, 0);
     markComplete('tests-quiz', 'quiz');
     const pct = Math.round(score / testQuiz.length * 100);
+    if (pct >= 75) { awardQuizPoints('diagnostics-full'); }
     if (pct >= 80) {
       const nb = updateBadgeStat('quizPasses', 1);
       if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }
@@ -410,6 +412,7 @@ function renderCategoryQuiz(container, navigate, catId) {
   function showScore() {
     window.scrollTo(0, 0);
     const pct = Math.round((score / questions.length) * 100);
+    if (pct >= 75) { awardQuizPoints('diagnostics-' + catId); }
     if (pct >= 80) {
       const nb = updateBadgeStat('quizPasses', 1);
       if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }

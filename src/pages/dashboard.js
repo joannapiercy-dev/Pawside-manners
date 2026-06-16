@@ -6,9 +6,11 @@ import { quickPrompts } from '../data/quickprompts.js';
 import { getProgress } from '../lib/progress.js';
 import { getEarnedBadges, getBadgeStats, BADGE_DEFS, getStreak, getDqhState, getTodayDateStr } from '../lib/gamification.js';
 import { nav, setupHamburger } from './home.js';
+import { getMyPoints } from '../lib/points.js';
 
-export function renderDashboard(container, navigate) {
+export async function renderDashboard(container, navigate) {
   const p = getProgress();
+  const totalPoints = await getMyPoints();
   const earnedBadges = getEarnedBadges();
   const badgeStats = getBadgeStats();
   const streak = getStreak();
@@ -55,6 +57,7 @@ export function renderDashboard(container, navigate) {
         ${statPill('🔥', 'Current streak', streak.count + ' day' + (streak.count !== 1 ? 's' : ''), streak.count >= 3 ? '#fff7ed' : 'var(--warm)', streak.count >= 3 ? '#c2410c' : 'var(--ink-mid)')}
         ${statPill('⚡', 'Daily Quick Hits', dqhTotal + ' completed', 'var(--warm)', 'var(--ink-mid)')}
         ${statPill('🏅', 'Badges earned', badgesEarned + ' / ' + badgesTotal, 'var(--warm)', 'var(--ink-mid)')}
+        ${statPill('⭐', 'Points earned', totalPoints + ' pts', '#fefce8', '#a16207')}
         ${statPill('💬', 'Roleplay prompts', qpDone + ' attempts', 'var(--warm)', 'var(--ink-mid)')}
       </div>
 

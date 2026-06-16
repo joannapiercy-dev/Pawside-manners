@@ -1,6 +1,7 @@
 import { termDecks, termQuizzes } from '../data/terminology.js';
 import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
+import { awardQuizPoints } from '../lib/points.js';
 import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';
 
 export function renderTerminology(container, navigate) {
@@ -374,6 +375,7 @@ function setupTermQuiz(quizzes) {
       'Keep studying the flashcards and give it another go.';
 
     markComplete('term-quiz-' + (quizzes[0]?.deckId || 'unknown'), 'quiz');
+    if (pct >= 75) { awardQuizPoints('term-' + (quizzes[0]?.deckId || 'unknown')); }
     if (pct >= 80) {
       const nb = updateBadgeStat('quizPasses', 1);
       if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }

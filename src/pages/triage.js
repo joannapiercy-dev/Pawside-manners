@@ -3,6 +3,7 @@ import { triageReference } from '../data/triageReference.js';
 import { nav, setupHamburger } from './home.js';
 import { markComplete } from '../lib/progress.js';
 import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';
+import { awardQuizPoints } from '../lib/points.js';
 
 const TOXINS_REF = {
     askFirst: "What did they eat/get into, and how much? How long ago? How much do they weigh? Are they showing any symptoms already? Do you still have the packaging?",
@@ -505,6 +506,7 @@ function renderTriageQuiz(categoryId, catMeta) {
         </p>
         <button class="btn-primary" id="tq-retry">Try again</button>
       </div>`;
+    if (pct >= 75) { awardQuizPoints('triage-' + categoryId); }
     if (pct >= 80) {
       const newBadges = updateBadgeStat('triageQuizzes', 1);
       if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }

@@ -1,6 +1,7 @@
 import { scenarios, categories } from '../data/scenarios.js';
 import { markComplete, isComplete } from '../lib/progress.js';
 import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';
+import { awardRoleplayPoints } from '../lib/points.js';
 import { getRoleplayFeedback, getTrainerAnswer } from '../lib/api.js';
 import { nav, setupHamburger } from './home.js';
 
@@ -248,6 +249,7 @@ function setupRoleplay(scenario) {
       chatHistory.push({ role: 'user', content: text });
       chatHistory.push({ role: 'assistant', content: clientReply });
       markComplete(scenario.id, 'roleplay');
+      awardRoleplayPoints(scenario.id);
       const nbRp = updateBadgeStat('roleplays', 1);
       awardBadgesAndCelebrate(nbRp, false);
     } catch (err) {
