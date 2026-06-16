@@ -6,7 +6,12 @@ async function getClient() {
   if (_supabase) return _supabase;
   const res = await fetch('/.netlify/functions/config');
   const { url, anon } = await res.json();
-  _supabase = createClient(url, anon);
+  _supabase = createClient(url, anon, {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+    }
+  });
   return _supabase;
 }
 
@@ -16,8 +21,13 @@ export async function getSupabase() {
 
 export async function getSession() {
   const sb = await getClient();
+  // First try getSession (reads from storage)
   const { data: { session } } = await sb.auth.getSession();
-  return session;
+  if (session) return session;
+  // If null, wait briefly for auth state to initialise and try once more
+  await new Promise(resolve => setTimeout(resolve, 300));
+  const { data: { session: session2 } } = await sb.auth.getSession();
+  return session2;
 }
 
 export async function getProfile() {
