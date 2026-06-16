@@ -470,10 +470,10 @@ export const testQuiz = [
   {
     question: "A client calls to book an abdominal ultrasound. What do you tell them about preparation?",
     options: [
-      "No preparation needed — just come in",
-      "Fast for 12 hours, expect a shave, plan for drop-off for several hours",
-      "Fast for 6 hours, no shave needed",
-      "Bring a urine sample and fast for 4 hours"
+    "No preparation needed — just come in",
+    "Fast for 12 hours, expect a shave, plan for drop-off for several hours",
+    "Fast for 6 hours, no shave needed",
+    "Bring a urine sample and fast for 4 hours"
     ],
     correct: 1,
     explanation: "Abdominal ultrasound requires a 12-hour fast (full stomach obscures organ views), shaving of the abdomen, sedation, and a drop-off for the day while the sedative wears off."
@@ -481,10 +481,10 @@ export const testQuiz = [
   {
     question: "A dog is coming in for bile acids testing. The owner asks if they can give their dog a treat on the way to the clinic. What do you say?",
     options: [
-      "A small treat is fine",
-      "No — even the sight or smell of food before the first sample can affect the result",
-      "Treats are fine as long as they're given more than 2 hours before arrival",
-      "Only dry treats are okay"
+    "A small treat is fine",
+    "No — even the sight or smell of food before the first sample can affect the result",
+    "Treats are fine as long as they're given more than 2 hours before arrival",
+    "Only dry treats are okay"
     ],
     correct: 1,
     explanation: "Even the anticipation of food — seeing a treat, smelling food — can affect the pre-meal bile acids result. Advise owners strictly: no food, no treats, and avoid situations that might excite the dog about eating on the way in."
@@ -492,10 +492,10 @@ export const testQuiz = [
   {
     question: "A client asks what the difference is between an LDDS test and an ACTH stimulation test.",
     options: [
-      "They test for the same thing and are interchangeable",
-      "The ACTH stim takes 8 hours; the LDDS takes 1 hour",
-      "The ACTH stim tests for both Cushing's and Addison's and takes 1 hour; the LDDS tests for Cushing's only and takes 8 hours",
-      "The LDDS requires fasting; the ACTH stim does not"
+    "They test for the same thing and are interchangeable",
+    "The ACTH stim takes 8 hours; the LDDS takes 1 hour",
+    "The ACTH stim tests for both Cushing's and Addison's and takes 1 hour; the LDDS tests for Cushing's only and takes 8 hours",
+    "The LDDS requires fasting; the ACTH stim does not"
     ],
     correct: 2,
     explanation: "The ACTH stimulation test can diagnose both Cushing's and Addison's disease and takes about 1 hour (two samples). The LDDS tests for Cushing's only and takes 8 hours (three samples). Neither requires fasting."
@@ -503,10 +503,10 @@ export const testQuiz = [
   {
     question: "A client is bringing their cat in for an echocardiogram. They ask if they should fast their cat. What do you say?",
     options: [
-      "Yes — fast for 12 hours",
-      "Yes — fast for 6 hours",
-      "No — no fasting needed, but they'll receive an oral sedative to give at home beforehand, and should plan for drop-off for several hours on the day",
-      "No fasting and no sedation — it's a quick scan"
+    "Yes — fast for 12 hours",
+    "Yes — fast for 6 hours",
+    "No — no fasting needed, but they'll receive an oral sedative to give at home beforehand",
+    "No fasting and no sedation — it's a quick scan"
     ],
     correct: 2,
     explanation: "Echocardiograms use oral sedation only (the 'chill protocol') — not injectable sedation, so fasting is not required. The owner gives the oral sedative at home 2–3 hours before the appointment. Drop-off is needed because the echo itself can take some time, not because we're administering the sedation."
@@ -514,10 +514,10 @@ export const testQuiz = [
   {
     question: "Which urine collection method gives the most reliable culture results and why?",
     options: [
-      "Free-catch sample — easier to collect",
-      "Catheter sample — most common method",
-      "Cystocentesis — needle directly into the bladder, avoids contamination from the lower urinary tract",
-      "First-morning sample — most concentrated"
+    "Free-catch sample — easier to collect",
+    "Catheter sample — most common method",
+    "Cystocentesis — needle directly into the bladder, avoids contamination from the lower urinary tract",
+    "First-morning sample — most concentrated"
     ],
     correct: 2,
     explanation: "Cystocentesis (a needle passed directly into the bladder under ultrasound guidance) is the gold standard for urine culture because it completely avoids contamination from bacteria naturally present in the lower urinary tract and on the skin."
@@ -525,10 +525,10 @@ export const testQuiz = [
   {
     question: "A patient is coming in for a TLI test. What fasting instructions do you give?",
     options: [
-      "No fasting needed",
-      "Fast for 4 hours",
-      "Fast for 8–12 hours",
-      "Fast for 24 hours"
+    "No fasting needed",
+    "Fast for 4 hours",
+    "Fast for 8–12 hours",
+    "Fast for 24 hours"
     ],
     correct: 2,
     explanation: "TLI (trypsin-like immunoreactivity), which tests for exocrine pancreatic insufficiency, requires an 8–12 hour fast before collection."
@@ -536,10 +536,10 @@ export const testQuiz = [
   {
     question: "A client's dog needs an X-ray specifically for hip scoring. Do they need to fast?",
     options: [
-      "No — X-rays never require fasting",
-      "Yes — fast for at least 6 hours",
-      "Only if the dog is large or anxious",
-      "Only if the vet decides on the day"
+    "No — X-rays never require fasting",
+    "Yes — fast for at least 6 hours",
+    "Only if the dog is large or anxious",
+    "Only if the vet decides on the day"
     ],
     correct: 1,
     explanation: "Hip scoring requires extended hip views which need precise positioning — this always requires injectable sedation. Since injectable sedation is involved, a minimum 6-hour fast is required. Always ask clients to fast before hip scoring X-rays. Note: for routine X-rays where sedation may or may not be needed, you can advise 'fast if possible' and check with the clinical team."
@@ -547,196 +547,324 @@ export const testQuiz = [
   {
     question: "A client calls to book an ionized calcium (iCa) test. What do you tell them about preparation?",
     options: [
-      "No preparation needed — just come in",
-      "Fast for 4–6 hours",
-      "Fast for 12 hours before the blood draw",
-      "Fast for 8 hours and bring a urine sample"
+    "No preparation needed — just come in",
+    "Fast for 4–6 hours",
+    "Fast for 12 hours before the blood draw",
+    "Fast for 8 hours and bring a urine sample"
     ],
     correct: 2,
     explanation: "Ionized calcium requires a 12-hour fast before collection. A recent meal can affect the result. It's a quick blood draw with no drop-off needed — just make sure the owner knows to withhold food from the night before."
-  }
+  },
 ];
 
 export const testQuizByCategory = {
-
   imaging: [
     {
       question: "A client is booking an abdominal ultrasound. What preparation do you advise?",
-      options: ["No preparation needed", "Fast for 12 hours, expect shaving, plan for drop-off", "Fast for 6 hours only", "Bring a urine sample"],
+      options: [
+      "No preparation needed",
+      "Fast for 12 hours, expect shaving, plan for drop-off",
+      "Fast for 6 hours only",
+      "Bring a urine sample"
+      ],
       correct: 1,
       explanation: "Abdominal ultrasound requires 12-hour fast (food in the stomach obscures organs), shaving of the abdomen, sedation, and drop-off for the day while sedation wears off."
     },
     {
       question: "Why might a vet request 3-view chest X-rays instead of 2-view?",
-      options: ["3-view is always required", "A lateral view from both sides gives a more complete picture, especially for detecting lung nodules", "3-view is cheaper", "For large breed dogs only"],
+      options: [
+      "3-view is always required",
+      "A lateral view from both sides gives a more complete picture, especially for detecting lung nodules",
+      "3-view is cheaper",
+      "For large breed dogs only"
+      ],
       correct: 1,
       explanation: "A third view (the other lateral) helps detect nodules or masses that might be hidden behind the heart or in the dependent lung on a 2-view series. It's particularly useful when screening for metastasis."
     },
     {
       question: "A client asks if their dog needs to fast before chest X-rays. What do you say?",
-      options: ["Yes, 12-hour fast required", "Yes, 4-hour fast required", "No fasting needed for chest X-rays", "Only if sedation is likely"],
+      options: [
+      "Yes, 12-hour fast required",
+      "Yes, 4-hour fast required",
+      "No fasting needed for chest X-rays",
+      "Only if sedation is likely"
+      ],
       correct: 3,
       explanation: "Chest X-rays don't require fasting. However if sedation is needed (e.g. fractious patient or difficult positioning), then fasting would apply. Check with the clinical team if uncertain."
     },
     {
       question: "What is an echocardiogram used for?",
-      options: ["Measuring kidney size", "Evaluating heart structure and function — chambers, valves, and blood flow", "Detecting bladder stones", "Assessing bone density"],
+      options: [
+      "Measuring kidney size",
+      "Evaluating heart structure and function — chambers, valves, and blood flow",
+      "Detecting bladder stones",
+      "Assessing bone density"
+      ],
       correct: 1,
       explanation: "An echocardiogram (cardiac ultrasound) assesses the heart's structure and function — including chamber size, wall thickness, valve movement, and blood flow. It's the gold standard for diagnosing and staging heart disease."
     },
     {
       question: "A client's cat is booked for an echocardiogram. Do they need to fast?",
-      options: ["Yes — 12 hours", "Yes — 6 hours", "No fasting, but oral sedation is given at home 2–3 hrs before", "No fasting and no sedation needed"],
+      options: [
+      "Yes — 12 hours",
+      "Yes — 6 hours",
+      "No fasting, but oral sedation is given at home 2–3 hrs before",
+      "No fasting and no sedation needed"
+      ],
       correct: 2,
       explanation: "Echocardiograms use oral sedation only — no injectable drugs, so fasting is not required. The owner gives the oral sedative at home 2–3 hours before. The patient is dropped off for the appointment and monitoring."
     },
-  ],
-
+],
   blood: [
     {
       question: "What does a CBC measure?",
-      options: ["Organ function (liver, kidneys)", "Red cells, white cells, and platelets", "Blood glucose and electrolytes", "Hormone levels"],
+      options: [
+      "Organ function (liver, kidneys)",
+      "Red cells and white cells including platelets",
+      "Blood glucose and electrolytes",
+      "Hormone levels"
+      ],
       correct: 1,
-      explanation: "A CBC (Complete Blood Count) measures red blood cells (for anaemia), white blood cells (for infection or immune issues), and platelets (for clotting). It doesn't assess organ function — that's the chemistry panel."
+      explanation: "A CBC (Complete Blood Count) measures red blood cells (for anemia), white blood cells (for infection or immune issues), and platelets (for clotting). It doesn't assess organ function — that's the chemistry panel."
     },
     {
-      question: "A client asks what's included in a 'pre-anaesthetic panel'. What do you tell them?",
-      options: ["Just a CBC", "Just a chemistry panel", "A CBC and chemistry panel to check organ function and blood health before sedation", "A thyroid test and glucose"],
+      question: "A client asks what's included in a 'pre-anesthetic panel'. What do you tell them?",
+      options: [
+      "Just a CBC (to check red blood cells and white blood cells)",
+      "Just a basic chemistry panel (to check kidneys and liver)",
+      "A CBC and basic chemistry panel (to check kidneys, liver, red blood cells and white blood cells)",
+      "A thyroid test and glucose"
+      ],
       correct: 2,
-      explanation: "A pre-anaesthetic panel includes both a CBC and chemistry panel. Together they assess whether the patient is healthy enough for sedation — checking for anaemia, infection, kidney function, liver function, and electrolytes."
+      explanation: "A pre-anesthetic panel includes both a CBC and basic chemistry panel. Together they assess whether the patient is healthy enough for sedation — checking for anemia, infection, kidney function, liver function, and electrolytes."
     },
     {
       question: "A dog is coming in for a bile acids test. Can the owner give a treat on the way?",
-      options: ["A small treat is fine", "No — even anticipating food can affect the pre-meal result", "Treats are fine if given 2+ hours before", "Only if the treat is small and plain"],
+      options: [
+      "A small treat is fine",
+      "No — even anticipating food can affect the pre-meal result",
+      "Treats are fine if given 2+ hours before",
+      "Only if the treat is small and plain"
+      ],
       correct: 1,
       explanation: "Even the anticipation of food — seeing or smelling a treat — can trigger bile acid release and invalidate the fasting sample. Advise owners: nothing by mouth and avoid situations that might excite the dog about eating."
     },
     {
-      question: "What is the ACTH stimulation test used for?",
-      options: ["Thyroid disease", "Both Cushing's and Addison's disease — takes about 1 hour", "Cushing's disease only — takes 8 hours", "Diabetes mellitus"],
-      correct: 1,
-      explanation: "The ACTH stimulation test can diagnose both Cushing's (hyperadrenocorticism) and Addison's (hypoadrenocorticism). It involves two blood samples taken 1 hour apart. No fasting required."
+      question: "What is the difference between a geriatric/senior panel and a general/baseline panel?",
+      options: [
+      "A geriatric/senior panel includes a thyroid test",
+      "A geriatric/senior panel has to be used in animals older than 8 years",
+      "A geriatric/senior panel is an in-house test, while a general/baseline panel has to be sent to an external lab",
+      "A geriatric/senior panel includes a glucose test"
+      ],
+      correct: 0,
+      explanation: "All these tests include a CBC and Chemistry, but only the geriatric/senior profile also tests for T4. There are also other differences depending on whether the test is run in-house vs send-out to True North, and send-out to Idexx."
     },
     {
       question: "What is the LDDS test used for and how long does it take?",
-      options: ["Addison's disease — 1 hour", "Cushing's disease — 8 hours (3 samples)", "Cushing's or Addison's — 4 hours", "Liver disease — 2 hours"],
+      options: [
+      "Addison's disease — 1 hour",
+      "Cushing's disease — 8 hours (3 samples)",
+      "Cushing's or Addison's — 4 hours",
+      "Liver disease — 2 hours"
+      ],
       correct: 1,
       explanation: "The Low-Dose Dexamethasone Suppression test screens specifically for Cushing's disease. It takes 8 hours with three blood samples (pre-injection, then 4 and 8 hours post-injection). No fasting required."
     },
     {
       question: "A dog is booked for a TLI test. What fasting instructions do you give?",
-      options: ["No fasting needed", "Fast for 4 hours", "Fast for 8–12 hours", "Fast for 24 hours"],
+      options: [
+      "No fasting needed",
+      "Fast for 4 hours",
+      "Fast for 12 hours",
+      "Fast for 24 hours"
+      ],
       correct: 2,
       explanation: "TLI (Trypsin-Like Immunoreactivity) requires an 8–12 hour fast for accurate results. It tests for exocrine pancreatic insufficiency (EPI) and pancreatitis markers."
     },
     {
-      question: "What does a proBNP blood test assess?",
-      options: ["Kidney function", "Cardiac muscle stress — used to screen for heart disease", "Thyroid function", "Blood clotting ability"],
-      correct: 1,
-      explanation: "ProBNP (pro-B-type natriuretic peptide) is released by heart muscle under stress. Elevated levels suggest cardiac disease and it's used as a screening tool, especially in cats with a heart murmur or respiratory signs."
+      question: "What special instructions do you need to give to a client before arranging a proBNP blood test?",
+      options: [
+      "Fast for 12 hours",
+      "Drop off required since two blood samples will need to be taken 2 hours apart",
+      "Drop off required since three blood samples will need to be taken 4 hours apart",
+      "Nothing - no fasting and no drop off is required"
+      ],
+      correct: 3,
+      explanation: "ProBNP can be arranged without any major preparation.   Elevated levels suggest cardiac disease and it's used as a screening tool, especially in cats with a heart murmur or respiratory signs."
     },
     {
-      question: "A cat has a thyroid result of T4 in the normal range, but the vet suspects hyperthyroidism. What additional test might they recommend?",
-      options: ["A repeat T4 in 6 months", "A free T4 (fT4) test, which is more sensitive", "A TLI test", "An ACTH stimulation test"],
+      question: "A dog is coming in for an pancreatic lipase (cPL) test.  What instructions should you give the client?",
+      options: [
+      "No fasting needed",
+      "Fast for 12 hours",
+      "Sedation will be required",
+      "Drop off required"
+      ],
       correct: 1,
-      explanation: "Some hyperthyroid cats have T4 levels within the normal range due to concurrent illness suppressing it. A free T4 (fT4) by equilibrium dialysis is more sensitive and can detect hyperthyroidism in these cases."
+      explanation: "The pancreatic lipase (cPL) test is most accurate when the pet is fasted for 8-12 hours beforehand."
     },
-  ],
-
+],
   cardiac: [
     {
       question: "What is a Holter monitor and how long does the patient wear it?",
-      options: ["A device that checks blood pressure for 1 hour", "A portable ECG worn continuously for 24–48 hours to detect intermittent arrhythmias", "A patch worn for 1 week", "An in-clinic ECG that takes 30 minutes"],
+      options: [
+      "A device that checks blood pressure for 1 hour",
+      "A portable ECG worn continuously for 24–48 hours to detect intermittent arrhythmias",
+      "A patch worn for 1 week",
+      "An in-clinic ECG that takes 30 minutes"
+      ],
       correct: 1,
-      explanation: "A Holter monitor is a portable ECG device worn for 24–48 hours. It's used to detect intermittent arrhythmias that wouldn't show up on a short in-clinic ECG — useful for investigating collapse, syncope, or suspected rhythm abnormalities."
+      explanation: "A Holter monitor is a portable ECG device worn for 24–48 hours. It's used to detect intermittent arrhythmias that wouldn't show up on a short in-clinic ECG — useful for investigating collapse, fainting, or suspected rhythm abnormalities."
     },
     {
-      question: "A client's dog had a 5-minute in-clinic ECG that was normal, but the dog keeps collapsing. What test might the vet recommend next?",
-      options: ["Repeat the ECG at the same clinic", "A Holter monitor to record heart rhythm over 24–48 hours", "An echocardiogram", "A chest X-ray"],
-      correct: 1,
-      explanation: "If arrhythmias are intermittent, they're unlikely to occur during a short in-clinic ECG. A Holter monitor records continuously for 24–48 hours, greatly increasing the chance of capturing the abnormal rhythm during an episode."
+      question: "What special instructions do you need to give a client before arranging an appointment for Holter monitor?",
+      options: [
+      "Fast for 12 hours",
+      "Sedation is required",
+      "Must be booked with a specialist (PCVC or external referral)",
+      "The patient will need to be shaved on both sides of the chest, and afterwards the owner will need to bring the pet back in 24 hours to remove the monitor."
+      ],
+      correct: 3,
+      explanation: "Holter monitoring can be done either by our visiting cardiology specialist (PCVC), or in-house.  The pet will need to have both sides of the chest shaved to attach the electrodes, which stay on for 24 hours.  The pet will be sent home with a jacket to cover the electrodes and contain the device.  The owner will need to book another appointment around 24 hours later to remove the device."
     },
     {
       question: "What does an ECG (electrocardiogram) measure?",
-      options: ["Heart size and shape", "The electrical activity of the heart — rate and rhythm", "Blood flow through heart valves", "Blood pressure"],
+      options: [
+      "Heart size and shape",
+      "The electrical activity of the heart — rate and rhythm",
+      "Blood flow through heart valves",
+      "Blood pressure"
+      ],
       correct: 1,
       explanation: "An ECG measures the electrical impulses that trigger each heartbeat, giving information about heart rate and rhythm. It doesn't show heart size (that's X-ray) or structure (that's echo)."
     },
-  ],
-
+],
   urine: [
     {
       question: "Which urine collection method is gold standard for culture?",
-      options: ["Free-catch midstream", "Catheter sample", "Cystocentesis — needle directly into the bladder", "First-morning sample"],
+      options: [
+      "Free-catch midstream",
+      "Catheter sample",
+      "Cystocentesis — needle directly into the bladder",
+      "First-morning sample"
+      ],
       correct: 2,
       explanation: "Cystocentesis completely avoids contamination from bacteria in the lower urinary tract or on the skin, making it the most reliable method for urine culture. It's performed with ultrasound guidance."
     },
     {
       question: "What instructions do you give for collecting a free-catch urine sample at home?",
-      options: ["Any container is fine, collect any time of day", "Use a clean container, collect first morning urine if possible, refrigerate and bring in within 4 hours", "Collect after feeding and keep at room temperature", "Freeze the sample if not coming in immediately"],
+      options: [
+      "Any container is fine, collect any time of day",
+      "Use a clean container, collect first morning urine if possible, refrigerate and bring in within 4 hours",
+      "Collect after feeding and keep at room temperature",
+      "Freeze the sample if not coming in immediately"
+      ],
       correct: 1,
-      explanation: "A clean container, first-morning sample (most concentrated), refrigeration, and delivery within 4 hours gives the most reliable results. Freezing damages cell morphology."
+      explanation: "A clean container, first-morning sample (most concentrated), refrigeration, and delivery within 4 hours gives the most reliable results (althoug we will accept samples up to 12 hours old). Freezing damages cell morphology."
     },
     {
-      question: "A client asks what a UPC ratio tells the vet. What do you say?",
-      options: ["Whether there is a urinary tract infection", "How much protein is being lost in the urine — used to monitor kidney disease", "Whether the kidneys are producing enough urine", "The concentration of the urine"],
-      correct: 1,
-      explanation: "The UPC (Urine Protein:Creatinine ratio) measures how much protein is being lost through the kidneys. Abnormal protein loss (proteinuria) is a marker of kidney damage and is used to stage and monitor CKD."
+      question: "A client asks what to do to prepare for a UPC ratio test.  What do you say?",
+      options: [
+      "No fasting needed",
+      "Shaving is required",
+      "Drop off is required",
+      "Fast for 12 hours"
+      ],
+      correct: 0,
+      explanation: "There are no specific preparations required before running a UPC ratio.  It measures how much protein is being lost through the kidneys which is a marker of kidney damage."
     },
     {
       question: "What is Nosorb litter used for and in which species?",
-      options: ["Dogs — to collect urine from the garden", "Cats — a non-absorbent litter that allows free-catch urine collection at home", "Both species equally", "Neither — urine must always be collected in clinic"],
+      options: [
+      "Dogs — to collect urine from the garden",
+      "Cats — a non-absorbent litter that allows free-catch urine collection at home",
+      "Both species equally",
+      "Neither — urine must always be collected in clinic"
+      ],
       correct: 1,
       explanation: "Nosorb is a non-absorbent litter used in cats to collect a free-catch urine sample at home. The cat urinates normally, and the sample pools in the tray for collection with a syringe."
     },
-  ],
-
+],
   tissue: [
     {
       question: "What is the difference between cytology and histology?",
-      options: ["They are the same test", "Cytology looks at individual cells (FNA or impression smear); histology examines tissue architecture from a biopsy", "Histology is done on blood; cytology on tissue", "Cytology requires general anaesthesia; histology does not"],
-      correct: 1,
+      options: [
+      "Histology is done on blood; cytology is done on tissue",
+      "They are the same test",
+      "Cytology looks at individual cells (FNA or impression smear); histology examines tissue architecture from a biopsy",
+      "Cytology requires general anaesthesia; histology does not"
+      ],
+      correct: 2,
       explanation: "Cytology examines individual cells collected by fine needle aspirate or impression smear — quick, minimally invasive, but limited information. Histology examines the full architecture of a tissue biopsy — more invasive but gives definitive diagnosis including invasion and margins."
     },
     {
       question: "A vet has taken a fine needle aspirate of a lump. Where does this sample go and how long do results take?",
-      options: ["In-house — results in 30 minutes", "It depends — some FNAs are read in-house (1–4 days), others are sent to an external lab (3–5 days)", "To a hospital — 24 hours", "Results are immediate from the microscope"],
+      options: [
+      "In-house — results in 30 minutes",
+      "It depends — some FNAs are read in-house (1–4 days), others are sent to an external lab (3–5 days)",
+      "To a hospital — 24 hours",
+      "Results are immediate from the microscope"
+      ],
       correct: 1,
       explanation: "FNAs can be evaluated in-house or sent to an external veterinary pathologist depending on complexity. In-house results typically take 1–4 days; external lab results take 3–5 business days. Simpler samples (e.g. some skin or soft tissue lumps) may be read in-house, while more complex cases are sent out for a pathologist's report."
     },
     {
       question: "A client asks if a biopsy (histology) will definitively tell them if a mass is cancer. What do you say?",
-      options: ["No — only blood tests can confirm cancer", "Yes — histology is the gold standard for cancer diagnosis, identifying the tumour type, grade, and margins", "Only if the whole mass is removed", "It depends on the lab used"],
-      correct: 1,
+      options: [
+      "No — only blood tests can confirm cancer",
+      "It depends on the lab used",
+      "Only if the whole mass is removed",
+      "Histology is the gold standard for cancer diagnosis so it's the most likely way to get a diagnosis"
+      ],
+      correct: 3,
       explanation: "Histology is the definitive diagnostic tool for cancer. It identifies tumour type, grade (how aggressive), and whether surgical margins are clean. It provides information that cytology alone cannot."
     },
-  ],
-
+],
   fecal: [
     {
       question: "What does an O&P (ova and parasites) fecal test detect?",
-      options: ["Bacterial infections", "Intestinal parasite eggs and cysts using flotation or microscopy", "Viral infections", "Giardia specifically — it's the only test for it"],
+      options: [
+      "Bacterial infections",
+      "Intestinal parasite eggs and cysts using flotation or microscopy",
+      "Viral infections",
+      "Giardia specifically — it's the only test for it"
+      ],
       correct: 1,
       explanation: "An O&P test uses fecal flotation to concentrate and detect parasite eggs and cysts — roundworms, hookworms, whipworms, coccidia, etc. Giardia cysts can sometimes be seen, but the Giardia antigen test is more sensitive for that specifically."
     },
     {
       question: "A client asks why a single negative fecal test doesn't completely rule out parasites. What do you tell them?",
-      options: ["The lab makes mistakes regularly", "Parasites shed eggs intermittently, so a single sample may miss them — serial testing increases sensitivity", "All parasites are visible to the naked eye", "Fecal tests only work on fresh samples collected in clinic"],
+      options: [
+      "The lab makes mistakes regularly",
+      "Parasites shed eggs intermittently, so a single sample may miss them — serial testing increases sensitivity",
+      "All parasites are visible to the naked eye",
+      "Fecal tests only work on fresh samples collected in clinic"
+      ],
       correct: 1,
       explanation: "Many parasites shed eggs or cysts intermittently. A single negative result doesn't guarantee the animal is parasite-free. Serial testing (2–3 samples collected on different days) or testing during patent infection significantly improves detection."
     },
     {
-      question: "When is a diarrhea PCR panel most useful compared to a standard O&P?",
-      options: ["It's always better than O&P for all cases", "For chronic or severe diarrhea where a broad range of pathogens (bacteria, viruses, protozoa) need to be ruled out simultaneously", "It's cheaper and faster", "It's only for cats"],
-      correct: 1,
-      explanation: "The diarrhea PCR panel detects a wide range of pathogens — including bacteria (Salmonella, Campylobacter), viruses (parvovirus, coronavirus), and protozoa (Giardia, Tritrichomonas) — in a single test. Most useful for chronic, severe, or kennel-outbreak diarrhea where a broad search is needed."
+      question: "What special instructions do you need to give when booking a Diarrhea PCR panel?",
+      options: [
+      "Drop-off is required to collect a sample",
+      "Fast for 12 hours",
+      "Shaving is required",
+      "Nothing - no special requirements"
+      ],
+      correct: 3,
+      explanation: "Apart from having chronic or severe diarrhea, there are no requirements to running a diarrhea PCR panel.  This test detects a wide range of pathogens — including bacteria, viruses, and protozoa. It does not detect worms."
     },
     {
       question: "A client brings in a fecal sample collected 3 days ago and stored at room temperature. What do you advise?",
-      options: ["Use it — it's fine", "Refrigerate it now and it will be usable", "A fresh sample is needed — ideally collected within 24 hours and refrigerated", "Freeze it for later testing"],
+      options: [
+      "Use it — it's fine",
+      "Refrigerate it now and it will be usable",
+      "A fresh sample is needed — ideally collected within 24 hours and refrigerated",
+      "Freeze it for later testing"
+      ],
       correct: 2,
       explanation: "Old or room-temperature samples degrade rapidly. Parasite eggs and cysts deteriorate, protozoa die, and bacteria overgrow. Ideally fecal samples should be fresh (within 24 hours), refrigerated, and tested promptly."
     },
-  ],
-
+],
 };

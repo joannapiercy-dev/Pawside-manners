@@ -105,7 +105,7 @@ export function renderTestCategory(container, navigate, catId) {
     const cards = container.querySelectorAll('#test-cards > div[data-test-id]');
     const noResults = document.getElementById('test-no-results');
     const chipStyles = {
-      'all':     { bg: '#1e3a5f',    color: 'white',         border: '#1e3a5f',            weight: '600' },
+      'all':     { bg: '#dbeafe',    color: '#1e3a5f',       border: '#93c5fd',            weight: '600' },
       'fast':    { bg: '#fef9ec',    color: '#92400e',        border: '#fde68a',            weight: '' },
       'dropoff': { bg: '#f0fdf4',    color: '#14532d',        border: '#86efac',            weight: '' },
       'no-fast': { bg: 'white',      color: 'var(--ink-mid)', border: 'var(--warm-dark)',   weight: '' },
