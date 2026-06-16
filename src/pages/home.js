@@ -13,7 +13,7 @@ export async function renderHome(container, navigate) {
   } catch(e) {}
 
   container.innerHTML = `
-    ${nav('/', navigate)}
+    ${nav('/', navigate, userName)}
     <div class="page-content" style="max-width:720px;margin:0 auto;padding-top:1.5rem;">
 
       <!-- Daily Quick Hit banner -->
@@ -38,10 +38,7 @@ export async function renderHome(container, navigate) {
       </div>
       <h1>Training Hub</h1>
       <p class="hero-sub">Practical training — build your clinical knowledge, sharpen your communication skills, and feel confident handling whatever the day brings.</p>
-      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:0.75rem;margin-bottom:0.25rem;flex-wrap:wrap;">
-        <span style="font-size:13.5px;color:var(--ink-mid);">👋 Hi, <strong>${userName}</strong></span>
-        <button id="logout-btn" style="font-size:12px;color:var(--ink-light);background:none;border:1px solid var(--warm-dark);border-radius:20px;padding:4px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;">Sign out</button>
-      </div>
+
 
       <p style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1rem;">Start training</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;max-width:720px;margin:0 auto 1rem;">
@@ -111,7 +108,7 @@ export async function renderHome(container, navigate) {
   });
 }
 
-export function nav(current, navigate) {
+export function nav(current, navigate, userName = '') {
   return `<nav class="nav">
     <a class="nav-logo" href="#/">
       <img src="public/oaklands-logo.jpg" alt="Oaklands logo" />
@@ -130,6 +127,10 @@ export function nav(current, navigate) {
       <a class="nav-btn ${current === '/appointments' ? 'active' : ''}" href="#/appointments">Booking</a>
       <a class="nav-btn ${current === '/social' ? 'active' : ''}" href="#/social">Social Styles</a>
       <a class="nav-btn ${current === '/progress' ? 'active' : ''}" href="#/progress">Progress</a>
+    </div>
+    <div class="nav-user nav-desktop" style="display:flex;align-items:center;gap:10px;margin-left:auto;padding-left:1rem;">
+      <span style="font-size:13px;color:var(--ink-mid);white-space:nowrap;">👋 <strong>${userName}</strong></span>
+      <button id="logout-btn" style="font-size:12px;color:var(--ink-light);background:none;border:1px solid var(--warm-dark);border-radius:20px;padding:4px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;">Sign out</button>
     </div>
     <button class="nav-hamburger" id="nav-hamburger-btn" aria-label="Open menu">☰</button>
     <div class="nav-mobile-menu" id="nav-mobile-menu" style="display:none;">
