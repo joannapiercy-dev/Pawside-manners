@@ -78,6 +78,11 @@ export async function renderHome(container, navigate) {
           <span style="font-weight:600;">Social Styles</span>
           <span style="font-size:12px;color:var(--ink-light);">Communication styles</span>
         </button>
+        <button class="nav-card-btn" id="btn-rx-check" style="background:#fef2f2;border-color:#fca5a5;">
+          <span style="font-size:1.5rem;">💊</span>
+          <span style="font-weight:600;color:#b91c1c;">Rx double-check</span>
+          <span style="font-size:12px;color:#b91c1c;">Verify label vs bottle</span>
+        </button>
         <button class="nav-card-btn" id="btn-progress" style="width:100%;background:var(--ink);color:white;border-color:var(--ink);">
           <span style="font-size:1.5rem;">📊</span>
           <span style="font-weight:600;color:white;">View my progress & badges</span>
@@ -86,6 +91,10 @@ export async function renderHome(container, navigate) {
         <button class="nav-card-btn" id="btn-admin-points" style="width:100%;background:#1e3a5f;color:white;border-color:#1e3a5f;margin-top:0.5rem;">
           <span style="font-size:1.5rem;">⭐</span>
           <span style="font-weight:600;color:white;">Admin — Points leaderboard</span>
+        </button>
+        <button class="nav-card-btn" id="btn-admin-rx-log" style="width:100%;background:#7f1d1d;color:white;border-color:#7f1d1d;margin-top:0.5rem;">
+          <span style="font-size:1.5rem;">💊</span>
+          <span style="font-weight:600;color:white;">Admin — Rx check log</span>
         </button>` : ''}
       </div>
     </div>
@@ -109,6 +118,8 @@ export async function renderHome(container, navigate) {
   document.getElementById('btn-diets').addEventListener('click', () => navigate('/diets'));
   document.getElementById('btn-progress').addEventListener('click', () => navigate('/progress'));
   if (isAdmin) document.getElementById('btn-admin-points')?.addEventListener('click', () => navigate('/admin/points'));
+  if (isAdmin) document.getElementById('btn-admin-rx-log')?.addEventListener('click', () => navigate('/admin/rx-log'));
+  document.getElementById('btn-rx-check')?.addEventListener('click', () => navigate('/rx-check'));
   document.getElementById('logout-btn').addEventListener('click', async () => {
     await signOut();
     navigate('/login');

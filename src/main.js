@@ -14,6 +14,8 @@ import { renderQuickHit } from './pages/quickhit.js';
 import { renderQuickPromptsHome } from './pages/quickprompts.js';
 import { renderLogin } from './pages/login.js';
 import { renderAdminLeaderboard } from './pages/adminleaderboard.js';
+import { renderRxCheck } from './pages/rxcheck.js';
+import { renderAdminRxLog } from './pages/adminrxlog.js';
 import { renderSignup } from './pages/signup.js';
 import { getSession } from './lib/supabase.js';
 
@@ -39,6 +41,10 @@ async function render() {
 
   if (route === '/admin/points') {
     renderAdminLeaderboard(app, navigate);
+  } else if (route === '/rx-check') {
+    renderRxCheck(app, navigate);
+  } else if (route === '/admin/rx-log') {
+    renderAdminRxLog(app, navigate);
   } else if (route === '/login') {
     renderLogin(app, navigate);
   } else if (route === '/signup') {
