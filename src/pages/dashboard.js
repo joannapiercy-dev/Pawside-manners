@@ -17,6 +17,7 @@ export async function renderDashboard(container, navigate) {
   const dqhState = getDqhState();
   const dqhDoneToday = dqhState.lastCompleted === getTodayDateStr();
   const dqhTotal = dqhState.totalCount || 0;
+  const totalPoints = await getMyPoints();
 
   // ── Communication ──
   const scenarioTotal = scenarios.length;
@@ -46,13 +47,67 @@ export async function renderDashboard(container, navigate) {
   const badgesEarned = earnedBadges.length;
   const badgesTotal = BADGE_DEFS.length;
 
+  // ── Leaderboard ──
+  let leaderboardHtml = '';
+  try {
+    const sb = await getSupabase();
+    const currentProfile = await getProfile();
+    const { data: profiles } = await sb.from('profiles').select('id, full_name, clinic');
+    const { data: events } = await sb.from('points_events').select('user_id, points, event_type');
+    if (profiles && events) {
+      const clinicLabel = { oaklands: 'Oaklands', royalbay: 'Royal Bay' };
+      const medals = ['🥇', '🥈', '🥉'];
+      const pointsMap = {}, quizMap = {}, rpMap = {};
+      for (const e of events) {
+        pointsMap[e.user_id] = (pointsMap[e.user_id] || 0) + e.points;
+        if (e.event_type === 'quiz_pass') quizMap[e.user_id] = (quizMap[e.user_id] || 0) + 1;
+        if (e.event_type === 'roleplay_complete') rpMap[e.user_id] = (rpMap[e.user_id] || 0) + 1;
+      }
+      const sorted = [...profiles].sort((a, b) => (pointsMap[b.id] || 0) - (pointsMap[a.id] || 0));
+      const rows = sorted.map((person, i) => {
+        const pts = pointsMap[person.id] || 0;
+        const quizzes = quizMap[person.id] || 0;
+        const roleplays = rpMap[person.id] || 0;
+        const isMe = person.id === currentProfile?.id;
+        const medal = i < 3 && pts > 0 ? medals[i] : (i + 1);
+        const youBadge = isMe ? ' <span style="font-size:11px;background:#fde047;border-radius:10px;padding:1px 7px;color:#a16207;">you</span>' : '';
+        const rowBg = isMe ? 'background:#fefce8;' : i % 2 === 0 ? '' : 'background:var(--warm);';
+        return '<tr style="border-bottom:1px solid var(--warm-mid);' + rowBg + '">'
+          + '<td style="padding:10px 14px;font-size:13px;color:var(--ink-light);width:36px;">' + medal + '</td>'
+          + '<td style="padding:10px 14px;">'
+          + '<div style="font-size:13.5px;color:var(--ink);">' + person.full_name + youBadge + '</div>'
+          + '<div style="font-size:12px;color:var(--ink-light);">' + (clinicLabel[person.clinic] || person.clinic) + '</div>'
+          + '</td>'
+          + '<td style="padding:10px 14px;font-size:13px;color:var(--ink-mid);text-align:center;">' + quizzes + '</td>'
+          + '<td style="padding:10px 14px;font-size:13px;color:var(--ink-mid);text-align:center;">' + roleplays + '</td>'
+          + '<td style="padding:10px 14px;text-align:right;">'
+          + '<span style="font-size:1rem;font-weight:700;color:' + (pts > 0 ? '#a16207' : 'var(--ink-light)') + ';">' + pts + '</span>'
+          + '<span style="font-size:11px;color:var(--ink-light);"> pts</span>'
+          + '</td></tr>';
+      }).join('');
+      leaderboardHtml = '<div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);overflow:hidden;margin-top:1rem;">'
+        + '<table style="width:100%;border-collapse:collapse;">'
+        + '<thead><tr style="background:#1e3a5f;color:white;">'
+        + '<th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:600;">#</th>'
+        + '<th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:600;">Name</th>'
+        + '<th style="padding:10px 14px;text-align:center;font-size:11px;font-weight:600;">Quizzes</th>'
+        + '<th style="padding:10px 14px;text-align:center;font-size:11px;font-weight:600;">Role-plays</th>'
+        + '<th style="padding:10px 14px;text-align:right;font-size:11px;font-weight:600;">Points</th>'
+        + '</tr></thead>'
+        + '<tbody>' + rows + '</tbody>'
+        + '</table></div>';
+    }
+  } catch(e) {
+    leaderboardHtml = '<p style="color:var(--ink-light);font-size:13px;font-style:italic;">Leaderboard unavailable.</p>';
+  }
+
   container.innerHTML = `
     ${nav('/progress', navigate)}
     <div class="page-content">
       <h2 style="margin-bottom:0.25rem;">Your progress</h2>
       <p style="color:var(--ink-mid);margin-bottom:2rem;">Track what you've covered across all sections.</p>
 
-      <!-- Streak + DQH summary -->
+      <!-- Stat pills -->
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:2rem;">
         ${statPill('🔥', 'Current streak', streak.count + ' day' + (streak.count !== 1 ? 's' : ''), streak.count >= 3 ? '#fff7ed' : 'var(--warm)', streak.count >= 3 ? '#c2410c' : 'var(--ink-mid)')}
         ${statPill('⚡', 'Daily Quick Hits', dqhTotal + ' completed', 'var(--warm)', 'var(--ink-mid)')}
@@ -91,19 +146,7 @@ export async function renderDashboard(container, navigate) {
 
       <!-- Leaderboard -->
       <div style="margin-top:2rem;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
-          <span style="font-size:1.5rem;">🏆</span>
-          <div>
-            <h3 style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;margin:0;">Team leaderboard</h3>
-            <p style="font-size:13px;color:var(--ink-light);margin:0;">Points earned across quizzes and role-plays</p>
-          </div>
-        </div>
-        \${leaderboardHtml}
-      </div>
-
-      <!-- Leaderboard -->
-      <div style="margin-top:2rem;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem;">
           <span style="font-size:1.5rem;">🏆</span>
           <div>
             <h3 style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;margin:0;">Team leaderboard</h3>
