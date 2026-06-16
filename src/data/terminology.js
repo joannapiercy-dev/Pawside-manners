@@ -862,6 +862,38 @@ export const termDecks = [
         meaning: "Physical Examination. The hands-on assessment performed at every visit — includes vital signs, auscultation of heart and lungs, palpation of abdomen, lymph nodes, and assessment of overall body condition.",
         clientExplanation: "PE is the full physical exam the vet does at each visit — checking heart, lungs, abdomen, lymph nodes and overall condition.",
         category: "Acronyms"
+      },
+      {
+        id: "j-a30",
+        term: "Melaena",
+        pronunciation: "meh-LEE-nah",
+        meaning: "Dark, tarry, foul-smelling stools caused by the digestion of blood originating from the upper gastrointestinal tract (stomach or small intestine). A significant clinical sign requiring urgent assessment.",
+        clientExplanation: "Melaena means dark, tarry stools — this happens when blood is digested as it passes through the gut, and usually means there is bleeding higher up in the digestive system. It's always something we need to assess promptly.",
+        category: "General"
+      },
+      {
+        id: "j-a31",
+        term: "Haemorrhagic",
+        pronunciation: "heh-moh-RAJ-ik",
+        meaning: "Relating to or involving bleeding, particularly significant or uncontrolled bleeding. Used to describe conditions where blood loss is a primary feature — e.g. haemorrhagic diarrhoea, haemorrhagic effusion.",
+        clientExplanation: "Haemorrhagic means relating to bleeding. When we use this term, we're describing a condition where significant bleeding is occurring — for example, haemorrhagic diarrhoea means there is blood in the stool.",
+        category: "General"
+      },
+      {
+        id: "j-a32",
+        term: "SSRI (Selective Serotonin Reuptake Inhibitor)",
+        pronunciation: "",
+        meaning: "A class of medication that increases serotonin levels in the brain by blocking its reabsorption. Used in veterinary medicine to manage anxiety, compulsive behaviours, and aggression. Examples include fluoxetine (Prozac / Reconcile) and sertraline. Takes 4-6 weeks for full effect and works best alongside behavioural modification.",
+        clientExplanation: "SSRIs are a type of medication that helps regulate mood chemicals in the brain. In pets, they're used for anxiety, fear, and compulsive behaviours — similar to how they're used in people. They take a few weeks to reach full effect.",
+        category: "Acronyms"
+      },
+      {
+        id: "j-a33",
+        term: "SAMe (S-Adenosylmethionine)",
+        pronunciation: "SAM-ee",
+        meaning: "A naturally occurring compound involved in many cellular processes, particularly in the liver. Used as a supplement to support liver function and protect liver cells. Often combined with milk thistle (silybin) in products such as Denamarin. Also has some evidence for cognitive support in older animals.",
+        clientExplanation: "SAMe is a natural supplement that supports liver health. It helps protect liver cells and is often given to pets with liver disease or those on long-term medications that can affect the liver. It also has some benefit for brain function in older pets.",
+        category: "Acronyms"
       }
     ]
   },
@@ -1077,7 +1109,7 @@ export const termDecks = [
         id: "m-25",
         term: "Numelvi (lokivetmab)",
         pronunciation: "noo-MEL-vee",
-        meaning: "Tto control itch and inflammation associated with allergic skin disease in dogs, similar to Apoquel and Zenrelia. For dogs only. Once daily.",
+        meaning: "To control itch and inflammation associated with allergic skin disease in dogs, similar to Apoquel and Zenrelia. For dogs only. Once daily.",
         clientExplanation: "Numelvi is an oral allergy treatment for dogs that targets the itch signal directly. It works quickly and is given daily.",
         category: "Dermatology"
       },

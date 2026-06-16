@@ -94,6 +94,28 @@ export async function renderAdminRxLog(container, navigate) {
         </div>
       </div>
 
+      <!-- Export button -->
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:1rem;">
+        <button id="export-csv-btn" style="font-size:13px;font-family:'DM Sans',sans-serif;background:white;border:1.5px solid var(--warm-dark);border-radius:var(--radius);padding:8px 16px;cursor:pointer;color:var(--ink);display:flex;align-items:center;gap:6px;">
+          ⬇️ Export to CSV
+        </button>
+        <button id="clear-log-btn" style="font-size:13px;font-family:'DM Sans',sans-serif;background:white;border:1.5px solid #fca5a5;border-radius:var(--radius);padding:8px 16px;cursor:pointer;color:#b91c1c;display:flex;align-items:center;gap:6px;">
+          🗑️ Clear log
+        </button>
+      </div>
+
+      <!-- Clear confirmation modal (hidden) -->
+      <div id="clear-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
+        <div style="background:white;border-radius:var(--radius-lg);padding:2rem;max-width:380px;width:90%;margin:1rem;">
+          <h3 style="font-size:1.1rem;font-family:'DM Sans',sans-serif;margin-bottom:0.5rem;">Clear the entire log?</h3>
+          <p style="font-size:13.5px;color:var(--ink-mid);margin-bottom:1.5rem;">This will permanently delete all ${total} entries. This cannot be undone. Make sure you've exported a copy first.</p>
+          <div style="display:flex;gap:8px;">
+            <button id="clear-confirm-btn" style="flex:1;padding:10px;background:#b91c1c;color:white;border:none;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">Yes, clear everything</button>
+            <button id="clear-cancel-btn" style="flex:1;padding:10px;background:white;color:var(--ink);border:1.5px solid var(--warm-dark);border-radius:var(--radius);font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;">Cancel</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Log table -->
       <div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);overflow:hidden;overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;min-width:600px;">
@@ -115,6 +137,64 @@ export async function renderAdminRxLog(container, navigate) {
       <p style="font-size:12px;color:var(--ink-light);margin-top:1rem;text-align:right;">
         Showing ${total} check${total !== 1 ? 's' : ''} · Last updated ${new Date().toLocaleString('en-CA', { dateStyle: 'medium', timeStyle: 'short' })}
       </p>`;
+
+    // Clear log
+    document.getElementById('clear-log-btn').addEventListener('click', () => {
+      document.getElementById('clear-modal').style.display = 'flex';
+    });
+    document.getElementById('clear-cancel-btn').addEventListener('click', () => {
+      document.getElementById('clear-modal').style.display = 'none';
+    });
+    document.getElementById('clear-confirm-btn').addEventListener('click', async () => {
+      const confirmBtn = document.getElementById('clear-confirm-btn');
+      confirmBtn.textContent = 'Clearing…';
+      confirmBtn.disabled = true;
+      try {
+        const sb = await getSupabase();
+        const { error } = await sb.from('rx_checks').delete().neq('id', 0);
+        if (error) throw error;
+        document.getElementById('clear-modal').style.display = 'none';
+        document.getElementById('rx-log-content').innerHTML =
+          '<div style="text-align:center;padding:3rem;color:var(--ink-light);">Log cleared successfully. No prescription checks have been logged yet.</div>';
+      } catch (err) {
+        confirmBtn.textContent = 'Yes, clear everything';
+        confirmBtn.disabled = false;
+        alert('Failed to clear the log: ' + err.message);
+      }
+    });
+
+    // Export to CSV
+    document.getElementById('export-csv-btn').addEventListener('click', () => {
+      const headers = ['Date', 'Time', 'Staff', 'Pet', 'Rx #', 'Drug', 'Concentration', 'Result', 'Notes'];
+      const csvRows = [headers.join(',')];
+
+      for (const log of logs) {
+        const date = new Date(log.created_at);
+        const dateStr = date.toLocaleDateString('en-CA');
+        const timeStr = date.toLocaleTimeString('en-CA', { hour: '2-digit', minute: '2-digit' });
+        const row = [
+          dateStr,
+          timeStr,
+          log.staff_name || '',
+          log.patient_name || '',
+          log.rx_number || '',
+          log.drug_name || '',
+          log.concentration || '',
+          log.result || '',
+          log.ai_notes || ''
+        ].map(val => `"${String(val).replace(/"/g, '""')}"`);
+        csvRows.push(row.join(','));
+      }
+
+      const csv = csvRows.join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `rx-check-log-${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
 
   } catch (err) {
     document.getElementById('rx-log-content').innerHTML =
