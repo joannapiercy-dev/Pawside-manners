@@ -2,6 +2,7 @@ import { getProfile, signOut } from '../lib/supabase.js';
 export async function renderHome(container, navigate) {
   const profile = await getProfile();
   const userName = profile?.full_name?.split(' ')[0] || 'there';
+  const isAdmin = profile?.role === 'admin';
   let dqhDone = false;
   let streakCount = 0;
   try {
@@ -81,6 +82,11 @@ export async function renderHome(container, navigate) {
           <span style="font-size:1.5rem;">📊</span>
           <span style="font-weight:600;color:white;">View my progress & badges</span>
         </button>
+        ${isAdmin ? `
+        <button class="nav-card-btn" id="btn-admin-points" style="width:100%;background:#1e3a5f;color:white;border-color:#1e3a5f;margin-top:0.5rem;">
+          <span style="font-size:1.5rem;">⭐</span>
+          <span style="font-weight:600;color:white;">Admin — Points leaderboard</span>
+        </button>` : ''}
       </div>
     </div>
 
@@ -102,6 +108,7 @@ export async function renderHome(container, navigate) {
   document.getElementById('btn-appointments').addEventListener('click', () => navigate('/appointments'));
   document.getElementById('btn-diets').addEventListener('click', () => navigate('/diets'));
   document.getElementById('btn-progress').addEventListener('click', () => navigate('/progress'));
+  if (isAdmin) document.getElementById('btn-admin-points')?.addEventListener('click', () => navigate('/admin/points'));
   document.getElementById('logout-btn').addEventListener('click', async () => {
     await signOut();
     navigate('/login');

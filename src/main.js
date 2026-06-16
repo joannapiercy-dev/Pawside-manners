@@ -13,6 +13,7 @@ import { renderSocialHome } from './pages/social.js';
 import { renderQuickHit } from './pages/quickhit.js';
 import { renderQuickPromptsHome } from './pages/quickprompts.js';
 import { renderLogin } from './pages/login.js';
+import { renderAdminLeaderboard } from './pages/adminleaderboard.js';
 import { renderSignup } from './pages/signup.js';
 import { getSession } from './lib/supabase.js';
 
