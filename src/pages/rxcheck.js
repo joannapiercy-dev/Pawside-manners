@@ -170,7 +170,9 @@ export async function renderRxCheck(container, navigate) {
         drug_name:     result.label_drug || '',
         concentration: result.label_concentration || '',
         result:        isUnclear ? 'unclear' : isMatch ? 'match' : 'mismatch',
-        ai_notes:      result.notes || ''
+        ai_notes:      result.notes || '',
+        patient_name:  result.patient_name || null,
+        rx_number:     result.rx_number || null
       });
     } catch (e) {
       console.error('Failed to log rx check:', e);
@@ -184,6 +186,8 @@ export async function renderRxCheck(container, navigate) {
           <p style="color:#166534;margin-bottom:1.5rem;">The label and bottle match. This medication is safe to dispense.</p>
           <div style="background:white;border:1px solid #bbf7d0;border-radius:var(--radius);padding:1rem;text-align:left;margin-bottom:1.5rem;">
             <div style="font-size:13px;color:var(--ink-mid);display:grid;gap:6px;">
+              ${result.patient_name ? `<div><strong>Pet:</strong> ${result.patient_name}</div>` : ''}
+              ${result.rx_number ? `<div><strong>Rx #:</strong> ${result.rx_number}</div>` : ''}
               <div><strong>Drug:</strong> ${result.label_drug || '—'}</div>
               <div><strong>Concentration:</strong> ${result.label_concentration || '—'}</div>
               <div style="font-size:12px;color:#15803d;margin-top:4px;">${result.notes || ''}</div>
@@ -216,6 +220,10 @@ export async function renderRxCheck(container, navigate) {
           </div>
 
           <div style="background:white;border:1.5px solid #fca5a5;border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;">
+            ${(result.patient_name || result.rx_number) ? `<div style="margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #fca5a5;font-size:13px;display:grid;gap:4px;">
+              ${result.patient_name ? `<div><strong>Pet:</strong> ${result.patient_name}</div>` : ''}
+              ${result.rx_number ? `<div><strong>Rx #:</strong> ${result.rx_number}</div>` : ''}
+            </div>` : ''}
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
               <div>
                 <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#b91c1c;margin-bottom:6px;">Prescription label</div>

@@ -60,6 +60,8 @@ export async function renderAdminRxLog(container, navigate) {
           <td style="padding:12px 16px;">
             <div style="font-size:13.5px;font-weight:600;color:var(--ink);">${log.staff_name || '—'}</div>
           </td>
+          <td style="padding:12px 16px;font-size:13.5px;color:var(--ink);">${log.patient_name || '—'}</td>
+          <td style="padding:12px 16px;font-size:13.5px;color:var(--ink);">${log.rx_number || '—'}</td>
           <td style="padding:12px 16px;font-size:13.5px;color:var(--ink);">${log.drug_name || '—'}</td>
           <td style="padding:12px 16px;font-size:13.5px;color:var(--ink);">${log.concentration || '—'}</td>
           <td style="padding:12px 16px;">${resultBadge(log.result)}</td>
@@ -98,6 +100,8 @@ export async function renderAdminRxLog(container, navigate) {
           <thead>
             <tr style="background:#1e3a5f;color:white;">
               <th style="padding:10px 16px;text-align:left;font-size:12px;font-weight:600;">Staff</th>
+              <th style="padding:10px 16px;text-align:left;font-size:12px;font-weight:600;">Pet</th>
+              <th style="padding:10px 16px;text-align:left;font-size:12px;font-weight:600;">Rx #</th>
               <th style="padding:10px 16px;text-align:left;font-size:12px;font-weight:600;">Drug</th>
               <th style="padding:10px 16px;text-align:left;font-size:12px;font-weight:600;">Concentration</th>
               <th style="padding:10px 16px;text-align:left;font-size:12px;font-weight:600;">Result</th>
