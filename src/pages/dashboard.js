@@ -8,7 +8,6 @@ import { getEarnedBadges, getBadgeStats, BADGE_DEFS, getStreak, getDqhState, get
 import { nav, setupHamburger } from './home.js';
 import { getMyPoints } from '../lib/points.js';
 import { getSupabase, getProfile } from '../lib/supabase.js';
-import { getSupabase, getProfile } from '../lib/supabase.js';
 
 export async function renderDashboard(container, navigate) {
   const p = getProgress();
