@@ -68,7 +68,39 @@ export async function renderDashboard(container, navigate) {
   }
 
 
-  // Fetch leaderboard data
+  const streak = getStreak();
+  const dqhState = getDqhState();
+  const dqhDoneToday = dqhState.lastCompleted === getTodayDateStr();
+  const dqhTotal = dqhState.totalCount || 0;
+
+  // ── Communication ──
+  const scenarioTotal = scenarios.length;
+  const scenarioAttempted = scenarios.filter(s => p[s.id]).length;
+  const quizDone = scenarios.filter(s => p[s.id]?.quiz).length;
+  const roleplayDone = scenarios.filter(s => p[s.id]?.roleplay).length;
+
+  // ── Terminology ──
+  const termTotal = termDecks.length;
+  const termFlashDone = termDecks.filter(d => p['term-' + d.id]?.flashcard).length;
+  const termQuizDone = termDecks.filter(d => p['term-quiz-' + d.id]?.quiz).length;
+
+  // ── Triage ──
+  const triageTotal = triageCategories.length;
+  const triageDone = triageCategories.filter(c => p['triage-' + c.id]?.completed).length;
+
+  // ── Diagnostics ──
+  const testsTotal = testCategories.length;
+  const testsViewed = testCategories.filter(c => p['tests-' + c.id]?.viewed).length;
+  const testsQuizDone = p['tests-quiz']?.quiz ? 1 : 0;
+
+  // ── What would you say? ──
+  const qpTotal = quickPrompts.length;
+  const qpDone = badgeStats.roleplays || 0;
+
+  // ── Badges ──
+  const badgesEarned = earnedBadges.length;
+  const badgesTotal = BADGE_DEFS.length;
+
 
   container.innerHTML = `
     ${nav('/progress', navigate)}
