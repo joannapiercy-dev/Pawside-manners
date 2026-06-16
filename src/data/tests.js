@@ -349,7 +349,7 @@ export const tests = {
       dropoffNote: "No drop-off needed — sample can be collected in-clinic or owner can bring a fresh sample from home. All home-collected samples should be refrigerated and delivered within 12 hours.",
       clientScript: "Dogs: if you can collect the first urine of the morning in a clean container and bring it in within a couple of hours, that's ideal — we can also collect a sample here. Cats: we sell a product called Nosorb — plastic beads you put in a cleaned, dried litterbox instead of regular litter. Your cat uses the box as normal, then you collect the urine from the box using the syringe we give you. All home samples should be kept in the fridge and brought in within 12 hours.",
       flags: [],
-      specialNote: "⚠️ Ketones in urine is an emergency sign — if flagged on a urinalysis, escalate to the clinical team immediately. Home samples: must be refrigerated and delivered within 12 hours. For Nosorb collection: the litterbox must be emptied, cleaned thoroughly, and dried completely before adding the beads — any residue from regular litter will contaminate the sample."
+      specialNote: "<ul style='margin:4px 0 0 0;padding-left:18px;line-height:1.7;'><li>First morning sample is best for canine free-catch samples.</li><li>Home samples must be refrigerated and delivered within 12 hours.</li><li>For Nosorb collection (cats): the litterbox must be emptied, cleaned thoroughly, and completely dried before adding the beads — any residue from regular litter will contaminate the sample.</li><li><strong>⚠️ Ketones in urine is an emergency sign</strong> — if flagged on a urinalysis, escalate to the clinical team immediately.</li></ul>"
     },
     {
       id: "upc",
