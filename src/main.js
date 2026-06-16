@@ -37,7 +37,9 @@ async function render() {
     }
   }
 
-  if (route === '/login') {
+  if (route === '/admin/points') {
+    renderAdminLeaderboard(app, navigate);
+  } else if (route === '/login') {
     renderLogin(app, navigate);
   } else if (route === '/signup') {
     renderSignup(app, navigate);
