@@ -492,7 +492,7 @@ function renderTriageQuiz(categoryId, catMeta) {
     });
   }
 
-  function showScore() {
+  async function showScore() {
     window.scrollTo(0, 0);
     const pct = Math.round(score / questions.length * 100);
     const pointsAwarded = pct >= 75 ? await awardQuizPoints('triage-' + categoryId) : false;
