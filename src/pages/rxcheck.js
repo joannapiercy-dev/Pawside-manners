@@ -65,10 +65,26 @@ export async function renderRxCheck(container, navigate) {
 
   function toBase64(file) {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result.split(',')[1]);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        // Resize to max 1200px on longest side
+        const MAX = 1200;
+        let w = img.width, h = img.height;
+        if (w > MAX || h > MAX) {
+          if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
+          else       { w = Math.round(w * MAX / h); h = MAX; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        // Compress to JPEG at 80% quality
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+        URL.revokeObjectURL(url);
+        resolve(dataUrl.split(',')[1]);
+      };
+      img.onerror = reject;
+      img.src = url;
     });
   }
 
@@ -84,7 +100,7 @@ export async function renderRxCheck(container, navigate) {
   document.getElementById('label-input').addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    labelType = file.type || 'image/jpeg';
+    labelType = 'image/jpeg';
     labelData = await toBase64(file);
     const preview = document.getElementById('label-preview');
     document.getElementById('label-img').src = URL.createObjectURL(file);
@@ -96,7 +112,7 @@ export async function renderRxCheck(container, navigate) {
   document.getElementById('bottle-input').addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    bottleType = file.type || 'image/jpeg';
+    bottleType = 'image/jpeg';
     bottleData = await toBase64(file);
     const preview = document.getElementById('bottle-preview');
     document.getElementById('bottle-img').src = URL.createObjectURL(file);
