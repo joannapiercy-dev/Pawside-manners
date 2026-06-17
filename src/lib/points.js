@@ -102,4 +102,33 @@ export async function alreadyEarned(sourceId, eventType) {
   }
 }
 
+export async function awardQuickPromptPoints(sourceId) {
+  try {
+    const sb = await getSupabase();
+    const session = await getSession();
+    if (!session) return false;
+
+    const { data: existing } = await sb
+      .from('points_events')
+      .select('id')
+      .eq('user_id', session.user.id)
+      .eq('source_id', sourceId)
+      .eq('event_type', 'quickprompt_complete')
+      .maybeSingle();
+
+    if (existing) return false;
+
+    await sb.from('points_events').insert({
+      user_id:    session.user.id,
+      event_type: 'quickprompt_complete',
+      source_id:  sourceId,
+      points:     5
+    });
+    return true;
+  } catch (e) {
+    console.error('awardQuickPromptPoints error:', e);
+    return false;
+  }
+}
+
 export { PASS_THRESHOLD };

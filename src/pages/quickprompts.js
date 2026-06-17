@@ -2,6 +2,7 @@ import { quickPrompts, promptCategories } from '../data/quickprompts.js';
 import { getQuickPromptFeedback } from '../lib/quickprompt-api.js';
 import { nav, setupHamburger } from './home.js';
 import { updateBadgeStat, awardBadgesAndCelebrate } from '../lib/gamification.js';
+import { awardQuickPromptPoints } from '../lib/points.js';
 
 const DIFF_LABELS = { starter: '🟢 Starter', intermediate: '🟡 Intermediate', advanced: '🔴 Advanced' };
 const DIFF_COLORS = { starter: '#f0fdf4', intermediate: '#fefce8', advanced: '#fef2f2' };
@@ -117,6 +118,7 @@ function renderPrompt(container, navigate, prompt) {
             <div style="font-size:14px;color:var(--ink);line-height:1.8;white-space:pre-wrap;">${feedback.text}</div>
           </div>
 
+          ${feedback.pointsAwarded ? '<div style="display:inline-block;background:#fefce8;border:1.5px solid #fde047;border-radius:var(--radius);padding:6px 16px;font-size:13.5px;font-weight:600;color:#a16207;margin-bottom:1rem;">⭐ +5 points earned!</div>' : ''}
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem;">
             <button class="btn-primary" id="try-again-btn">Try again</button>
             <button class="btn-ghost" id="next-btn">Next prompt →</button>
@@ -155,10 +157,11 @@ function renderPrompt(container, navigate, prompt) {
         try {
           const text = await getQuickPromptFeedback(prompt, userResponse);
           loading = false;
-          // Award badge for completing a quick prompt
+          // Award badge and points for completing a quick prompt
           const newBadges = updateBadgeStat('roleplays', 1);
           awardBadgesAndCelebrate(newBadges, false);
-          render({ text, userResponse });
+          const qpPoints = await awardQuickPromptPoints(prompt.id || prompt.prompt?.slice(0,40));
+          render({ text, userResponse, pointsAwarded: qpPoints });
         } catch (err) {
           loading = false;
           render();

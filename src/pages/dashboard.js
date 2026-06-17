@@ -184,7 +184,8 @@ export async function renderDashboard(container, navigate) {
   document.getElementById('reset-all').addEventListener('click', () => {
     if (confirm('Reset all progress? This cannot be undone.')) {
       localStorage.removeItem('pawside_progress');
-      renderDashboard(container, navigate);
+      navigate('/');
+      setTimeout(() => navigate('/progress'), 50);
     }
   });
 }
