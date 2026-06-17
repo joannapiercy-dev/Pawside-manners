@@ -145,6 +145,7 @@ export function nav(current, navigate, userName = '') {
       <a class="nav-btn ${current === '/appointments' ? 'active' : ''}" href="#/appointments">Booking</a>
       <a class="nav-btn ${current === '/social' ? 'active' : ''}" href="#/social">Social Styles</a>
       <a class="nav-btn ${current === '/progress' ? 'active' : ''}" href="#/progress">Progress</a>
+      <a class="nav-btn ${current === '/rx-check' ? 'active' : ''}" href="#/rx-check" style="color:#b91c1c;border-bottom:2px solid ${current === '/rx-check' ? '#b91c1c' : 'transparent'};">💊 Rx</a>
     </div>
     <div class="nav-user nav-desktop" style="display:flex;align-items:center;gap:10px;margin-left:auto;padding-left:1rem;">
       <span style="font-size:13px;color:var(--ink-mid);white-space:nowrap;">👋 <strong>${userName}</strong></span>
@@ -162,6 +163,7 @@ export function nav(current, navigate, userName = '') {
       <a class="nav-mobile-item ${current === '/appointments' ? 'active' : ''}" href="#/appointments">📅 Booking guide</a>
       <a class="nav-mobile-item ${current === '/social' ? 'active' : ''}" href="#/social">🦁 Social Styles</a>
       <a class="nav-mobile-item ${current === '/progress' ? 'active' : ''}" href="#/progress">📊 Progress</a>
+      <a class="nav-mobile-item ${current === '/rx-check' ? 'active' : ''}" href="#/rx-check">💊 Rx double-check</a>
     </div>
   </nav>`;
 }

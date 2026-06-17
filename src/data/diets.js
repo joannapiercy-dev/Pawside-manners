@@ -1247,7 +1247,7 @@ export const dietQuiz = [
     options: [
     "Hills Metabolic",
     "Royal Canin Glycoadvanced",
-    "Purina DM Dietetic Management or Hills m/d",
+    "Purina DM Dietetic Management",
     "Hills w/d Multi-Benefit"
     ],
     correct: 1,
