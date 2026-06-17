@@ -41,6 +41,7 @@ export function renderDietsHome(container, navigate) {
   container.querySelectorAll('[data-cat]').forEach(card => {
     card.addEventListener('click', () => navigate('/diets/' + card.dataset.cat));
   });
+  document.getElementById('diet-quiz-start').addEventListener('click', () => renderDietQuiz(container, navigate));
 }
 
 export function renderDietsCategory(container, navigate, catId) {
