@@ -133,3 +133,96 @@ export function renderDietsCategory(container, navigate, catId) {
   setupHamburger();
   document.getElementById('back-btn').addEventListener('click', () => navigate('/diets'));
 }
+
+function renderDietQuiz(container, navigate) {
+  let current = 0;
+  let score = 0;
+  let answered = false;
+  const questions = dietQuiz;
+
+  function render() {
+    const q = questions[current];
+    const pct = Math.round((current / questions.length) * 100);
+    container.innerHTML = `
+      ${nav('/diets', navigate)}
+      <div class="page-content" style="max-width:640px;margin:0 auto;">
+        <div class="breadcrumb"><a href="#/diets">Diets</a> › Quiz</div>
+        <div style="background:#1e3a5f;border-radius:var(--radius-lg);padding:0.9rem 1.25rem;margin-bottom:1.5rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="font-size:13px;font-weight:600;color:white;">Question ${current + 1} of ${questions.length}</span>
+            <span style="font-size:12px;color:rgba(255,255,255,0.7);">${pct}%</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.2);border-radius:4px;height:6px;">
+            <div style="background:white;height:6px;border-radius:4px;width:${pct}%;transition:width 0.3s;"></div>
+          </div>
+        </div>
+        <div style="background:white;border:1px solid var(--warm-mid);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1rem;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);margin-bottom:0.75rem;">${q.category}</div>
+          <p style="font-size:15px;font-weight:600;color:var(--ink);line-height:1.5;margin:0;">${q.q}</p>
+        </div>
+        <div id="options" style="display:flex;flex-direction:column;gap:10px;"></div>
+        <div id="explanation" style="display:none;background:#f0fdf4;border:1.5px solid #86efac;border-radius:var(--radius);padding:1rem;margin-top:1rem;font-size:13.5px;color:var(--ink);line-height:1.6;"></div>
+        <button id="next-btn" style="display:none;margin-top:1rem;width:100%;" class="btn-primary"></button>
+      </div>`;
+
+    setupHamburger();
+
+    const optionsEl = document.getElementById('options');
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.textContent = opt;
+      btn.style.cssText = 'width:100%;text-align:left;padding:12px 16px;border:1.5px solid var(--warm-dark);border-radius:var(--radius);background:white;font-size:14px;font-family:DM Sans,sans-serif;cursor:pointer;color:var(--ink);line-height:1.4;';
+      btn.addEventListener('click', () => {
+        if (answered) return;
+        answered = true;
+        const correct = i === q.correct;
+        if (correct) score++;
+        optionsEl.querySelectorAll('button').forEach((b, j) => {
+          if (j === q.correct) { b.style.background = '#f0fdf4'; b.style.borderColor = '#22c55e'; b.style.fontWeight = '600'; }
+          else if (j === i && !correct) { b.style.background = '#fef2f2'; b.style.borderColor = '#ef4444'; }
+          b.style.cursor = 'default';
+        });
+        document.getElementById('explanation').textContent = q.explanation;
+        document.getElementById('explanation').style.display = 'block';
+        const nextBtn = document.getElementById('next-btn');
+        nextBtn.textContent = current < questions.length - 1 ? 'Next question →' : 'See results';
+        nextBtn.style.display = 'block';
+        nextBtn.addEventListener('click', () => {
+          if (current < questions.length - 1) { current++; answered = false; render(); }
+          else { showScore(); }
+        });
+      });
+      optionsEl.appendChild(btn);
+    });
+  }
+
+  async function showScore() {
+    const pct = Math.round(score / questions.length * 100);
+    const pointsAwarded = pct >= 75 ? await awardQuizPoints('diets-quiz') : false;
+    markComplete('diets-quiz', 'quiz');
+    if (pct >= 80) {
+      const nb = updateBadgeStat('quizPasses', 1);
+      if (pct === 100) { updateBadgeStat('perfectQuizzes', 1); showConfetti(2500); }
+      awardBadgesAndCelebrate(nb, false);
+    }
+    container.innerHTML = `
+      ${nav('/diets', navigate)}
+      <div class="page-content" style="max-width:640px;margin:0 auto;text-align:center;padding-top:2rem;">
+        <div class="breadcrumb" style="text-align:left;"><a href="#/diets">Diets</a> › Quiz</div>
+        <div style="font-size:3rem;font-weight:700;color:var(--ink);margin:1.5rem 0 0.5rem;">${score} / ${questions.length}</div>
+        <p style="color:var(--ink-mid);margin-bottom:${pointsAwarded ? '1rem' : '2rem'};">
+          ${pct === 100 ? 'Perfect score!' : pct >= 75 ? 'Great work.' : pct >= 50 ? 'Good effort — review the diet reference cards and try again.' : 'Keep studying and give it another go.'}
+        </p>
+        ${pointsAwarded ? '<div style="display:inline-block;background:#fefce8;border:1.5px solid #fde047;border-radius:var(--radius);padding:8px 20px;font-size:14px;font-weight:600;color:#a16207;margin-bottom:1.5rem;">⭐ +10 points earned!</div>' : ''}
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <button class="btn-primary" id="retry-btn">Try again</button>
+          <button class="btn-ghost" id="back-btn">← Back to diets</button>
+        </div>
+      </div>`;
+    setupHamburger();
+    document.getElementById('retry-btn').addEventListener('click', () => renderDietQuiz(container, navigate));
+    document.getElementById('back-btn').addEventListener('click', () => renderDietsHome(container, navigate));
+  }
+
+  render();
+}
