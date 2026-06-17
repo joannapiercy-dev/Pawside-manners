@@ -577,7 +577,7 @@ function renderMedsReference(deck) {
     {
       label: 'Endocrinology',
       icon: '⚗️',
-      ids: ['m-15','m-25','m-34','m-37','m-39'],
+      ids: ['m-15','m-34','m-37','m-39'],
       note: 'All endocrine medications require regular blood monitoring. Timing of monitoring relative to dosing is often critical (especially Vetoryl).'
     },
     {

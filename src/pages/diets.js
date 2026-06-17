@@ -1,4 +1,7 @@
-import { dietCategories, diets } from '../data/diets.js';
+import { dietCategories, diets, dietQuiz } from '../data/diets.js';
+import { awardQuizPoints } from '../lib/points.js';
+import { markComplete } from '../lib/progress.js';
+import { updateBadgeStat, awardBadgesAndCelebrate, showConfetti } from '../lib/gamification.js';
 import { nav, setupHamburger } from './home.js';
 
 const RC_COLOR   = '#c8102e';
@@ -12,6 +15,14 @@ export function renderDietsHome(container, navigate) {
     <div class="page-content">
       <h2 style="margin-bottom:0.25rem;">Prescription diets</h2>
       <p style="color:var(--ink-mid);margin-bottom:1.5rem;">Royal Canin, Purina and Hills prescription veterinary diets — what each is used for, by condition.</p>
+
+      <div style="background:linear-gradient(135deg,#1e3a5f,#2d5a8e);border-radius:var(--radius-lg);padding:1.1rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <div>
+          <div style="font-weight:700;font-size:0.95rem;color:white;">✅ Ready to test your diet knowledge?</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-top:2px;">${dietQuiz.length} questions across all diet categories</div>
+        </div>
+        <button id="diet-quiz-start" style="background:white;color:#1e3a5f;border:none;border-radius:var(--radius);padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;flex-shrink:0;">Start quiz →</button>
+      </div>
 
       <div class="card-grid" style="margin-bottom:2rem;">
         ${dietCategories.map(cat => `
@@ -33,6 +44,7 @@ export function renderDietsHome(container, navigate) {
 }
 
 export function renderDietsCategory(container, navigate, catId) {
+  markComplete('diets-' + catId, 'viewed');
   const cat = dietCategories.find(c => c.id === catId);
   const catDiets = diets[catId];
   if (!cat || !catDiets) { navigate('/diets'); return; }

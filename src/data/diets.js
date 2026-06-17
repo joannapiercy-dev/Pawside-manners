@@ -1096,3 +1096,233 @@ export const diets = {
     ],
   },
 };
+export const dietQuiz = [
+  {
+    q: "A dog presents with acute vomiting and diarrhoea. Which diet is the most appropriate first choice?",
+    category: "Gastrointestinal",
+    options: [
+    "Hills i/d or Royal Canin Gastrointestinal",
+    "Hills k/d",
+    "Royal Canin Urinary SO",
+    "Hills w/d"
+    ],
+    correct: 0,
+    explanation: "Hills i/d and Royal Canin Gastrointestinal are the standard first-line GI diets for acute and chronic GI disease including vomiting and diarrhoea."
+  },
+  {
+    q: "A dog has been diagnosed with pancreatitis and requires strict fat restriction. Which diet is most appropriate?",
+    category: "Gastrointestinal",
+    options: [
+    "Royal Canin Gastrointestinal",
+    "Hills i/d Low Fat or Royal Canin Gastrointestinal Low Fat",
+    "Purina EN Gastroenteric Fiber Balance",
+    "Royal Canin Gastrointestinal High Fiber"
+    ],
+    correct: 1,
+    explanation: "Pancreatitis requires strict fat restriction. Hills i/d Low Fat and Royal Canin Gastrointestinal Low Fat are specifically formulated for this."
+  },
+  {
+    q: "A client's pet has chronic constipation. Which diet would be most appropriate?",
+    category: "Gastrointestinal",
+    options: [
+    "Hills i/d Low Fat",
+    "Royal Canin Gastrointestinal High Fiber or Purina EN Gastroenteric Fiber Balance",
+    "Royal Canin Gastrointestinal Moderate Calorie",
+    "Hills Gastrointestinal Biome"
+    ],
+    correct: 1,
+    explanation: "High fibre diets support gut motility and are indicated for constipation. RC Gastrointestinal High Fiber and Purina EN Fiber Balance are the key options."
+  },
+  {
+    q: "A hospitalised patient is inappetent post-surgery and needs nutritional support. Which diet is most appropriate?",
+    category: "Gastrointestinal",
+    options: [
+    "Hills i/d",
+    "Royal Canin Gastrointestinal Low Fat Liquid or Hills a/d",
+    "Royal Canin Recovery",
+    "Both B and C are appropriate"
+    ],
+    correct: 3,
+    explanation: "Royal Canin Recovery and Hills a/d are both designed for inappetent, post-surgical, or critically ill patients. Liquid options are available when solid food is not tolerated."
+  },
+  {
+    q: "A cat has been diagnosed with Early (IRIS Stage 2) CKD. Which diet is most appropriate?",
+    category: "Kidney / Renal",
+    options: [
+    "Hills k/d or Royal Canin Renal Support",
+    "Royal Canin Urinary SO",
+    "Hills i/d",
+    "Purina NF Kidney Function Advanced Care"
+    ],
+    correct: 0,
+    explanation: "Hills k/d and Royal Canin Renal Support are the standard choices for CKD management. Purina NF Advanced Care is reserved for later-stage disease. RC Urinary SO is for urinary conditions, not CKD."
+  },
+  {
+    q: "A dog has early-stage kidney disease (IRIS Stage 1-2) with no clinical signs yet. Which diet is most appropriate?",
+    category: "Kidney / Renal",
+    options: [
+    "Hills k/d",
+    "Royal Canin Renal Support A/S/D/E",
+    "Royal Canin Renal Support Early Consult or Hills k/d Early Support",
+    "Purina NF Kidney Function Advanced Care"
+    ],
+    correct: 2,
+    explanation: "Early consult/early support diets are designed for IRIS Stage 1-2, offering milder phosphorus restriction to encourage earlier dietary transition."
+  },
+  {
+    q: "A dog has been diagnosed with hepatic encephalopathy. Which diet is most appropriate?",
+    category: "Liver / Hepatic",
+    options: [
+    "Hills l/d or Royal Canin Hepatic",
+    "Hills k/d",
+    "Purina EN Gastroenteric",
+    "Royal Canin Gastrointestinal High Fiber"
+    ],
+    correct: 0,
+    explanation: "Hills l/d and Royal Canin Hepatic are specifically formulated for liver disease including hepatic encephalopathy, with controlled protein and copper levels."
+  },
+  {
+    q: "A dog has both liver disease and a food allergy. Which diet could address both conditions?",
+    category: "Liver / Hepatic",
+    options: [
+    "Hills l/d",
+    "Royal Canin Hepatic",
+    "Purina HA Hydrolyzed Vegetarian or Royal Canin Vegetarian",
+    "Hills Multi-Organ"
+    ],
+    correct: 2,
+    explanation: "Purina HA Hydrolyzed Vegetarian and Royal Canin Vegetarian can support liver disease while also avoiding common protein allergens — useful for dogs with concurrent food allergy."
+  },
+  {
+    q: "A cat has been diagnosed with struvite and calcium oxalate urinary crystals (mixed). Which diet is most appropriate?",
+    category: "Urinary",
+    options: [
+    "Royal Canin Urinary UC Low Purine",
+    "Hills c/d Multicare",
+    "Purina DM",
+    "Hills u/d"
+    ],
+    correct: 1,
+    explanation: "Hills c/d Multicare is formulated to dissolve and prevent both struvite and calcium oxalate crystals, making it ideal for mixed crystal cases."
+  },
+  {
+    q: "A dog has been diagnosed with struvite bladder stones. Which diet is most appropriate?",
+    category: "Urinary",
+    options: [
+    "Royal Canin Urinary SO",
+    "Hills d/d",
+    "Royal Canin Urinary UC Low Purine or Hills u/d",
+    "Purina OM Overweight Management"
+    ],
+    correct: 0,
+    explanation: "When there are no signs of blockage, struvite bladder stones can sometimes be dissolved with Royal Canin Urinary SO.  Emphasize wet food over dry food when possible, and encourage lots of drinking.  If at any time the dog is straining to urinate and not passing much urine, it is potentially an emergency and surgery may be required."
+  },
+  {
+    q: "A cat with a history of urinary disease is also showing signs of stress-related cystitis (FIC). Which diet is most appropriate?",
+    category: "Urinary",
+    options: [
+    "Royal Canin Urinary SO",
+    "Hills c/d Stress",
+    "Royal Canin Urinary SO + Calm",
+    "Both B and C are appropriate"
+    ],
+    correct: 3,
+    explanation: "Both Hills c/d Stress and Royal Canin Urinary SO + Calm combine urinary support with calming properties, addressing both FIC and crystal prevention."
+  },
+  {
+    q: "An obese dog also has moderate osteoarthritis. Which diet would best address both conditions?",
+    category: "Weight management",
+    options: [
+    "Hills Metabolic",
+    "Royal Canin Satiety Support Weight Management",
+    "Hills Metabolic + j/d or Purina OM + Joint Mobility",
+    "Purina OM Overweight Management"
+    ],
+    correct: 2,
+    explanation: "Hills Metabolic + j/d and Purina OM + Joint Mobility are combination diets that address both weight management and joint support simultaneously."
+  },
+  {
+    q: "A cat has been diagnosed with diabetes and is overweight. Which diet is most appropriate?",
+    category: "Weight management",
+    options: [
+    "Hills Metabolic",
+    "Royal Canin Glycoadvanced",
+    "Purina DM Dietetic Management or Hills m/d",
+    "Hills w/d Multi-Benefit"
+    ],
+    correct: 1,
+    explanation: "Royal Canin Glycoadvanced is formulated specifically for overweight diabetic cats and has been shown to reduce the reliance on insulin.  Purina DM is also appropriate feline diabetes, with high protein and low carbohydrate content to support glycaemic control, but is better for skinny diabetic cats."
+  },
+  {
+    q: "A dog has a suspected adverse food reaction and needs a strict elimination diet trial. Which type of diet is most appropriate?",
+    category: "Allergy / Dermatology",
+    options: [
+    "Royal Canin Selected Protein (novel protein)",
+    "Hills d/d (novel protein)",
+    "Hydrolyzed protein diet such as Hills z/d, Royal Canin HP, or Purina HA",
+    "Any of the above, depending on the patient's history"
+    ],
+    correct: 3,
+    explanation: "Both novel protein and hydrolyzed protein diets can be used for elimination diet trials. The choice depends on what proteins the dog has previously been exposed to. Hydrolyzed diets are often preferred as they are less likely to cause cross-reactions."
+  },
+  {
+    q: "A dog with a food allergy also has pancreatitis requiring fat restriction. Which diet addresses both conditions?",
+    category: "Allergy / Dermatology",
+    options: [
+    "Hills z/d Low Fat or Royal Canin Gastrointestinal Low Fat + Hydrolyzed Protein",
+    "Hills d/d Salmon",
+    "Purina HA Hydrolyzed Vegetarian",
+    "Royal Canin Hydrolyzed Protein HP"
+    ],
+    correct: 0,
+    explanation: "Hills z/d Low Fat and Royal Canin Gastrointestinal Low Fat + Hydrolyzed Protein are specifically designed for patients needing both fat restriction and allergen avoidance."
+  },
+  {
+    q: "A dog has been diagnosed with osteoarthritis. Which prescription diet is most appropriate?",
+    category: "Joint / Mobility",
+    options: [
+    "Royal Canin Satiety Support",
+    "Hills j/d, Royal Canin Advanced Mobility Support, or Purina JM Joint Mobility",
+    "Hills k/d",
+    "Royal Canin Renal Support"
+    ],
+    correct: 1,
+    explanation: "Hills j/d, Royal Canin Advanced Mobility Support, and Purina JM are all formulated with omega-3 fatty acids and other joint-supportive nutrients for osteoarthritis management."
+  },
+  {
+    q: "A client wants a prescription diet to help reduce plaque and tartar in their dog. Which diet is most appropriate?",
+    category: "Dental",
+    options: [
+    "Hills t/d, Royal Canin Dental, or Purina DH Dental Health",
+    "Hills i/d",
+    "Royal Canin Gastrointestinal",
+    "Purina OM Overweight Management"
+    ],
+    correct: 0,
+    explanation: "Hills t/d, Royal Canin Dental, and Purina DH are all specifically designed for dental health, with kibble size and texture that mechanically reduces plaque accumulation."
+  },
+  {
+    q: "A dog has been diagnosed with diabetes mellitus and no other comorbidities. Which diet is most appropriate?",
+    category: "Diabetes",
+    options: [
+    "Hills w/d Multi-Benefit or Purina EN Fiber Balance",
+    "Hills i/d",
+    "Royal Canin Glycobalance",
+    "Both A and C are appropriate"
+    ],
+    correct: 3,
+    explanation: "Royal Canin Glycobalance is specifically formulated for canine diabetes. Hills w/d and Purina EN Fiber Balance are also used due to their high fibre content which helps moderate blood glucose. If there are any other illnesses at the same time (e.g. pancreatitis), it is best to feed something appropriate for that illness."
+  },
+  {
+    q: "A cat has just undergone major surgery and has been anorexic for 3 days. Which diet is most appropriate?",
+    category: "Recovery / Convalescence",
+    options: [
+    "Royal Canin Recovery or Hills a/d",
+    "Hills i/d",
+    "Royal Canin Gastrointestinal",
+    "Purina EN Gastroenteric Naturals"
+    ],
+    correct: 0,
+    explanation: "Royal Canin Recovery and Hills a/d are high calorie, highly palatable diets designed for critical care, post-surgical patients, and those with prolonged anorexia."
+  },
+];

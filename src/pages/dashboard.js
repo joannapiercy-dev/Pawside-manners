@@ -1,4 +1,5 @@
 import { scenarios, categories } from '../data/scenarios.js';
+import { dietCategories } from '../data/diets.js';
 import { termDecks } from '../data/terminology.js';
 import { triageCategories } from '../data/triage.js';
 import { testCategories } from '../data/tests.js';
@@ -38,6 +39,11 @@ export async function renderDashboard(container, navigate) {
   const testsTotal = testCategories.length;
   const testsViewed = testCategories.filter(c => p['tests-' + c.id]?.viewed).length;
   const testsQuizDone = p['tests-quiz']?.quiz ? 1 : 0;
+
+  // ── Diets ──
+  const dietCatTotal = dietCategories.length;
+  const dietCatViewed = dietCategories.filter(c => p['diets-' + c.id]?.viewed).length;
+  const dietQuizDone = p['diets-quiz']?.quiz ? 1 : 0;
 
   // ── What would you say? ──
   const qpTotal = quickPrompts.length;
@@ -135,6 +141,11 @@ export async function renderDashboard(container, navigate) {
         { label: 'Categories reviewed', val: testsViewed, total: testsTotal },
         { label: 'Full quiz completed', val: testsQuizDone, total: 1 }
       ], renderTestRows(testCategories, p, navigate))}
+
+      ${sectionBlock('🥣', 'Prescription diets', '#fff7ed', '#fed7aa', [
+        { label: 'Categories reviewed', val: dietCatViewed, total: dietCatTotal },
+        { label: 'Quiz completed', val: dietQuizDone, total: 1 }
+      ], renderDietRows(dietCategories, p))}
 
       ${sectionBlock('💬', 'What would you say?', '#fdf4ff', '#e9d5ff', [
         { label: 'Prompts attempted', val: qpDone, total: qpTotal }
@@ -293,4 +304,21 @@ function renderBadgeGrid(earnedBadges) {
         ${isEarned ? '<span style="font-size:1rem;">✅</span>' : '<span style="font-size:12px;color:var(--ink-light);">🔒</span>'}
       </div>`;
   }).join('');
+}
+
+function renderDietRows(categories, p) {
+  const quizDone = p['diets-quiz']?.quiz;
+  const rows = categories.map(cat => {
+    const viewed = p['diets-' + cat.id]?.viewed;
+    return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--warm-mid);">
+      <span style="font-size:1.1rem;">${cat.icon}</span>
+      <span style="flex:1;font-size:13.5px;">${cat.label}</span>
+      <span style="font-size:12px;opacity:${viewed?1:0.2};">👁️ Reviewed</span>
+    </div>`;
+  }).join('');
+  return rows + `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;">
+    <span style="font-size:1.1rem;">✅</span>
+    <span style="flex:1;font-size:13.5px;">Diet quiz — all categories</span>
+    <span style="font-size:12px;opacity:${quizDone?1:0.2};">✅ Completed</span>
+  </div>`;
 }
