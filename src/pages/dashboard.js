@@ -167,7 +167,7 @@ export async function renderDashboard(container, navigate) {
         ${leaderboardHtml}
       </div>
 
-      <button class="btn-ghost" id="reset-all" style="margin-top:2rem;color:var(--ink-light);">Reset all progress</button>
+      <button class="btn-ghost" id="reset-all" style="margin-top:2rem;color:var(--ink-light);">Reset all progress, points & badges</button>
     </div>
   `;
 
@@ -181,9 +181,23 @@ export async function renderDashboard(container, navigate) {
   container.querySelectorAll('[data-go-tests]').forEach(el =>
     el.addEventListener('click', () => navigate('/tests/' + el.dataset.goTests)));
 
-  document.getElementById('reset-all').addEventListener('click', () => {
-    if (confirm('Reset all progress? This cannot be undone.')) {
+  document.getElementById('reset-all').addEventListener('click', async () => {
+    if (confirm('Reset all progress, points, and badges? This cannot be undone.')) {
       localStorage.removeItem('pawside_progress');
+      localStorage.removeItem('pawside_badges');
+      localStorage.removeItem('pawside_badge_stats');
+      localStorage.removeItem('pawside_streak');
+      localStorage.removeItem('pawside_dqh');
+      try {
+        const sb = await getSupabase();
+        const session = await sb.auth.getSession();
+        const userId = session.data?.session?.user?.id;
+        if (userId) {
+          await sb.from('points_events').delete().eq('user_id', userId);
+        }
+      } catch (e) {
+        console.error('Failed to clear points:', e);
+      }
       window.location.hash = '/progress';
       window.location.reload();
     }
