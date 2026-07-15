@@ -120,10 +120,6 @@ export async function renderHome(container, navigate) {
   if (isAdmin) document.getElementById('btn-admin-points')?.addEventListener('click', () => navigate('/admin/points'));
   if (isAdmin) document.getElementById('btn-admin-rx-log')?.addEventListener('click', () => navigate('/admin/rx-log'));
   document.getElementById('btn-rx-check')?.addEventListener('click', () => navigate('/rx-check'));
-  document.getElementById('logout-btn').addEventListener('click', async () => {
-    await signOut();
-    navigate('/login');
-  });
 }
 
 export function nav(current, navigate, userName = '') {
@@ -169,6 +165,12 @@ export function nav(current, navigate, userName = '') {
 }
 
 export function setupHamburger() {
+  // Wire up sign out on every page
+  document.getElementById('logout-btn')?.addEventListener('click', async () => {
+    const { signOut } = await import('../lib/supabase.js');
+    await signOut();
+    window.location.hash = '/login';
+  });
   const btn = document.getElementById('nav-hamburger-btn');
   const menu = document.getElementById('nav-mobile-menu');
   if (!btn || !menu) return;
