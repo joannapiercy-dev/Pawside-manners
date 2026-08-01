@@ -145,7 +145,7 @@ export const appointmentTypes = [
   {
     id: "tech",
     name: "Tech Appointment",
-    duration: "15 min (1–2 per hour max, depending on staffing)",
+    duration: "1 hour",
     color: "#33B6D4",
     textColor: "#ffffff",
     category: "Tech",
@@ -156,7 +156,7 @@ export const appointmentTypes = [
   {
     id: "tech-assistant",
     name: "Tech Assistant Appointment",
-    duration: "15 min (1–2 per hour max)",
+    duration: "1 hour",
     color: "#0080FF",
     textColor: "#ffffff",
     category: "Tech",
@@ -205,8 +205,8 @@ export const appointmentTypes = [
     textColor: "#3d1a6e",
     category: "Surgery",
     when: "Any surgery on rabbits, rats, or other pocket pets.",
-    notes: "",
-    flags: ['fasting', 'consent', 'estimate-needed'],
+    notes: "⚠️ Do NOT fast rabbits or pocket pets before surgery — fasting is dangerous for these species and can cause fatal GI stasis or hypoglycaemia.",
+    flags: ['consent', 'estimate-needed'],
   },
   {
     id: "dental",
